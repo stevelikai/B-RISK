@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Branzfir", "Branzfir.vbproj", "{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Debug|Win32.Build.0 = Debug|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CBFACE04-5801-4DA6-B6E7-B5CAA05B0930}.Release|Win32.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A350F4B3-2141-4922-A304-FAE338CFD7D6}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

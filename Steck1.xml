@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Created by BRANZFIRE Version 2009.001-->
+<simulation>
+  <general_settings>
+    <version>2009.001</version>
+    <description>Steady State Fire Experiments</description>
+    <temp_interior>299</temp_interior>
+    <temp_exterior>299</temp_exterior>
+    <rel_humidity>0.65</rel_humidity>
+    <simulation_duration>1800</simulation_duration>
+    <display_interval>900</display_interval>
+    <ceiling_nodes>15</ceiling_nodes>
+    <wall_nodes>15</wall_nodes>
+    <floor_nodes>10</floor_nodes>
+    <enhance_burning>False</enhance_burning>
+    <job_number />
+    <excel_interval>10</excel_interval>
+    <time_step>5</time_step>
+    <error_control>0.1</error_control>
+    <fire_dbase>C:\Documents and Settings\All Users\Application Data\Branzfire\2009\dbases\fire.mdb</fire_dbase>
+    <mat_dbase>C:\Documents and Settings\All Users\Application Data\Branzfire\2009\dbases\thermal.mdb</mat_dbase>
+    <ceiling_jet>0</ceiling_jet>
+    <vent_logfile>True</vent_logfile>
+    <LE_Solver>LU decomposition</LE_Solver>
+    <no_wall_flow>True</no_wall_flow>
+  </general_settings>
+  <rooms
+    number_rooms="1">
+    <room
+      id="1"
+      ceilingslope="0">
+      <width>2.8</width>
+      <length>2.8</length>
+      <max_height>2.13</max_height>
+      <description />
+      <min_height>2.13</min_height>
+      <floor_elevation>0</floor_elevation>
+      <two_zones>True</two_zones>
+      <wall_lining>
+        <description>Ceramic fibre insulation board</description>
+        <thickness>50</thickness>
+        <conductivity>0.09</conductivity>
+        <specific_heat>1040</specific_heat>
+        <density>128</density>
+        <emissivity>0.970000028610229</emissivity>
+        <cone_file />
+        <min_temp_spread>273</min_temp_spread>
+        <flame_spread_parameter>0</flame_spread_parameter>
+        <eff_heat_of_combustion>0</eff_heat_of_combustion>
+        <soot_yield>0</soot_yield>
+        <CO2_yield>0</CO2_yield>
+        <H20_yield>0</H20_yield>
+        <HCN_yield>0</HCN_yield>
+      </wall_lining>
+      <wall_substrate
+        present="-1">
+        <description>Concrete</description>
+        <thickness>150</thickness>
+        <conductivity>1.2</conductivity>
+        <specific_heat>880</specific_heat>
+        <density>2300</density>
+      </wall_substrate>
+      <ceiling_lining>
+        <description>Ceramic fibre insulation board</description>
+        <thickness>50</thickness>
+        <conductivity>0.09</conductivity>
+        <specific_heat>1040</specific_heat>
+        <density>128</density>
+        <emissivity>0.970000028610229</emissivity>
+        <ceiling_cone_file />
+        <eff_heat_of_combustion>0</eff_heat_of_combustion>
+        <soot_yield>0</soot_yield>
+        <CO2_yield>0</CO2_yield>
+        <H20_yield>0</H20_yield>
+        <HCN_yield>0</HCN_yield>
+      </ceiling_lining>
+      <ceiling_substrate
+        present="-1">
+        <description>Concrete</description>
+        <thickness>150</thickness>
+        <conductivity>1.2</conductivity>
+        <specific_heat>880</specific_heat>
+        <density>2300</density>
+      </ceiling_substrate>
+      <floor_lining>
+        <description>Concrete</description>
+        <thickness>100</thickness>
+        <conductivity>1.2</conductivity>
+        <specific_heat>880</specific_heat>
+        <density>2300</density>
+        <emissivity>0.5</emissivity>
+        <floor_cone_file />
+        <min_temp_spread>13</min_temp_spread>
+        <flame_spread_parameter>1</flame_spread_parameter>
+        <eff_heat_of_combustion>0</eff_heat_of_combustion>
+        <soot_yield>0</soot_yield>
+        <CO2_yield>0</CO2_yield>
+        <H20_yield>0</H20_yield>
+        <HCN_yield>0</HCN_yield>
+      </floor_lining>
+      <floor_substrate
+        present="0" />
+    </room>
+  </rooms>
+  <flamespread
+    algorithm="0" />
+  <tenability>
+    <monitor_height>1.5</monitor_height>
+    <activity_level>Light</activity_level>
+    <endpoint_radiation>1</endpoint_radiation>
+    <endpoint_temp>873</endpoint_temp>
+    <endpoint_visibility>10</endpoint_visibility>
+    <endpoint_FED>1</endpoint_FED>
+    <endpoint_convect>353</endpoint_convect>
+    <FED_start_time>0</FED_start_time>
+    <FED_end_time>600</FED_end_time>
+    <illumination>False</illumination>
+  </tenability>
+  <postflashover
+    post="False" />
+  <chemistry>
+    <nC>1</nC>
+    <nH>4</nH>
+    <nO>0</nO>
+    <nN>0</nN>
+    <fueltype>methane</fueltype>
+    <hcn_calc>False</hcn_calc>
+    <soot_alpha>2.5</soot_alpha>
+    <soot_epsilon>1.2</soot_epsilon>
+    <emission_coefficient>6.45</emission_coefficient>
+    <pre_CO>0.04</pre_CO>
+    <post_CO>0.2</post_CO>
+    <pre_soot>0.015</pre_soot>
+    <post_soot>0.2</post_soot>
+    <CO_mode>False</CO_mode>
+    <soot_mode>False</soot_mode>
+  </chemistry>
+  <fires>
+    <fire_room>1</fire_room>
+    <radiant_loss_fraction>0.14</radiant_loss_fraction>
+    <mass_loss_per_unit_area>0.011</mass_loss_per_unit_area>
+    <!--plume, macaffrey=2, delichatsios=1-->
+    <plume_algorithm>2</plume_algorithm>
+    <number_objects>1</number_objects>
+    <fire
+      id="1">
+      <heat_of_combustion>49.6</heat_of_combustion>
+      <CO2_yield>2.72</CO2_yield>
+      <soot_yield>0.013</soot_yield>
+      <H2O_yield>2.25</H2O_yield>
+      <HCN_yield>0</HCN_yield>
+      <fire_height>0.02</fire_height>
+      <!--fire location, corner=2, wall=1, centre=0-->
+      <fire_location>0</fire_location>
+      <data_points>3</data_points>
+      <obj_CRF>20</obj_CRF>
+      <obj_length>1</obj_length>
+      <obj_width>1</obj_width>
+      <obj_height>1</obj_height>
+      <obj_elevation>0</obj_elevation>
+      <time>0,10,1000,</time>
+      <HRR>0,62.9,62.9,</HRR>
+    </fire>
+  </fires>
+  <hvents>
+    <hvent>
+      <room_1>1</room_1>
+      <room_2>2</room_2>
+      <id>1</id>
+      <height>1.83</height>
+      <width>0.24</width>
+      <sill_height>0</sill_height>
+      <open_time>0</open_time>
+      <close_time>0</close_time>
+      <wall_length_1>0</wall_length_1>
+      <wall_length_2>0</wall_length_2>
+      <glassbreak
+        autobreak="False" />
+      <spillplume
+        use_spillplume="0" />
+    </hvent>
+  </hvents>
+  <vvents />
+  <sprinklers />
+  <smoke_detectors />
+  <fans />
+</simulation>

@@ -1,0 +1,37 @@
+"simulated rigid polyurethane 30 kg/m3, 30 mm thick "
+"Number of HRR Curves", 1
+"Heat Flux",50
+"Number of HRR Data Pairs", 23
+"sec,kw/m2"
+0,30
+5,247
+10,202.226496
+20,165.5690514
+30,135.5564741
+40,110.9842541
+50,90.86622197
+60,74.39497034
+70,60.90945009
+80,49.86843994
+90,40.82882539
+100,33.42781496
+110,27.36838012
+120,22.40733446
+130,18.34557382
+140,15.02008547
+150,12.29740589
+160,10.06826438
+170,8.24319768
+180,6.748959444
+190,5.525580648
+200,4.523962806
+300,0
+"Ignition Data"
+"Number of Pairs",0
+"ignition temp",666
+"thermal inertia",0.031
+"heat of gasification",1.19
+"area under curve",0
+"Flame Spread Parameter", 3
+"Min Surface Temp For Spread",378
+"Effective Heat of Combustion", 13

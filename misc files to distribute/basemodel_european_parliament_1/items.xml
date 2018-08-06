@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <version>2012.29</version>
+  <Item>
+    <id>1</id>
+    <description>IMS Pan</description>
+    <detaileddescription>Industrial Methylated Spirits, 527 kW/m2</detaileddescription>
+    <userlabel>pan</userlabel>
+    <type>Generic</type>
+    <length>1</length>
+    <width>1</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>31.532</mass>
+    <critical_flux_pilot>10</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>500</FTP_limit_pilot>
+    <FTP_limit_auto>400</FTP_limit_auto>
+    <FTP_index_pilot>1</FTP_index_pilot>
+    <FTP_index_auto>1</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0
+10,527
+1800,527</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>1</xleft>
+    <ybottom>1</ybottom>
+    <constantA>0</constantA>
+    <constantB>0</constantB>
+    <HRRUA>527</HRRUA>
+    <windeffect>2</windeffect>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>30</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>12</lbound>
+      <ubound>23</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>soot yield</varname>
+      <value>0.008</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>co2 yield</varname>
+      <value>1.27</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>Latent Heat of Gasification</varname>
+      <value>0</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>Radiant Loss Fraction</varname>
+      <value>0.2</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>2</id>
+    <description>IMS Pan</description>
+    <detaileddescription>Industrial Methylated Spirits, 527 kW/m2</detaileddescription>
+    <userlabel>pan</userlabel>
+    <type>Generic</type>
+    <length>1</length>
+    <width>1</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>106.444</mass>
+    <critical_flux_pilot>0</critical_flux_pilot>
+    <critical_flux_auto>0</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0
+10,527
+1800,527</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>1</xleft>
+    <ybottom>3</ybottom>
+    <constantA>0</constantA>
+    <constantB>0</constantB>
+    <HRRUA>527</HRRUA>
+    <windeffect>2</windeffect>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>30</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>12</lbound>
+      <ubound>23</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>soot yield</varname>
+      <value>0.008</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>co2 yield</varname>
+      <value>1.27</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>Latent Heat of Gasification</varname>
+      <value>0</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>Radiant Loss Fraction</varname>
+      <value>0.2</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+</Items>
