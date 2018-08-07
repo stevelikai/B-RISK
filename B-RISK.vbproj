@@ -544,12 +544,6 @@
     <Compile Include="Validator.vb" />
     <Compile Include="vent.vb" />
     <Compile Include="VentDB.vb" />
-    <Compile Include="view.Designer.vb">
-      <DependentUpon>view.vb</DependentUpon>
-    </Compile>
-    <Compile Include="view.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -737,10 +731,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUtiskul.resx">
       <DependentUpon>frmUtiskul.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view.resX">
-      <DependentUpon>view.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="fire.mdb">

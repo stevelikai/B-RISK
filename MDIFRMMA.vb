@@ -350,7 +350,7 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmGraph)
         Me.AddOwnedForm(frmPlot)
         Me.AddOwnedForm(frmInputs)
-        Me.AddOwnedForm(frmView)
+        'Me.AddOwnedForm(frmView)
         Me.AddOwnedForm(frmItemList)
         Me.AddOwnedForm(frmSprinklerList)
         Me.AddOwnedForm(frmSmokeDetList)

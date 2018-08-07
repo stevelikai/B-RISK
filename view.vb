@@ -49,21 +49,22 @@ Friend Class frmView
 		
 		'CancelError is True
 		On Error GoTo errhandler
-		
-		'Display the Open dialog box
-		'UPGRADE_WARNING: Couldn't resolve default property of object getfont.flags. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
-		'UPGRADE_ISSUE: Constant cdlCFFixedPitchOnly was not upgraded. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"'
-		'UPGRADE_ISSUE: Constant cdlCFPrinterFonts was not upgraded. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"'
+
+        'Display the Open dialog box
+        'UPGRADE_WARNING: Couldn't resolve default property of object getfont.flags. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
+        'UPGRADE_ISSUE: Constant cdlCFFixedPitchOnly was not upgraded. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"'
+        'UPGRADE_ISSUE: Constant cdlCFPrinterFonts was not upgraded. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="55B59875-9A95-4B71-9D6A-7C294BF7139D"'
         'getfont.flags = MSComDlg.FontsConstants.cdlCFPrinterFonts + MSComDlg.FontsConstants.cdlCFFixedPitchOnly
-		'UPGRADE_WARNING: Couldn't resolve default property of object getfont.ShowFont. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
+        'UPGRADE_WARNING: Couldn't resolve default property of object getfont.ShowFont. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         'getfont.ShowFont()
-		'UPGRADE_WARNING: Couldn't resolve default property of object getfont.FontName. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
+        'UPGRADE_WARNING: Couldn't resolve default property of object getfont.FontName. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         'PrinterFontName = getfont.FontName
-		'UPGRADE_WARNING: Couldn't resolve default property of object getfont.FontSize. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
+        'UPGRADE_WARNING: Couldn't resolve default property of object getfont.FontSize. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         'PrinterFontSize = getfont.FontSize
         'If PrinterFontName = "" Then PrinterFontName = DefaultPrinterFontName
         'If PrinterFontSize = "" Then PrinterFontSize = DefaultPrinterFontSize
-		' Set the font of the RTF to a TrueType font for best results
+        ' Set the font of the RTF to a TrueType font for best results
+
         RichTextBox1.Font = VB6.FontChangeName(RichTextBox1.Font, PrinterFontName)
 		RichTextBox1.Font = VB6.FontChangeSize(RichTextBox1.Font, CDec(PrinterFontSize))
 		
