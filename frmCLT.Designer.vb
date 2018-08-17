@@ -53,10 +53,13 @@ Partial Class frmCLT
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.lblDebondTemp = New System.Windows.Forms.Label()
         Me.txtDebondTemp = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.chkKineticModel = New System.Windows.Forms.CheckBox()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numeric_wallareapercent, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numeric_ceilareapercent, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_integralmodel.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ErrorProvider1
@@ -65,7 +68,7 @@ Partial Class frmCLT
         '
         'cmdClose
         '
-        Me.cmdClose.Location = New System.Drawing.Point(379, 537)
+        Me.cmdClose.Location = New System.Drawing.Point(376, 315)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 0
@@ -76,7 +79,7 @@ Partial Class frmCLT
         '
         Me.optCLTOFF.AutoSize = True
         Me.optCLTOFF.Checked = True
-        Me.optCLTOFF.Location = New System.Drawing.Point(72, 126)
+        Me.optCLTOFF.Location = New System.Drawing.Point(23, 126)
         Me.optCLTOFF.Name = "optCLTOFF"
         Me.optCLTOFF.Size = New System.Drawing.Size(101, 17)
         Me.optCLTOFF.TabIndex = 1
@@ -87,7 +90,7 @@ Partial Class frmCLT
         'optCLTON
         '
         Me.optCLTON.AutoSize = True
-        Me.optCLTON.Location = New System.Drawing.Point(213, 126)
+        Me.optCLTON.Location = New System.Drawing.Point(143, 126)
         Me.optCLTON.Name = "optCLTON"
         Me.optCLTON.Size = New System.Drawing.Size(101, 17)
         Me.optCLTON.TabIndex = 2
@@ -279,6 +282,7 @@ Partial Class frmCLT
         '
         'Panel_integralmodel
         '
+        Me.Panel_integralmodel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel_integralmodel.Controls.Add(Me.txtCLTcalibration)
         Me.Panel_integralmodel.Controls.Add(Me.Label10)
         Me.Panel_integralmodel.Controls.Add(Me.Label9)
@@ -290,15 +294,15 @@ Partial Class frmCLT
         Me.Panel_integralmodel.Controls.Add(Me.txtCritFlux)
         Me.Panel_integralmodel.Controls.Add(Me.Label6)
         Me.Panel_integralmodel.Controls.Add(Me.chkWoodIntegralModel)
-        Me.Panel_integralmodel.Location = New System.Drawing.Point(33, 311)
+        Me.Panel_integralmodel.Location = New System.Drawing.Point(500, 12)
         Me.Panel_integralmodel.Name = "Panel_integralmodel"
-        Me.Panel_integralmodel.Size = New System.Drawing.Size(421, 211)
+        Me.Panel_integralmodel.Size = New System.Drawing.Size(337, 211)
         Me.Panel_integralmodel.TabIndex = 24
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(378, 128)
+        Me.LinkLabel1.Location = New System.Drawing.Point(266, 128)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(79, 13)
         Me.LinkLabel1.TabIndex = 25
@@ -322,11 +326,31 @@ Partial Class frmCLT
         Me.txtDebondTemp.TabIndex = 27
         Me.txtDebondTemp.Text = "200"
         '
+        'Panel1
+        '
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.chkKineticModel)
+        Me.Panel1.Location = New System.Drawing.Point(500, 238)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(337, 100)
+        Me.Panel1.TabIndex = 28
+        '
+        'chkKineticModel
+        '
+        Me.chkKineticModel.AutoSize = True
+        Me.chkKineticModel.Location = New System.Drawing.Point(14, 15)
+        Me.chkKineticModel.Name = "chkKineticModel"
+        Me.chkKineticModel.Size = New System.Drawing.Size(155, 17)
+        Me.chkKineticModel.TabIndex = 0
+        Me.chkKineticModel.Text = "Use kinetic pyrolysis model "
+        Me.chkKineticModel.UseVisualStyleBackColor = True
+        '
         'frmCLT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(482, 572)
+        Me.ClientSize = New System.Drawing.Size(849, 350)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtDebondTemp)
         Me.Controls.Add(Me.lblDebondTemp)
         Me.Controls.Add(Me.LinkLabel1)
@@ -352,6 +376,8 @@ Partial Class frmCLT
         CType(Me.numeric_ceilareapercent, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_integralmodel.ResumeLayout(False)
         Me.Panel_integralmodel.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -385,4 +411,6 @@ Partial Class frmCLT
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents txtDebondTemp As TextBox
     Friend WithEvents lblDebondTemp As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents chkKineticModel As CheckBox
 End Class

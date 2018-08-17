@@ -1128,7 +1128,7 @@ Module DIFFEQNS
 
                     'UWallNode arguments are: room, node, timestep
                     'only use where timber is not protected
-                    If useCLTmodel = True And room = fireroom And IntegralModel = False Then
+                    If useCLTmodel = True And room = fireroom And IntegralModel = False And KineticModel = False Then
                         Dim keepnode As Integer
                         Dim cdr, wFLED, cFLED, FLEDwithCLT As Double
 
@@ -1165,6 +1165,7 @@ Module DIFFEQNS
 
                         'may need to do something for integral model + not wood crib?
                     ElseIf useCLTmodel = True And room = fireroom And CLT_instant = True Then
+                        'not using this
                         Dim cdr, wFLED, cFLED As Double
 
                         cdr = chardepth(room, wFLED) 'returns char depth
@@ -1173,6 +1174,11 @@ Module DIFFEQNS
                         cdr = chardepth_ceil(room, cFLED)
                         ceil_char(i, 2) = cdr / 1000 'char depth ceiling m
                         ceil_char(i, 0) = cFLED 'save the cumulative MJ/m2 contributed from by ceiling
+
+                    ElseIf useCLTmodel = True And room = fireroom And KineticModel = True Then
+                        'new
+                        Stop
+
                     End If
 
                     'vent - glass breakage solution here
@@ -2374,7 +2380,6 @@ Module DIFFEQNS
                 If IntegralModel = True And useCLTmodel = True Then
                     'only want the contents mass consumed here, so deduct the contribution from wood surfaces
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
-                    'TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom)) * Timestep
 
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model

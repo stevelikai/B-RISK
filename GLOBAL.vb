@@ -26,7 +26,7 @@ Module GLOBAL_Renamed
     Public RCNone As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2018.05"
+    Public Const Version As String = "2018.051"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
@@ -56,6 +56,7 @@ Module GLOBAL_Renamed
     Public CLTceilingpercent As Integer
     Public Lamella As Single
     Public IntegralModel As Boolean
+    Public KineticModel As Boolean
     Public CLTQcrit As Double
     Public CLTflameflux As Double
     Public CLTLoG As Double

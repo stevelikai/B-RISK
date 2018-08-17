@@ -435,6 +435,7 @@ Public Class frmInputs
                 DFW.WriteElementString("CLT_ignitiontemp", CLTigtemp)
                 DFW.WriteElementString("CLT_calibration", CLTcalibrationfactor)
                 DFW.WriteElementString("CLT_debondtemp", DebondTemp)
+                DFW.WriteElementString("kinetic_model", KineticModel)
                 DFW.WriteEndElement()
 
                 DFW.WriteStartElement("chemistry")
@@ -1879,10 +1880,19 @@ Public Class frmInputs
                             DebondTemp = DFR.ReadElementString()
                             frmCLT.txtDebondTemp.Text = DebondTemp
                         End If
+                        If ModelVersion > CSng(2018.05) Then
+                            KineticModel = DFR.ReadElementString()
+                            If KineticModel = True Then
+                                frmCLT.chkKineticModel.Checked = True
+                            Else
+                                frmCLT.chkKineticModel.Checked = False
+                            End If
+                        End If
                         If ModelVersion < CSng(2018.02) Then
                             useCLTmodel = False
                             frmCLT.optCLTOFF.Checked = True
                         End If
+
                         DFR.ReadEndElement() 'clear </postflashover>
 
                         'End If

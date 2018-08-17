@@ -10,6 +10,7 @@ Public Class frmCLT
         Else
             optCLTOFF.Checked = True
         End If
+
         numeric_ceilareapercent.Value = CLTceilingpercent
         numeric_wallareapercent.Value = CLTwallpercent
         txtCharTemp.Text = chartemp
@@ -20,12 +21,12 @@ Public Class frmCLT
         txtCLTLoG.Text = CLTLoG
         txtCritFlux.Text = CLTQcrit
         txtDebondTemp.Text = DebondTemp
+
         'CLTflameflux = 17
         'CLTigtemp = 384
         'CLTLoG = 1.6
         'CLTQcrit = 16
         'CLTcalibrationfactor = 1
-
 
     End Sub
 
@@ -43,13 +44,21 @@ Public Class frmCLT
             IntegralModel = False
         End If
 
-        Me.Hide()
+        If chkKineticModel.Checked = True Then
+            KineticModel = True
+        Else
+            KineticModel = False
+        End If
+
+        Me.Close()
+
     End Sub
 
     Private Sub txtCharTemp_Validated(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCharTemp.Validated
         ErrorProvider1.Clear()
 
         chartemp = CDbl(txtCharTemp.Text)
+
     End Sub
 
     Private Sub txtCharTemp_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtCharTemp.Validating
@@ -107,8 +116,6 @@ Public Class frmCLT
         ErrorProvider1.SetError(txtLamellaDepth, "Invalid Entry. Lamella depth must be greater than 0. ")
     End Sub
 
-
-
     Private Sub txtCritFlux_Validated(sender As Object, e As EventArgs) Handles txtCritFlux.Validated
         ErrorProvider1.Clear()
 
@@ -133,8 +140,6 @@ Public Class frmCLT
         ' display.
         ErrorProvider1.SetError(txtCritFlux, "Invalid Entry. Critical flux must be greater than 0. ")
     End Sub
-
-
 
     Private Sub txtFlameFlux_Validating(sender As Object, e As CancelEventArgs) Handles txtFlameFlux.Validating
         If IsNumeric(txtFlameFlux.Text) Then
@@ -161,8 +166,6 @@ Public Class frmCLT
         CLTflameflux = CDbl(txtFlameFlux.Text)
     End Sub
 
-
-
     Private Sub txtCLTLoG_Validating(sender As Object, e As CancelEventArgs) Handles txtCLTLoG.Validating
         If IsNumeric(txtCLTLoG.Text) Then
             If (CDbl(txtCLTLoG.Text) > 0) Then
@@ -188,8 +191,6 @@ Public Class frmCLT
         CLTLoG = CDbl(txtCLTLoG.Text)
     End Sub
 
-
-
     Private Sub txtCLTigtemp_Validating(sender As Object, e As CancelEventArgs) Handles txtCLTigtemp.Validating
         If IsNumeric(txtCLTigtemp.Text) Then
             If (CDbl(txtCLTigtemp.Text) > 200) Then
@@ -214,7 +215,6 @@ Public Class frmCLT
 
         CLTigtemp = CDbl(txtCLTigtemp.Text)
     End Sub
-
 
     Private Sub txtCLTcalibration_Validated(sender As Object, e As EventArgs) Handles txtCLTcalibration.Validated
         ErrorProvider1.Clear()
@@ -275,6 +275,5 @@ Public Class frmCLT
 
         DebondTemp = CDbl(txtDebondTemp.Text)
     End Sub
-
 
 End Class

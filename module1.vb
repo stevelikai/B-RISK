@@ -4162,7 +4162,14 @@ here:
             End If
 
             Exit Function
-        ElseIf useCLTmodel = True And g_post = False And integralmodel = False Then
+
+        ElseIf useCLTmodel = True And KineticModel = True Then
+            'new
+
+            Stop
+            Exit Function
+
+        ElseIf useCLTmodel = True And g_post = False And integralmodel = False And kineticmodel = False Then
             MassLoss_Object = MassLoss_Total(tim)
             MassLoss_Object = MassLoss_Object + wall_char(stepcount, 1) + ceil_char(stepcount, 1)
             QWall = wall_char(stepcount, 1) * WallEffectiveHeatofCombustion(fireroom) * 1000
@@ -4170,7 +4177,6 @@ here:
 
             Exit Function
         End If
-
 
         QW = 0
         QWall = 0
