@@ -1364,6 +1364,7 @@ h2ohandler:
         Erase LW
     End Sub
     Sub Implicit_Surface_Temps_CLT(ByVal room As Integer, ByVal i As Integer, ByRef UWallNode(,,) As Double, ByRef CeilingNode(,,) As Double, ByRef LWallNode(,,) As Double, ByRef FloorNode(,,) As Double)
+        'not used
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
         '*      implicit finite difference method.
@@ -1648,6 +1649,7 @@ h2ohandler:
         End Try
     End Sub
     Sub Implicit_Surface_Temps_CLTC(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
+        'not used
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
         '*      implicit finite difference method.
@@ -1770,6 +1772,7 @@ h2ohandler:
     End Sub
 
     Sub Implicit_Surface_Temps_CLTW(ByVal room As Integer, ByVal i As Integer, ByRef UWallNode(,,) As Double, ByRef LWallNode(,,) As Double)
+        'not used
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
         '*      implicit finite difference method.
@@ -2007,7 +2010,7 @@ h2ohandler:
             'Find Fourier Numbers -exterior side
             If UWallNodeStatus(Wallnodestemp) = 1 Then
                 'char
-                temp = UWallNodeStatus(Wallnodestemp) - 273
+                temp = UWallNodeTemp(Wallnodestemp) - 273
                 char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_ku / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
@@ -2035,7 +2038,7 @@ h2ohandler:
 
             If LWallNodeStatus(Wallnodestemp) = 1 Then
                 'char
-                temp = LWallNodeStatus(Wallnodestemp) - 273
+                temp = LWallNodeTemp(Wallnodestemp) - 273
                 char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_kl / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
