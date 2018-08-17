@@ -195,102 +195,112 @@ Public Class DistributionClass
                 'if reading older file, add any missing distributions
                 If oDistributions.Count = 5 Then
                     'add Soot Preflashover Yield
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 6
-                    oDistribution.varname = "Soot Preflashover Yield"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "g/g"
-                    oDistribution.varvalue = preSoot
+                    Dim oDistribution As New oDistribution With {
+                        .id = 6,
+                        .varname = "Soot Preflashover Yield",
+                        .distribution = "None",
+                        .units = "g/g",
+                        .varvalue = preSoot
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 6 Then
                     'add CO Preflashover Yield
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 7
-                    oDistribution.varname = "CO Preflashover Yield"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "g/g"
-                    oDistribution.varvalue = preCO
+                    Dim oDistribution As New oDistribution With {
+                        .id = 7,
+                        .varname = "CO Preflashover Yield",
+                        .distribution = "None",
+                        .units = "g/g",
+                        .varvalue = preCO
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 7 Then
                     'add sprinkler reliability
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 8
-                    oDistribution.varname = "Sprinkler Reliability"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "-"
-                    oDistribution.varvalue = SprReliability
+                    Dim oDistribution As New oDistribution With {
+                        .id = 8,
+                        .varname = "Sprinkler Reliability",
+                        .distribution = "None",
+                        .units = "-",
+                        .varvalue = SprReliability
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 8 Then
                     'add sprinkler supresssion
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 9
-                    oDistribution.varname = "Sprinkler Suppression Probability"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "-"
-                    oDistribution.varvalue = SprSuppressionProb
+                    Dim oDistribution As New oDistribution With {
+                        .id = 9,
+                        .varname = "Sprinkler Suppression Probability",
+                        .distribution = "None",
+                        .units = "-",
+                        .varvalue = SprSuppressionProb
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 9 Then
                     'add sprinkler cooling coefficient
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 10
-                    oDistribution.varname = "Sprinkler Cooling Coefficient"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "-"
-                    oDistribution.varvalue = SprCooling
+                    Dim oDistribution As New oDistribution With {
+                        .id = 10,
+                        .varname = "Sprinkler Cooling Coefficient",
+                        .distribution = "None",
+                        .units = "-",
+                        .varvalue = SprCooling
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 10 Then
                     'add fuel heat of gasification
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 11
-                    oDistribution.varname = "Fuel Heat of Gasification"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "kJ/g"
+                    Dim oDistribution As New oDistribution With {
+                        .id = 11,
+                        .varname = "Fuel Heat of Gasification",
+                        .distribution = "None",
+                        .units = "kJ/g"
+                    }
                     'oDistribution.varvalue = FuelHeatofGasification
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 11 Then
                     'add alpha T
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 12
-                    oDistribution.varname = "Alpha T"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "kW/s2"
-                    oDistribution.varvalue = AlphaT
+                    Dim oDistribution As New oDistribution With {
+                        .id = 12,
+                        .varname = "Alpha T",
+                        .distribution = "None",
+                        .units = "kW/s2",
+                        .varvalue = AlphaT
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 12 Then
                     'add peak hrr
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 13
-                    oDistribution.varname = "Peak HRR"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "kW"
-                    oDistribution.varvalue = PeakHRR
+                    Dim oDistribution As New oDistribution With {
+                        .id = 13,
+                        .varname = "Peak HRR",
+                        .distribution = "None",
+                        .units = "kW",
+                        .varvalue = PeakHRR
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 13 Then
                     'add sd reliability
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 14
-                    oDistribution.varname = "Smoke Detector Reliability"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "-"
-                    oDistribution.varvalue = SDReliability
+                    Dim oDistribution As New oDistribution With {
+                        .id = 14,
+                        .varname = "Smoke Detector Reliability",
+                        .distribution = "None",
+                        .units = "-",
+                        .varvalue = SDReliability
+                    }
                     oDistributions.Add(oDistribution)
                 End If
                 If oDistributions.Count = 14 Then
                     'add mech vent reliability
-                    Dim oDistribution As New oDistribution
-                    oDistribution.id = 15
-                    oDistribution.varname = "Mechanical Ventilation Reliability"
-                    oDistribution.distribution = "None"
-                    oDistribution.units = "-"
-                    oDistribution.varvalue = FanReliability
+                    Dim oDistribution As New oDistribution With {
+                        .id = 15,
+                        .varname = "Mechanical Ventilation Reliability",
+                        .distribution = "None",
+                        .units = "-",
+                        .varvalue = FanReliability
+                    }
                     oDistributions.Add(oDistribution)
                 End If
             Else

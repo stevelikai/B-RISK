@@ -15,10 +15,9 @@ Friend Class MDIFrmMain
     Inherits System.Windows.Forms.Form
     Private PrintPageSettings As New PageSettings
     Private StringToPrint As String
-    Private PrintFont As New Font("Courier New", 8.25)
+    'Private PrintFont As New Font("Courier New", 8.25)
     'Dim ApplicationPath As String = IO.Path.GetDirectoryName(Application.ExecutablePath)
     Dim oDistributions As List(Of oDistribution)
-
 
     <System.Runtime.InteropServices.DllImportAttribute("MathFuncsdll.dll")>
     Public Shared Function Add(ByVal a As Double, ByVal b As Double) As Double
@@ -212,15 +211,7 @@ Friend Class MDIFrmMain
     End Structure
 
     ' Retrieves the ID of a special folder.
-    'UPGRADE_WARNING: Structure ITEMIDLIST may require marshalling attributes to be passed as an argument in this Declare statement. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="C429C3A5-5D47-4CD9-8F51-74A1616405DC"'
     Private Declare Function SHGetSpecialFolderLocation Lib "Shell32.dll" (ByVal hwndOwner As Integer, ByVal nFolder As Integer, ByRef pidl As ITEMIDLIST) As Integer
-
-    'Initializes the COM library on the current apartment
-    'UPGRADE_ISSUE: Declaring a parameter 'As Any' is not supported. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="FAE78A8D-8978-4FD4-8208-5B7324A8F795"'
-    'Private Declare Function OleInitialize Lib "ole32.dll" (ByRef lp As Any) As Integer
-
-    'Closes the COM library
-    'Private Declare Sub OleUninitialize Lib "ole32" ()
 
     Private Function fGetSpecialFolder(ByRef CSIDL As Integer, ByRef IDL As ITEMIDLIST) As String
         Dim sPath As String
@@ -324,7 +315,6 @@ Friend Class MDIFrmMain
         End If
         frmInputs.Label4.Text = "Default riskdata folder is: " & DefaultRiskDataDirectory
 
-
         New_File_Start()
 
         If RiskDataDirectory = "" Then RiskDataDirectory = DefaultRiskDataDirectory & "basemodel_default\"
@@ -350,7 +340,7 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmGraph)
         Me.AddOwnedForm(frmPlot)
         Me.AddOwnedForm(frmInputs)
-        Me.AddOwnedForm(frmView)
+        'Me.AddOwnedForm(frmView)
         Me.AddOwnedForm(frmItemList)
         Me.AddOwnedForm(frmSprinklerList)
         Me.AddOwnedForm(frmSmokeDetList)
@@ -360,8 +350,6 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmNewSmokeDetector)
         Me.AddOwnedForm(frmViewDocs)
         Me.AddOwnedForm(frmRoomList)
-
-
 
         frmInputs.Read_BaseFile_xml(RiskDataDirectory & "basemodel_default.xml", False)
 
@@ -385,8 +373,6 @@ Friend Class MDIFrmMain
         Next i
         FileClose()
 
-        'End
-
     End Sub
 
     Public Sub mnuAbout_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuAbout.Click
@@ -398,185 +384,184 @@ Friend Class MDIFrmMain
 
     End Sub
 
+    '    Public Sub mnuBREAK1_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuBREAK1.Click
+    '        '		'==========================================================
+    '        '		'Creates an input file for BREAK1 glass fracture analysis
+    '        '		'14 December 2001 by Ross Parry
+    '        '		'Based on mnuCSV and mnuGlassTempGraph by Colleen Wade
+    '        '		'=========================================================
 
-    Public Sub mnuBREAK1_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuBREAK1.Click
-        '		'==========================================================
-        '		'Creates an input file for BREAK1 glass fracture analysis
-        '		'14 December 2001 by Ross Parry
-        '		'Based on mnuCSV and mnuGlassTempGraph by Colleen Wade
-        '		'=========================================================
+    '        On Error GoTo more
 
-        On Error GoTo more
+    '        Dim Txt As String
+    '        Dim k, j, count As Integer
+    '        Dim Title As String
+    '        Dim SaveBox As New SaveFileDialog
+    '        Dim myStream As Stream
+    '        Dim idc, idr, idv As Short
+    '        Dim Default_Renamed, Message, MyValue As String
+    '        Dim F7dot2, E12dot4, F8dot4, F6dot2 As String
+    '        Dim F7dot1, F7dot3, F10dot6, F12dot2 As String
+    '        Dim F8dot2, I10 As String
+    '        Dim dblHalfWidth As Double
+    '        Dim iTimeStep, iSteps As Short
 
-        Dim Txt As String
-        Dim k, j, count As Integer
-        Dim Title As String
-        Dim SaveBox As New SaveFileDialog
-        Dim myStream As Stream
-        Dim idc, idr, idv As Short
-        Dim Default_Renamed, Message, MyValue As String
-        Dim F7dot2, E12dot4, F8dot4, F6dot2 As String
-        Dim F7dot1, F7dot3, F10dot6, F12dot2 As String
-        Dim F8dot2, I10 As String
-        Dim dblHalfWidth As Double
-        Dim iTimeStep, iSteps As Short
+    '        Title = "Display Nodal Temperatures for Which Vent?" ' Set title.
 
-        Title = "Display Nodal Temperatures for Which Vent?" ' Set title.
+    '        Message = "Enter the first room" ' Set prompt.
+    '        Default_Renamed = "1" ' Set default.
+    '        MyValue = InputBox(Message, Title, Default_Renamed)
+    '        idr = CShort(MyValue)
 
-        Message = "Enter the first room" ' Set prompt.
-        Default_Renamed = "1" ' Set default.
-        MyValue = InputBox(Message, Title, Default_Renamed)
-        idr = CShort(MyValue)
+    '        Message = "Enter the second room" ' Set prompt.
+    '        Default_Renamed = "2" ' Set default.
+    '        MyValue = InputBox(Message, Title, Default_Renamed)
+    '        idc = CShort(MyValue)
 
-        Message = "Enter the second room" ' Set prompt.
-        Default_Renamed = "2" ' Set default.
-        MyValue = InputBox(Message, Title, Default_Renamed)
-        idc = CShort(MyValue)
+    '        Message = "Enter the vent ID" ' Set prompt.
+    '        Default_Renamed = "1" ' Set default.
+    '        MyValue = InputBox(Message, Title, Default_Renamed)
+    '        idv = CShort(MyValue)
 
-        Message = "Enter the vent ID" ' Set prompt.
-        Default_Renamed = "1" ' Set default.
-        MyValue = InputBox(Message, Title, Default_Renamed)
-        idv = CShort(MyValue)
+    '        Message = "Enter the timestep" ' Set prompt.
+    '        Default_Renamed = "10" ' Set default.
+    '        MyValue = InputBox(Message, Title, Default_Renamed)
+    '        iTimeStep = CShort(MyValue)
 
-        Message = "Enter the timestep" ' Set prompt.
-        Default_Renamed = "10" ' Set default.
-        MyValue = InputBox(Message, Title, Default_Renamed)
-        iTimeStep = CShort(MyValue)
+    '        If AutoBreakGlass(idr, idc, idv) = False Then
+    '            MsgBox("BREAK1 files can only be created for vents with glass fracture modelled.")
+    '            Exit Sub
+    '        End If
 
-        If AutoBreakGlass(idr, idc, idv) = False Then
-            MsgBox("BREAK1 files can only be created for vents with glass fracture modelled.")
-            Exit Sub
-        End If
+    '        count = 0
 
-        count = 0
+    '        'dialogbox title
+    '        SaveBox.Title = "Save Results to BREAK1 File"
 
-        'dialogbox title
-        SaveBox.Title = "Save Results to BREAK1 File"
+    '        'default filename
+    '        If Len(DataFile) > 4 Then
+    '            SaveBox.FileName = Mid(DataFile, 1, Len(DataFile) - 3) & "in"
+    '        Else
+    '            DataFile = "new.csv"
+    '            SaveBox.FileName = Mid(DataFile, 1, Len(DataFile) - 3) & "in"
+    '        End If
 
-        'default filename
-        If Len(DataFile) > 4 Then
-            SaveBox.FileName = Mid(DataFile, 1, Len(DataFile) - 3) & "in"
-        Else
-            DataFile = "new.csv"
-            SaveBox.FileName = Mid(DataFile, 1, Len(DataFile) - 3) & "in"
-        End If
+    '        'Set filters
+    '        SaveBox.Filter = "All Files (*.*)|*.*|Files (*.in)|*.in"
 
-        'Set filters
-        SaveBox.Filter = "All Files (*.*)|*.*|Files (*.in)|*.in"
+    '        'Specify default filter
+    '        SaveBox.FilterIndex = 2
 
-        'Specify default filter
-        SaveBox.FilterIndex = 2
+    '        'default filename extension
+    '        SaveBox.DefaultExt = "in"
 
-        'default filename extension
-        SaveBox.DefaultExt = "in"
+    '        If VentHeight(idr, idc, idv) > VentWidth(idr, idc, idv) Then
+    '            dblHalfWidth = VentHeight(idr, idc, idv) / 2
+    '        Else : dblHalfWidth = VentWidth(idr, idc, idv) / 2
+    '        End If
 
-        If VentHeight(idr, idc, idv) > VentWidth(idr, idc, idv) Then
-            dblHalfWidth = VentHeight(idr, idc, idv) / 2
-        Else : dblHalfWidth = VentWidth(idr, idc, idv) / 2
-        End If
+    '        'define a format string
+    '        E12dot4 = ".0000E+00"
+    '        F8dot4 = "00000000.0000"
+    '        F7dot2 = "@@@@@.00"
+    '        F7dot1 = "@@@@@@@.0"
+    '        F6dot2 = "@@@@@@.00"
+    '        F12dot2 = "@@@@@@@@@@@@.00"
+    '        F7dot3 = "@@@@@@.000"
+    '        F10dot6 = "@@@@@@@@@@.000000"
+    '        F8dot2 = "@@@@@@@@.00"
+    '        I10 = "@@@@@@@@@@"
 
-        'define a format string
-        E12dot4 = ".0000E+00"
-        F8dot4 = "00000000.0000"
-        F7dot2 = "@@@@@.00"
-        F7dot1 = "@@@@@@@.0"
-        F6dot2 = "@@@@@@.00"
-        F12dot2 = "@@@@@@@@@@@@.00"
-        F7dot3 = "@@@@@@.000"
-        F10dot6 = "@@@@@@@@@@.000000"
-        F8dot2 = "@@@@@@@@.00"
-        I10 = "@@@@@@@@@@"
+    '        iSteps = Int(NumberTimeSteps * Timestep / iTimeStep)
 
-        iSteps = Int(NumberTimeSteps * Timestep / iTimeStep)
+    '        'Display the Save as dialog box.
+    '        If SaveBox.ShowDialog() = DialogResult.OK Then
+    '            If SaveBox.CheckFileExists = False Then
+    '                'create the file
+    '                My.Computer.FileSystem.WriteAllText(SaveBox.FileName, "", True)
+    '            End If
+    '            myStream = SaveBox.OpenFile()
 
-        'Display the Save as dialog box.
-        If SaveBox.ShowDialog() = DialogResult.OK Then
-            If SaveBox.CheckFileExists = False Then
-                'create the file
-                My.Computer.FileSystem.WriteAllText(SaveBox.FileName, "", True)
-            End If
-            myStream = SaveBox.OpenFile()
+    '            If (myStream IsNot Nothing) Then
 
-            If (myStream IsNot Nothing) Then
+    '                DataFile = SaveBox.FileName
+    '                myStream.Close()
 
-                DataFile = SaveBox.FileName
-                myStream.Close()
+    '                FileOpen(1, DataFile, OpenMode.Output)
 
-                FileOpen(1, DataFile, OpenMode.Output)
+    '                WriteLine(1, " PHYSICAL AND MECHANICAL PROPERTIES OF GLASS ")
+    '                WriteLine(1, " 1.Thermal conductivity [W/mK]=   " & VB6.Format(GLASSconductivity(idr, idc, idv), E12dot4))
+    '                WriteLine(1, " 2.Thermal diffusivity [m^2/s]=   " & VB6.Format(GLASSalpha(idr, idc, idv), E12dot4))
+    '                WriteLine(1, " 3.Absorption length [m]=   .1000E-02")
+    '                WriteLine(1, " 4.Breaking stress [N/m^2]=   " & VB6.Format(GLASSbreakingstress(idr, idc, idv) * 1000000.0#, E12dot4))
+    '                WriteLine(1, " 5.Youngs modulus [N/m^2]=   " & VB6.Format(GlassYoungsModulus(idr, idc, idv) * 1000000.0#, E12dot4))
+    '                WriteLine(1, " 6.Linear coefficient of expansion [/deg C]=   " & VB6.Format(GLASSexpansion(idr, idc, idv), E12dot4))
 
-                WriteLine(1, " PHYSICAL AND MECHANICAL PROPERTIES OF GLASS ")
-                WriteLine(1, " 1.Thermal conductivity [W/mK]=   " & VB6.Format(GLASSconductivity(idr, idc, idv), E12dot4))
-                WriteLine(1, " 2.Thermal diffusivity [m^2/s]=   " & VB6.Format(GLASSalpha(idr, idc, idv), E12dot4))
-                WriteLine(1, " 3.Absorption length [m]=   .1000E-02")
-                WriteLine(1, " 4.Breaking stress [N/m^2]=   " & VB6.Format(GLASSbreakingstress(idr, idc, idv) * 1000000.0#, E12dot4))
-                WriteLine(1, " 5.Youngs modulus [N/m^2]=   " & VB6.Format(GlassYoungsModulus(idr, idc, idv) * 1000000.0#, E12dot4))
-                WriteLine(1, " 6.Linear coefficient of expansion [/deg C]=   " & VB6.Format(GLASSexpansion(idr, idc, idv), E12dot4))
+    '                WriteLine(1, " GEOMETRY ")
+    '                WriteLine(1, " 1.Glass thickness [m]=   " & VB6.Format(GLASSthickness(idr, idc, idv) / 1000, ".0000"))
+    '                WriteLine(1, " 2.Shading thickness [m]=   " & VB6.Format(GLASSshading(idr, idc, idv) / 1000, ".0000"))
+    '                WriteLine(1, " 3.Half-width [m]=   " & VB6.Format(dblHalfWidth, ".0000"))
 
-                WriteLine(1, " GEOMETRY ")
-                WriteLine(1, " 1.Glass thickness [m]=   " & VB6.Format(GLASSthickness(idr, idc, idv) / 1000, ".0000"))
-                WriteLine(1, " 2.Shading thickness [m]=   " & VB6.Format(GLASSshading(idr, idc, idv) / 1000, ".0000"))
-                WriteLine(1, " 3.Half-width [m]=   " & VB6.Format(dblHalfWidth, ".0000"))
+    '                WriteLine(1, " COEFFICIENTS")
+    '                WriteLine(1, " 1.Heat transfer coeff, unexposed [W/m^2-K]= " & VB6.Format(10, "@@@.00"))
+    '                WriteLine(1, " 2.Ambient temp, unexposed [K]=  " & VB6.Format(ExteriorTemp, "@@@.0"))
+    '                WriteLine(1, " 3.Emissivity of glass =  1.00")
+    '                WriteLine(1, " 4.Emissivity of ambient (unexposed) =  1.00")
 
-                WriteLine(1, " COEFFICIENTS")
-                WriteLine(1, " 1.Heat transfer coeff, unexposed [W/m^2-K]= " & VB6.Format(10, "@@@.00"))
-                WriteLine(1, " 2.Ambient temp, unexposed [K]=  " & VB6.Format(ExteriorTemp, "@@@.0"))
-                WriteLine(1, " 3.Emissivity of glass =  1.00")
-                WriteLine(1, " 4.Emissivity of ambient (unexposed) =  1.00")
+    '                WriteLine(1, " FLAME RADIATION")
+    '                WriteLine(1, " Number of points used for flux input:  2")
+    '                WriteLine(1, "     point #     time [s]             flux [W/m^2]")
+    '                WriteLine(1, "         1             .00                   .00")
+    '                WriteLine(1, "         2         1000.00                   .00")
 
-                WriteLine(1, " FLAME RADIATION")
-                WriteLine(1, " Number of points used for flux input:  2")
-                WriteLine(1, "     point #     time [s]             flux [W/m^2]")
-                WriteLine(1, "         1             .00                   .00")
-                WriteLine(1, "         2         1000.00                   .00")
+    '                WriteLine(1, " GAS TEMPERATURE")
+    '                WriteLine(1, " Number of points used for temperature input: " & iSteps)
+    '                WriteLine(1, "     point #     time [s]             temperature [K]")
+    '                WriteLine(1, VB6.Format(1, I10) & " " & VB6.Format(0, F12dot2) & "       " & VB6.Format(System.Math.Round(GLASSOtherHistory(idr, idc, idv, 1, 1)), F12dot2))
 
-                WriteLine(1, " GAS TEMPERATURE")
-                WriteLine(1, " Number of points used for temperature input: " & iSteps)
-                WriteLine(1, "     point #     time [s]             temperature [K]")
-                WriteLine(1, VB6.Format(1, I10) & " " & VB6.Format(0, F12dot2) & "       " & VB6.Format(System.Math.Round(GLASSOtherHistory(idr, idc, idv, 1, 1)), F12dot2))
+    '                For count = 1 To (iSteps - 1)
+    '                    If count * iTimeStep <= UBound(GLASSOtherHistory, 5) Then
+    '                        WriteLine(1, VB6.Format(count + 1, I10) & " " & VB6.Format(count * iTimeStep, F12dot2) & "       " & VB6.Format(System.Math.Round(GLASSOtherHistory(idr, idc, idv, 1, count * iTimeStep)), F12dot2))
+    '                    End If
+    '                Next count
 
-                For count = 1 To (iSteps - 1)
-                    If count * iTimeStep <= UBound(GLASSOtherHistory, 5) Then
-                        WriteLine(1, VB6.Format(count + 1, I10) & " " & VB6.Format(count * iTimeStep, F12dot2) & "       " & VB6.Format(System.Math.Round(GLASSOtherHistory(idr, idc, idv, 1, count * iTimeStep)), F12dot2))
-                    End If
-                Next count
+    '                WriteLine(1, " HEAT TRANSFER COEFF. ON HOT LAYER SIDE")
+    '                WriteLine(1, " Number of points used for heat transfer coeff input: " & iSteps)
+    '                WriteLine(1, "     point #     time [s]             h2 [W/m^2-K]")
+    '                WriteLine(1, VB6.Format(1, I10) & " " & VB6.Format(0, F12dot2) & "       " & VB6.Format(fnHinterior(GLASSOtherHistory(idr, idc, idv, 1, 1)), F12dot2))
 
-                WriteLine(1, " HEAT TRANSFER COEFF. ON HOT LAYER SIDE")
-                WriteLine(1, " Number of points used for heat transfer coeff input: " & iSteps)
-                WriteLine(1, "     point #     time [s]             h2 [W/m^2-K]")
-                WriteLine(1, VB6.Format(1, I10) & " " & VB6.Format(0, F12dot2) & "       " & VB6.Format(fnHinterior(GLASSOtherHistory(idr, idc, idv, 1, 1)), F12dot2))
+    '                For count = 1 To (iSteps - 1)
+    '                    If count * iTimeStep <= UBound(GLASSOtherHistory, 5) Then
+    '                        WriteLine(1, VB6.Format(count + 1, I10) & " " & VB6.Format(count * iTimeStep, F12dot2) & "       " & VB6.Format(System.Math.Round(fnHinterior(GLASSOtherHistory(idr, idc, idv, 1, count * iTimeStep))), F12dot2))
+    '                    End If
+    '                Next count
 
-                For count = 1 To (iSteps - 1)
-                    If count * iTimeStep <= UBound(GLASSOtherHistory, 5) Then
-                        WriteLine(1, VB6.Format(count + 1, I10) & " " & VB6.Format(count * iTimeStep, F12dot2) & "       " & VB6.Format(System.Math.Round(fnHinterior(GLASSOtherHistory(idr, idc, idv, 1, count * iTimeStep))), F12dot2))
-                    End If
-                Next count
+    '                WriteLine(1, " EMISSIVITY OF HOT LAYER")
+    '                WriteLine(1, " Number of points used for emissivity input: " & iSteps)
+    '                WriteLine(1, "     point #     time [s]             emissivity")
+    '                WriteLine(1, VB6.Format(1, I10) & " " & VB6.Format(0, F12dot2) & "                  " & VB6.Format(GLASSOtherHistory(idr, idc, idv, 2, 1), "0.00"))
+    '                For count = 1 To (iSteps - 1)
+    '                    If count * iTimeStep <= UBound(GLASSOtherHistory, 5) Then
+    '                        WriteLine(1, VB6.Format(count + 1, I10) & " " & VB6.Format(count * iTimeStep, F12dot2) & "                  " & VB6.Format(GLASSOtherHistory(idr, idc, idv, 2, count * iTimeStep), "0.00"))
+    '                    End If
+    '                Next count
 
-                WriteLine(1, " EMISSIVITY OF HOT LAYER")
-                WriteLine(1, " Number of points used for emissivity input: " & iSteps)
-                WriteLine(1, "     point #     time [s]             emissivity")
-                WriteLine(1, VB6.Format(1, I10) & " " & VB6.Format(0, F12dot2) & "                  " & VB6.Format(GLASSOtherHistory(idr, idc, idv, 2, 1), "0.00"))
-                For count = 1 To (iSteps - 1)
-                    If count * iTimeStep <= UBound(GLASSOtherHistory, 5) Then
-                        WriteLine(1, VB6.Format(count + 1, I10) & " " & VB6.Format(count * iTimeStep, F12dot2) & "                  " & VB6.Format(GLASSOtherHistory(idr, idc, idv, 2, count * iTimeStep), "0.00"))
-                    End If
-                Next count
+    '                WriteLine(1, " NUMERICAL PARAMETERS")
+    '                WriteLine(1, " 1.Maximum fractional error in soln=   .000100")
+    '                WriteLine(1, " 2.Size of time step [s]=  1.000")
+    '                WriteLine(1, " 3.Maximum run time [s]=  250.00")
+    '                WriteLine(1, " 4.Time interval for output [s]=  10.00")
+    '                FileClose(1)
+    '            End If
+    '        End If
+    '        MsgBox("Data saved in " & DataFile, MsgBoxStyle.Information + MsgBoxStyle.OkOnly)
+    '        Exit Sub
 
-                WriteLine(1, " NUMERICAL PARAMETERS")
-                WriteLine(1, " 1.Maximum fractional error in soln=   .000100")
-                WriteLine(1, " 2.Size of time step [s]=  1.000")
-                WriteLine(1, " 3.Maximum run time [s]=  250.00")
-                WriteLine(1, " 4.Time interval for output [s]=  10.00")
-                FileClose(1)
-            End If
-        End If
-        MsgBox("Data saved in " & DataFile, MsgBoxStyle.Information + MsgBoxStyle.OkOnly)
-        Exit Sub
+    'more:
+    '        If Err.Number <> 32755 Then MsgBox(ErrorToString(Err.Number))
+    '        Exit Sub
 
-more:
-        If Err.Number <> 32755 Then MsgBox(ErrorToString(Err.Number))
-        Exit Sub
-
-    End Sub
+    '    End Sub
 
     Public Sub mnuCancelBatch_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuCancelBatch.Click
         'cancel out of batch file runs
@@ -592,7 +577,6 @@ more:
         '*  ======================================================
         '*  Show a graph of the Cone HRR input curve
         '*  ======================================================
-
 
         Dim result As Object
 
@@ -739,8 +723,6 @@ more:
 
     End Sub
 
-
-
     Public Sub mnuCOLower_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuCOLower.Click
         '*  ======================================================
         '*  Show a graph of the lower layer CO concentration versus time.
@@ -796,7 +778,6 @@ more:
         'call procedure to plot data
         If CeilingConeDataFile(room) <> "null.txt" Then Graph_Cone_Data(room, ConeYC, Title, ConeXC, DataShift, DataMultiplier, GraphStyle, MaxYValue, ConeNumber_C)
 
-
     End Sub
 
     Public Sub mnuConeHRRfloor_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuConeHRRfloor.Click
@@ -834,7 +815,6 @@ more:
 
         'call procedure to plot data
         If FloorConeDataFile(room) <> "null.txt" Then Graph_Cone_Data(room, ConeYF, Title, ConeXF, DataShift, DataMultiplier, GraphStyle, MaxYValue, ConeNumber_F)
-
 
     End Sub
 
