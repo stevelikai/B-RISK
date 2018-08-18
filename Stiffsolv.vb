@@ -576,6 +576,10 @@ specieshandler:
 
             If useCLTmodel = True And IntegralModel = True Then
                 mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
+            ElseIf useCLTmodel = True And KineticModel = True Then
+                'new
+                Stop
+
             Else
                 mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
             End If

@@ -8148,7 +8148,7 @@ errhandler:
             Description = "Room " + CStr(idr)
             If NumberTimeSteps < 2 Then Exit Sub
 
-            If IntegralModel = False Then
+            If IntegralModel = False And KineticModel = False Then
 
                 Title = "Enter char or isotherm temperature?"   ' Set title.
                 Message = "Enter the temperature (C)"   ' Set prompt.
@@ -8199,7 +8199,7 @@ errhandler:
 
 
                 Next
-            Else
+            ElseIf IntegralModel = True Then
                 'define variables
                 Title = "Upper wall char depth (mm) - based on integral model for burning rate"
                 'Title = "Upper wall char depth (mm)"
@@ -8207,6 +8207,9 @@ errhandler:
                 For j = 0 To NumberTimeSteps
                     datatobeplotted(idr, j) = wall_char(j, 2)
                 Next
+            ElseIf kineticModel = True Then
+                'new
+                Stop
             End If
 
 
@@ -8254,7 +8257,7 @@ errhandler:
             Description = "Room " + CStr(idr)
             If NumberTimeSteps < 2 Then Exit Sub
 
-            If IntegralModel = False Then
+            If IntegralModel = False And KineticModel = False Then
 
                 Title = "Enter char temperature?"   ' Set title.
                 Message = "Enter the temperature (C)"   ' Set prompt.
@@ -8305,7 +8308,8 @@ errhandler:
 
 
                 Next
-            Else
+            ElseIf IntegralModel = True Then
+
                 'define variables
                 Title = "Ceiling char depth (mm) - based on integral model for burning rate"
                 'Title = "Upper wall char depth (mm)"
@@ -8313,6 +8317,9 @@ errhandler:
                 For j = 0 To NumberTimeSteps
                     datatobeplotted(idr, j) = ceil_char(j, 2)
                 Next
+            ElseIf KineticModel = True Then
+                'new
+                Stop
             End If
 
 

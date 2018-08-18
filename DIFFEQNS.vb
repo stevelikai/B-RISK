@@ -1163,6 +1163,10 @@ Module DIFFEQNS
                         cdr = chardepth_ceil(room, cFLED)
                         ceil_char(i, 2) = cdr / 1000 'char depth ceiling m
 
+                    ElseIf useCLTmodel = True And room = fireroom And KineticModel = True Then
+                        'new
+                        Stop
+
                         'may need to do something for integral model + not wood crib?
                     ElseIf useCLTmodel = True And room = fireroom And CLT_instant = True Then
                         'not using this
@@ -1174,10 +1178,6 @@ Module DIFFEQNS
                         cdr = chardepth_ceil(room, cFLED)
                         ceil_char(i, 2) = cdr / 1000 'char depth ceiling m
                         ceil_char(i, 0) = cFLED 'save the cumulative MJ/m2 contributed from by ceiling
-
-                    ElseIf useCLTmodel = True And room = fireroom And KineticModel = True Then
-                        'new
-                        Stop
 
                     End If
 
@@ -2380,6 +2380,9 @@ Module DIFFEQNS
                 If IntegralModel = True And useCLTmodel = True Then
                     'only want the contents mass consumed here, so deduct the contribution from wood surfaces
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
+                ElseIf KineticModel = True And useCLTmodel = True Then
+                    'new
+                    Stop
 
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model

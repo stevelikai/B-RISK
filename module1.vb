@@ -1568,7 +1568,9 @@ toxicityhandler:
                     Dim mwall, mceiling As Double 'returns contribution from wall, ceiling kg/s
 
                     hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
-
+                ElseIf useCLTmodel = True And kineticModel = True Then
+                    'new
+                    Stop
                 Else
                     hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
                 End If
@@ -4454,8 +4456,13 @@ here:
 
                     Lamella2 = Lamella2 + Lamella
 
-                    If IntegralModel = True Then CLTwalldelamT = tim(stepcount, 1) - flashover_time
-
+                    If IntegralModel = True Then
+                        CLTwalldelamT = tim(stepcount, 1) - flashover_time
+                    End If
+                    If KineticModel = True Then
+                        'new
+                        Stop
+                    End If
                 End If
             End If
 
@@ -4483,7 +4490,13 @@ here:
 
                     Lamella1 = Lamella1 + Lamella
 
-                    If IntegralModel = True Then CLTceildelamT = tim(stepcount, 1) - flashover_time
+                    If IntegralModel = True Then
+                        CLTceildelamT = tim(stepcount, 1) - flashover_time
+                    End If
+                    If KineticModel = True Then
+                        'new
+                        Stop
+                    End If
 
                 End If
             End If

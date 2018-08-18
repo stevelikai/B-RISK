@@ -5,10 +5,21 @@ Public Class frmCLT
     Private Sub frmCLT_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'call procedure to centre form
         Centre_Form(Me)
+
         If useCLTmodel = True Then
             optCLTON.Checked = True
         Else
             optCLTOFF.Checked = True
+        End If
+        If IntegralModel = True Then
+            RB_Integral.Checked = True
+        Else
+            RB_Integral.Checked = False
+        End If
+        If KineticModel = True Then
+            RB_Kinetic.Checked = True
+        Else
+            RB_Kinetic.Checked = False
         End If
 
         numeric_ceilareapercent.Value = CLTceilingpercent
@@ -38,13 +49,13 @@ Public Class frmCLT
             useCLTmodel = False
         End If
 
-        If chkWoodIntegralModel.Checked = True Then
+        If RB_Integral.Checked = True Then
             IntegralModel = True
         Else
             IntegralModel = False
         End If
 
-        If chkKineticModel.Checked = True Then
+        If RB_Kinetic.Checked = True Then
             KineticModel = True
         Else
             KineticModel = False
@@ -274,6 +285,10 @@ Public Class frmCLT
         ErrorProvider1.Clear()
 
         DebondTemp = CDbl(txtDebondTemp.Text)
+    End Sub
+
+    Private Sub optCLTOFF_CheckedChanged(sender As Object, e As EventArgs) Handles optCLTOFF.CheckedChanged
+
     End Sub
 
 End Class

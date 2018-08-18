@@ -36,7 +36,6 @@ Partial Class frmCLT
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtCharTemp = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.chkWoodIntegralModel = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtLamellaDepth = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -53,13 +52,17 @@ Partial Class frmCLT
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.lblDebondTemp = New System.Windows.Forms.Label()
         Me.txtDebondTemp = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.chkKineticModel = New System.Windows.Forms.CheckBox()
+        Me.RB_dynamic = New System.Windows.Forms.RadioButton()
+        Me.RB_Integral = New System.Windows.Forms.RadioButton()
+        Me.RB_Kinetic = New System.Windows.Forms.RadioButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numeric_wallareapercent, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numeric_ceilareapercent, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_integralmodel.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ErrorProvider1
@@ -68,7 +71,7 @@ Partial Class frmCLT
         '
         'cmdClose
         '
-        Me.cmdClose.Location = New System.Drawing.Point(376, 315)
+        Me.cmdClose.Location = New System.Drawing.Point(290, 344)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 0
@@ -79,7 +82,7 @@ Partial Class frmCLT
         '
         Me.optCLTOFF.AutoSize = True
         Me.optCLTOFF.Checked = True
-        Me.optCLTOFF.Location = New System.Drawing.Point(23, 126)
+        Me.optCLTOFF.Location = New System.Drawing.Point(28, 21)
         Me.optCLTOFF.Name = "optCLTOFF"
         Me.optCLTOFF.Size = New System.Drawing.Size(101, 17)
         Me.optCLTOFF.TabIndex = 1
@@ -90,7 +93,7 @@ Partial Class frmCLT
         'optCLTON
         '
         Me.optCLTON.AutoSize = True
-        Me.optCLTON.Location = New System.Drawing.Point(143, 126)
+        Me.optCLTON.Location = New System.Drawing.Point(148, 21)
         Me.optCLTON.Name = "optCLTON"
         Me.optCLTON.Size = New System.Drawing.Size(101, 17)
         Me.optCLTON.TabIndex = 2
@@ -108,18 +111,18 @@ Partial Class frmCLT
         'TextBox1
         '
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox1.Location = New System.Drawing.Point(10, 6)
+        Me.TextBox1.Location = New System.Drawing.Point(36, 60)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(460, 114)
+        Me.TextBox1.Size = New System.Drawing.Size(293, 145)
         Me.TextBox1.TabIndex = 4
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
         '
         'numeric_wallareapercent
         '
         Me.numeric_wallareapercent.Increment = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.numeric_wallareapercent.Location = New System.Drawing.Point(286, 156)
+        Me.numeric_wallareapercent.Location = New System.Drawing.Point(210, 29)
         Me.numeric_wallareapercent.Name = "numeric_wallareapercent"
         Me.numeric_wallareapercent.Size = New System.Drawing.Size(59, 20)
         Me.numeric_wallareapercent.TabIndex = 5
@@ -127,7 +130,7 @@ Partial Class frmCLT
         '
         'numeric_ceilareapercent
         '
-        Me.numeric_ceilareapercent.Location = New System.Drawing.Point(286, 186)
+        Me.numeric_ceilareapercent.Location = New System.Drawing.Point(210, 59)
         Me.numeric_ceilareapercent.Name = "numeric_ceilareapercent"
         Me.numeric_ceilareapercent.Size = New System.Drawing.Size(59, 20)
         Me.numeric_ceilareapercent.TabIndex = 6
@@ -136,7 +139,7 @@ Partial Class frmCLT
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(152, 158)
+        Me.Label2.Location = New System.Drawing.Point(76, 31)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(128, 13)
         Me.Label2.TabIndex = 7
@@ -145,7 +148,7 @@ Partial Class frmCLT
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(140, 186)
+        Me.Label3.Location = New System.Drawing.Point(64, 59)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(137, 13)
         Me.Label3.TabIndex = 8
@@ -153,7 +156,7 @@ Partial Class frmCLT
         '
         'txtCharTemp
         '
-        Me.txtCharTemp.Location = New System.Drawing.Point(286, 217)
+        Me.txtCharTemp.Location = New System.Drawing.Point(210, 90)
         Me.txtCharTemp.Name = "txtCharTemp"
         Me.txtCharTemp.Size = New System.Drawing.Size(59, 20)
         Me.txtCharTemp.TabIndex = 9
@@ -162,26 +165,16 @@ Partial Class frmCLT
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(173, 220)
+        Me.Label4.Location = New System.Drawing.Point(97, 93)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(104, 13)
         Me.Label4.TabIndex = 10
         Me.Label4.Text = "Char temperature (C)"
         '
-        'chkWoodIntegralModel
-        '
-        Me.chkWoodIntegralModel.AutoSize = True
-        Me.chkWoodIntegralModel.Location = New System.Drawing.Point(14, 14)
-        Me.chkWoodIntegralModel.Name = "chkWoodIntegralModel"
-        Me.chkWoodIntegralModel.Size = New System.Drawing.Size(246, 17)
-        Me.chkWoodIntegralModel.TabIndex = 11
-        Me.chkWoodIntegralModel.Text = "Use Integral model instead of dynamic charring"
-        Me.chkWoodIntegralModel.UseVisualStyleBackColor = True
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(167, 288)
+        Me.Label5.Location = New System.Drawing.Point(91, 161)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(108, 13)
         Me.Label5.TabIndex = 12
@@ -189,7 +182,7 @@ Partial Class frmCLT
         '
         'txtLamellaDepth
         '
-        Me.txtLamellaDepth.Location = New System.Drawing.Point(286, 285)
+        Me.txtLamellaDepth.Location = New System.Drawing.Point(210, 158)
         Me.txtLamellaDepth.Name = "txtLamellaDepth"
         Me.txtLamellaDepth.Size = New System.Drawing.Size(59, 20)
         Me.txtLamellaDepth.TabIndex = 13
@@ -198,7 +191,7 @@ Partial Class frmCLT
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(115, 50)
+        Me.Label6.Location = New System.Drawing.Point(70, 19)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(126, 13)
         Me.Label6.TabIndex = 14
@@ -206,7 +199,7 @@ Partial Class frmCLT
         '
         'txtCritFlux
         '
-        Me.txtCritFlux.Location = New System.Drawing.Point(252, 50)
+        Me.txtCritFlux.Location = New System.Drawing.Point(207, 19)
         Me.txtCritFlux.Name = "txtCritFlux"
         Me.txtCritFlux.Size = New System.Drawing.Size(60, 20)
         Me.txtCritFlux.TabIndex = 15
@@ -214,7 +207,7 @@ Partial Class frmCLT
         '
         'txtFlameFlux
         '
-        Me.txtFlameFlux.Location = New System.Drawing.Point(253, 80)
+        Me.txtFlameFlux.Location = New System.Drawing.Point(208, 49)
         Me.txtFlameFlux.Name = "txtFlameFlux"
         Me.txtFlameFlux.Size = New System.Drawing.Size(59, 20)
         Me.txtFlameFlux.TabIndex = 16
@@ -223,7 +216,7 @@ Partial Class frmCLT
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(142, 83)
+        Me.Label7.Location = New System.Drawing.Point(97, 52)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(99, 13)
         Me.Label7.TabIndex = 17
@@ -232,7 +225,7 @@ Partial Class frmCLT
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(81, 114)
+        Me.Label8.Location = New System.Drawing.Point(36, 83)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(160, 13)
         Me.Label8.TabIndex = 18
@@ -240,7 +233,7 @@ Partial Class frmCLT
         '
         'txtCLTLoG
         '
-        Me.txtCLTLoG.Location = New System.Drawing.Point(253, 111)
+        Me.txtCLTLoG.Location = New System.Drawing.Point(208, 80)
         Me.txtCLTLoG.Name = "txtCLTLoG"
         Me.txtCLTLoG.Size = New System.Drawing.Size(59, 20)
         Me.txtCLTLoG.TabIndex = 19
@@ -248,7 +241,7 @@ Partial Class frmCLT
         '
         'txtCLTigtemp
         '
-        Me.txtCLTigtemp.Location = New System.Drawing.Point(253, 144)
+        Me.txtCLTigtemp.Location = New System.Drawing.Point(208, 113)
         Me.txtCLTigtemp.Name = "txtCLTigtemp"
         Me.txtCLTigtemp.Size = New System.Drawing.Size(59, 20)
         Me.txtCLTigtemp.TabIndex = 20
@@ -257,7 +250,7 @@ Partial Class frmCLT
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(125, 147)
+        Me.Label9.Location = New System.Drawing.Point(80, 116)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(116, 13)
         Me.Label9.TabIndex = 21
@@ -266,7 +259,7 @@ Partial Class frmCLT
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(155, 180)
+        Me.Label10.Location = New System.Drawing.Point(110, 149)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(86, 13)
         Me.Label10.TabIndex = 22
@@ -274,7 +267,7 @@ Partial Class frmCLT
         '
         'txtCLTcalibration
         '
-        Me.txtCLTcalibration.Location = New System.Drawing.Point(252, 177)
+        Me.txtCLTcalibration.Location = New System.Drawing.Point(207, 146)
         Me.txtCLTcalibration.Name = "txtCLTcalibration"
         Me.txtCLTcalibration.Size = New System.Drawing.Size(60, 20)
         Me.txtCLTcalibration.TabIndex = 23
@@ -293,16 +286,15 @@ Partial Class frmCLT
         Me.Panel_integralmodel.Controls.Add(Me.txtFlameFlux)
         Me.Panel_integralmodel.Controls.Add(Me.txtCritFlux)
         Me.Panel_integralmodel.Controls.Add(Me.Label6)
-        Me.Panel_integralmodel.Controls.Add(Me.chkWoodIntegralModel)
-        Me.Panel_integralmodel.Location = New System.Drawing.Point(500, 12)
+        Me.Panel_integralmodel.Location = New System.Drawing.Point(383, 224)
         Me.Panel_integralmodel.Name = "Panel_integralmodel"
-        Me.Panel_integralmodel.Size = New System.Drawing.Size(337, 211)
+        Me.Panel_integralmodel.Size = New System.Drawing.Size(300, 182)
         Me.Panel_integralmodel.TabIndex = 24
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(266, 128)
+        Me.LinkLabel1.Location = New System.Drawing.Point(250, 30)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(79, 13)
         Me.LinkLabel1.TabIndex = 25
@@ -312,7 +304,7 @@ Partial Class frmCLT
         'lblDebondTemp
         '
         Me.lblDebondTemp.AutoSize = True
-        Me.lblDebondTemp.Location = New System.Drawing.Point(94, 251)
+        Me.lblDebondTemp.Location = New System.Drawing.Point(18, 124)
         Me.lblDebondTemp.Name = "lblDebondTemp"
         Me.lblDebondTemp.Size = New System.Drawing.Size(179, 13)
         Me.lblDebondTemp.TabIndex = 26
@@ -320,51 +312,85 @@ Partial Class frmCLT
         '
         'txtDebondTemp
         '
-        Me.txtDebondTemp.Location = New System.Drawing.Point(286, 252)
+        Me.txtDebondTemp.Location = New System.Drawing.Point(210, 125)
         Me.txtDebondTemp.Name = "txtDebondTemp"
         Me.txtDebondTemp.Size = New System.Drawing.Size(58, 20)
         Me.txtDebondTemp.TabIndex = 27
         Me.txtDebondTemp.Text = "200"
         '
-        'Panel1
+        'RB_dynamic
         '
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.chkKineticModel)
-        Me.Panel1.Location = New System.Drawing.Point(500, 238)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(337, 100)
-        Me.Panel1.TabIndex = 28
+        Me.RB_dynamic.AutoSize = True
+        Me.RB_dynamic.Checked = True
+        Me.RB_dynamic.Location = New System.Drawing.Point(19, 28)
+        Me.RB_dynamic.Name = "RB_dynamic"
+        Me.RB_dynamic.Size = New System.Drawing.Size(229, 17)
+        Me.RB_dynamic.TabIndex = 0
+        Me.RB_dynamic.TabStop = True
+        Me.RB_dynamic.Text = "Global equivalence charring model (default)"
+        Me.RB_dynamic.UseVisualStyleBackColor = True
         '
-        'chkKineticModel
+        'RB_Integral
         '
-        Me.chkKineticModel.AutoSize = True
-        Me.chkKineticModel.Location = New System.Drawing.Point(14, 15)
-        Me.chkKineticModel.Name = "chkKineticModel"
-        Me.chkKineticModel.Size = New System.Drawing.Size(155, 17)
-        Me.chkKineticModel.TabIndex = 0
-        Me.chkKineticModel.Text = "Use kinetic pyrolysis model "
-        Me.chkKineticModel.UseVisualStyleBackColor = True
+        Me.RB_Integral.AutoSize = True
+        Me.RB_Integral.Location = New System.Drawing.Point(19, 204)
+        Me.RB_Integral.Name = "RB_Integral"
+        Me.RB_Integral.Size = New System.Drawing.Size(162, 17)
+        Me.RB_Integral.TabIndex = 1
+        Me.RB_Integral.Text = "Integral wood pyrolysis model"
+        Me.RB_Integral.UseVisualStyleBackColor = True
+        '
+        'RB_Kinetic
+        '
+        Me.RB_Kinetic.AutoSize = True
+        Me.RB_Kinetic.Location = New System.Drawing.Point(19, 240)
+        Me.RB_Kinetic.Name = "RB_Kinetic"
+        Me.RB_Kinetic.Size = New System.Drawing.Size(159, 17)
+        Me.RB_Kinetic.TabIndex = 2
+        Me.RB_Kinetic.Text = "Kinetic wood pyrolysis model"
+        Me.RB_Kinetic.UseVisualStyleBackColor = True
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.LinkLabel1)
+        Me.GroupBox1.Controls.Add(Me.RB_Kinetic)
+        Me.GroupBox1.Controls.Add(Me.RB_dynamic)
+        Me.GroupBox1.Controls.Add(Me.RB_Integral)
+        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Location = New System.Drawing.Point(28, 59)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(337, 276)
+        Me.GroupBox1.TabIndex = 30
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Select wood pyrolysis model"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.txtLamellaDepth)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.txtDebondTemp)
+        Me.GroupBox2.Controls.Add(Me.numeric_wallareapercent)
+        Me.GroupBox2.Controls.Add(Me.lblDebondTemp)
+        Me.GroupBox2.Controls.Add(Me.numeric_ceilareapercent)
+        Me.GroupBox2.Controls.Add(Me.Label3)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.txtCharTemp)
+        Me.GroupBox2.Location = New System.Drawing.Point(383, 12)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(300, 206)
+        Me.GroupBox2.TabIndex = 31
+        Me.GroupBox2.TabStop = False
         '
         'frmCLT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(849, 350)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.txtDebondTemp)
-        Me.Controls.Add(Me.lblDebondTemp)
-        Me.Controls.Add(Me.LinkLabel1)
+        Me.ClientSize = New System.Drawing.Size(695, 421)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Panel_integralmodel)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtCharTemp)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.numeric_ceilareapercent)
-        Me.Controls.Add(Me.numeric_wallareapercent)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtLamellaDepth)
         Me.Controls.Add(Me.optCLTON)
         Me.Controls.Add(Me.optCLTOFF)
         Me.Controls.Add(Me.cmdClose)
@@ -376,8 +402,10 @@ Partial Class frmCLT
         CType(Me.numeric_ceilareapercent, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_integralmodel.ResumeLayout(False)
         Me.Panel_integralmodel.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -394,7 +422,6 @@ Partial Class frmCLT
     Friend WithEvents numeric_wallareapercent As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtCharTemp As System.Windows.Forms.TextBox
-    Friend WithEvents chkWoodIntegralModel As System.Windows.Forms.CheckBox
     Friend WithEvents txtLamellaDepth As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents txtCritFlux As TextBox
@@ -411,6 +438,9 @@ Partial Class frmCLT
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents txtDebondTemp As TextBox
     Friend WithEvents lblDebondTemp As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents chkKineticModel As CheckBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents RB_Kinetic As RadioButton
+    Friend WithEvents RB_dynamic As RadioButton
+    Friend WithEvents RB_Integral As RadioButton
+    Friend WithEvents GroupBox2 As GroupBox
 End Class

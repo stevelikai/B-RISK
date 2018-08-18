@@ -1865,9 +1865,9 @@ Public Class frmInputs
                         If ModelVersion > CSng(2017.05) Then
                             IntegralModel = DFR.ReadElementString()
                             If IntegralModel = True Then
-                                frmCLT.chkWoodIntegralModel.Checked = True
+                                frmCLT.RB_Integral.Checked = True
                             Else
-                                frmCLT.chkWoodIntegralModel.Checked = False
+                                frmCLT.RB_Integral.Checked = False
                             End If
                             Lamella = DFR.ReadElementString()
                             CLTQcrit = DFR.ReadElementString()
@@ -1883,9 +1883,9 @@ Public Class frmInputs
                         If ModelVersion > CSng(2018.05) Then
                             KineticModel = DFR.ReadElementString()
                             If KineticModel = True Then
-                                frmCLT.chkKineticModel.Checked = True
+                                frmCLT.RB_Kinetic.Checked = True
                             Else
-                                frmCLT.chkKineticModel.Checked = False
+                                frmCLT.RB_Kinetic.Checked = False
                             End If
                         End If
                         If ModelVersion < CSng(2018.02) Then
