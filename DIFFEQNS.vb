@@ -862,19 +862,27 @@ Module DIFFEQNS
                 ReDim CeilingElementMF(MMaxCeilingNodes - 1, 4, MaxTime) 'store the residual mass fractions of each component at each timestep
                 ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
                 ReDim LWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
+                ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
+                ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
+                ReDim LWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
 
                 'initialise
                 For m = 1 To MMaxCeilingNodes - 1
                     For j = 0 To 3
                         CeilingElementMF(m, j, 1) = 1
+
                     Next
+                    CeilingCharResidue(m, 1) = 0
                 Next
 
                 For m = 1 To MMaxWallNodes - 1
                     For j = 0 To 3
                         UWallElementMF(m, j, 1) = 1
                         LWallElementMF(m, j, 1) = 1
+
                     Next
+                    UWallCharResidue(m, 1) = 0
+                    LWallCharResidue(m, 1) = 0
                 Next
 
                 ReDim Zstart(0 To 3, MMaxCeilingNodes)  'variables for wood pyrolysis model

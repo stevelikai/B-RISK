@@ -4142,46 +4142,7 @@ here:
 
     End Function
 
-    Sub MLR_kinetic(ByVal i As Integer, maxceilingnodes As Integer, maxwallnodes As Integer)
 
-        Try
-
-            'Initial mass fraction (of the wood solid)
-            Dim mf_init(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-            mf_init(1) = 0.44
-            mf_init(2) = 0.37
-            mf_init(3) = 0.09
-            mf_init(0) = 0.1
-            Dim elements As Integer
-            Dim Zstart() As Double
-
-            'the ceiling
-            'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
-            'CeilingElementMF (element,timstep) contains the residual mass fraction of each component (relative to its initial value = 1) 
-
-            ReDim Zstart(0 To 3)
-            elements = maxceilingnodes - 1
-
-            For count = 1 To elements 'loop through each finite difference element
-                For m = 0 To 3
-                    Zstart(m) = CeilingElementMF(count, m, i)
-                Next
-                elementcounter = count
-
-                Call ODE_Solver_Pyrolysis(Zstart, i)
-
-                For m = 0 To 3
-                    CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
-                Next
-
-            Next
-
-        Catch ex As Exception
-            MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in " & Err.Source & " Line " & Err.Erl)
-        End Try
-
-
-    End Sub
     Function MassLoss_Object(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByRef QFloor As Double, ByRef QWall As Double, ByRef QCeiling As Double) As Double
         '*  ===================================================================
         '*  This function return the value of the fuel mass loss rate for a

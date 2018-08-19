@@ -211,6 +211,7 @@
     <Compile Include="frmVentList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="KineticModel.vb" />
     <Compile Include="pdf.vb" />
     <Compile Include="RoomDB.vb" />
     <Compile Include="rooms.vb" />

@@ -77,6 +77,9 @@ Module GLOBAL_Renamed
     Public CeilingElementMF(,,) As Double
     Public UWallElementMF(,,) As Double
     Public LWallElementMF(,,) As Double
+    Public CeilingCharResidue(,) As Double
+    Public UWallCharResidue(,) As Double
+    Public LWallCharResidue(,) As Double
     Public item_location(,) As Single 'details of items in fire room
     Public vectorlength(,) As Single 'length of midpoint vectors from source to target items, ignition time in 2nd dimension
     Public targetdistance(,) As Single 'length of the vector from centre of a source to the nearest part of a target object

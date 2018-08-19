@@ -10,8 +10,7 @@ Module STIFFsolv
     '
     Dim Y_stiff(,) As Double
     Dim DYDX_stiff(,) As Double
-    Dim Y_pyrol() As Double
-    Dim DYDX_pyrol() As Double
+
 
     Function Rigid(ByVal T As Double, ByVal Y As DoubleVector) As DoubleVector
 
@@ -35,154 +34,10 @@ Module STIFFsolv
 
     End Function
 
-    Function RigidPyrol(ByVal T As Double, ByVal Y As DoubleVector) As DoubleVector
-
-        Dim Nvariables As Integer = 4
-        Dim VectorLength As Integer
-        Dim dy As New DoubleVector()
-
-        VectorLength = Nvariables
-        dy.Resize(VectorLength)
-
-        'kinetic propeties for each component
-        'Activation Energy
-        Dim E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        E_array(1) = 198000.0 'J/mol cellulose
-        E_array(2) = 164000.0 'J/mol hemicellulose
-        E_array(3) = 152000.0 'J/mol lignin
-        E_array(0) = 100000.0 'J/mol
-
-        'Pre-exponential factor 
-        Dim A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        A_array(1) = 351000000000000.0 '1/s
-        A_array(2) = 32500000000000.0 '1/s
-        A_array(3) = 84100000000000.0 '1/s
-        A_array(0) = 10000000000000.0 '1/s
-
-        'Reaction order
-        Dim n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        n_array(1) = 1.1
-        n_array(2) = 2.1
-        n_array(3) = 5
-        n_array(0) = 1
-
-        Dim ElementTemp As Double = InteriorTemp
-        'Gas_Constant As Double = 8.3145 'kJ/kmol K universal gas constant
 
 
-        'Call Diff_Eqns_Pyrol(T, Y_pyrol, DYDX_pyrol)
-        'put our ODE equations here
-        'need to know the temperature of the current element at the current time - the same for all 4 components
-
-        For k = 0 To 3
-
-            'for the ceiling use CeilingNode(,,)
-            ElementTemp = (CeilingNode(fireroom, elementcounter, stepcount) + CeilingNode(fireroom, elementcounter + 1, stepcount)) / 2 'use average temperature of the two adjacent nodes
-
-            DYDX_pyrol(k) = -A_array(k) * Exp(-E_array(k) / (Gas_Constant * ElementTemp)) * Y_pyrol(k) ^ n_array(k) 'arhennius equation
-
-        Next
-
-        Dim index As Integer = 0
-
-        For var = 0 To Nvariables - 1
-            dy(index) = DYDX_pyrol(var)
-            index = index + 1
-        Next
 
 
-        Return dy
-
-    End Function
-
-
-    Sub ODE_Solver_Pyrolysis(ByRef Zstart() As Double, i As Integer)
-
-        Try
-
-            'Ystart holds the mass fractions of each of the components relative to their initial mass fraction =1.0
-            'It tells us the residual fraction of that component.
-            'this is not the mass fraction of the original solid wood that it represents 
-            'for element = count
-
-            Dim index As Integer = 0
-            Dim x2, x1 As Double
-            Dim Nvariables As Integer = 4 '4 components - cellulose, hemicellulose, lignin and water
-            Dim VLength As Integer
-
-            ReDim Y_pyrol(Nvariables)
-            ReDim DYDX_pyrol(Nvariables)
-
-            'NMathConfiguration.LicenseKey = "XTUU-3UM1-YXFF-89WC-DAUS-VUUF-1QS1-WPUF-19SU-WPSS-8EJE-680T-FRPP-X8NS-WQSF-E842-68RT-WPTF-683S-X1D0-YR8V-19P2-9D3Y-LRTU-A10U"
-
-            Y_pyrol = Zstart.Clone
-
-            x1 = tim(i, 1) 'initial time
-            x2 = x1 + Timestep 'final time
-
-            Dim TimeSpan As New DoubleVector(x1, x2)
-            Dim y0 As New DoubleVector()
-            VLength = Nvariables
-
-            y0.Resize(VLength)
-
-            For var = 1 To Nvariables
-                y0(index) = Y_pyrol(var - 1)
-                index = index + 1
-            Next
-
-            ' Construct the solver.
-            Dim Solver As New RungeKutta45OdeSolver()
-
-            ' Construct the time span vector. If this vector contains exactly
-            ' two points, the solver interprets these to be the initial and
-            ' final time values. Step size and function output points are 
-            ' provided automatically by the solver. Here the initial time
-            ' value t0 is 0.0 and the final time value is 12.0.
-            ' Dim TimeSpan As New DoubleVector(0.0, 12.0)
-
-            ' Initial y vector.
-            ' Dim y0 As New DoubleVector(0.0, 1.0, 1.0)
-
-            ' Construct solver options. Here we set the absolute and relative tolerances to use.
-            ' At the ith integration step the error, e(i) for the estimated solution
-            ' y(i) satisfies
-            ' e(i) <= max(RelativeTolerance * Math.Abs(y(i)), AbsoluteTolerance(i))
-            ' The solver can increase the number of output points by a specified factor
-            ' called Refine (useful for creating smooth plots). The default value is 
-            ' 4. Here we set the Refine value to 1, meaning we do not wish any
-            ' additional output points to be added by the solver.
-
-            Dim SolverOptions As New RungeKutta45OdeSolver.Options()
-            SolverOptions.AbsoluteTolerance = New DoubleVector(0.0001, 0.0001, 0.00001, 0.00001)
-            SolverOptions.RelativeTolerance = 0.0001
-            SolverOptions.Refine = 1
-
-            ' Construct the delegate representing our system of differential equations...
-            Dim odeFunctionPyrol As New Func(Of Double, DoubleVector, DoubleVector)(AddressOf RigidPyrol)
-
-            ' ...and solve. The solution is returned as a key/value pair. The first 'Key' element of the pair is
-            ' the time span vector, the second 'Value' element of the pair is the corresponding solution values.
-            ' That is, if the computed solution function is y then
-            ' y(soln.Key(i)) = soln.Value(i)
-            Dim Soln As RungeKutta45OdeSolver.Solution(Of DoubleMatrix) = Solver.Solve(odeFunctionPyrol, TimeSpan, y0, SolverOptions)
-
-            index = 0
-
-
-            For var = 1 To Nvariables
-                Y_pyrol(var - 1) = Soln.Y.Col(var - 1).Last
-                index = index + 1
-            Next
-
-            Zstart = Y_pyrol.Clone
-
-        Catch ex As Exception
-            MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception")
-            flagstop = 1
-        End Try
-
-    End Sub
     Sub ODE_Solver_NMath(ByRef Ystart(,) As Double)
         Try
 
