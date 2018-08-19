@@ -28,7 +28,7 @@ Module MAIN
     Dim result2 As Double
 
 
-    Public Function getTempPathName() As String
+    Public Function GetTempPathName() As String
         Dim strBufferString As String
         Dim lngResult As Integer
 
@@ -36,7 +36,7 @@ Module MAIN
 
         lngResult = GetTempPath(MAX_BUFFER_LENGTH, strBufferString)
 
-        getTempPathName = Mid(strBufferString, 1, lngResult)
+        GetTempPathName = Mid(strBufferString, 1, lngResult)
 
     End Function
     Public Sub FRating(ByRef tlimit As Double, ByRef energy As Double, ByRef room As Integer)
@@ -1570,7 +1570,7 @@ toxicityhandler:
                     hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
                 ElseIf useCLTmodel = True And kineticModel = True Then
                     'new
-                    Stop
+                    'Stop
                 Else
                     hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
                 End If
@@ -2877,7 +2877,7 @@ IgnitionHandler:
 
     End Sub
 
-    Sub implicit_thermal_props()
+    Sub Implicit_thermal_props()
         '*************************************************************
         '*  Determines heat transfer parameters required for an
         '*  implicit finite difference scheme
@@ -4142,6 +4142,46 @@ here:
 
     End Function
 
+    Sub MLR_kinetic(ByVal i As Integer, maxceilingnodes As Integer, maxwallnodes As Integer)
+
+        Try
+
+            'Initial mass fraction (of the wood solid)
+            Dim mf_init(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+            mf_init(1) = 0.44
+            mf_init(2) = 0.37
+            mf_init(3) = 0.09
+            mf_init(0) = 0.1
+            Dim elements As Integer
+            Dim Zstart() As Double
+
+            'the ceiling
+            'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
+            'CeilingElementMF (element,timstep) contains the residual mass fraction of each component (relative to its initial value = 1) 
+
+            ReDim Zstart(0 To 3)
+            elements = maxceilingnodes - 1
+
+            For count = 1 To elements 'loop through each finite difference element
+                For m = 0 To 3
+                    Zstart(m) = CeilingElementMF(count, m, i)
+                Next
+                elementcounter = count
+
+                Call ODE_Solver_Pyrolysis(Zstart, i)
+
+                For m = 0 To 3
+                    CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
+                Next
+
+            Next
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in " & Err.Source & " Line " & Err.Erl)
+        End Try
+
+
+    End Sub
     Function MassLoss_Object(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByRef QFloor As Double, ByRef QWall As Double, ByRef QCeiling As Double) As Double
         '*  ===================================================================
         '*  This function return the value of the fuel mass loss rate for a
@@ -4167,8 +4207,16 @@ here:
 
         ElseIf useCLTmodel = True And KineticModel = True Then
             'new
-
-            Stop
+            If Flashover = True Then
+                'surfaces burn after flashover
+                'MassLoss_Object = newcode
+                'is this in the right place ? - perhaps alongside the finite difference heat conduction solver is best 
+                'Stop
+            Else
+                'mass loss rate from theoretical hrr divided by heat of combustion
+                MassLoss_Object = Get_HRR(id, tim, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(id) * 1000)
+            End If
+            'Stop
             Exit Function
 
         ElseIf useCLTmodel = True And g_post = False And integralmodel = False And kineticmodel = False Then
@@ -8549,9 +8597,10 @@ errorhandler:
                     End If
                     'New_File()
 
-                    Dim myXmlSettings As New XmlReaderSettings()
-                    myXmlSettings.IgnoreComments = True
-                    myXmlSettings.IgnoreWhitespace = True
+                    Dim myXmlSettings As New XmlReaderSettings With {
+                        .IgnoreComments = True,
+                        .IgnoreWhitespace = True
+                    }
 
                     Using DFR As XmlReader = XmlReader.Create(opendatafile, myXmlSettings)
                         DFR.Read()
@@ -9269,7 +9318,7 @@ errorhandler:
         End Try
     End Sub
 
-    Public Sub save_output_xml()
+    Public Sub Save_output_xml()
         'save simulation output to xml file
 
         Dim room, i, j As Integer
@@ -9644,9 +9693,10 @@ errorhandler:
 
             HCNcalc = frmOptions1.chkHCNcalc.CheckState
 
-            Dim myXMLsettings As New XmlWriterSettings
-            myXMLsettings.Indent = True
-            myXMLsettings.NewLineOnAttributes = True
+            Dim myXMLsettings As New XmlWriterSettings With {
+                .Indent = True,
+                .NewLineOnAttributes = True
+            }
 
             'Using DFW As XmlWriter = XmlWriter.Create("datafile.xml", myXMLsettings)
             Using DFW As XmlWriter = XmlWriter.Create(filename, myXMLsettings)
@@ -10512,7 +10562,7 @@ errorhandler:
 
         FileClose(1)
     End Sub
-    Public Sub save_plt()
+    Public Sub Save_plt()
         ''save simulation output to plt file
 
         'Dim room, i As Integer
@@ -11726,8 +11776,9 @@ errorhandler:
             frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
 
             'frmPlot.Chart1.Annotations.Clear()
-            Dim mytext As TextAnnotation = New TextAnnotation()
-            mytext.Text = "Room " & FEDPath(2, 0) & " from " & FEDPath(0, 0) & " to " & FEDPath(1, 0) & " sec"
+            Dim mytext As TextAnnotation = New TextAnnotation With {
+                .Text = "Room " & FEDPath(2, 0) & " from " & FEDPath(0, 0) & " to " & FEDPath(1, 0) & " sec"
+            }
             If FEDPath(1, 1) > FEDPath(1, 0) Then
                 mytext.Text = mytext.Text & "; Room " & FEDPath(2, 1) & " from " & FEDPath(0, 1) & " to " & FEDPath(1, 1) & " sec"
             End If
@@ -11975,7 +12026,7 @@ errorhandler:
 
         End If
     End Function
-    Public Sub view_output(ByRef filename As String)
+    Public Sub View_output(ByRef filename As String)
         '*  ====================================================================
         '*  View the results 
         '*  ====================================================================
@@ -12694,57 +12745,57 @@ errorhandler:
                 '    If frmprintvar.chkLink.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
 
                 If frmOptions1.optQuintiere.Checked = True Then
-                        X = Y
-                        room = 1
-                        If frmprintvar.chkXPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(10), "X Pyrolysis (m)", TAB(X), VB6.Format(X_pyrolysis(room, j), "0.000"))
-                        For room = 2 To NumberRooms
-                            X = X + 10
-                            If frmprintvar.chkXPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(X_pyrolysis(room, j), "0.000"))
-                        Next room
-                        If frmprintvar.chkXPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
+                    X = Y
+                    room = 1
+                    If frmprintvar.chkXPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(10), "X Pyrolysis (m)", TAB(X), VB6.Format(X_pyrolysis(room, j), "0.000"))
+                    For room = 2 To NumberRooms
+                        X = X + 10
+                        If frmprintvar.chkXPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(X_pyrolysis(room, j), "0.000"))
+                    Next room
+                    If frmprintvar.chkXPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
 
-                        X = Y
-                        room = 1
-                        If frmprintvar.chkYPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(10), "Y Pyrolysis (m)", TAB(X), VB6.Format(Y_pyrolysis(room, j), "0.000"))
-                        For room = 2 To NumberRooms
-                            X = X + 10
-                            If frmprintvar.chkYPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(Y_pyrolysis(room, j), "0.000"))
-                        Next room
-                        If frmprintvar.chkYPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
+                    X = Y
+                    room = 1
+                    If frmprintvar.chkYPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(10), "Y Pyrolysis (m)", TAB(X), VB6.Format(Y_pyrolysis(room, j), "0.000"))
+                    For room = 2 To NumberRooms
+                        X = X + 10
+                        If frmprintvar.chkYPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(Y_pyrolysis(room, j), "0.000"))
+                    Next room
+                    If frmprintvar.chkYPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
 
-                        X = Y
-                        room = 1
-                        If frmprintvar.chkZPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(10), "Z Pyrolysis (m)", TAB(X), VB6.Format(Z_pyrolysis(room, j), "0.000"))
-                        For room = 2 To NumberRooms
-                            X = X + 10
-                            If frmprintvar.chkZPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(Z_pyrolysis(room, j), "0.000"))
-                        Next room
-                        If frmprintvar.chkZPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
-                    End If
+                    X = Y
+                    room = 1
+                    If frmprintvar.chkZPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(10), "Z Pyrolysis (m)", TAB(X), VB6.Format(Z_pyrolysis(room, j), "0.000"))
+                    For room = 2 To NumberRooms
+                        X = X + 10
+                        If frmprintvar.chkZPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(Z_pyrolysis(room, j), "0.000"))
+                    Next room
+                    If frmprintvar.chkZPyrol.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
+                End If
 
-                    If frmprintvar.chkFED.CheckState = System.Windows.Forms.CheckState.Checked Then
-                        PrintLine(1, TAB(10), "FED gases on egress path = " & VB6.Format(FEDSum(fireroom, j), "0.000"))
-                    End If
+                If frmprintvar.chkFED.CheckState = System.Windows.Forms.CheckState.Checked Then
+                    PrintLine(1, TAB(10), "FED gases on egress path = " & VB6.Format(FEDSum(fireroom, j), "0.000"))
+                End If
 
-                    If frmprintvar.chkFED.CheckState = System.Windows.Forms.CheckState.Checked Then
-                        PrintLine(1, TAB(10), "FED thermal on egress path = " & VB6.Format(FEDRadSum(fireroom, j), "0.000"))
-                    End If
+                If frmprintvar.chkFED.CheckState = System.Windows.Forms.CheckState.Checked Then
+                    PrintLine(1, TAB(10), "FED thermal on egress path = " & VB6.Format(FEDRadSum(fireroom, j), "0.000"))
+                End If
 
-                    If calcFRR = True Then
-                        Call FRating(tim(j, 1), energy, fireroom)
-                        Call ISO_energy(energy, frr)
-                        'PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on VM 2.4.4 (Km=1.0) = " & VB6.Format(TEeurocode, "0") & " minutes.")
-                        PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on emissive power = " & VB6.Format(frr, "0") & " minutes.")
-                        PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on NHL (Harmathy Furnace)= " & VB6.Format(NHL(2, fireroom, j), "0") & " minutes.")
-                        PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on ceiling NHL = " & VB6.Format(NHLte(1, j), "0") & " minutes.")
-                        PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on wall NHL = " & VB6.Format(NHLte(2, j), "0") & " minutes.")
-                        PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on floor NHL = " & VB6.Format(NHLte(4, j), "0") & " minutes.")
-                    End If
+                If calcFRR = True Then
+                    Call FRating(tim(j, 1), energy, fireroom)
+                    Call ISO_energy(energy, frr)
+                    'PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on VM 2.4.4 (Km=1.0) = " & VB6.Format(TEeurocode, "0") & " minutes.")
+                    PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on emissive power = " & VB6.Format(frr, "0") & " minutes.")
+                    PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on NHL (Harmathy Furnace)= " & VB6.Format(NHL(2, fireroom, j), "0") & " minutes.")
+                    PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on ceiling NHL = " & VB6.Format(NHLte(1, j), "0") & " minutes.")
+                    PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on wall NHL = " & VB6.Format(NHLte(2, j), "0") & " minutes.")
+                    PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on floor NHL = " & VB6.Format(NHLte(4, j), "0") & " minutes.")
+                End If
 
-                    PrintLine(1)
+                PrintLine(1)
 
-                    j = j + DisplayInterval / Timestep
-                Next k
+                j = j + DisplayInterval / Timestep
+            Next k
         End If
         If calcFRR = True Then
             PrintLine(1, TAB(10), "Equivalent thermal exposure in fire resistance test furnace based on NZBC C/VM2 2.4.4 (Km=1.0) = " & VB6.Format(TEeurocode, "0") & " minutes.")
@@ -12770,7 +12821,7 @@ errorhandler:
 
     End Sub
 
-    Public Sub graph_data_ventfire(ByRef room As Short, ByRef Title As String, ByRef datatobeplotted(,) As Double, ByRef DataShift As Double, ByRef DataMultiplier As Double, ByRef GraphSty As Short, ByRef MaxYValue As Double)
+    Public Sub Graph_data_ventfire(ByRef room As Short, ByRef Title As String, ByRef datatobeplotted(,) As Double, ByRef DataShift As Double, ByRef DataMultiplier As Double, ByRef GraphSty As Short, ByRef MaxYValue As Double)
         '*  ====================================================================
         '*  This function takes data for a variable from a two-dimensional array
         '*  and displays it in a graph
@@ -13009,7 +13060,7 @@ errorhandler:
 
     End Function
 
-    Public Sub view_input(ByRef filename As String)
+    Public Sub View_input(ByRef filename As String)
         '*  ====================================================================
         '*  View the results in a rich text box
         '*  ====================================================================
@@ -13633,7 +13684,7 @@ errorhandler:
             End If
 
             If FuelResponseEffects = True Then
-                If ObjectpyrolysisOption(j) = 1 Then
+                If ObjectPyrolysisOption(j) = 1 Then
                     PrintLine(1, TAB, "MLR from pool fire equation")
                     PrintLine(1, TAB, "Free burn MLR (kg/s/m2) =", TAB(60), Format(ObjectPoolFBMLR(j), "0.000"))
                     PrintLine(1, TAB, "Pool fire pan diameter (m) =", TAB(60), Format(ObjectPoolDiameter(j), "0.000"))
@@ -13642,9 +13693,9 @@ errorhandler:
                     PrintLine(1, TAB, "Pool fire ramp up time (s) =", TAB(60), Format(ObjectPoolRamp(j), "0"))
                     PrintLine(1, TAB, "Pool fire fuel vaporisation temp (C) =", TAB(60), Format(ObjectPoolVapTemp(j), "0"))
 
-                ElseIf ObjectpyrolysisOption(j) = 2 Then
+                ElseIf ObjectPyrolysisOption(j) = 2 Then
                     PrintLine(1, TAB, "MLR from wood crib equations")
-                ElseIf ObjectpyrolysisOption(j) = 0 Then
+                ElseIf ObjectPyrolysisOption(j) = 0 Then
                     PrintLine(1, TAB, "MLR is free burn data")
                 End If
             End If
@@ -16400,7 +16451,7 @@ errhandler:
 
     End Sub
 
-    Public Sub view_ventlog(ByRef filename As Object)
+    Public Sub View_ventlog(ByRef filename As Object)
         '*  ====================================================================
         '*  View the vent flow data in a rich text box
         '*  5/11/2002
@@ -16783,7 +16834,7 @@ more:
 
     End Sub
 
-    Public Sub chemistry()
+    Public Sub Chemistry()
         '======================================
         ' calculating water vapor yield using
         ' chemical composition of fuel
@@ -16833,7 +16884,7 @@ more:
 
     End Sub
 
-    Public Function wall_flow(ByVal density As Double, ByVal X As Double, ByVal room As Integer, ByVal gastemp As Double, ByVal surfacetemp As Double, ByVal layer As Double, ByVal depth As Double) As Double
+    Public Function Wall_flow(ByVal density As Double, ByVal X As Double, ByVal room As Integer, ByVal gastemp As Double, ByVal surfacetemp As Double, ByVal layer As Double, ByVal depth As Double) As Double
         '=================================================
         ' natural convection wall flow
         ' Jaluria 1-116 SFPE Handbook first ed.
@@ -16879,12 +16930,12 @@ more:
             'turbulent
             U = 1.185 * V / L * Sqrt(GR) * (1 + 0.494 * Pr ^ (2 / 3)) ^ (-1 / 2)
             DEL = 0.565 * L * GR ^ (-0.1) * Pr ^ (-8 / 15) * (1 + 0.494 * Pr ^ (2 / 3)) ^ (1 / 10)
-            wall_flow = 0.1463 * P * density * DEL * U 'kg/s
+            Wall_flow = 0.1463 * P * density * DEL * U 'kg/s
         Else
             'laminar
             U = 5.17 * V * (Pr + 20 / 21) ^ (-0.5) * Sqrt(G / gastemp / V ^ 2 * Abs(gastemp - surfacetemp)) * Sqrt(depth)
             DEL = 3.93 * Pr ^ (-0.5) * (Pr + 20 / 21) ^ 0.25 * (G / gastemp / V ^ 2 * Abs(gastemp - surfacetemp)) ^ (-1 / 4) * depth ^ 0.25
-            wall_flow = P * density * DEL * U / 12 'kg/s
+            Wall_flow = P * density * DEL * U / 12 'kg/s
         End If
 
         Exit Function
@@ -16892,11 +16943,11 @@ more:
 errorhandler:
 
         MsgBox(ErrorToString() & " in Module Main.bas Subroutine = wall_flow")
-        wall_flow = 0
+        Wall_flow = 0
         flagstop = 1
     End Function
 
-    Public Function wall_flow_momentum(ByVal density As Double, ByVal X As Double, ByVal room As Integer, ByVal gastemp As Double, ByVal surfacetemp As Double, ByVal layer As Double, ByVal depth As Double) As Double
+    Public Function Wall_flow_momentum(ByVal density As Double, ByVal X As Double, ByVal room As Integer, ByVal gastemp As Double, ByVal surfacetemp As Double, ByVal layer As Double, ByVal depth As Double) As Double
         '=================================================
         ' natural convection wall flow
         ' Jaluria 1-116 SFPE Handbook first ed.
@@ -16939,12 +16990,12 @@ errorhandler:
             'turbulent
             U = 1.185 * V / L * Sqrt(GR) * (1 + 0.494 * Pr ^ (2 / 3)) ^ (-1 / 2)
             DEL = 0.565 * L * GR ^ (-0.1) * Pr ^ (-8 / 15) * (1 + 0.494 * Pr ^ (2 / 3)) ^ (1 / 10)
-            wall_flow_momentum = 0.0523 * P * density * DEL * U ^ 2
+            Wall_flow_momentum = 0.0523 * P * density * DEL * U ^ 2
         Else
             'laminar
             U = 5.17 * V * (Pr + 20 / 21) ^ (-0.5) * Sqrt(G / gastemp / V ^ 2 * Abs(gastemp - surfacetemp)) * Sqrt(depth)
             DEL = 3.93 * Pr ^ (-0.5) * (Pr + 20 / 21) ^ 0.25 * (G / gastemp / V ^ 2 * Abs(gastemp - surfacetemp)) ^ (-1 / 4) * depth ^ 0.25
-            wall_flow_momentum = P * density * DEL * U ^ 2 / 105
+            Wall_flow_momentum = P * density * DEL * U ^ 2 / 105
         End If
         Exit Function
 
@@ -16952,7 +17003,7 @@ errorhandler:
 
         MsgBox(ErrorToString() & " in Module Main.bas Subroutine = wall_flow_momentum")
         'UPGRADE_WARNING: Couldn't resolve default property of object wall_flow_momentum. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
-        wall_flow_momentum = 0
+        Wall_flow_momentum = 0
 
 
     End Function
@@ -17006,7 +17057,7 @@ errorhandler:
         DetectorType(i) = 0
 
     End Sub
-    Public Function chardepth(ByVal idr As Integer, ByRef wFLED As Double)
+    Public Function Chardepth(ByVal idr As Integer, ByRef wFLED As Double)
 
         Dim j As Integer
         Dim crittemp, wDensity, wHC As Double
@@ -17049,7 +17100,7 @@ errorhandler:
             Next
             'char depth by interpolation
             Interpolate_D(X, Y, NumberwallNodes, crittemp, mydepth)
-            chardepth = mydepth
+            Chardepth = mydepth
             ' If mydepth > 0 Then Stop
             'calculate the volume of CLT
 
@@ -17061,7 +17112,7 @@ errorhandler:
             'Next
 
             Dim w_area As Double = 2 * (RoomLength(idr) + RoomWidth(idr)) * RoomHeight(idr) * proportion
-            Dim volume As Double = w_area * chardepth / 1000 'm3
+            Dim volume As Double = w_area * Chardepth / 1000 'm3
             Dim wMass As Double = volume * wDensity 'kg
             wFLED = wMass * wHC / RoomFloorArea(idr) 'MJ/m2
 
@@ -17069,7 +17120,7 @@ errorhandler:
             MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in chardepth()")
         End Try
     End Function
-    Public Function chardepth_ceil(ByVal idr As Integer, ByRef cFLED As Double)
+    Public Function Chardepth_ceil(ByVal idr As Integer, ByRef cFLED As Double)
 
         Dim j As Integer
         Dim crittemp, cDensity, cHC As Double
@@ -17110,11 +17161,11 @@ errorhandler:
             Next
             'char depth by interpolation
             Interpolate_D(X, Y, NumberceilingNodes, crittemp, mydepth)
-            chardepth_ceil = mydepth
+            Chardepth_ceil = mydepth
 
             'calculate the volume of CLT
             Dim c_area As Double = RoomLength(idr) * RoomWidth(idr) * proportion
-            Dim volume As Double = c_area * chardepth_ceil / 1000 'm3
+            Dim volume As Double = c_area * Chardepth_ceil / 1000 'm3
             Dim cMass As Double = volume * cDensity 'kg
             cFLED = cMass * cHC / RoomFloorArea(idr) 'MJ/m2
 
@@ -17136,19 +17187,19 @@ errorhandler:
             LeftJustified = ColumnValue & Space(0)
         End If
     End Function
-    Public Sub create_excel()
+    Public Sub Create_excel()
         '===========================================================
         '   Saves results directly in an excel file
         '===========================================================
 
         Dim s As String
-            Dim room As Integer
-            Dim k, j, count As Integer
-            Dim oExcel As Object
-            Dim oBook As Object
-            Dim oSheet As Object
+        Dim room As Integer
+        Dim k, j, count As Integer
+        Dim oExcel As Object
+        Dim oBook As Object
+        Dim oSheet As Object
 
-            Try
+        Try
 
             'Dim SaveBox As New SaveFileDialog()
 
@@ -17191,123 +17242,123 @@ errorhandler:
             'On Error GoTo excelerrorhandler
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
 
-                'Start a new workbook in Excel
-                oExcel = CreateObject("Excel.Application")
+            'Start a new workbook in Excel
+            oExcel = CreateObject("Excel.Application")
 
-                oBook = oExcel.Workbooks.Add
+            oBook = oExcel.Workbooks.Add
 
-                'Add headers to the worksheet on row 1
-                oSheet = oBook.Worksheets(1)
+            'Add headers to the worksheet on row 1
+            oSheet = oBook.Worksheets(1)
 
-                oSheet.name = "Room 1"
+            oSheet.name = "Room 1"
 
-                'assign values to excel cells
-                'define a format string
-                's = "Scientific"
-                s = "0.000E+00"
+            'assign values to excel cells
+            'define a format string
+            's = "Scientific"
+            s = "0.000E+00"
 
-                Dim rowcount As Short
+            Dim rowcount As Short
 
-                For room = 1 To NumberRooms
-                    'i = 1
-                    'For k = 0 To 10
-                    DataArray(0, 0) = "Time (sec)"
-                    DataArray(0, 1) = "Layer (m)"
-                    DataArray(0, 2) = "Upper Layer Temp (C)"
-                    DataArray(0, 3) = "HRR (kW)"
-                    DataArray(0, 4) = "Mass Loss Rate (kg/s)"
-                    DataArray(0, 5) = "Plume (kg/s)"
-                    DataArray(0, 6) = "Vent Fire (kW)"
-                    DataArray(0, 7) = "CO2 Upper(%)"
-                    DataArray(0, 8) = "CO Upper (ppm)"
-                    DataArray(0, 9) = "O2 Upper (%)"
-                    DataArray(0, 10) = "CO2 Lower(%)"
-                    DataArray(0, 11) = "CO Lower(ppm)"
-                    DataArray(0, 12) = "O2 Lower (%)"
-                    DataArray(0, 13) = "FED gases(inc)"
-                    DataArray(0, 14) = "Upper Wall Temp (C)"
-                    DataArray(0, 15) = "Ceiling Temp (C)"
-                    DataArray(0, 16) = "Rad on Floor (kW/m2)"
-                    DataArray(0, 17) = "Lower Layer Temp (C)"
-                    DataArray(0, 18) = "Lower Wall Temp (C)"
-                    DataArray(0, 19) = "Floor Temp (C)"
-                    DataArray(0, 20) = "Y Pyrolysis Front (m)"
-                    DataArray(0, 21) = "X Pyrolysis Front (m)"
-                    DataArray(0, 22) = "Z Pyrolysis Front (m)"
-                    DataArray(0, 23) = "Upward Velocity (m/s)"
-                    DataArray(0, 24) = "Lateral Velocity (m/s)"
-                    DataArray(0, 25) = "Pressure (Pa)"
-                    DataArray(0, 26) = "Visibility (m)"
-                    DataArray(0, 27) = "Vent Flow to Upper Layer (kg/s)"
-                    DataArray(0, 28) = "Vent Flow to Lower Layer (kg/s)"
-                    DataArray(0, 29) = "Rad on Target (kW/m2)"
-                    DataArray(0, 30) = "FED thermal(inc)"
-                    DataArray(0, 31) = "OD upper (1/m)"
-                    DataArray(0, 32) = "OD lower (1/m)"
-                    DataArray(0, 33) = "k upper (1/m)"
-                    DataArray(0, 34) = "k lower (1/m)"
-                    DataArray(0, 35) = "Vent Flow to Outside (m3/s)"
-                    DataArray(0, 36) = "HCN Upper (ppm)"
-                    DataArray(0, 37) = "HCN Lower (ppm)"
-                    DataArray(0, 38) = "SPR (m2/kg)"
-                    DataArray(0, 39) = "Unexposed Upper Wall Temp (C)"
-                    DataArray(0, 40) = "Unexposed Lower Wall Temp (C)"
-                    DataArray(0, 41) = "Unexposed Ceiling Temp (C)"
-                    DataArray(0, 42) = "Unexposed Floor Temp (C)"
+            For room = 1 To NumberRooms
+                'i = 1
+                'For k = 0 To 10
+                DataArray(0, 0) = "Time (sec)"
+                DataArray(0, 1) = "Layer (m)"
+                DataArray(0, 2) = "Upper Layer Temp (C)"
+                DataArray(0, 3) = "HRR (kW)"
+                DataArray(0, 4) = "Mass Loss Rate (kg/s)"
+                DataArray(0, 5) = "Plume (kg/s)"
+                DataArray(0, 6) = "Vent Fire (kW)"
+                DataArray(0, 7) = "CO2 Upper(%)"
+                DataArray(0, 8) = "CO Upper (ppm)"
+                DataArray(0, 9) = "O2 Upper (%)"
+                DataArray(0, 10) = "CO2 Lower(%)"
+                DataArray(0, 11) = "CO Lower(ppm)"
+                DataArray(0, 12) = "O2 Lower (%)"
+                DataArray(0, 13) = "FED gases(inc)"
+                DataArray(0, 14) = "Upper Wall Temp (C)"
+                DataArray(0, 15) = "Ceiling Temp (C)"
+                DataArray(0, 16) = "Rad on Floor (kW/m2)"
+                DataArray(0, 17) = "Lower Layer Temp (C)"
+                DataArray(0, 18) = "Lower Wall Temp (C)"
+                DataArray(0, 19) = "Floor Temp (C)"
+                DataArray(0, 20) = "Y Pyrolysis Front (m)"
+                DataArray(0, 21) = "X Pyrolysis Front (m)"
+                DataArray(0, 22) = "Z Pyrolysis Front (m)"
+                DataArray(0, 23) = "Upward Velocity (m/s)"
+                DataArray(0, 24) = "Lateral Velocity (m/s)"
+                DataArray(0, 25) = "Pressure (Pa)"
+                DataArray(0, 26) = "Visibility (m)"
+                DataArray(0, 27) = "Vent Flow to Upper Layer (kg/s)"
+                DataArray(0, 28) = "Vent Flow to Lower Layer (kg/s)"
+                DataArray(0, 29) = "Rad on Target (kW/m2)"
+                DataArray(0, 30) = "FED thermal(inc)"
+                DataArray(0, 31) = "OD upper (1/m)"
+                DataArray(0, 32) = "OD lower (1/m)"
+                DataArray(0, 33) = "k upper (1/m)"
+                DataArray(0, 34) = "k lower (1/m)"
+                DataArray(0, 35) = "Vent Flow to Outside (m3/s)"
+                DataArray(0, 36) = "HCN Upper (ppm)"
+                DataArray(0, 37) = "HCN Lower (ppm)"
+                DataArray(0, 38) = "SPR (m2/kg)"
+                DataArray(0, 39) = "Unexposed Upper Wall Temp (C)"
+                DataArray(0, 40) = "Unexposed Lower Wall Temp (C)"
+                DataArray(0, 41) = "Unexposed Ceiling Temp (C)"
+                DataArray(0, 42) = "Unexposed Floor Temp (C)"
 
-                    'Next
-                    If room = fireroom Then
-                        DataArray(0, 43) = "Ceiling Jet Temp(C)"
-                        DataArray(0, 44) = "Max Ceil Jet Temp(C)"
-                        DataArray(0, 45) = "GER"
-                        DataArray(0, 46) = "Smoke Detect OD-out (1/m)"
-                        DataArray(0, 47) = "Smoke Detect OD-in (1/m)"
-                        DataArray(0, 48) = "Link Temp (C)"
+                'Next
+                If room = fireroom Then
+                    DataArray(0, 43) = "Ceiling Jet Temp(C)"
+                    DataArray(0, 44) = "Max Ceil Jet Temp(C)"
+                    DataArray(0, 45) = "GER"
+                    DataArray(0, 46) = "Smoke Detect OD-out (1/m)"
+                    DataArray(0, 47) = "Smoke Detect OD-in (1/m)"
+                    DataArray(0, 48) = "Link Temp (C)"
 
-                        DataArray(0, 54) = "MLR free burn (kg/s)"
-                        DataArray(0, 55) = "MLR ventilation effect (kg/s)"
-                        DataArray(0, 56) = "MLR thermal effect (kg/s)"
-                        DataArray(0, 57) = "MLR total (kg/s)"
-                        DataArray(0, 58) = "Burning rate (kg/s)"
-                        DataArray(0, 59) = "Fuel area shrinkage ratio (-)"
-                        DataArray(0, 60) = "Unconstrained HRR (kW)"
-                    End If
+                    DataArray(0, 54) = "MLR free burn (kg/s)"
+                    DataArray(0, 55) = "MLR ventilation effect (kg/s)"
+                    DataArray(0, 56) = "MLR thermal effect (kg/s)"
+                    DataArray(0, 57) = "MLR total (kg/s)"
+                    DataArray(0, 58) = "Burning rate (kg/s)"
+                    DataArray(0, 59) = "Fuel area shrinkage ratio (-)"
+                    DataArray(0, 60) = "Unconstrained HRR (kW)"
+                End If
 
-                    DataArray(0, 49) = "Normalised Heat Load (s1/2K)"
-                    DataArray(0, 50) = "Net ceiling flux (kW/m2)"
-                    DataArray(0, 51) = "Net upper wall flux (kW/m2)"
-                    DataArray(0, 52) = "Net lower Wall flux (kW/m2)"
-                    DataArray(0, 53) = "Net floor flux (kW/m2)"
+                DataArray(0, 49) = "Normalised Heat Load (s1/2K)"
+                DataArray(0, 50) = "Net ceiling flux (kW/m2)"
+                DataArray(0, 51) = "Net upper wall flux (kW/m2)"
+                DataArray(0, 52) = "Net lower Wall flux (kW/m2)"
+                DataArray(0, 53) = "Net floor flux (kW/m2)"
 
-                    If useCLTmodel = True Then
-                        DataArray(0, 61) = "Incident ceiling radiant flux (kW/m2)"
-                        DataArray(0, 62) = "Incident upper wall radiant flux (kW/m2)"
-                        DataArray(0, 63) = "Incident lower Wall radiant flux (kW/m2)"
-                        DataArray(0, 64) = "Incident floor radiant flux (kW/m2)"
-                    End If
+                If useCLTmodel = True Then
+                    DataArray(0, 61) = "Incident ceiling radiant flux (kW/m2)"
+                    DataArray(0, 62) = "Incident upper wall radiant flux (kW/m2)"
+                    DataArray(0, 63) = "Incident lower Wall radiant flux (kW/m2)"
+                    DataArray(0, 64) = "Incident floor radiant flux (kW/m2)"
+                End If
 
                 DataArray(0, 65) = "Total fuel mass loss (kg)"
 
                 If NumberTimeSteps > 0 Then
 
-                        Do While NumberTimeSteps * Timestep / ExcelInterval * NumberRooms * 59 > 32000 'the maximum number of data points able to be plotted in excel chart
-                            ExcelInterval = ExcelInterval * 2
-                        Loop
+                    Do While NumberTimeSteps * Timestep / ExcelInterval * NumberRooms * 59 > 32000 'the maximum number of data points able to be plotted in excel chart
+                        ExcelInterval = ExcelInterval * 2
+                    Loop
 
-                        k = 2 'row
-                        For j = 1 To NumberTimeSteps + 1
-                            count = count + 1
-                            If System.Math.Round(Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval, 4) = 0 Then
+                    k = 2 'row
+                    For j = 1 To NumberTimeSteps + 1
+                        count = count + 1
+                        If System.Math.Round(Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval, 4) = 0 Then
                             MDIFrmMain.ToolStripStatusLabel3.Text = "Saving to Excel ... Please Wait - " & Format(count / (NumberRooms * NumberTimeSteps) * 100, "0") & "%"
                             DataArray(k - 1, 0) = Format(tim(j, 1), "general number")
-                                DataArray(k - 1, 1) = Format(layerheight(room, j), s)
-                                DataArray(k - 1, 2) = Format(uppertemp(room, j) - 273, s)
-                                DataArray(k - 1, 3) = Format(HeatRelease(room, j, 2), s)
-                                DataArray(k - 1, 4) = Format(FuelMassLossRate(j, 1), s)
-                                DataArray(k - 1, 5) = Format(massplumeflow(j, room), s)
-                                DataArray(k - 1, 6) = Format(ventfire(room, j), s)
-                                DataArray(k - 1, 7) = Format(CO2VolumeFraction(room, j, 1) * 100, s)
-                                DataArray(k - 1, 8) = Format(COVolumeFraction(room, j, 1) * 1000000, s)
+                            DataArray(k - 1, 1) = Format(layerheight(room, j), s)
+                            DataArray(k - 1, 2) = Format(uppertemp(room, j) - 273, s)
+                            DataArray(k - 1, 3) = Format(HeatRelease(room, j, 2), s)
+                            DataArray(k - 1, 4) = Format(FuelMassLossRate(j, 1), s)
+                            DataArray(k - 1, 5) = Format(massplumeflow(j, room), s)
+                            DataArray(k - 1, 6) = Format(ventfire(room, j), s)
+                            DataArray(k - 1, 7) = Format(CO2VolumeFraction(room, j, 1) * 100, s)
+                            DataArray(k - 1, 8) = Format(COVolumeFraction(room, j, 1) * 1000000, s)
                             DataArray(k - 1, 9) = Format(O2VolumeFraction(room, j, 1) * 100, s)
                             DataArray(k - 1, 10) = Format(CO2VolumeFraction(room, j, 2) * 100, s)
                             DataArray(k - 1, 11) = Format(COVolumeFraction(room, j, 2) * 1000000, s)
@@ -17369,55 +17420,55 @@ errorhandler:
                                 DataArray(k - 1, 59) = Format(FuelBurningRate(5, room, j), s)
                                 DataArray(k - 1, 60) = Format(HeatRelease(room, j, 1), s)
 
-                                    If useCLTmodel = True Then
-                                        DataArray(k - 1, 61) = Format(QCeilingAST(room, 0, j), s)
-                                        DataArray(k - 1, 62) = Format(QUpperWallAST(room, 0, j), s)
-                                        DataArray(k - 1, 63) = Format(QLowerWallAST(room, 0, j), s)
-                                        DataArray(k - 1, 64) = Format(QFloorAST(room, 0, j), s)
-                                    End If
+                                If useCLTmodel = True Then
+                                    DataArray(k - 1, 61) = Format(QCeilingAST(room, 0, j), s)
+                                    DataArray(k - 1, 62) = Format(QUpperWallAST(room, 0, j), s)
+                                    DataArray(k - 1, 63) = Format(QLowerWallAST(room, 0, j), s)
+                                    DataArray(k - 1, 64) = Format(QFloorAST(room, 0, j), s)
+                                End If
                                 DataArray(k - 1, 65) = Format(TotalFuel(j), s)
 
                             End If
 
-                                Application.DoEvents()
-                                k = k + 1
-                            End If
-                        Next j
+                            Application.DoEvents()
+                            k = k + 1
+                        End If
+                    Next j
 
-                        rowcount = k
+                    rowcount = k
 
-                    End If
+                End If
 
                 'Transfer the array to the worksheet starting at cell A1
                 oSheet.Range("A1").Resize(rowcount - 1, 66).Value = DataArray
 
                 If room < NumberRooms Then
-                        oBook.Worksheets.add()
-                        oSheet = oBook.ActiveSheet
-                        oSheet.Name = "Room " & CStr(room + 1)
-                    End If
-                Next
-
-                oBook.Worksheets.add()
-                oSheet = oBook.ActiveSheet
-                oSheet.Name = "Outside"
-
-                DataArray(0, 0) = "Time (sec)"
-                DataArray(0, 1) = "Vent Fire (kW)"
-
-                If NumberTimeSteps > 0 Then
-                    k = 2 'row
-                    For j = 1 To NumberTimeSteps + 1
-                        If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
-                            DataArray(k - 1, 0) = Format(tim(j, 1), s)
-                            DataArray(k - 1, 1) = Format(ventfire(room, j), s)
-                            k = k + 1
-                        End If
-                    Next j
+                    oBook.Worksheets.add()
+                    oSheet = oBook.ActiveSheet
+                    oSheet.Name = "Room " & CStr(room + 1)
                 End If
+            Next
 
-                'Transfer the array to the worksheet starting at cell A1
-                oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
+            oBook.Worksheets.add()
+            oSheet = oBook.ActiveSheet
+            oSheet.Name = "Outside"
+
+            DataArray(0, 0) = "Time (sec)"
+            DataArray(0, 1) = "Vent Fire (kW)"
+
+            If NumberTimeSteps > 0 Then
+                k = 2 'row
+                For j = 1 To NumberTimeSteps + 1
+                    If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
+                        DataArray(k - 1, 0) = Format(tim(j, 1), s)
+                        DataArray(k - 1, 1) = Format(ventfire(room, j), s)
+                        k = k + 1
+                    End If
+                Next j
+            End If
+
+            'Transfer the array to the worksheet starting at cell A1
+            oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
 
             MDIFrmMain.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
             'If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))
@@ -17455,19 +17506,19 @@ errorhandler:
             If Err.Number = 1004 Then
                 'MsgBox(SaveBox.FileName & " is already Open. Please close and then try again.", MsgBoxStyle.OkOnly)
                 Err.Clear()
-                Else
+            Else
                 'MsgBox("Data saved in " & DataDirectory & fname & ".xlsx", MsgBoxStyle.Information + MsgBoxStyle.OkOnly)
             End If
 
-                oExcel.Application.Quit()
-                'release the objects
-                oExcel = Nothing
-                oBook = Nothing
-                oSheet = Nothing
+            oExcel.Application.Quit()
+            'release the objects
+            oExcel = Nothing
+            oBook = Nothing
+            oSheet = Nothing
 
             MDIFrmMain.ToolStripStatusLabel3.Text = ""
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Arrow
-                Exit Sub
+            Exit Sub
 
 
         Catch ex As Exception

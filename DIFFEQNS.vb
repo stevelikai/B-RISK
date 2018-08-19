@@ -685,6 +685,7 @@ Module DIFFEQNS
         Dim SPstart() As Double
         Dim Xstart(,) As Double
         Dim fstart() As Double
+
         Dim X(6) As Double
         Dim k As Integer
         Dim OpticalDensity As Single
@@ -719,8 +720,8 @@ Module DIFFEQNS
         Dim Tflame, eFLame As Double
         Dim Graphdata() As Double
         Dim vwidth As Single
-        Dim MaxWallNodes() As Double
-        Dim MaxCeilingNodes() As Double
+        Dim MaxWallNodes() As Integer
+        Dim MaxCeilingNodes() As Integer
         Dim Area As Double
         Dim projection As Double
         Dim avent, maxarea As Single
@@ -755,6 +756,7 @@ Module DIFFEQNS
         ReDim MaxFloorNodes(NumberRooms)
         ReDim Ystart(NumberRooms + 1, 19) 'variables for zone model ODE's
         ReDim Xstart(NumberRooms, 6) 'flamespread variables for Quintiere's Room Corner Model
+
         ReDim velocity(NumberRooms, 6)
         ReDim AutoFlag(NumberRooms + 1)
         ReDim SDFlag(NumberRooms + 1)
@@ -842,6 +844,7 @@ Module DIFFEQNS
         ReDim CeilingNode(NumberRooms, MMaxCeilingNodes, MaxTime)
         ReDim LWallNode(NumberRooms, MMaxWallNodes, MaxTime)
         ReDim FloorNode(NumberRooms, MMaxFloorNodes, MaxTime)
+
         ReDim flamespread(1)
         ReDim product(1)
         ReDim wallparam(3, NumberTimeSteps + 1)
@@ -849,8 +852,43 @@ Module DIFFEQNS
         ReDim cplx(NumberRooms)
 
         If useCLTmodel = True Then
+
             ReDim wall_char(NumberTimeSteps + 1, 0 To 2) '0 MJ/m2 cumulative; 1 MLR (kg/s); 2 chardepth (m)
             ReDim ceil_char(NumberTimeSteps + 1, 0 To 2)
+
+            If KineticModel = True Then
+                'kinetic model
+                Dim Zstart(,) As Double
+                ReDim CeilingElementMF(MMaxCeilingNodes - 1, 4, MaxTime) 'store the residual mass fractions of each component at each timestep
+                ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
+                ReDim LWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
+
+                'initialise
+                For m = 1 To MMaxCeilingNodes - 1
+                    For j = 0 To 3
+                        CeilingElementMF(m, j, 1) = 1
+                    Next
+                Next
+
+                For m = 1 To MMaxWallNodes - 1
+                    For j = 0 To 3
+                        UWallElementMF(m, j, 1) = 1
+                        LWallElementMF(m, j, 1) = 1
+                    Next
+                Next
+
+                ReDim Zstart(0 To 3, MMaxCeilingNodes)  'variables for wood pyrolysis model
+
+                'three component kinetic scheme
+                Dim dt As Integer = i 'current timestep
+                For count = 1 To MMaxCeilingNodes
+                    For m = 0 To 3
+                        Zstart(m, count) = 1
+                    Next
+                Next
+
+            End If
+
         End If
 
         'initialize variables
@@ -1102,15 +1140,10 @@ Module DIFFEQNS
                         'one layer boundary
                         If useCLTmodel = True Then
 
-                            'Call Implicit_Surface_Temps_CLTC(room, (i), CeilingNode) 'any substrate is ignored for HT
-                            'Call Implicit_Surface_Temps_CLTW(room, (i), UWallNode, LWallNode) 'any substrate is ignored for HT
-
                             Call Implicit_Surface_Temps_CLTC_Char(room, (i), CeilingNode) 'any substrate is ignored for HT
                             Call Implicit_Surface_Temps_CLTW_Char(room, (i), UWallNode, LWallNode) 'any substrate is ignored for HT
-
                             Call Implicit_Surface_Temps_floor(room, (i), FloorNode) 'floor with or without substrate, only heat transfer effect inlcuded, no CLT contrib
 
-                            'Call Implicit_Surface_Temps_CLT(room, (i), UWallNode, CeilingNode, LWallNode, FloorNode)
                             Call Debond_test()
 
                         Else
@@ -1125,6 +1158,19 @@ Module DIFFEQNS
                     ElseIf HaveWallSubstrate(room) = False And HaveCeilingSubstrate(room) = True Then
                         Call Implicit_Surface_Temps4(room, ceiling, (i), UWallNode, CeilingNode, LWallNode, FloorNode)
                     End If
+
+                    '=================================
+                    ' calculate the mass loss rate using a kinetic pyrolysis model
+                    If useCLTmodel = True And KineticModel = True And room = fireroom Then
+
+                        'The ODE solver needs to go in here.
+                        'Zstart_ceiling(0 to 3) 'each component
+
+                        Call MLR_kinetic((i), MMaxCeilingNodes, MMaxWallNodes)
+
+                    End If
+                    '=================================
+
 
                     'UWallNode arguments are: room, node, timestep
                     'only use where timber is not protected
@@ -1165,7 +1211,7 @@ Module DIFFEQNS
 
                     ElseIf useCLTmodel = True And room = fireroom And KineticModel = True Then
                         'new
-                        Stop
+                        'Stop
 
                         'may need to do something for integral model + not wood crib?
                     ElseIf useCLTmodel = True And room = fireroom And CLT_instant = True Then
@@ -2382,7 +2428,7 @@ Module DIFFEQNS
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
                 ElseIf KineticModel = True And useCLTmodel = True Then
                     'new
-                    Stop
+                    'Stop
 
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model

@@ -2238,6 +2238,37 @@ h2ohandler:
             MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in Implicit_Surface_Temps_CLTW_Char ")
         End Try
     End Sub
+
+    Sub Implicit_Surface_Temps_CLTC_kinetic(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
+        '*  ================================================================
+        '*      This function updates the ceiling nodal, using an
+        '*      implicit finite difference method.
+        '*      in conjunction with a kinetic pyrolysis model 
+        '*  ================================================================
+
+        Try
+            Dim ceilinglayersremaining As Integer
+            Dim k, j As Integer
+            Dim ceilingnodestemp As Integer
+            Dim NLC As Integer
+            Dim ier As Short
+            Dim ceilingnodeadjust As Integer
+            Dim chardensity, moisturecontent, temp As Double
+            Dim prop_k As Double 'W/mK
+            Dim char_alpha, char_c, char_fourier As Double
+            Dim wood_alpha, wood_c, wood_fourier As Double
+            Dim Coutbiot As Double
+            Dim kwood As Double = 0.285
+            kwood = CeilingConductivity(room)
+
+            moisturecontent = 0.1 'assume 10% mass fraction
+            chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
+
+
+        Catch ex As Exception
+            MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in " & Err.Source)
+        End Try
+    End Sub
     Sub Implicit_Surface_Temps_CLTC_Char(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
