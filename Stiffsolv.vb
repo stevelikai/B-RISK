@@ -2196,7 +2196,7 @@ errorhandler:
                 stemp = stemp + sum 'kg/s.kJ/g
                 If id = 1 Then
                     fuelmassloss = fuelmassloss + mrate_wall + mrate_ceiling + mrate_floor 'kg/sec
-                    sum = sum + mrate_wall * WallEffectiveHeatofCombustion(fireroom) + mrate_ceiling * FloorEffectiveHeatofCombustion(fireroom) + mrate_floor * FloorEffectiveHeatofCombustion(fireroom)
+                    sum = sum + mrate_wall * WallEffectiveHeatofCombustion(fireroom) + mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) + mrate_floor * FloorEffectiveHeatofCombustion(fireroom)
                 End If
             Next id
         End If
