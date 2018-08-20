@@ -1364,6 +1364,7 @@ h2ohandler:
         Erase LW
     End Sub
     Sub Implicit_Surface_Temps_CLT(ByVal room As Integer, ByVal i As Integer, ByRef UWallNode(,,) As Double, ByRef CeilingNode(,,) As Double, ByRef LWallNode(,,) As Double, ByRef FloorNode(,,) As Double)
+        'not used
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
         '*      implicit finite difference method.
@@ -1648,6 +1649,7 @@ h2ohandler:
         End Try
     End Sub
     Sub Implicit_Surface_Temps_CLTC(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
+        'not used
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
         '*      implicit finite difference method.
@@ -1770,6 +1772,7 @@ h2ohandler:
     End Sub
 
     Sub Implicit_Surface_Temps_CLTW(ByVal room As Integer, ByVal i As Integer, ByRef UWallNode(,,) As Double, ByRef LWallNode(,,) As Double)
+        'not used
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
         '*      implicit finite difference method.
@@ -1922,7 +1925,7 @@ h2ohandler:
             Dim NLw As Integer
             Dim ier As Short
             Dim wallnodeadjust As Integer
-            Dim chardensity, moisturecontent As Double
+            Dim chardensity, moisturecontent, temp As Double
             Dim prop_ku, prop_kl As Double 'W/mK
             Dim char_alpha, char_c, char_fourier As Double
             Dim wood_alpha, wood_c, wood_fourier As Double
@@ -2007,7 +2010,8 @@ h2ohandler:
             'Find Fourier Numbers -exterior side
             If UWallNodeStatus(Wallnodestemp) = 1 Then
                 'char
-                char_c = 714 + 2.3 * UWallNodeTemp(Wallnodestemp) - 0.0008 * UWallNodeTemp(Wallnodestemp) ^ 2 - 0.00000037 * UWallNodeTemp(Wallnodestemp) ^ 3
+                temp = UWallNodeTemp(Wallnodestemp) - 273
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_ku / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
 
@@ -2034,7 +2038,8 @@ h2ohandler:
 
             If LWallNodeStatus(Wallnodestemp) = 1 Then
                 'char
-                char_c = 714 + 2.3 * LWallNodeTemp(Wallnodestemp) - 0.0008 * LWallNodeTemp(Wallnodestemp) ^ 2 - 0.00000037 * LWallNodeTemp(Wallnodestemp) ^ 3
+                temp = LWallNodeTemp(Wallnodestemp) - 273
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_kl / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
 
@@ -2069,7 +2074,8 @@ h2ohandler:
             End If
 
             If UWallNodeStatus(2) = 1 Then 'char
-                char_c = 714 + 2.3 * UWallNodeTemp(2) - 0.0008 * UWallNodeTemp(2) ^ 2 - 0.00000037 * UWallNodeTemp(2) ^ 3
+                temp = UWallNodeTemp(2) - 273
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_ku / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
                 UW(1, 1) = 1 + 2 * char_fourier
@@ -2104,7 +2110,8 @@ h2ohandler:
             End If
 
             If LWallNodeStatus(2) = 1 Then 'char
-                char_c = 714 + 2.3 * LWallNodeTemp(2) - 0.0008 * LWallNodeTemp(2) ^ 2 - 0.00000037 * LWallNodeTemp(2) ^ 3
+                temp = LWallNodeTemp(2) - 273
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_kl / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
                 LW(1, 1) = 1 + 2 * char_fourier
@@ -2142,7 +2149,8 @@ h2ohandler:
                 End If
 
                 If UWallNodeStatus(j + 1) = 1 Then
-                    char_c = 714 + 2.3 * UWallNodeTemp(j + 1) - 0.0008 * UWallNodeTemp(j + 1) ^ 2 - 0.00000037 * UWallNodeTemp(j + 1) ^ 3
+                    temp = UWallNodeTemp(j + 1) - 273
+                    char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                     char_alpha = prop_ku / (char_c * chardensity)
                     char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
                     UW(j, k - 1) = -char_fourier
@@ -2173,7 +2181,8 @@ h2ohandler:
                 End If
 
                 If LWallNodeStatus(j + 1) = 1 Then
-                    char_c = 714 + 2.3 * LWallNodeTemp(j + 1) - 0.0008 * LWallNodeTemp(j + 1) ^ 2 - 0.00000037 * LWallNodeTemp(j + 1) ^ 3
+                    temp = LWallNodeTemp(j + 1) - 273
+                    char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                     char_alpha = prop_kl / (char_c * chardensity)
                     char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
                     LW(j, k - 1) = -char_fourier
@@ -2243,7 +2252,7 @@ h2ohandler:
             Dim NLC As Integer
             Dim ier As Short
             Dim ceilingnodeadjust As Integer
-            Dim chardensity, moisturecontent As Double
+            Dim chardensity, moisturecontent, temp As Double
             Dim prop_k As Double 'W/mK
             Dim char_alpha, char_c, char_fourier As Double
             Dim wood_alpha, wood_c, wood_fourier As Double
@@ -2312,7 +2321,8 @@ h2ohandler:
             'Find Fourier Numbers -exterior side
             If CeilingNodeStatus(ceilingnodestemp) = 1 Then
                 'char
-                char_c = 714 + 2.3 * CeilingNodeTemp(ceilingnodestemp) - 0.0008 * CeilingNodeTemp(ceilingnodestemp) ^ 2 - 0.00000037 * CeilingNodeTemp(ceilingnodestemp) ^ 3
+                temp = CeilingNodeTemp(ceilingnodestemp) - 273 'node temp in deg C
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_k / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
 
@@ -2347,7 +2357,8 @@ h2ohandler:
             End If
 
             If CeilingNodeStatus(2) = 1 Then 'char
-                char_c = 714 + 2.3 * CeilingNodeTemp(2) - 0.0008 * CeilingNodeTemp(2) ^ 2 - 0.00000037 * CeilingNodeTemp(2) ^ 3
+                temp = CeilingNodeTemp(2) - 273 'node temp in deg C
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                 char_alpha = prop_k / (char_c * chardensity)
                 char_fourier = char_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
                 UC(1, 1) = 1 + 2 * char_fourier
@@ -2386,7 +2397,8 @@ h2ohandler:
                 End If
 
                 If CeilingNodeStatus(j + 1) = 1 Then
-                    char_c = 714 + 2.3 * CeilingNodeTemp(j + 1) - 0.0008 * CeilingNodeTemp(j + 1) ^ 2 - 0.00000037 * CeilingNodeTemp(j + 1) ^ 3
+                    temp = CeilingNodeTemp(j + 1) - 273
+                    char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
                     char_alpha = prop_k / (char_c * chardensity)
                     char_fourier = char_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
                     UC(j, k - 1) = -char_fourier

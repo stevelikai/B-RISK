@@ -1908,7 +1908,7 @@ Public Class frmInputs
                         frmOptions1.txtEmissionCoefficient.Text = CStr(EmissionCoefficient)
 
 
-                        If ModelVersion >= CSng(2016.03) Then
+                        If ModelVersion > CSng(2016.03) Then
                             StoichAFratio = DFR.ReadElementString()
                             frmOptions1.txtStoich.Text = CStr(StoichAFratio)
                         End If
