@@ -1563,14 +1563,13 @@ toxicityhandler:
             'only need to call this once per timestep when using the wood crib PF model
             If IEEERemainder(tim, Timestep) = 0 Then
 
-
+                Dim mwall, mceiling As Double 'returns contribution from wall, ceiling kg/s
                 If useCLTmodel = True And IntegralModel = True Then 'using MS & JQ integral model for timber 
-                    Dim mwall, mceiling As Double 'returns contribution from wall, ceiling kg/s
-
                     hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
                 ElseIf useCLTmodel = True And kineticModel = True Then
                     'new
-                    'Stop
+                    hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
+                    mceiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000
                 Else
                     hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
                 End If
@@ -4172,12 +4171,15 @@ here:
                 'surfaces burn after flashover
                 'MassLoss_Object = newcode
                 'is this in the right place ? - perhaps alongside the finite difference heat conduction solver is best 
-                'Stop
+
+                MassLoss_Object = Get_HRR(id, tim, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(id) * 1000)
+                QCeiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 * CeilingEffectiveHeatofCombustion(fireroom) * 1000
             Else
                 'mass loss rate from theoretical hrr divided by heat of combustion
                 MassLoss_Object = Get_HRR(id, tim, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(id) * 1000)
+                QCeiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 * CeilingEffectiveHeatofCombustion(fireroom) * 1000
             End If
-            'Stop
+
             Exit Function
 
         ElseIf useCLTmodel = True And g_post = False And integralmodel = False And kineticmodel = False Then

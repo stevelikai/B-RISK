@@ -863,6 +863,9 @@ Module DIFFEQNS
                 ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
                 ReDim LWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
                 ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
+                ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
+                ReDim CeilingWoodMLR(MMaxCeilingNodes - 1, MaxTime)
+                ReDim CeilingWoodMLR_tot(MaxTime)
                 ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
                 ReDim LWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
 
@@ -873,6 +876,8 @@ Module DIFFEQNS
 
                     Next
                     CeilingCharResidue(m, 1) = 0
+                    CeilingResidualMass(m, 1) = 0
+                    CeilingWoodMLR(m, 1) = 0
                 Next
 
                 For m = 1 To MMaxWallNodes - 1
@@ -2435,9 +2440,7 @@ Module DIFFEQNS
                     'only want the contents mass consumed here, so deduct the contribution from wood surfaces
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
                 ElseIf KineticModel = True And useCLTmodel = True Then
-                    'new
-                    'Stop
-
+                    TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model
                 End If

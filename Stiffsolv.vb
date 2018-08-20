@@ -583,8 +583,12 @@ specieshandler:
                 mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
             ElseIf useCLTmodel = True And KineticModel = True Then
                 'new
-                'Stop
 
+                mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
+                If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then
+                    mrate_ceiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 'kg/s
+                    QCeiling = mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) * 1000
+                End If
             Else
                 mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
             End If
@@ -616,8 +620,20 @@ specieshandler:
                     If FloorEffectiveHeatofCombustion(fireroom) > 0 Then mrate_floor = QFloor / (FloorEffectiveHeatofCombustion(fireroom) * 1000)
 
                 ElseIf i = 1 And useCLTmodel = True Then
-                    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall / (WallEffectiveHeatofCombustion(fireroom) * 1000)
-                    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
+                    If KineticModel = True Then
+                        If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then
+                            mrate_ceiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 'kg/s
+                            QCeiling = mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) * 1000
+                        End If
+                        If WallEffectiveHeatofCombustion(fireroom) > 0 Then
+                            'mrate_wall =( UwallWoodMLR_tot(stepcount) * upperwallarea+LwallWoodMLR_tot(stepcount) * lowerwallarea) * WallThickness(fireroom) / 1000 'kg/s
+                        End If
+
+                    Else
+                        If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall / (WallEffectiveHeatofCombustion(fireroom) * 1000)
+                        If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
+                    End If
+
                     'If mrate_wall > 1 Then Stop
                 End If
             Next i
@@ -2205,7 +2221,7 @@ errorhandler:
                 stemp = stemp + sum 'kg/s.kJ/g
                 If id = 1 Then
                     fuelmassloss = fuelmassloss + mrate_wall + mrate_ceiling + mrate_floor 'kg/sec
-                    sum = sum + mrate_wall * WallEffectiveHeatofCombustion(fireroom) + mrate_ceiling * FloorEffectiveHeatofCombustion(fireroom) + mrate_floor * FloorEffectiveHeatofCombustion(fireroom)
+                    sum = sum + mrate_wall * WallEffectiveHeatofCombustion(fireroom) + mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) + mrate_floor * FloorEffectiveHeatofCombustion(fireroom)
                 End If
             Next id
         End If

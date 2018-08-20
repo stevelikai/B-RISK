@@ -78,6 +78,9 @@ Module GLOBAL_Renamed
     Public UWallElementMF(,,) As Double
     Public LWallElementMF(,,) As Double
     Public CeilingCharResidue(,) As Double
+    Public CeilingResidualMass(,) As Double
+    Public CeilingWoodMLR(,) As Double
+    Public CeilingWoodMLR_tot() As Double
     Public UWallCharResidue(,) As Double
     Public LWallCharResidue(,) As Double
     Public item_location(,) As Single 'details of items in fire room

@@ -27,14 +27,23 @@ Module KineticModelCode
             Dim DensityInitial As Double = 450 'kg/m3
             Dim chardensity As Double = 85 'kg/m3
 
+
+
             'the ceiling
             'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
             'CeilingElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
 
             ReDim Zstart(0 To 3)
             elements = maxceilingnodes - 1
+            CeilingWoodMLR_tot(i + 1) = 0
 
             For count = 1 To elements 'loop through each finite difference element in the ceiling
+                If i = 1 Then
+                    For m = 1 To 3
+                        CeilingResidualMass(count, i) = DensityInitial * mf_init(m) 'initialise
+                    Next
+                End If
+
                 For m = 0 To 3
                     Zstart(m) = CeilingElementMF(count, m, i)
                 Next
@@ -49,9 +58,14 @@ Module KineticModelCode
                 'total mass fraction of char residue in this element
                 CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_init(1) * CharYield + (1 - CeilingElementMF(count, 2, i + 1)) * mf_init(2) * CharYield + (1 - CeilingElementMF(count, 3, i + 1)) * mf_init(3) * CharYield
 
+                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element
+                CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_init(1) + CeilingElementMF(count, 2, i + 1) * mf_init(2) + CeilingElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
+
+                'mass loss rate of wood fuel over this timestep
+                If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep
+
+                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1)
             Next
-
-
 
 
         Catch ex As Exception
@@ -186,10 +200,10 @@ Module KineticModelCode
                 'for the ceiling use CeilingNode(,,)
                 ElementTemp = (CeilingNode(fireroom, elementcounter, stepcount) + CeilingNode(fireroom, elementcounter + 1, stepcount)) / 2 'use average temperature of the two adjacent nodes
 
-                'test code element temperature rises 5K/min
-                ElementTemp = 273 + (stepcount - 1) * Timestep * 5 / 60
+            'test code element temperature rises 5K/min
+            'ElementTemp = 273 + (stepcount - 1) * Timestep * 5 / 60
 
-                DYDX_pyrol(k) = -A_array(k) * Exp(-E_array(k) / (Gas_Constant * ElementTemp)) * Y_pyrol(k) ^ n_array(k) 'arhennius equation
+            DYDX_pyrol(k) = -A_array(k) * Exp(-E_array(k) / (Gas_Constant * ElementTemp)) * Y_pyrol(k) ^ n_array(k) 'arhennius equation
 
             Next
 
