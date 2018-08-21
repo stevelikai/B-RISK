@@ -1568,8 +1568,7 @@ toxicityhandler:
                     hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
                 ElseIf useCLTmodel = True And kineticModel = True Then
                     'new
-                    hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
-                    mceiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000
+                    hrr = MassLoss_Total_Kinetic(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
                 Else
                     hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
                 End If
@@ -3598,8 +3597,11 @@ Prophandler:
         mCeiling = 0
         mFloor = 0
 
-
-        MassLoss_ObjectwithCLT = MassLoss_Total_pluswood(tim, mWall, mCeiling) 'kg/s contents + wall + ceiling
+        If IntegralModel = True Then
+            MassLoss_ObjectwithCLT = MassLoss_Total_pluswood(tim, mWall, mCeiling) 'kg/s contents + wall + ceiling
+        ElseIf KineticModel = True Then
+            MassLoss_ObjectwithCLT = MassLoss_Total_Kinetic(tim, mWall, mCeiling) 'kg/s contents + wall + ceiling
+        End If
 
     End Function
     '    Function MassLoss_ObjectwithFuelResponse_delete(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double) As Double
@@ -4171,13 +4173,13 @@ here:
                 'surfaces burn after flashover
                 'MassLoss_Object = newcode
                 'is this in the right place ? - perhaps alongside the finite difference heat conduction solver is best 
-
-                MassLoss_Object = Get_HRR(id, tim, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(id) * 1000)
-                QCeiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 * CeilingEffectiveHeatofCombustion(fireroom) * 1000
+                MassLoss_Object = MassLoss_ObjectwithCLT(id, tim, Qburner, QFloor, QWall, QCeiling)
+                'MassLoss_Object = MassLoss_Total(tim)
+                'QCeiling = CeilingWoodMLR_tot(stepcount) * CeilingEffectiveHeatofCombustion(fireroom) * 1000
             Else
                 'mass loss rate from theoretical hrr divided by heat of combustion
                 MassLoss_Object = Get_HRR(id, tim, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(id) * 1000)
-                QCeiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 * CeilingEffectiveHeatofCombustion(fireroom) * 1000
+                QCeiling = CeilingWoodMLR_tot(stepcount) * CeilingEffectiveHeatofCombustion(fireroom) * 1000
             End If
 
             Exit Function
@@ -4237,7 +4239,7 @@ here:
         mass = InitialFuelMass 'kg
 
         'if clt model then update this value
-        If useCLTmodel = True Then
+        If useCLTmodel = True And KineticModel = False Then
             mass = fuelmasswithCLT 'kg
         End If
 
@@ -4467,13 +4469,10 @@ here:
 
                     Lamella2 = Lamella2 + Lamella
 
-                    If IntegralModel = True Then
+                    If IntegralModel = True Or KineticModel = True Then
                         CLTwalldelamT = tim(stepcount, 1) - flashover_time
                     End If
-                    If KineticModel = True Then
-                        'new
-                        Stop
-                    End If
+
                 End If
             End If
 
@@ -4501,13 +4500,10 @@ here:
 
                     Lamella1 = Lamella1 + Lamella
 
-                    If IntegralModel = True Then
+                    If IntegralModel = True Or KineticModel = True Then
                         CLTceildelamT = tim(stepcount, 1) - flashover_time
                     End If
-                    If KineticModel = True Then
-                        'new
-                        Stop
-                    End If
+
 
                 End If
             End If

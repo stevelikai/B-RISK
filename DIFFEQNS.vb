@@ -865,7 +865,7 @@ Module DIFFEQNS
                 ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
                 ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
                 ReDim CeilingWoodMLR(MMaxCeilingNodes - 1, MaxTime)
-                ReDim CeilingWoodMLR_tot(MaxTime)
+                ReDim CeilingWoodMLR_tot(MaxTime + 1)
                 ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
                 ReDim LWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
 
@@ -2407,7 +2407,7 @@ Module DIFFEQNS
                     If Target(fireroom, i) >= flashover_crit_flux Then
                         Flashover = True
                         flashover_time = tim(i, 1)
-                        HRRatFO = HeatRelease(fireroom, i, 2)
+                        HRRatFO = HeatRelease(fireroom, i - 1, 2)
                         Dim Message As String = CStr(tim(i, 1)) & " sec. Flashover in Room " & CStr(fireroom) & "."
                         If ProjectDirectory = RiskDataDirectory Then frmInputs.rtb_log.Text = Message.ToString & Chr(13) & frmInputs.rtb_log.Text
                     End If
@@ -2416,7 +2416,7 @@ Module DIFFEQNS
                     If uppertemp(fireroom, i) >= flashover_crit_temp Then
                         Flashover = True
                         flashover_time = tim(i, 1)
-                        HRRatFO = HeatRelease(fireroom, i, 2)
+                        HRRatFO = HeatRelease(fireroom, i - 1, 2)
                         Dim Message As String = CStr(tim(i, 1)) & " sec. Flashover in Room " & CStr(fireroom) & "."
                         If ProjectDirectory = RiskDataDirectory Then frmInputs.rtb_log.Text = Message.ToString & Chr(13) & frmInputs.rtb_log.Text
                     End If
@@ -2440,7 +2440,8 @@ Module DIFFEQNS
                     'only want the contents mass consumed here, so deduct the contribution from wood surfaces
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
                 ElseIf KineticModel = True And useCLTmodel = True Then
-                    TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep
+                    TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
+                    'TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model
                 End If

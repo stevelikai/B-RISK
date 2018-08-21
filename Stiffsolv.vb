@@ -583,14 +583,10 @@ specieshandler:
                 mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
             ElseIf useCLTmodel = True And KineticModel = True Then
                 'new
-
-                mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
-                If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then
-                    mrate_ceiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 'kg/s
-                    QCeiling = mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) * 1000
-                End If
+                mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling)
+                
             Else
-                mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
+                    mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
             End If
 
             'If frmOptions1.optRCNone.Value = False Then
@@ -622,7 +618,7 @@ specieshandler:
                 ElseIf i = 1 And useCLTmodel = True Then
                     If KineticModel = True Then
                         If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then
-                            mrate_ceiling = CeilingWoodMLR_tot(stepcount) * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 'kg/s
+                            mrate_ceiling = CeilingWoodMLR_tot(stepcount)  'kg/s
                             QCeiling = mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) * 1000
                         End If
                         If WallEffectiveHeatofCombustion(fireroom) > 0 Then

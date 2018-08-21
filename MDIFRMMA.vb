@@ -9555,7 +9555,7 @@ errhandler:
         Try
 
             'define variables
-            Title = "Total ceiling MLR (kg/m3)"
+            Title = "Total ceiling MLR (kg/s)"
             DataShift = 0
             DataMultiplier = 1
             GraphStyle = 4            '2=user-defined
@@ -9574,7 +9574,7 @@ errhandler:
             Dim curve As Integer
 
             curve = 0
-            chdata(0, 0) = "Total MLR (kg/m3)"
+            chdata(0, 0) = "Total ceiling MLR (kg/s)"
 
             frmPlot.Chart1.Series.Add(chdata(0, curve))
             frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine

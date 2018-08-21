@@ -62,9 +62,9 @@ Module KineticModelCode
                 CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_init(1) + CeilingElementMF(count, 2, i + 1) * mf_init(2) + CeilingElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
 
                 'mass loss rate of wood fuel over this timestep
-                If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep
+                If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
 
-                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1)
+                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * CLTceilingpercent / 100 * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 / elements 'kg/s
             Next
 
 
@@ -162,59 +162,165 @@ Module KineticModelCode
 
         Dim Nvariables As Integer = 4
         Dim VectorLength As Integer
-            Dim dy As New DoubleVector()
+        Dim dy As New DoubleVector()
 
-            VectorLength = Nvariables
-            dy.Resize(VectorLength)
+        VectorLength = Nvariables
+        dy.Resize(VectorLength)
 
-            'kinetic propeties for each component
-            'Activation Energy
-            Dim E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-            E_array(1) = 198000.0 'J/mol cellulose
-            E_array(2) = 164000.0 'J/mol hemicellulose
-            E_array(3) = 152000.0 'J/mol lignin
-            E_array(0) = 100000.0 'J/mol
+        'kinetic propeties for each component
+        'Activation Energy
+        Dim E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+        E_array(1) = 198000.0 'J/mol cellulose
+        E_array(2) = 164000.0 'J/mol hemicellulose
+        E_array(3) = 152000.0 'J/mol lignin
+        E_array(0) = 100000.0 'J/mol
 
-            'Pre-exponential factor 
-            Dim A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-            A_array(1) = 351000000000000.0 '1/s
-            A_array(2) = 32500000000000.0 '1/s
-            A_array(3) = 84100000000000.0 '1/s
-            A_array(0) = 10000000000000.0 '1/s
+        'Pre-exponential factor 
+        Dim A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+        A_array(1) = 351000000000000.0 '1/s
+        A_array(2) = 32500000000000.0 '1/s
+        A_array(3) = 84100000000000.0 '1/s
+        A_array(0) = 10000000000000.0 '1/s
 
-            'Reaction order
-            Dim n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-            n_array(1) = 1.1
-            n_array(2) = 2.1
-            n_array(3) = 5
-            n_array(0) = 1
+        'Reaction order
+        Dim n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+        n_array(1) = 1.1
+        n_array(2) = 2.1
+        n_array(3) = 5
+        n_array(0) = 1
 
-            Dim ElementTemp As Double = InteriorTemp
-            'Gas_Constant As Double = 8.3145 'kJ/kmol K universal gas constant
+        Dim ElementTemp As Double = InteriorTemp
+        'Gas_Constant As Double = 8.3145 'kJ/kmol K universal gas constant
 
-            'put our ODE equations here
-            'need to know the temperature of the current element at the current time - the same for all 4 components
+        'put our ODE equations here
+        'need to know the temperature of the current element at the current time - the same for all 4 components
 
-            For k = 0 To 3
+        For k = 0 To 3
 
-                'for the ceiling use CeilingNode(,,)
-                ElementTemp = (CeilingNode(fireroom, elementcounter, stepcount) + CeilingNode(fireroom, elementcounter + 1, stepcount)) / 2 'use average temperature of the two adjacent nodes
+            'for the ceiling use CeilingNode(,,)
+            ElementTemp = (CeilingNode(fireroom, elementcounter, stepcount) + CeilingNode(fireroom, elementcounter + 1, stepcount)) / 2 'use average temperature of the two adjacent nodes
 
             'test code element temperature rises 5K/min
-            'ElementTemp = 273 + (stepcount - 1) * Timestep * 5 / 60
+            'ElementTemp = 293 + (stepcount - 1) * Timestep * 5 / 60
 
             DYDX_pyrol(k) = -A_array(k) * Exp(-E_array(k) / (Gas_Constant * ElementTemp)) * Y_pyrol(k) ^ n_array(k) 'arhennius equation
 
-            Next
+        Next
 
-            Dim index As Integer = 0
+        Dim index As Integer = 0
 
-            For var = 0 To Nvariables - 1
-                dy(index) = DYDX_pyrol(var)
-                index = index + 1
-            Next
+        For var = 0 To Nvariables - 1
+            dy(index) = DYDX_pyrol(var)
+            index = index + 1
+        Next
 
-            Return dy
+        Return dy
+
+    End Function
+    Function MassLoss_Total_Kinetic(ByVal T As Double, ByRef mwall As Double, ByRef mceiling As Double) As Double
+        '*  ====================================================================
+        '*  This function return the value of the total fuel mass loss rate for
+        '*  a combination of wood cribs and burning wood surfaces at a given time T (sec)
+        '*  Spearpoint, M.. & Quintiere, J.. 2000. Predicting the burning of wood using an integral model. 
+        '*  Combustion and Flame. 123(3):308–325. DOI: 10.1016/S0010-2180(00)00162-0.
+        '*  ====================================================================
+
+        Static Tsave, mwallsave, mceilingsave, MLRsave As Double
+
+        If T = Tsave Then
+            'nO need to calculate function again for same T
+            mceiling = mceilingsave
+            mwall = mwallsave
+            MassLoss_Total_Kinetic = MLRsave
+            Exit Function
+        End If
+
+        Dim totalarea, total As Double
+        Dim mass, wood_MLR As Double
+
+        'this procedure only called if flashover is true and postflashover model is selected.
+        'assume wood surface linings start burning at flashover
+
+        totalarea = 0
+        burnmode = False
+
+        mass = InitialFuelMass 'kg wood cribs
+
+        Dim thickness_ceil As Double = CeilingThickness(fireroom) / 1000 'm thick of wood
+        Dim thickness_wall As Double = WallThickness(fireroom) / 1000  'm thick of wood
+
+        'get HRR for all burning objects
+        Dim total1, vp, total2, total3, Qtemp As Double
+        Dim woodtotal As Double = 0
+
+        If Flashover = True And g_post = True Then
+            'in this case, we should only need this subroutine once per timestep
+
+            'postflashover burning
+            If TotalFuel(stepcount - 1) >= mass Then
+                total = 0 'fuel contents is fully consumed
+            Else
+
+                'fuel surface control
+                vp = 0.0000022 * Fuel_Thickness ^ (-0.6) 'wood crib fire regression rate m/s
+
+                total1 = 4 / Fuel_Thickness * mass * vp * ((mass - TotalFuel(stepcount - 1)) / mass) ^ (0.5) 'kg/s
+
+                'crib porosity control
+                total2 = 0.00044 * (Stick_Spacing / Cribheight) * (mass / Fuel_Thickness)
+
+                total = Min(total1, total2) 'use the lesser
+
+                'this should use the max Q given the oxygen in the plume flow.
+                Qtemp = massplumeflow(stepcount - 1, fireroom) * O2MassFraction(fireroom, stepcount - 1, 2) * 13100
+                total3 = 1 / 1000 * Qtemp / NewHoC_fuel  'kJ/s / kJ/g = g/s
+
+                If total3 < total Then
+                    total = total3 'use the lesser, ventilation control
+                    burnmode = True
+                End If
+
+                'better to apply excess fuel factor after determining mode of burning and then only if vent-limited
+                If burnmode = True Then
+                    total = total * ExcessFuelFactor
+
+                End If
+
+            End If
+
+            'ceiling - interpolating
+            mceiling = (CeilingWoodMLR_tot(stepcount + 1) - CeilingWoodMLR_tot(stepcount)) * (T - tim(stepcount, 1)) / Timestep + CeilingWoodMLR_tot(stepcount)
+
+        End If
+
+        If IEEERemainder(T, Timestep) = 0 Then
+            If CLTwallpercent > 0 Then
+                If Lamella2 > thickness_wall + gcd_Machine_Error Then
+                    'no more fuel
+                    mwall = 0
+                End If
+            End If
+            If CLTceilingpercent > 0 Then
+                If Lamella1 > thickness_ceil + gcd_Machine_Error Then
+                    'no more fuel
+                    mceiling = 0
+                End If
+            End If
+
+        End If
+
+        wall_char(stepcount, 1) = mwall 'kg/s
+        ceil_char(stepcount, 1) = mceiling
+
+        wood_MLR = mceiling + mwall 'kg/s  total MLR
+
+        mwallsave = mwall
+        mceilingsave = mceiling
+
+        MassLoss_Total_Kinetic = total + wood_MLR 'includes contents+surfaces
+        MLRsave = MassLoss_Total_Kinetic
+
+        Tsave = T
 
     End Function
 End Module
