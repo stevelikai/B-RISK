@@ -466,6 +466,7 @@
         Me.ChartRuntime2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime3 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.ApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainMenu1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -1657,7 +1658,7 @@
         '
         'KineticWoodPyrolysisModelToolStripMenuItem
         '
-        Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem})
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem, Me.ApparentDensitybyElementToolStripMenuItem})
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Name = "KineticWoodPyrolysisModelToolStripMenuItem"
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Size = New System.Drawing.Size(272, 22)
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Text = "Kinetic wood pyrolysis model"
@@ -2502,6 +2503,12 @@
         Me.ChartRuntime1.TabIndex = 36
         Me.ChartRuntime1.Visible = False
         '
+        'ApparentDensitybyElementToolStripMenuItem
+        '
+        Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
+        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
+        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Apparent density (by element)"
+        '
         'MDIFrmMain
         '
         Me.BackColor = System.Drawing.SystemColors.AppWorkspace
@@ -2690,5 +2697,6 @@
     Friend WithEvents ResidualMassFractionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CeilingWoodMassLossRateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CeilingFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
 #End Region
 End Class

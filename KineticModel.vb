@@ -27,7 +27,7 @@ Module KineticModelCode
             Dim DensityInitial As Double = 450 'kg/m3
             Dim chardensity As Double = 85 'kg/m3
 
-
+            Dim rmw As Double
 
             'the ceiling
             'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
@@ -42,6 +42,7 @@ Module KineticModelCode
                     For m = 1 To 3
                         CeilingResidualMass(count, i) = DensityInitial * mf_init(m) 'initialise
                     Next
+                    CeilingApparentDensity(count, i) = DensityInitial
                 End If
 
                 For m = 0 To 3
@@ -58,13 +59,20 @@ Module KineticModelCode
                 'total mass fraction of char residue in this element
                 CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_init(1) * CharYield + (1 - CeilingElementMF(count, 2, i + 1)) * mf_init(2) * CharYield + (1 - CeilingElementMF(count, 3, i + 1)) * mf_init(3) * CharYield
 
-                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element
+                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
                 CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_init(1) + CeilingElementMF(count, 2, i + 1) * mf_init(2) + CeilingElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
 
-                'mass loss rate of wood fuel over this timestep
+                'mass loss rate of wood fuel over this timestep 'kg/s
                 If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
 
                 CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * CLTceilingpercent / 100 * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 / elements 'kg/s
+
+                'residual mass of water in this element 'kg/m3
+                rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_init(0) 'kg/m3
+
+                'apparent density of this element 'kg/m3 
+                CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
+
             Next
 
 
@@ -201,7 +209,7 @@ Module KineticModelCode
             ElementTemp = (CeilingNode(fireroom, elementcounter, stepcount) + CeilingNode(fireroom, elementcounter + 1, stepcount)) / 2 'use average temperature of the two adjacent nodes
 
             'test code element temperature rises 5K/min
-            'ElementTemp = 293 + (stepcount - 1) * Timestep * 5 / 60
+            ElementTemp = 293 + (stepcount - 1) * Timestep * 5 / 60
 
             DYDX_pyrol(k) = -A_array(k) * Exp(-E_array(k) / (Gas_Constant * ElementTemp)) * Y_pyrol(k) ^ n_array(k) 'arhennius equation
 
@@ -225,7 +233,7 @@ Module KineticModelCode
         '*  Combustion and Flame. 123(3):308–325. DOI: 10.1016/S0010-2180(00)00162-0.
         '*  ====================================================================
 
-        Static Tsave, mwallsave, mceilingsave, MLRsave As Double
+        Static Tsave, mwallsave, mceilingsave, MLRsave, mplume As Double
 
         If T = Tsave Then
             'nO need to calculate function again for same T
@@ -272,7 +280,10 @@ Module KineticModelCode
                 total = Min(total1, total2) 'use the lesser
 
                 'this should use the max Q given the oxygen in the plume flow.
-                Qtemp = massplumeflow(stepcount - 1, fireroom) * O2MassFraction(fireroom, stepcount - 1, 2) * 13100
+
+                mplume = (massplumeflow(stepcount - 1, fireroom) - massplumeflow(stepcount - 2, fireroom)) * (T - tim(stepcount - 2, 1)) / Timestep + massplumeflow(stepcount - 2, fireroom)
+                Qtemp = mplume * O2MassFraction(fireroom, stepcount - 1, 2) * 13100
+                'Qtemp = massplumeflow(stepcount - 1, fireroom) * O2MassFraction(fireroom, stepcount - 1, 2) * 13100
                 total3 = 1 / 1000 * Qtemp / NewHoC_fuel  'kJ/s / kJ/g = g/s
 
                 If total3 < total Then
@@ -289,7 +300,7 @@ Module KineticModelCode
             End If
 
             'ceiling - interpolating
-            mceiling = (CeilingWoodMLR_tot(stepcount + 1) - CeilingWoodMLR_tot(stepcount)) * (T - tim(stepcount, 1)) / Timestep + CeilingWoodMLR_tot(stepcount)
+            mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
 
         End If
 

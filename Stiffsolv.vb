@@ -582,18 +582,11 @@ specieshandler:
             If useCLTmodel = True And IntegralModel = True Then
                 mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
             ElseIf useCLTmodel = True And KineticModel = True Then
-                'new
                 mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling)
-                
             Else
-                    mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
+                mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
             End If
 
-            'If frmOptions1.optRCNone.Value = False Then
-            '    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall / (WallEffectiveHeatofCombustion(fireroom) * 1000)
-            '    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
-            '    If FloorEffectiveHeatofCombustion(fireroom) > 0 Then mrate_floor = QFloor / (FloorEffectiveHeatofCombustion(fireroom) * 1000)
-            'End If
         Else
             For i = 1 To NumberObjects
 

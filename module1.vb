@@ -1568,7 +1568,7 @@ toxicityhandler:
                     hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
                 ElseIf useCLTmodel = True And kineticModel = True Then
                     'new
-                    hrr = MassLoss_Total_Kinetic(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
+                    hrr = MassLoss_Total_Kinetic(tim, mwall, mceiling) * NewHoC_fuel * 1000
                 Else
                     hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
                 End If
@@ -4171,11 +4171,7 @@ here:
             'new
             If Flashover = True Then
                 'surfaces burn after flashover
-                'MassLoss_Object = newcode
-                'is this in the right place ? - perhaps alongside the finite difference heat conduction solver is best 
                 MassLoss_Object = MassLoss_ObjectwithCLT(id, tim, Qburner, QFloor, QWall, QCeiling)
-                'MassLoss_Object = MassLoss_Total(tim)
-                'QCeiling = CeilingWoodMLR_tot(stepcount) * CeilingEffectiveHeatofCombustion(fireroom) * 1000
             Else
                 'mass loss rate from theoretical hrr divided by heat of combustion
                 MassLoss_Object = Get_HRR(id, tim, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(id) * 1000)
@@ -4253,13 +4249,7 @@ here:
             If TotalFuel(stepcount - 1) >= mass Then
                 total = 0 'fuel is fully consumed
             Else
-                ''For k = 1 To NumberRooms + 1 'ver 2002.5 and prior
-                'For k = NumberRooms + 1 To NumberRooms + 1 '1/10/2002 vers 2002.6 allow only external vents to be counted
-                '    For j = 1 To NumberVents(fireroom, k)
-                '        'totalarea = totalarea + VentHeight(fireroom, k, j) ^ (3 / 2) * VentWidth(fireroom, k, j)
-                '        'totalarea = totalarea + VentHeight(fireroom, k, j) ^ (1 / 2) * ventarea(T, fireroom, k, j)
-                '    Next j
-                'Next k
+
 
                 'fuel surface control
                 vp = 0.0000022 * Fuel_Thickness ^ (-0.6) 'wood crib fire regression rate m/s
@@ -4277,23 +4267,6 @@ here:
                     total = total1 'use the lesser, fuel surface control
                 End If
 
-                'Ee Yii 1999 wood fuel ventilation-controlled
-                'total = 0.092 * totalarea * (1.6 * Exp(-10.411 * (totalarea ^ 0.8 / roomAT))) 'kg/s
-
-                'ver 2013.08
-                'total3 = 0.12 * totalarea 'ventilation control
-
-                'ver 2013.09
-                'generalise for multi-room models
-                'vm2 uses a factor of 1.5 here. 
-                'wood crib does not burn more than 30-40% fuel rich
-                'total3 = 1.3 / 1000 * HeatRelease(fireroom, stepcount - 1, 2) / NewHoC_fuel  'kJ/s / kJ/g = g/s
-
-                'total3 = ExcessFuelFactor / 1000 * HeatRelease(fireroom, stepcount - 1, 2) / NewHoC_fuel  'kJ/s / kJ/g = g/s
-
-                'this should use the max Q given the oxygen in the plume flow.
-                'this used only after flashover
-                'doesn't work if we have surface area control at flashover
                 Qtemp = massplumeflow(stepcount - 1, fireroom) * O2MassFraction(fireroom, stepcount - 1, 2) * 13100
                 total3 = 1 / 1000 * Qtemp / NewHoC_fuel  'kJ/s / kJ/g = g/s
                 'total3 = 1 / 1000 * HeatRelease(fireroom, stepcount - 1, 2) / NewHoC_fuel  'kJ/s / kJ/g = g/s
@@ -4319,9 +4292,7 @@ here:
             'preflashover burning
             For i = 1 To NumberObjects
                 If NewEnergyYield(i) <> 0 Then
-                    'dummy = Get_HRR(i, T, QW, Qburner, QFloor, QWall, QCeiling) / (EnergyYield(i) * 1000)
                     dummy = Get_HRR(i, T, QW, Qburner, QFloor, QWall, QCeiling) / (NewEnergyYield(i) * 1000)
-                    'If QWall > 0 Then Stop
                 End If
                 total = total + dummy
             Next i
@@ -4433,7 +4404,6 @@ here:
             Dim wproportion As Double = CLTwallpercent / 100
             Dim cproportion As Double = CLTceilingpercent / 100
 
-
             'define variables
             Dim depth As Single = 0
             Dim maxtemp As Double = 0
@@ -4503,7 +4473,6 @@ here:
                     If IntegralModel = True Or KineticModel = True Then
                         CLTceildelamT = tim(stepcount, 1) - flashover_time
                     End If
-
 
                 End If
             End If

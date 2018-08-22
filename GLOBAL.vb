@@ -79,6 +79,7 @@ Module GLOBAL_Renamed
     Public LWallElementMF(,,) As Double
     Public CeilingCharResidue(,) As Double
     Public CeilingResidualMass(,) As Double
+    Public CeilingApparentDensity(,) As Double
     Public CeilingWoodMLR(,) As Double
     Public CeilingWoodMLR_tot() As Double
     Public UWallCharResidue(,) As Double

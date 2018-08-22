@@ -864,6 +864,7 @@ Module DIFFEQNS
                 ReDim LWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
                 ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
                 ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
+                ReDim CeilingApparentDensity(MMaxCeilingNodes - 1, MaxTime)
                 ReDim CeilingWoodMLR(MMaxCeilingNodes - 1, MaxTime)
                 ReDim CeilingWoodMLR_tot(MaxTime + 1)
                 ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
@@ -1223,8 +1224,13 @@ Module DIFFEQNS
                         ceil_char(i, 2) = cdr / 1000 'char depth ceiling m
 
                     ElseIf useCLTmodel = True And room = fireroom And KineticModel = True Then
-                        'new
-                        'Stop
+                        Dim cdr, wFLED, cFLED As Double
+
+                        cdr = Chardepth(room, wFLED) 'returns char depth
+                        wall_char(i, 2) = cdr / 1000 'char depth wall m
+
+                        cdr = Chardepth_ceil(room, cFLED)
+                        ceil_char(i, 2) = cdr / 1000 'char depth ceiling m
 
                         'may need to do something for integral model + not wood crib?
                     ElseIf useCLTmodel = True And room = fireroom And CLT_instant = True Then
@@ -2441,11 +2447,9 @@ Module DIFFEQNS
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
                 ElseIf KineticModel = True And useCLTmodel = True Then
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
-                    'TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model
                 End If
-
             Else
                 TotalFuel(i) = 0
             End If
