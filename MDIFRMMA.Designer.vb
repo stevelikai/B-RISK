@@ -356,6 +356,7 @@
         Me.ResidualMassFractionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CeilingWoodMassLossRateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPressure = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuCeilingJet = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
@@ -466,7 +467,6 @@
         Me.ChartRuntime2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime3 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.ApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainMenu1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -1681,6 +1681,12 @@
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Text = "Ceiling fuel mass loss rate (total)"
         '
+        'ApparentDensitybyElementToolStripMenuItem
+        '
+        Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
+        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
+        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Apparent density (by element)"
+        '
         'mnuPressure
         '
         Me.mnuPressure.Name = "mnuPressure"
@@ -2502,12 +2508,6 @@
         Me.ChartRuntime1.Size = New System.Drawing.Size(442, 228)
         Me.ChartRuntime1.TabIndex = 36
         Me.ChartRuntime1.Visible = False
-        '
-        'ApparentDensitybyElementToolStripMenuItem
-        '
-        Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
-        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
-        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Apparent density (by element)"
         '
         'MDIFrmMain
         '

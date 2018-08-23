@@ -65,6 +65,8 @@ Module GLOBAL_Renamed
     Public Lamella1 As Single
     Public Lamella2 As Single
     Public DebondTemp As Double
+    Public CLTwalldelamT As Double
+    Public CLTceildelamT As Double
     Public mcNumberIterations As Integer = 1 'number of monte carlo iterations
     Public furnaceNHL(,) As Double
     Public furnaceST(,) As Double

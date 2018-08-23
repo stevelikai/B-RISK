@@ -1154,14 +1154,20 @@ Module DIFFEQNS
                         'one layer boundary
                         If useCLTmodel = True Then
 
-                            Call Implicit_Surface_Temps_CLTC_Char(room, (i), CeilingNode) 'any substrate is ignored for HT
+                            If KineticModel = True And i > 1 Then
+                                Call Implicit_Temps_Ceil_kinetic(room, (i), CeilingNode) 'any substrate is ignored for HT
+                            Else
+                                Call Implicit_Surface_Temps_CLTC_Char(room, (i), CeilingNode) 'any substrate is ignored for HT
+                            End If
+
                             Call Implicit_Surface_Temps_CLTW_Char(room, (i), UWallNode, LWallNode) 'any substrate is ignored for HT
+
                             Call Implicit_Surface_Temps_floor(room, (i), FloorNode) 'floor with or without substrate, only heat transfer effect inlcuded, no CLT contrib
 
                             Call Debond_test()
 
                         Else
-                            Call Implicit_Surface_Temps(room, (i), UWallNode, CeilingNode, LWallNode, FloorNode)
+                                Call Implicit_Surface_Temps(room, (i), UWallNode, CeilingNode, LWallNode, FloorNode)
                         End If
 
                     ElseIf HaveWallSubstrate(room) = True And HaveCeilingSubstrate(room) = True Then

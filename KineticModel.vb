@@ -8,7 +8,250 @@ Imports CenterSpace.NMath.Analysis
 Module KineticModelCode
     Dim Y_pyrol() As Double
     Dim DYDX_pyrol() As Double
+    Sub Implicit_Temps_Ceil_kinetic(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
+        '*  ================================================================
+        '*      This function updates the surface temperatures, using an
+        '*      implicit finite difference method.
+        '*  ================================================================
 
+        Try
+            Dim ceilinglayersremaining As Integer
+            Dim k, j As Integer
+            Dim ceilingnodestemp As Integer
+            Dim NLC As Integer
+            Dim ier As Short
+            Dim ceilingnodeadjust As Integer
+            Dim chardensity, moisturecontent, temp As Double
+            Dim prop_k As Double 'W/mK
+            Dim char_alpha, char_c, char_fourier As Double
+            Dim wood_alpha, wood_c, wood_fourier As Double
+            Dim Coutbiot, WoodDensity As Double
+            Dim kwood As Double = 0.285
+            kwood = CeilingConductivity(room)
+            WoodDensity = CeilingDensity(room)
+
+            Dim mf_init As Double = 0.1 'initial mc
+
+
+            'chardensity = 0.63 * WoodDensity / (1 + moisturecontent)
+
+            If CLTceilingpercent > 0 Then
+                NLC = CeilingThickness(room) / 1000 / Lamella 'number of lamella - in two places also in main_program2
+
+                ceilinglayersremaining = NLC - Lamella1 / Lamella + 1
+
+                If ceilinglayersremaining = 0 Then
+                    If ceilinglayersremaining = 0 Then Dim Message As String = CStr(tim(stepcount, 1)) & " sec. Ceiling layer at " & Format(Lamella1, "0.000") & " m delaminates. Simulation terminated. "
+
+                    flagstop = 1 'do not continue
+                    Exit Sub
+                End If
+
+                ceilingnodestemp = (Ceilingnodes - 1) * (ceilinglayersremaining) + 1 'remove one layer and recalc number of nodes
+                ceilingnodeadjust = (Ceilingnodes - 1) * NLC + 1 - ceilingnodestemp
+
+                'Find DeltaX
+                CeilingDeltaX(room) = ceilinglayersremaining * Lamella / (ceilingnodestemp - 1)
+            Else
+                'clt model is on but not for ceiling
+                NLC = 1
+                ceilinglayersremaining = 1
+                ceilingnodestemp = Ceilingnodes
+                ceilingnodeadjust = 0
+            End If
+
+            Dim CeilingNodeTemp(ceilingnodestemp) As Double
+            Dim CeilingNodeStatus(ceilingnodestemp) As Integer  'array to identify charred element
+
+            For k = 1 To ceilingnodestemp
+                CeilingNodeTemp(k) = CeilingNode(room, k + ceilingnodeadjust, i)
+
+                'array to identify charred element
+                If CeilingNodeTemp(k) > 300 + 273 Then CeilingNodeStatus(k) = 1
+
+            Next
+
+            Dim CeilingNodeUnExposed As Double = CeilingNodeTemp(ceilingnodestemp)
+            Dim CeilingNodeExposed As Double = CeilingNodeTemp(1)
+
+
+            If CeilingNodeTemp(ceilingnodestemp) <= 473 Then
+                prop_k = kwood
+                prop_k = CeilingConductivity(room)
+
+            ElseIf CeilingNodeTemp(ceilingnodestemp) <= 663 Then
+                prop_k = -0.617 + 0.0038 * CeilingNodeTemp(ceilingnodestemp) - 0.000004 * CeilingNodeTemp(ceilingnodestemp) ^ 2
+            Else
+                prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(ceilingnodestemp)
+            End If
+
+            'Find Biot Numbers -exterior side
+            Coutbiot = OutsideConvCoeff * CeilingDeltaX(room) / prop_k
+
+            Dim UC(ceilingnodestemp, ceilingnodestemp) As Double
+            Dim CX(ceilingnodestemp, 1) As Double
+
+            moisturecontent = CeilingElementMF(ceilingnodestemp - 1, 0, i) * mf_init 'mass fraction of the original wet wood
+            WoodDensity = CeilingApparentDensity(ceilingnodestemp - 1, i)
+            'chardensity = 0.63 * WoodDensity / (1 + moisturecontent)
+
+            'Find Fourier Numbers -exterior side
+            If CeilingNodeStatus(ceilingnodestemp) = 1 Then
+                'char
+                temp = CeilingNodeTemp(ceilingnodestemp) - 273 'node temp in deg C
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
+                char_alpha = prop_k / (char_c * WoodDensity)
+                char_fourier = char_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
+
+                'exterior boundary conditions
+                CX(ceilingnodestemp, 1) = 2 * char_fourier * Coutbiot * ((ExteriorTemp - CeilingNodeUnExposed) - Surface_Emissivity(1, room) / OutsideConvCoeff * StefanBoltzmann * (CeilingNodeUnExposed ^ 4 - ExteriorTemp ^ 4)) + CeilingNodeUnExposed
+                UC(ceilingnodestemp, ceilingnodestemp - 1) = -2 * char_fourier
+                UC(ceilingnodestemp, ceilingnodestemp) = 1 + 2 * char_fourier
+                UC(1, 1) = 1 + 2 * char_fourier
+                UC(1, 2) = -2 * char_fourier
+            Else
+                'wood
+                wood_c = 101.3 + 3.867 * CeilingNodeTemp(ceilingnodestemp)
+                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(ceilingnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+
+                'correct for the latent heat of water over the temp range 90-110 C
+                If CeilingNodeTemp(ceilingnodestemp) >= 273 + 80 And CeilingNodeTemp(ceilingnodestemp) <= 273 + 100 Then
+                    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                End If
+
+                wood_alpha = prop_k / (wood_c * WoodDensity)
+                wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
+
+                'exterior boundary conditions
+                CX(ceilingnodestemp, 1) = 2 * wood_fourier * Coutbiot * ((ExteriorTemp - CeilingNodeUnExposed) - Surface_Emissivity(1, room) / OutsideConvCoeff * StefanBoltzmann * (CeilingNodeUnExposed ^ 4 - ExteriorTemp ^ 4)) + CeilingNodeUnExposed
+                UC(ceilingnodestemp, ceilingnodestemp - 1) = -2 * wood_fourier
+                UC(ceilingnodestemp, ceilingnodestemp) = 1 + 2 * wood_fourier
+                UC(1, 1) = 1 + 2 * wood_fourier
+                UC(1, 2) = -2 * wood_fourier
+            End If
+
+            'exposed side
+            If CeilingNodeTemp(2) <= 473 Then
+                prop_k = kwood
+            ElseIf CeilingNodeTemp(2) <= 663 Then
+                prop_k = -0.617 + 0.0038 * CeilingNodeTemp(2) - 0.000004 * CeilingNodeTemp(2) ^ 2
+            Else
+                prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(2)
+            End If
+
+            moisturecontent = CeilingElementMF(1, 0, i) * mf_init
+            WoodDensity = CeilingApparentDensity(1, i)
+            'chardensity = 0.63 * WoodDensity / (1 + moisturecontent)
+
+            If CeilingNodeStatus(2) = 1 Then 'char
+                temp = CeilingNodeTemp(2) - 273 'node temp in deg C
+                char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
+                char_alpha = prop_k / (char_c * WoodDensity)
+                char_fourier = char_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
+                UC(1, 1) = 1 + 2 * char_fourier
+                UC(1, 2) = -2 * char_fourier
+                'interior boundary conditions
+                CX(1, 1) = -2 * QCeiling(room, i) * 1000 * char_fourier * CeilingDeltaX(room) / prop_k + CeilingNodeExposed
+                For k = 2 To ceilingnodestemp - 1
+                    CX(k, 1) = CeilingNodeTemp(k)
+                Next k
+            Else
+                'wood
+                wood_c = 101.3 + 3.867 * CeilingNodeTemp(2)
+                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(2) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+
+                'correct for the latent heat of water over the temp range 90-110 C
+                If CeilingNodeTemp(2) >= 273 + 80 And CeilingNodeTemp(2) <= 273 + 100 Then
+                    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                End If
+
+                wood_alpha = prop_k / (wood_c * WoodDensity)
+                wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
+                UC(1, 1) = 1 + 2 * wood_fourier
+                UC(1, 2) = -2 * wood_fourier
+                'interior boundary conditions
+                CX(1, 1) = -2 * QCeiling(room, i) * 1000 * wood_fourier * CeilingDeltaX(room) / prop_k + CeilingNodeExposed
+                For k = 2 To ceilingnodestemp - 1
+                    CX(k, 1) = CeilingNodeTemp(k)
+                Next k
+            End If
+
+
+            'inside nodes
+            k = 2
+            For j = 2 To ceilingnodestemp - 1
+                If CeilingNodeTemp(j + 1) <= 473 Then
+                    prop_k = kwood
+                ElseIf CeilingNodeTemp(j + 1) <= 663 Then
+                    prop_k = -0.617 + 0.0038 * CeilingNodeTemp(j + 1) - 0.000004 * CeilingNodeTemp(j + 1) ^ 2
+                Else
+                    prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(j + 1)
+                End If
+
+                moisturecontent = CeilingElementMF(j, 0, i) * mf_init
+                WoodDensity = CeilingApparentDensity(j, i)
+                'chardensity = 0.63 * WoodDensity / (1 + moisturecontent)
+
+                If CeilingNodeStatus(j + 1) = 1 Then
+                    temp = CeilingNodeTemp(j + 1) - 273
+                    char_c = 714 + 2.3 * temp - 0.0008 * temp ^ 2 - 0.00000037 * temp ^ 3
+                    char_alpha = prop_k / (char_c * WoodDensity)
+                    char_fourier = char_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
+                    UC(j, k - 1) = -char_fourier
+                    UC(j, k) = 1 + 2 * char_fourier
+                    UC(j, k + 1) = -char_fourier
+                Else
+                    wood_c = 101.3 + 3.867 * CeilingNodeTemp(j + 1)
+                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(j + 1) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+
+                    'correct for the latent heat of water over the temp range 90-110 C
+                    If CeilingNodeTemp(j + 1) >= 273 + 80 And CeilingNodeTemp(j + 1) <= 273 + 100 Then
+                        wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                    End If
+
+                    wood_alpha = prop_k / (wood_c * WoodDensity)
+                    wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
+                    UC(j, k - 1) = -wood_fourier
+                    UC(j, k) = 1 + 2 * wood_fourier
+                    UC(j, k + 1) = -wood_fourier
+                End If
+
+                k = k + 1
+            Next j
+
+            If frmOptions1.optLUdecom.Checked = True Then
+                'find surface temperatures for the next timestep
+                'using method of LU decomposition (preferred)
+                Call MatSol(UC, CX, ceilingnodestemp) 'ceiling
+
+            Else
+                'find surface temperatures for the next timestep
+                'using method of Gauss-Jordan elimination
+                Call LINEAR2(ceilingnodestemp, UC, CX, ier)
+
+                If ier = 1 Then MsgBox("singular matrix in implicit_surface_temps_CLTC_char")
+            End If
+
+            For j = 1 To ceilingnodestemp
+                CeilingNode(room, j + ceilingnodeadjust, i + 1) = CX(j, 1)
+
+            Next j
+            For j = 1 To ceilingnodeadjust
+                CeilingNode(room, j, i + 1) = chartemp + 273 + 1
+            Next
+
+            'store surface temps at next timestep in another array
+            CeilingTemp(room, i + 1) = CeilingNode(room, 1 + ceilingnodeadjust, i + 1)
+
+            UnexposedCeilingtemp(room, i + 1) = CeilingNode(room, ceilingnodestemp, i + 1)
+
+            Erase CX
+            Erase UC
+
+        Catch ex As Exception
+            MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in Implicit_Temps_Ceil_kinetic")
+        End Try
+    End Sub
     Sub MLR_kinetic(ByVal i As Integer, maxceilingnodes As Integer, maxwallnodes As Integer)
         'called once per timestep
         'following the calculation of the nodal temperatures in the surface boundary
@@ -24,8 +267,10 @@ Module KineticModelCode
             Dim elements As Integer
             Dim Zstart() As Double
             Dim CharYield As Double = 0.13
-            Dim DensityInitial As Double = 450 'kg/m3
-            Dim chardensity As Double = 85 'kg/m3
+            Dim DensityInitial As Double = 515 'kg/m3
+            'Dim chardensity As Double = 85 'kg/m3
+            Dim chardensity As Double = 150 'kg/m3
+            chardensity = DensityInitial * 0.63 / (1 + mf_init(0))
 
             Dim rmw As Double
 
@@ -36,6 +281,17 @@ Module KineticModelCode
             ReDim Zstart(0 To 3)
             elements = maxceilingnodes - 1
             CeilingWoodMLR_tot(i + 1) = 0
+
+            Dim DelamDuration As Double = 60 'seconds
+            Dim ceilingexposedpercent As Double = CLTceilingpercent
+            Dim ElapsedTime As Double
+            Dim DT As Double = CLTceildelamT + flashover_time 'time of delamination
+            If DT > flashover_time + 1 Then
+                ElapsedTime = tim(i, 1) - DT
+                If ElapsedTime < DelamDuration Then 'within 60 s of when delamination happened
+                    ceilingexposedpercent = CLTceilingpercent / DelamDuration * (tim(i, 1) - DT)
+                End If
+            End If
 
             For count = 1 To elements 'loop through each finite difference element in the ceiling
                 If i = 1 Then
@@ -65,7 +321,8 @@ Module KineticModelCode
                 'mass loss rate of wood fuel over this timestep 'kg/s
                 If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
 
-                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * CLTceilingpercent / 100 * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 / elements 'kg/s
+
+                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * ceilingexposedpercent / 100 * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 / elements 'kg/s
 
                 'residual mass of water in this element 'kg/m3
                 rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_init(0) 'kg/m3
@@ -73,6 +330,8 @@ Module KineticModelCode
                 'apparent density of this element 'kg/m3 
                 CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
 
+                'put a lower limit on the apparent density
+                If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
             Next
 
 
@@ -209,7 +468,7 @@ Module KineticModelCode
             ElementTemp = (CeilingNode(fireroom, elementcounter, stepcount) + CeilingNode(fireroom, elementcounter + 1, stepcount)) / 2 'use average temperature of the two adjacent nodes
 
             'test code element temperature rises 5K/min
-            ElementTemp = 293 + (stepcount - 1) * Timestep * 5 / 60
+            'ElementTemp = 293 + (stepcount - 1) * Timestep * 5 / 60
 
             DYDX_pyrol(k) = -A_array(k) * Exp(-E_array(k) / (Gas_Constant * ElementTemp)) * Y_pyrol(k) ^ n_array(k) 'arhennius equation
 

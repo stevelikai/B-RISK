@@ -21,8 +21,7 @@ Module MAIN
     Dim ig_step() As Short
     Dim data_keep(,,) As Single
     Dim oSprinklers As New List(Of oSprinkler)
-    Dim CLTwalldelamT As Double
-    Dim CLTceildelamT As Double
+
 
     Dim result1 As Double
     Dim result2 As Double
@@ -4397,10 +4396,10 @@ here:
             Dim j As Integer
             Dim idr As Integer = fireroom
             Dim crittemp As Double = DebondTemp + 273 'debond temp
-            Dim wDensity As Double = WallDensity(idr)
-            Dim wHC As Double = WallEffectiveHeatofCombustion(idr)
-            Dim cDensity As Double = CeilingDensity(idr)
-            Dim cHC As Double = CeilingEffectiveHeatofCombustion(idr)
+            'Dim wDensity As Double = WallDensity(idr)
+            'Dim wHC As Double = WallEffectiveHeatofCombustion(idr)
+            'Dim cDensity As Double = CeilingDensity(idr)
+            'Dim cHC As Double = CeilingEffectiveHeatofCombustion(idr)
             Dim wproportion As Double = CLTwallpercent / 100
             Dim cproportion As Double = CLTceilingpercent / 100
 
