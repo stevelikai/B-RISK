@@ -861,14 +861,18 @@ Module DIFFEQNS
                 Dim Zstart(,) As Double
                 ReDim CeilingElementMF(MMaxCeilingNodes - 1, 4, MaxTime) 'store the residual mass fractions of each component at each timestep
                 ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
-                ReDim LWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
+
                 ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
-                ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
-                ReDim CeilingApparentDensity(MMaxCeilingNodes - 1, MaxTime)
-                ReDim CeilingWoodMLR(MMaxCeilingNodes - 1, MaxTime)
-                ReDim CeilingWoodMLR_tot(MaxTime + 1)
                 ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
-                ReDim LWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
+                ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
+                ReDim WallResidualMass(MMaxWallNodes - 1, MaxTime)
+                ReDim CeilingApparentDensity(MMaxCeilingNodes - 1, MaxTime)
+                ReDim WallApparentDensity(MMaxWallNodes - 1, MaxTime)
+                ReDim CeilingWoodMLR(MMaxCeilingNodes - 1, MaxTime)
+                ReDim WallWoodMLR(MMaxWallNodes - 1, MaxTime)
+                ReDim CeilingWoodMLR_tot(MaxTime + 1)
+                ReDim WallWoodMLR_tot(MaxTime + 1)
+                ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
 
                 'initialise
                 For m = 1 To MMaxCeilingNodes - 1
@@ -884,11 +888,11 @@ Module DIFFEQNS
                 For m = 1 To MMaxWallNodes - 1
                     For j = 0 To 3
                         UWallElementMF(m, j, 1) = 1
-                        LWallElementMF(m, j, 1) = 1
+
 
                     Next
                     UWallCharResidue(m, 1) = 0
-                    LWallCharResidue(m, 1) = 0
+
                 Next
 
                 ReDim Zstart(0 To 3, MMaxCeilingNodes)  'variables for wood pyrolysis model
@@ -1156,11 +1160,13 @@ Module DIFFEQNS
 
                             If KineticModel = True And i > 1 Then
                                 Call Implicit_Temps_Ceil_kinetic(room, (i), CeilingNode) 'any substrate is ignored for HT
+                                Call Implicit_Temps_UWall_kinetic(room, (i), UWallNode) 'any substrate is ignored for HT
+                                Call Implicit_Surface_Temps_LWall(room, (i), LWallNode) 'no lower wall involvement in pyrolysis, all wall burns using the uwall properties
                             Else
+                                'use for simple CLT and Integral models
                                 Call Implicit_Surface_Temps_CLTC_Char(room, (i), CeilingNode) 'any substrate is ignored for HT
+                                Call Implicit_Surface_Temps_CLTW_Char(room, (i), UWallNode, LWallNode) 'any substrate is ignored for HT
                             End If
-
-                            Call Implicit_Surface_Temps_CLTW_Char(room, (i), UWallNode, LWallNode) 'any substrate is ignored for HT
 
                             Call Implicit_Surface_Temps_floor(room, (i), FloorNode) 'floor with or without substrate, only heat transfer effect inlcuded, no CLT contrib
 

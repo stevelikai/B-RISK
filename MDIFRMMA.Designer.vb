@@ -357,6 +357,10 @@
         Me.CeilingWoodMassLossRateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallResidualMassFractbyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPressure = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuCeilingJet = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
@@ -1658,7 +1662,7 @@
         '
         'KineticWoodPyrolysisModelToolStripMenuItem
         '
-        Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem, Me.ApparentDensitybyElementToolStripMenuItem})
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem, Me.ApparentDensitybyElementToolStripMenuItem, Me.WallResidualMassFractbyElementToolStripMenuItem, Me.WallFuelMassLossRatebyElementToolStripMenuItem, Me.WallFuelMassLossRatetotalToolStripMenuItem, Me.WallApparentDensitybyElementToolStripMenuItem})
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Name = "KineticWoodPyrolysisModelToolStripMenuItem"
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Size = New System.Drawing.Size(272, 22)
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Text = "Kinetic wood pyrolysis model"
@@ -1666,26 +1670,50 @@
         'ResidualMassFractionsToolStripMenuItem
         '
         Me.ResidualMassFractionsToolStripMenuItem.Name = "ResidualMassFractionsToolStripMenuItem"
-        Me.ResidualMassFractionsToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
-        Me.ResidualMassFractionsToolStripMenuItem.Text = "Residual mass fractions (by element)"
+        Me.ResidualMassFractionsToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ResidualMassFractionsToolStripMenuItem.Text = "Ceiling Residual mass fract (by element)"
         '
         'CeilingWoodMassLossRateToolStripMenuItem
         '
         Me.CeilingWoodMassLossRateToolStripMenuItem.Name = "CeilingWoodMassLossRateToolStripMenuItem"
-        Me.CeilingWoodMassLossRateToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.CeilingWoodMassLossRateToolStripMenuItem.Text = "Ceiling fuel mass loss rate (by element)"
         '
         'CeilingFuelMassLossRatetotalToolStripMenuItem
         '
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Name = "CeilingFuelMassLossRatetotalToolStripMenuItem"
-        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Text = "Ceiling fuel mass loss rate (total)"
         '
         'ApparentDensitybyElementToolStripMenuItem
         '
         Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
-        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(280, 22)
-        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Apparent density (by element)"
+        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Ceiling apparent density (by element)"
+        '
+        'WallResidualMassFractbyElementToolStripMenuItem
+        '
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Name = "WallResidualMassFractbyElementToolStripMenuItem"
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Text = "Wall Residual mass fract (by element)"
+        '
+        'WallFuelMassLossRatebyElementToolStripMenuItem
+        '
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Name = "WallFuelMassLossRatebyElementToolStripMenuItem"
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Text = "Wall fuel mass loss rate (by element)"
+        '
+        'WallFuelMassLossRatetotalToolStripMenuItem
+        '
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Name = "WallFuelMassLossRatetotalToolStripMenuItem"
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Text = "Wall fuel mass loss rate (total)"
+        '
+        'WallApparentDensitybyElementToolStripMenuItem
+        '
+        Me.WallApparentDensitybyElementToolStripMenuItem.Name = "WallApparentDensitybyElementToolStripMenuItem"
+        Me.WallApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallApparentDensitybyElementToolStripMenuItem.Text = "Wall apparent density (by element)"
         '
         'mnuPressure
         '
@@ -2698,5 +2726,9 @@
     Friend WithEvents CeilingWoodMassLossRateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CeilingFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallResidualMassFractbyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallFuelMassLossRatebyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
 #End Region
 End Class
