@@ -366,7 +366,7 @@ Module KineticModelCode
                 Next j
             End If
 
-            FloorTemp(room, i + 1) = GLOBAL_Renamed.FloorNode(room, 1, i + 1)
+            LowerWallTemp(room, i + 1) = LWallNode(room, 1, i + 1)
 
             If HaveWallSubstrate(room) = True Then
                 UnexposedLowerwalltemp(room, i + 1) = LWallNode(room, 2 * Wallnodes - 1, i + 1)
