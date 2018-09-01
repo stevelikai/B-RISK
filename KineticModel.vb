@@ -638,6 +638,8 @@ Module KineticModelCode
             Dim DensityInitial As Double = 515 'kg/m3
             'Dim chardensity As Double = 85 'kg/m3
             Dim chardensity As Double = 150 'kg/m3
+            Dim DelamDuration As Double = 120 'seconds
+
             chardensity = DensityInitial * 0.63 / (1 + mf_init(0))
 
             Dim rmw As Double
@@ -650,7 +652,7 @@ Module KineticModelCode
             elements = maxceilingnodes - 1
             CeilingWoodMLR_tot(i + 1) = 0
 
-            Dim DelamDuration As Double = 60 'seconds
+
             Dim ceilingexposedpercent As Double = CLTceilingpercent
             Dim ElapsedTime As Double
             Dim DT As Double = CLTceildelamT + flashover_time 'time of delamination

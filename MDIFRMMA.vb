@@ -8148,7 +8148,8 @@ errhandler:
             Description = "Room " + CStr(idr)
             If NumberTimeSteps < 2 Then Exit Sub
 
-            If IntegralModel = False And KineticModel = False Then
+            'If IntegralModel = False And KineticModel = False Then
+            If IntegralModel = False Then
 
                 Title = "Enter char or isotherm temperature?"   ' Set title.
                 Message = "Enter the temperature (C)"   ' Set prompt.
@@ -8207,7 +8208,7 @@ errhandler:
                 For j = 0 To NumberTimeSteps
                     datatobeplotted(idr, j) = wall_char(j, 2)
                 Next
-            ElseIf kineticModel = True Then
+            ElseIf KineticModel = True Then
                 'define variables
                 Title = "Upper wall char depth (mm) - based on kinetic model for burning rate"
                 'Title = "Upper wall char depth (mm)"
@@ -8262,7 +8263,7 @@ errhandler:
             Description = "Room " + CStr(idr)
             If NumberTimeSteps < 2 Then Exit Sub
 
-            If IntegralModel = False And KineticModel = False Then
+            If IntegralModel = False Then
 
                 Title = "Enter char temperature?"   ' Set title.
                 Message = "Enter the temperature (C)"   ' Set prompt.
@@ -8321,14 +8322,14 @@ errhandler:
                 For j = 0 To NumberTimeSteps
                     datatobeplotted(idr, j) = ceil_char(j, 2)
                 Next
-            ElseIf KineticModel = True Then
-                'define variables
-                Title = "Ceiling char depth (mm) - based on kinetic model for burning rate"
-                'Title = "Upper wall char depth (mm)"
+                'ElseIf KineticModel = True Then
+                '    'define variables
+                '    Title = "Ceiling char depth (mm) - based on kinetic model for burning rate"
+                '    'Title = "Upper wall char depth (mm)"
 
-                For j = 0 To NumberTimeSteps
-                    datatobeplotted(idr, j) = ceil_char(j, 2)
-                Next
+                '    For j = 0 To NumberTimeSteps
+                '        datatobeplotted(idr, j) = ceil_char(j, 2)
+                '    Next
             End If
 
 
@@ -9453,7 +9454,10 @@ errhandler:
 
             frmPlot.Chart1.Visible = True
             frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = CeilingWoodMLR.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
             frmPlot.Show()
+
 
         Catch ex As Exception
             MsgBox(Err.Description, MsgBoxStyle.OkOnly, Err.Source & "Line " & Err.Erl)
@@ -9472,17 +9476,20 @@ errhandler:
         Dim numpoints, numsets As Integer
 
         Try
+
             Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
             Message = "Enter the element"   ' Set prompt.
             dDefault = "1"   ' Set default.
-            ' Display message, title, and default value.
-            MyValue = InputBox(Message, Title, dDefault)
-            If Not IsNumeric(MyValue) Then
-                Exit Sub
-            End If
-            idr = CInt(MyValue) 'store the element number
+                ' Display message, title, and default value.
+                MyValue = InputBox(Message, Title, dDefault)
+                If Not IsNumeric(MyValue) Then
+                    Exit Sub
+                End If
+                idr = CInt(MyValue) 'store the element number
+
 
             'define variables
+
             Title = "Residual mass fractions in element " & idr.ToString
             DataShift = 0
             DataMultiplier = 1
@@ -9527,7 +9534,6 @@ errhandler:
 
             Next i
 
-
             frmPlot.Chart1.BackColor = Color.AliceBlue
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
@@ -9543,6 +9549,11 @@ errhandler:
             frmPlot.Chart1.Titles("Title1").Text = Title
 
             frmPlot.Chart1.Visible = True
+
+            frmPlot.NumericUpDownTime.Maximum = CeilingElementMF.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+
+
             frmPlot.BringToFront()
             frmPlot.Show()
 
@@ -9689,6 +9700,8 @@ errhandler:
 
             frmPlot.Chart1.Visible = True
             frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = CeilingApparentDensity.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
             frmPlot.Show()
 
         Catch ex As Exception
@@ -9779,6 +9792,10 @@ errhandler:
             frmPlot.Chart1.Titles("Title1").Text = Title
 
             frmPlot.Chart1.Visible = True
+
+            frmPlot.NumericUpDownTime.Maximum = UWallElementMF.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+
             frmPlot.BringToFront()
             frmPlot.Show()
 
@@ -9859,6 +9876,8 @@ errhandler:
 
             frmPlot.Chart1.Visible = True
             frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = WallWoodMLR.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
             frmPlot.Show()
 
         Catch ex As Exception
@@ -10005,6 +10024,8 @@ errhandler:
 
             frmPlot.Chart1.Visible = True
             frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = WallApparentDensity.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
             frmPlot.Show()
 
         Catch ex As Exception

@@ -4396,12 +4396,6 @@ here:
             Dim j As Integer
             Dim idr As Integer = fireroom
             Dim crittemp As Double = DebondTemp + 273 'debond temp
-            'Dim wDensity As Double = WallDensity(idr)
-            'Dim wHC As Double = WallEffectiveHeatofCombustion(idr)
-            'Dim cDensity As Double = CeilingDensity(idr)
-            'Dim cHC As Double = CeilingEffectiveHeatofCombustion(idr)
-            Dim wproportion As Double = CLTwallpercent / 100
-            Dim cproportion As Double = CLTceilingpercent / 100
 
             'define variables
             Dim depth As Single = 0
