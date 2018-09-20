@@ -11,15 +11,18 @@ Public Class frmCLT
         Else
             optCLTOFF.Checked = True
         End If
+
+        RB_dynamic.Checked = True
+
         If IntegralModel = True Then
             RB_Integral.Checked = True
-        Else
-            RB_Integral.Checked = False
+            RB_dynamic.Checked = False
+            RB_Kinetic.Checked = False
         End If
         If KineticModel = True Then
             RB_Kinetic.Checked = True
-        Else
-            RB_Kinetic.Checked = False
+            RB_dynamic.Checked = False
+            RB_Integral.Checked = False
         End If
 
         numeric_ceilareapercent.Value = CLTceilingpercent
@@ -32,6 +35,7 @@ Public Class frmCLT
         txtCLTLoG.Text = CLTLoG
         txtCritFlux.Text = CLTQcrit
         txtDebondTemp.Text = DebondTemp
+        Me.Show()
 
         'CLTflameflux = 17
         'CLTigtemp = 384
@@ -51,15 +55,17 @@ Public Class frmCLT
 
         If RB_Integral.Checked = True Then
             IntegralModel = True
+            KineticModel = False
+        ElseIf RB_Kinetic.Checked = True Then
+            KineticModel = True
+            IntegralModel = False
         Else
+            KineticModel = False
             IntegralModel = False
         End If
 
-        If RB_Kinetic.Checked = True Then
-            KineticModel = True
-        Else
-            KineticModel = False
-        End If
+        CLTwallpercent = numeric_wallareapercent.Value
+        CLTceilingpercent = numeric_ceilareapercent.Value
 
         Me.Close()
 
@@ -91,15 +97,6 @@ Public Class frmCLT
         ErrorProvider1.SetError(txtCharTemp, "Invalid Entry. Char temperature must be greater than 30 C. ")
 
     End Sub
-
-    Private Sub numeric_wallareapercent_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numeric_wallareapercent.ValueChanged
-        CLTwallpercent = CInt(numeric_wallareapercent.Value)
-    End Sub
-
-    Private Sub numeric_ceilareapercent_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numeric_ceilareapercent.ValueChanged
-        CLTceilingpercent = CInt(numeric_ceilareapercent.Value)
-    End Sub
-
 
 
     Private Sub txtLamellaDepth_Validated(sender As Object, e As EventArgs) Handles txtLamellaDepth.Validated

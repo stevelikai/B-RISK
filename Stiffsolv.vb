@@ -75,14 +75,16 @@ Module STIFFsolv
             Dim SolverOptions As New VariableOrderOdeSolver.Options()
 
             ' Gets and sets the bound on the estimated error at each integration step. 
-            SolverOptions.AbsoluteTolerance = New DoubleVector(0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001)
+            SolverOptions.AbsoluteTolerance = New DoubleVector(0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001)
+            'SolverOptions.AbsoluteTolerance = New DoubleVector(0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001)
             'SolverOptions.AbsoluteTolerance = New DoubleVector() 'this would need to be resized and populated based on the number of rooms in the model.
 
             ' Bound on the estimated error at each integration step. At the ith integration step the error, e[i] for the estimated solution y[i] satisfies e[i] <= max(RelativeTolerance*Math.Abs(y[i]), AbsoluteTolerance[i]) 
-            SolverOptions.RelativeTolerance = 0.00001
+            SolverOptions.RelativeTolerance = 0.001
+            'SolverOptions.RelativeTolerance = 0.00001
 
             'Increases the number of output points by the specified factor producing smoother output. If Refine is n which is greater than 1, the solver subdivides each time step into n smaller intervals and returns solutions at each time point. The extra values produced for Refine are computed by means of continuous extension formulas The default for RungeKutta45OdeSolver solver is 4. 
-            SolverOptions.Refine = 10
+            SolverOptions.Refine = 1
 
             SolverOptions.MaxStepSize = 0.0001
 

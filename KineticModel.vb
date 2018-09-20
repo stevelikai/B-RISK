@@ -114,10 +114,10 @@ Module KineticModelCode
                 wood_c = 101.3 + 3.867 * CeilingNodeTemp(ceilingnodestemp)
                 wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(ceilingnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
-                'correct for the latent heat of water over the temp range 90-110 C
-                If CeilingNodeTemp(ceilingnodestemp) >= 273 + 80 And CeilingNodeTemp(ceilingnodestemp) <= 273 + 100 Then
-                    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
-                End If
+                ''correct for the latent heat of water over the temp range 90-110 C
+                'If CeilingNodeTemp(ceilingnodestemp) >= 273 + 80 And CeilingNodeTemp(ceilingnodestemp) <= 273 + 100 Then
+                '    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                'End If
 
                 wood_alpha = prop_k / (wood_c * WoodDensity)
                 wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
@@ -160,10 +160,10 @@ Module KineticModelCode
                 wood_c = 101.3 + 3.867 * CeilingNodeTemp(2)
                 wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(2) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
-                'correct for the latent heat of water over the temp range 90-110 C
-                If CeilingNodeTemp(2) >= 273 + 80 And CeilingNodeTemp(2) <= 273 + 100 Then
-                    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
-                End If
+                ''correct for the latent heat of water over the temp range 90-110 C
+                'If CeilingNodeTemp(2) >= 273 + 80 And CeilingNodeTemp(2) <= 273 + 100 Then
+                '    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                'End If
 
                 wood_alpha = prop_k / (wood_c * WoodDensity)
                 wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
@@ -204,10 +204,10 @@ Module KineticModelCode
                     wood_c = 101.3 + 3.867 * CeilingNodeTemp(j + 1)
                     wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(j + 1) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
-                    'correct for the latent heat of water over the temp range 90-110 C
-                    If CeilingNodeTemp(j + 1) >= 273 + 80 And CeilingNodeTemp(j + 1) <= 273 + 100 Then
-                        wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
-                    End If
+                    ''correct for the latent heat of water over the temp range 90-110 C
+                    'If CeilingNodeTemp(j + 1) >= 273 + 80 And CeilingNodeTemp(j + 1) <= 273 + 100 Then
+                    '    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                    'End If
 
                     wood_alpha = prop_k / (wood_c * WoodDensity)
                     wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
@@ -238,6 +238,8 @@ Module KineticModelCode
             Next j
             For j = 1 To ceilingnodeadjust
                 CeilingNode(room, j, i + 1) = chartemp + 273 + 1
+                ' CeilingNode(room, j, i + 1) = DebondTemp + 273
+                ' CeilingNode(room, j, i + 1) = CeilingNode(room, j, i)
             Next
 
             'store surface temps at next timestep in another array
@@ -407,6 +409,7 @@ Module KineticModelCode
             Dim mf_init As Double = 0.1 'initial mc
 
 
+
             If CLTwallpercent > 0 Then
                 NLW = WallThickness(room) / 1000 / Lamella 'number of lamella - in two places also in main_program2
 
@@ -484,10 +487,10 @@ Module KineticModelCode
                 wood_c = 101.3 + 3.867 * wallNodeTemp(wallnodestemp)
                 wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (wallNodeTemp(wallnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
-                'correct for the latent heat of water over the temp range 90-110 C
-                If wallNodeTemp(wallnodestemp) >= 273 + 80 And wallNodeTemp(wallnodestemp) <= 273 + 100 Then
-                    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
-                End If
+                ''correct for the latent heat of water over the temp range 90-110 C
+                'If wallNodeTemp(wallnodestemp) >= 273 + 80 And wallNodeTemp(wallnodestemp) <= 273 + 100 Then
+                '    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                'End If
 
                 wood_alpha = prop_k / (wood_c * WoodDensity)
                 wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
@@ -521,6 +524,8 @@ Module KineticModelCode
                 UW(1, 2) = -2 * char_fourier
                 'interior boundary conditions
                 WX(1, 1) = -2 * QUpperWall(room, i) * 1000 * char_fourier * WallDeltaX(room) / prop_k + wallNodeExposed
+
+
                 For k = 2 To wallnodestemp - 1
                     WX(k, 1) = wallNodeTemp(k)
                 Next k
@@ -529,10 +534,10 @@ Module KineticModelCode
                 wood_c = 101.3 + 3.867 * wallNodeTemp(2)
                 wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (wallNodeTemp(2) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
-                'correct for the latent heat of water over the temp range 90-110 C
-                If wallNodeTemp(2) >= 273 + 80 And wallNodeTemp(2) <= 273 + 100 Then
-                    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
-                End If
+                ''correct for the latent heat of water over the temp range 90-110 C
+                'If wallNodeTemp(2) >= 273 + 80 And wallNodeTemp(2) <= 273 + 100 Then
+                '    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                'End If
 
                 wood_alpha = prop_k / (wood_c * WoodDensity)
                 wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
@@ -540,6 +545,9 @@ Module KineticModelCode
                 UW(1, 2) = -2 * wood_fourier
                 'interior boundary conditions
                 WX(1, 1) = -2 * QUpperWall(room, i) * 1000 * wood_fourier * WallDeltaX(room) / prop_k + wallNodeExposed
+
+
+
                 For k = 2 To wallnodestemp - 1
                     WX(k, 1) = wallNodeTemp(k)
                 Next k
@@ -572,10 +580,10 @@ Module KineticModelCode
                     wood_c = 101.3 + 3.867 * wallNodeTemp(j + 1)
                     wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (wallNodeTemp(j + 1) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
-                    'correct for the latent heat of water over the temp range 90-110 C
-                    If wallNodeTemp(j + 1) >= 273 + 80 And wallNodeTemp(j + 1) <= 273 + 100 Then
-                        wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
-                    End If
+                    ''correct for the latent heat of water over the temp range 90-110 C
+                    'If wallNodeTemp(j + 1) >= 273 + 80 And wallNodeTemp(j + 1) <= 273 + 100 Then
+                    '    wood_c = wood_c + mf_init * 2257 / 20 * 1000 'J/kgK
+                    'End If
 
                     wood_alpha = prop_k / (wood_c * WoodDensity)
                     wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
@@ -606,6 +614,8 @@ Module KineticModelCode
             Next j
             For j = 1 To wallnodeadjust
                 UWallNode(room, j, i + 1) = chartemp + 273 + 1
+                'UWallNode(room, j, i + 1) = DebondTemp + 273
+                'UWallNode(room, j, i + 1) = UWallNode(room, j, i)
             Next
 
             'store surface temps at next timestep in another array
@@ -639,10 +649,12 @@ Module KineticModelCode
             'Dim chardensity As Double = 85 'kg/m3
             Dim chardensity As Double = 150 'kg/m3
             Dim DelamDuration As Double = 120 'seconds
+            Dim ElapsedTime As Double
+            Dim DT As Double
 
             chardensity = DensityInitial * 0.63 / (1 + mf_init(0))
 
-            Dim rmw As Double
+            Dim rmw, area As Double
 
             'the ceiling
             'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
@@ -652,61 +664,74 @@ Module KineticModelCode
             elements = maxceilingnodes - 1
             CeilingWoodMLR_tot(i + 1) = 0
 
+            Dim NL As Integer = CeilingThickness(fireroom) / 1000 / Lamella 'number of lamella - in two places also in main_program2
+            Dim layersremaining As Integer = NL - Lamella1 / Lamella + 1
+
 
             Dim ceilingexposedpercent As Double = CLTceilingpercent
-            Dim ElapsedTime As Double
-            Dim DT As Double = CLTceildelamT + flashover_time 'time of delamination
-            If DT > flashover_time + 1 Then
-                ElapsedTime = tim(i, 1) - DT
-                If ElapsedTime < DelamDuration Then 'within 60 s of when delamination happened
-                    ceilingexposedpercent = CLTceilingpercent / DelamDuration * (tim(i, 1) - DT)
-                End If
-            End If
 
-            For count = 1 To elements 'loop through each finite difference element in the ceiling
-                If i = 1 Then
-                    For m = 1 To 3
-                        CeilingResidualMass(count, i) = DensityInitial * mf_init(m) 'initialise
+                DT = CLTceildelamT + flashover_time 'time of delamination
+                If DT > flashover_time + 1 Then
+                    ElapsedTime = tim(i, 1) - DT
+                    If ElapsedTime < DelamDuration Then 'within 60 s of when delamination happened
+                        ceilingexposedpercent = CLTceilingpercent / DelamDuration * (tim(i, 1) - DT)
+                    End If
+                End If
+
+                For count = 1 To elements 'loop through each finite difference element in the ceiling
+                    If i = 1 Then
+                        For m = 1 To 3
+                            CeilingResidualMass(count, i) = DensityInitial * mf_init(m) 'initialise
+                        Next
+                        CeilingApparentDensity(count, i) = DensityInitial
+                    End If
+
+                    For m = 0 To 3
+                        Zstart(m) = CeilingElementMF(count, m, i)
                     Next
-                    CeilingApparentDensity(count, i) = DensityInitial
+                    elementcounter = count
+
+                If ceilingexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "C")
+
+                For m = 0 To 3
+                        CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
+                    Next
+
+                    'total mass fraction of char residue in this element
+                    CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_init(1) * CharYield + (1 - CeilingElementMF(count, 2, i + 1)) * mf_init(2) * CharYield + (1 - CeilingElementMF(count, 3, i + 1)) * mf_init(3) * CharYield
+
+                    'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
+                    CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_init(1) + CeilingElementMF(count, 2, i + 1) * mf_init(2) + CeilingElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
+
+                    'mass loss rate of wood fuel over this timestep 'kg/s
+                    If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
+
+                'If CeilingWoodMLR(count, i + 1) > 5 Then CeilingWoodMLR(count, i + 1) = 5 'kg/m3/s keep a lid on it!
+
+                area = ceilingexposedpercent / 100 * RoomFloorArea(fireroom) 'm2
+
+                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * area * CeilingThickness(fireroom) / 1000 / elements 'kg/s
+
+                If CeilingWoodMLR_tot(i + 1) / area > 1 Then 'kg/s/m2
+
                 End If
-
-                For m = 0 To 3
-                    Zstart(m) = CeilingElementMF(count, m, i)
-                Next
-                elementcounter = count
-
-                Call ODE_Solver_Pyrolysis(Zstart, i, "C")
-
-                For m = 0 To 3
-                    CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
-                Next
-
-                'total mass fraction of char residue in this element
-                CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_init(1) * CharYield + (1 - CeilingElementMF(count, 2, i + 1)) * mf_init(2) * CharYield + (1 - CeilingElementMF(count, 3, i + 1)) * mf_init(3) * CharYield
-
-                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
-                CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_init(1) + CeilingElementMF(count, 2, i + 1) * mf_init(2) + CeilingElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
-
-                'mass loss rate of wood fuel over this timestep 'kg/s
-                If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
-
-
-                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * ceilingexposedpercent / 100 * RoomFloorArea(fireroom) * CeilingThickness(fireroom) / 1000 / elements 'kg/s
 
                 'residual mass of water in this element 'kg/m3
                 rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_init(0) 'kg/m3
 
-                'apparent density of this element 'kg/m3 
-                CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
+                    'apparent density of this element 'kg/m3 
+                    CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
 
-                'put a lower limit on the apparent density
-                If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
-            Next
+                    'put a lower limit on the apparent density
+                    If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
+                Next
 
             'the wall
             'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
             'WallElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
+
+            NL = WallThickness(fireroom) / 1000 / Lamella 'number of lamella - in two places also in main_program2
+            layersremaining = NL - Lamella2 / Lamella + 1
 
             elements = maxwallnodes - 1
             WallWoodMLR_tot(i + 1) = 0
@@ -720,6 +745,7 @@ Module KineticModelCode
                 End If
             End If
 
+            'For count = (1 + elements - layersremaining * elements / NL) To elements 'loop through each finite difference element in the ceiling
             For count = 1 To elements 'loop through each finite difference element in the ceiling
                 If i = 1 Then
                     For m = 1 To 3
@@ -733,7 +759,7 @@ Module KineticModelCode
                 Next
                 elementcounter = count
 
-                Call ODE_Solver_Pyrolysis(Zstart, i, "W")
+                If wallexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "W")
 
                 For m = 0 To 3
                     UWallElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
@@ -748,7 +774,11 @@ Module KineticModelCode
                 'mass loss rate of wood fuel over this timestep 'kg/s
                 If i > 1 Then WallWoodMLR(count, i + 1) = -(WallResidualMass(count, i + 1) - WallResidualMass(count, i)) / Timestep 'kg/(s.m3)
 
-                WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i + 1) + WallWoodMLR(count, i + 1) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom) * WallThickness(fireroom) / 1000 / elements 'kg/s
+                'If WallWoodMLR(count, i + 1) > 5 Then WallWoodMLR(count, i + 1) = 5 'kg/m3/s keep a lid on it!
+
+                area = wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom)
+
+                WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i + 1) + WallWoodMLR(count, i + 1) * area * WallThickness(fireroom) / 1000 / elements 'kg/s
 
                 'residual mass of water in this element 'kg/m3
                 rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_init(0) 'kg/m3
@@ -759,6 +789,7 @@ Module KineticModelCode
                 'put a lower limit on the apparent density
                 If WallApparentDensity(count, i + 1) < chardensity Then WallApparentDensity(count, i + 1) = chardensity
             Next
+
 
         Catch ex As Exception
             MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in " & Err.Source & " Line " & Err.Erl)

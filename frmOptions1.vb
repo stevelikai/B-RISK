@@ -2587,13 +2587,20 @@ errorhandler:
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdWoodOption.Click
-        frmCLT.Show()
+
         If useCLTmodel = True Then
             frmCLT.optCLTOFF.Checked = False
             frmCLT.optCLTON.Checked = True
         Else
             frmCLT.optCLTOFF.Checked = True
             frmCLT.optCLTON.Checked = False
+        End If
+        If IntegralModel = True Then
+            frmCLT.RB_Integral.Checked = True
+        ElseIf KineticModel = True Then
+            frmCLT.RB_Kinetic.Checked = True
+        Else
+            frmCLT.RB_dynamic.Checked = True
         End If
 
         frmCLT.numeric_ceilareapercent.Value = CLTceilingpercent
@@ -2606,6 +2613,9 @@ errorhandler:
         frmCLT.txtCLTLoG.Text = CLTLoG
         frmCLT.txtCritFlux.Text = CLTQcrit
         frmCLT.txtDebondTemp.Text = DebondTemp
+        Hide()
+
+        frmCLT.Show()
 
     End Sub
 

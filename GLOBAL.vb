@@ -24,6 +24,7 @@ Module GLOBAL_Renamed
     Public autosaveXL As Boolean = False
     Public FlameExtinctionModel As Boolean = True
     Public RCNone As Boolean
+    Public manualrun As Boolean
 
     'Global variables used in the program
     Public Const Version As String = "2018.051"

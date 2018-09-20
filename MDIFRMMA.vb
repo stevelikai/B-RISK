@@ -350,12 +350,21 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmNewSmokeDetector)
         Me.AddOwnedForm(frmViewDocs)
         Me.AddOwnedForm(frmRoomList)
-
-        frmInputs.Read_BaseFile_xml(RiskDataDirectory & "basemodel_default.xml", False)
-
         Me.Show()
         Me.Enabled = False
 
+        If Environment.GetCommandLineArgs.Length >= 2 Then
+            MasterDirectory = Environment.GetCommandLineArgs(1)
+            manualrun = True
+            frmInputs.Show()
+
+            Call batchfiles()
+            Me.Close()
+        Else
+            manualrun = False
+        End If
+
+        frmInputs.Read_BaseFile_xml(RiskDataDirectory & "basemodel_default.xml", False)
         mnuEULA.PerformClick()
 
     End Sub
@@ -8149,9 +8158,9 @@ errhandler:
             If NumberTimeSteps < 2 Then Exit Sub
 
             'If IntegralModel = False And KineticModel = False Then
-            If IntegralModel = False Then
+            'If IntegralModel = False Then
 
-                Title = "Enter char or isotherm temperature?"   ' Set title.
+            Title = "Enter char or isotherm temperature?"   ' Set title.
                 Message = "Enter the temperature (C)"   ' Set prompt.
                 dDefault = "300"   ' Set default.
                 ' Display message, title, and default value.
@@ -8169,7 +8178,7 @@ errhandler:
                 Dim T(0 To NumberwallNodes) As Double
 
                 'define variables
-                Title = "Upper wall char depth (mm) - based on " & crittemp.ToString & " C isotherm"
+                Title = "Upper wall char depth (mm) - based on " & MyValue.ToString & " C isotherm"
                 'Title = "Upper wall char depth (mm)"
 
                 For j = 0 To NumberTimeSteps
@@ -8200,23 +8209,23 @@ errhandler:
 
 
                 Next
-            ElseIf IntegralModel = True Then
-                'define variables
-                Title = "Upper wall char depth (mm) - based on integral model for burning rate"
-                'Title = "Upper wall char depth (mm)"
+            'ElseIf IntegralModel = True Then
+            '    'define variables
+            '    Title = "Upper wall char depth (mm) - based on integral model for burning rate"
+            '    'Title = "Upper wall char depth (mm)"
 
-                For j = 0 To NumberTimeSteps
-                    datatobeplotted(idr, j) = wall_char(j, 2)
-                Next
-            ElseIf KineticModel = True Then
-                'define variables
-                Title = "Upper wall char depth (mm) - based on kinetic model for burning rate"
-                'Title = "Upper wall char depth (mm)"
+            '    For j = 0 To NumberTimeSteps
+            '        datatobeplotted(idr, j) = wall_char(j, 2)
+            '    Next
+            'ElseIf KineticModel = True Then
+            '    'define variables
+            '    Title = "Upper wall char depth (mm) - based on kinetic model for burning rate"
+            '    'Title = "Upper wall char depth (mm)"
 
-                For j = 0 To NumberTimeSteps
-                    datatobeplotted(idr, j) = wall_char(j, 2)
-                Next
-            End If
+            '    For j = 0 To NumberTimeSteps
+            '        datatobeplotted(idr, j) = wall_char(j, 2)
+            '    Next
+            'End If
 
             'define variables
             DataShift = 0
@@ -9342,17 +9351,71 @@ errhandler:
 
     Private Sub BatchFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BatchFilesToolStripMenuItem.Click
 
-        'select the master folder
-        FolderBrowserDialog1.Description = "Select the Batch File Root Folder"
-        FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
-        FolderBrowserDialog1.ShowDialog()
-        MasterDirectory = FolderBrowserDialog1.SelectedPath
+        Call batchfiles()
 
-        If MasterDirectory = "" Then Exit Sub
+        ''select the master folder
+        'FolderBrowserDialog1.Description = "Select the Batch File Root Folder"
+        'FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
+        'FolderBrowserDialog1.ShowDialog()
+        'MasterDirectory = FolderBrowserDialog1.SelectedPath
 
-        'seek confirmation from the user that they want to run the simulation
-        Dim response As Short = MsgBox("Do you want to run all simulations now?", MB_YESNO + MB_ICONQUESTION, ProgramTitle)
-        If response = IDNO Then Exit Sub
+        'If MasterDirectory = "" Then Exit Sub
+
+        ''seek confirmation from the user that they want to run the simulation
+        'Dim response As Short = MsgBox("Do you want to run all simulations now?", MB_YESNO + MB_ICONQUESTION, ProgramTitle)
+        'If response = IDNO Then Exit Sub
+        'batch = True
+        ''loop through all the subfolders
+        'For Each Dir As String In System.IO.Directory.GetDirectories(MasterDirectory)
+        '    Dim dirInfo As New System.IO.DirectoryInfo(Dir)
+        '    RiskDataDirectory = MasterDirectory & "\" & dirInfo.Name & "\"
+
+        '    If InStr(dirInfo.Name, "basemodel_") = 1 Then
+
+        '        opendatafile = RiskDataDirectory & dirInfo.Name & ".xml"
+
+        '        'open the base model in this folder
+        '        frmInputs.Read_BaseFile_xml(opendatafile, True)
+
+        '        basefile = opendatafile
+
+        '        'go away and run this project
+        '        Call frmInputs.readytorun()
+
+        '    Else
+        '        'skip this folder
+        '        Continue For
+        '    End If
+        'Next
+        'batch = False
+
+        'MsgBox("Batch file simulations complete.", MsgBoxStyle.Information)
+
+    End Sub
+    Private Sub batchfiles()
+
+        If manualrun = True Then
+            'called from the command line
+
+        Else
+            'select the master folder
+            FolderBrowserDialog1.Description = "Select the Batch File Root Folder"
+            FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
+            FolderBrowserDialog1.ShowDialog()
+            MasterDirectory = FolderBrowserDialog1.SelectedPath
+
+            'seek confirmation from the user that they want to run the simulation
+            Dim response As Short = MsgBox("Do you want to run all simulations now?", MB_YESNO + MB_ICONQUESTION, ProgramTitle)
+            If response = IDNO Then Exit Sub
+
+        End If
+
+        If MasterDirectory = "" Then
+            MsgBox("Master directory not specified", MB_EXCLAIM, ProgramTitle)
+            Exit Sub
+        End If
+
+
         batch = True
         'loop through all the subfolders
         For Each Dir As String In System.IO.Directory.GetDirectories(MasterDirectory)
@@ -9367,6 +9430,7 @@ errhandler:
                 frmInputs.Read_BaseFile_xml(opendatafile, True)
 
                 basefile = opendatafile
+                'MsgBox("base filename: " & basefile, MB_ICONINFORMATION, ProgramTitle)
 
                 'go away and run this project
                 Call frmInputs.readytorun()
@@ -9379,7 +9443,6 @@ errhandler:
         batch = False
 
         MsgBox("Batch file simulations complete.", MsgBoxStyle.Information)
-
     End Sub
 
     Private Sub CeilingWoodMassLossRateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CeilingWoodMassLossRateToolStripMenuItem.Click

@@ -863,7 +863,7 @@ Module DIFFEQNS
                 ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
 
                 ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
-                ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
+                ReDim UWallCharResidue(MMaxWallNodes - 1, MaxTime)
                 ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
                 ReDim WallResidualMass(MMaxWallNodes - 1, MaxTime)
                 ReDim CeilingApparentDensity(MMaxCeilingNodes - 1, MaxTime)
@@ -872,7 +872,7 @@ Module DIFFEQNS
                 ReDim WallWoodMLR(MMaxWallNodes - 1, MaxTime)
                 ReDim CeilingWoodMLR_tot(MaxTime + 1)
                 ReDim WallWoodMLR_tot(MaxTime + 1)
-                ReDim UWallCharResidue(MMaxCeilingNodes - 1, MaxTime)
+
 
                 'initialise
                 For m = 1 To MMaxCeilingNodes - 1
@@ -1922,8 +1922,29 @@ Module DIFFEQNS
                             'Stop
                             Dim Message As String = tim(i, 1).ToString & " sec. Room " & j.ToString & " Convergence error. Run Terminated."
                             frmInputs.rtb_log.Text = Message.ToString & Chr(13) & frmInputs.rtb_log.Text
+                            Ystart(j, 1) = UpperVolume(j, i)
+                            Ystart(j, 2) = uppertemp(j, i)
+                            Ystart(j, 3) = lowertemp(j, i)
+                            Ystart(j, 4) = RoomPressure(j, i)
+                            Ystart(j, 5) = O2MassFraction(j, i, 1)
+                            Ystart(j, 6) = TUHC(j, i, 1)
+                            Ystart(j, 7) = TUHC(j, i, 2)
+                            Ystart(j, 8) = COMassFraction(j, i, 1)
+                            Ystart(j, 9) = COMassFraction(j, i, 2)
+                            Ystart(j, 10) = CO2MassFraction(j, i, 1)
+                            Ystart(j, 11) = CO2MassFraction(j, i, 2)
+                            Ystart(j, 12) = SootMassFraction(j, i, 1)
+                            Ystart(j, 13) = SootMassFraction(j, i, 2)
+                            Ystart(j, 14) = HCNMassFraction(j, i, 2)
+                            Ystart(j, 15) = O2MassFraction(j, i, 2)
+                            Ystart(j, 16) = H2OMassFraction(j, i, 1)
+                            Ystart(j, 17) = H2OMassFraction(j, i, 2)
+                            Ystart(j, 18) = HCNMassFraction(j, i, 1)
+                            Ystart(j, 19) = LinkTemp(j, i)
+
                             flagstop = 1
                             Exit For
+
                             'Oops - not a number
                         Else
                             'Got a number
@@ -1972,6 +1993,7 @@ Module DIFFEQNS
                     O2MassFraction(j, i + 1, 1) = Ystart(j, 5)
                     If O2MassFraction(j, i + 1, 1) < 0 Then O2MassFraction(j, i + 1, 1) = 0
                     H2OMassFraction(j, i + 1, 1) = Ystart(j, 16)
+                    If H2OMassFraction(j, i + 1, 1) < 0 Then H2OMassFraction(j, i + 1, 1) = 0
                     HCNMassFraction(j, i + 1, 1) = Ystart(j, 18)
                     RoomPressure(j, i + 1) = Ystart(j, 4)
                     COMassFraction(j, i + 1, 2) = Ystart(j, 9)

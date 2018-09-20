@@ -121,7 +121,6 @@ Partial Class frmCLT
         '
         'numeric_wallareapercent
         '
-        Me.numeric_wallareapercent.Increment = New Decimal(New Integer() {5, 0, 0, 0})
         Me.numeric_wallareapercent.Location = New System.Drawing.Point(210, 29)
         Me.numeric_wallareapercent.Name = "numeric_wallareapercent"
         Me.numeric_wallareapercent.Size = New System.Drawing.Size(59, 20)
