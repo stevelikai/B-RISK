@@ -27,7 +27,7 @@ Module GLOBAL_Renamed
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2018.051"
+    Public Const Version As String = "2018.052"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
@@ -49,6 +49,12 @@ Module GLOBAL_Renamed
     Public NHLte(,) As Double
     Public upgrade As Boolean
     Public ventid As Integer
+
+    Public E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'activation energy
+    Public A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'pre expontenial factor
+    Public n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'reaction order
+    Public mf_compinit(0 To 3) As Double  '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'inital mass fraction
+    Public char_yield(0 To 3) As Double '1 = cellulose; 2 = hemicellulose; 3 = lignin Char yield
 
     Public CLT_instant As Boolean = False
     Public wall_char(,) As Double

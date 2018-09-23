@@ -31,8 +31,8 @@ Module KineticModelCode
             kwood = CeilingConductivity(room)
             WoodDensity = CeilingDensity(room)
 
-            Dim mf_init As Double = 0.1 'initial mc
-
+            'Dim mf_init As Double = 0.1 'initial mc
+            Dim mf_init As Double = mf_compinit(0)
 
             'chardensity = 0.63 * WoodDensity / (1 + moisturecontent)
 
@@ -406,9 +406,8 @@ Module KineticModelCode
             kwood = WallConductivity(room)
             WoodDensity = WallDensity(room)
 
-            Dim mf_init As Double = 0.1 'initial mc
-
-
+            'Dim mf_init As Double = 0.1 'initial mc
+            Dim mf_init As Double = mf_compinit(0)
 
             If CLTwallpercent > 0 Then
                 NLW = WallThickness(room) / 1000 / Lamella 'number of lamella - in two places also in main_program2
@@ -637,14 +636,14 @@ Module KineticModelCode
         Try
 
             'Initial mass fraction (of the wood solid)
-            Dim mf_init(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-            mf_init(1) = 0.44
-            mf_init(2) = 0.37
-            mf_init(3) = 0.09
-            mf_init(0) = 0.1
+            'Dim mf_init(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+            'mf_init(1) = 0.44
+            'mf_init(2) = 0.37
+            'mf_init(3) = 0.09
+            'mf_init(0) = 0.1
             Dim elements As Integer
             Dim Zstart() As Double
-            Dim CharYield As Double = 0.13
+            'Dim CharYield As Double = 0.13
             Dim DensityInitial As Double = 515 'kg/m3
             'Dim chardensity As Double = 85 'kg/m3
             Dim chardensity As Double = 150 'kg/m3
@@ -652,7 +651,7 @@ Module KineticModelCode
             Dim ElapsedTime As Double
             Dim DT As Double
 
-            chardensity = DensityInitial * 0.63 / (1 + mf_init(0))
+            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             Dim rmw, area As Double
 
@@ -681,8 +680,8 @@ Module KineticModelCode
                 For count = 1 To elements 'loop through each finite difference element in the ceiling
                     If i = 1 Then
                         For m = 1 To 3
-                            CeilingResidualMass(count, i) = DensityInitial * mf_init(m) 'initialise
-                        Next
+                        CeilingResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
+                    Next
                         CeilingApparentDensity(count, i) = DensityInitial
                     End If
 
@@ -697,14 +696,14 @@ Module KineticModelCode
                         CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
                     Next
 
-                    'total mass fraction of char residue in this element
-                    CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_init(1) * CharYield + (1 - CeilingElementMF(count, 2, i + 1)) * mf_init(2) * CharYield + (1 - CeilingElementMF(count, 3, i + 1)) * mf_init(3) * CharYield
+                'total mass fraction of char residue in this element
+                CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - CeilingElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - CeilingElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
 
-                    'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
-                    CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_init(1) + CeilingElementMF(count, 2, i + 1) * mf_init(2) + CeilingElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
+                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
+                CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_compinit(1) + CeilingElementMF(count, 2, i + 1) * mf_compinit(2) + CeilingElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
 
-                    'mass loss rate of wood fuel over this timestep 'kg/s
-                    If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
+                'mass loss rate of wood fuel over this timestep 'kg/s
+                If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
 
                 'If CeilingWoodMLR(count, i + 1) > 5 Then CeilingWoodMLR(count, i + 1) = 5 'kg/m3/s keep a lid on it!
 
@@ -717,10 +716,10 @@ Module KineticModelCode
                 End If
 
                 'residual mass of water in this element 'kg/m3
-                rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_init(0) 'kg/m3
+                rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
 
-                    'apparent density of this element 'kg/m3 
-                    CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
+                'apparent density of this element 'kg/m3 
+                CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
 
                     'put a lower limit on the apparent density
                     If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
@@ -749,7 +748,7 @@ Module KineticModelCode
             For count = 1 To elements 'loop through each finite difference element in the ceiling
                 If i = 1 Then
                     For m = 1 To 3
-                        WallResidualMass(count, i) = DensityInitial * mf_init(m) 'initialise
+                        WallResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
                     Next
                     WallApparentDensity(count, i) = DensityInitial
                 End If
@@ -766,10 +765,10 @@ Module KineticModelCode
                 Next
 
                 'total mass fraction of char residue in this element
-                UWallCharResidue(count, i + 1) = (1 - UWallElementMF(count, 1, i + 1)) * mf_init(1) * CharYield + (1 - UWallElementMF(count, 2, i + 1)) * mf_init(2) * CharYield + (1 - UWallElementMF(count, 3, i + 1)) * mf_init(3) * CharYield
+                UWallCharResidue(count, i + 1) = (1 - UWallElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - UWallElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - UWallElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
 
                 'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
-                WallResidualMass(count, i + 1) = DensityInitial * (UWallElementMF(count, 1, i + 1) * mf_init(1) + UWallElementMF(count, 2, i + 1) * mf_init(2) + UWallElementMF(count, 3, i + 1) * mf_init(3)) 'kg/m3
+                WallResidualMass(count, i + 1) = DensityInitial * (UWallElementMF(count, 1, i + 1) * mf_compinit(1) + UWallElementMF(count, 2, i + 1) * mf_compinit(2) + UWallElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
 
                 'mass loss rate of wood fuel over this timestep 'kg/s
                 If i > 1 Then WallWoodMLR(count, i + 1) = -(WallResidualMass(count, i + 1) - WallResidualMass(count, i)) / Timestep 'kg/(s.m3)
@@ -781,7 +780,7 @@ Module KineticModelCode
                 WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i + 1) + WallWoodMLR(count, i + 1) * area * WallThickness(fireroom) / 1000 / elements 'kg/s
 
                 'residual mass of water in this element 'kg/m3
-                rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_init(0) 'kg/m3
+                rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
 
                 'apparent density of this element 'kg/m3 
                 WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * DensityInitial + WallResidualMass(count, i + 1) 'water + char + solids
@@ -905,27 +904,27 @@ Module KineticModelCode
         VectorLength = Nvariables
         dy.Resize(VectorLength)
 
-        'kinetic propeties for each component
-        'Activation Energy
-        Dim E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        E_array(1) = 198000.0 'J/mol cellulose
-        E_array(2) = 164000.0 'J/mol hemicellulose
-        E_array(3) = 152000.0 'J/mol lignin
-        E_array(0) = 100000.0 'J/mol
+        ''kinetic propeties for each component
+        ''Activation Energy
+        'Dim E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+        'E_array(1) = 198000.0 'J/mol cellulose
+        'E_array(2) = 164000.0 'J/mol hemicellulose
+        'E_array(3) = 152000.0 'J/mol lignin
+        'E_array(0) = 100000.0 'J/mol
 
-        'Pre-exponential factor 
-        Dim A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        A_array(1) = 351000000000000.0 '1/s
-        A_array(2) = 32500000000000.0 '1/s
-        A_array(3) = 84100000000000.0 '1/s
-        A_array(0) = 10000000000000.0 '1/s
+        ''Pre-exponential factor 
+        'Dim A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+        'A_array(1) = 351000000000000.0 '1/s
+        'A_array(2) = 32500000000000.0 '1/s
+        'A_array(3) = 84100000000000.0 '1/s
+        'A_array(0) = 10000000000000.0 '1/s
 
-        'Reaction order
-        Dim n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        n_array(1) = 1.1
-        n_array(2) = 2.1
-        n_array(3) = 5
-        n_array(0) = 1
+        ''Reaction order
+        'Dim n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
+        'n_array(1) = 1.1
+        'n_array(2) = 2.1
+        'n_array(3) = 5
+        'n_array(0) = 1
 
         Dim ElementTemp As Double = InteriorTemp
         'Gas_Constant As Double = 8.3145 'kJ/kmol K universal gas constant
@@ -964,27 +963,24 @@ Module KineticModelCode
         VectorLength = Nvariables
         dy.Resize(VectorLength)
 
-        'kinetic propeties for each component
-        'Activation Energy
-        Dim E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        E_array(1) = 198000.0 'J/mol cellulose
-        E_array(2) = 164000.0 'J/mol hemicellulose
-        E_array(3) = 152000.0 'J/mol lignin
-        E_array(0) = 100000.0 'J/mol
+        ''kinetic propeties for each component
+        ''Activation Energy
+        'E_array(1) = 198000.0 'J/mol cellulose
+        'E_array(2) = 164000.0 'J/mol hemicellulose
+        'E_array(3) = 152000.0 'J/mol lignin
+        'E_array(0) = 100000.0 'J/mol water
 
-        'Pre-exponential factor 
-        Dim A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        A_array(1) = 351000000000000.0 '1/s
-        A_array(2) = 32500000000000.0 '1/s
-        A_array(3) = 84100000000000.0 '1/s
-        A_array(0) = 10000000000000.0 '1/s
+        ''Pre-exponential factor 
+        'A_array(1) = 351000000000000.0 '1/s
+        'A_array(2) = 32500000000000.0 '1/s
+        'A_array(3) = 84100000000000.0 '1/s
+        'A_array(0) = 10000000000000.0 '1/s
 
-        'Reaction order
-        Dim n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin
-        n_array(1) = 1.1
-        n_array(2) = 2.1
-        n_array(3) = 5
-        n_array(0) = 1
+        ''Reaction order
+        'n_array(1) = 1.1
+        'n_array(2) = 2.1
+        'n_array(3) = 5
+        'n_array(0) = 1
 
         Dim ElementTemp As Double = InteriorTemp
         'Gas_Constant As Double = 8.3145 'kJ/kmol K universal gas constant

@@ -5476,6 +5476,36 @@ here:
         useCLTmodel = False
         frmCLT.optCLTOFF.Checked = True
 
+        'kinetic propeties for each component
+        'Activation Energy
+        E_array(1) = 198000.0 'J/mol cellulose
+        E_array(2) = 164000.0 'J/mol hemicellulose
+        E_array(3) = 152000.0 'J/mol lignin
+        E_array(0) = 100000.0 'J/mol
+
+        'Pre-exponential factor 
+        A_array(1) = 351000000000000.0 '1/s
+        A_array(2) = 32500000000000.0 '1/s
+        A_array(3) = 84100000000000.0 '1/s
+        A_array(0) = 10000000000000.0 '1/s
+
+        'Reaction order
+        n_array(1) = 1.1
+        n_array(2) = 2.1
+        n_array(3) = 5
+        n_array(0) = 1
+
+        'initial component mass fraction
+        mf_compinit(0) = 0.1
+        mf_compinit(1) = 0.44
+        mf_compinit(2) = 0.37
+        mf_compinit(3) = 0.09
+
+        'char yields
+        char_yield(1) = 0.13
+        char_yield(2) = 0.13
+        char_yield(3) = 0.13
+
         Call MDIFrmMain.VM2setup()
 
     End Sub
