@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--Created by B-RISK Version 2018.051-->
-<!--Input File B-RISK DESIGN FIRE TOOL 2018.051 - RISK SIMULATOR MODE-->
+<!--Created by B-RISK Version 2015.03-->
+<!--Input File B-RISK DESIGN FIRE TOOL 2015.03 - RISK SIMULATOR MODE-->
 <simulation>
   <general_settings>
-    <version>2018.051</version>
+    <version>2015.03</version>
     <user_mode>False</user_mode>
-    <evacnz>False</evacnz>
     <file_type>montecarlo</file_type>
     <description />
     <number_iterations>1</number_iterations>
@@ -44,9 +43,6 @@
     <storage_height>1</storage_height>
     <powerlaw_T2fire>True</powerlaw_T2fire>
     <powerlaw_designfire>False</powerlaw_designfire>
-    <compartment_effects>False</compartment_effects>
-    <autosavepdf>False</autosavepdf>
-    <autosaveXL>False</autosaveXL>
   </general_settings>
   <rooms
     number_rooms="1"
@@ -144,23 +140,24 @@
     fluxcriteria="False"
     calcFRR="False"
     modGER="False">
+    <FLED
+      distribution=""
+      value="0"
+      mean="0"
+      variance="0"
+      lbound="0"
+      ubound="0" />
     <fuel_thickness>0.05</fuel_thickness>
+    <HoC_fuel
+      distribution=""
+      value="0"
+      mean="0"
+      variance="0"
+      lbound="0"
+      ubound="0" />
     <stick_spacing>0.05</stick_spacing>
     <crib_height>0.8</crib_height>
     <excess_fuel_factor>1.3</excess_fuel_factor>
-    <CLT_model>False</CLT_model>
-    <CLT_ceil_percent>100</CLT_ceil_percent>
-    <CLT_wall_percent>100</CLT_wall_percent>
-    <CLT_chartemp>300</CLT_chartemp>
-    <integral_model>False</integral_model>
-    <Lamella_depth>35</Lamella_depth>
-    <CLT_Qcrit>0</CLT_Qcrit>
-    <CLT_flameflux>0</CLT_flameflux>
-    <CLT_latentheatofgasification>0</CLT_latentheatofgasification>
-    <CLT_ignitiontemp>0</CLT_ignitiontemp>
-    <CLT_calibration>0</CLT_calibration>
-    <CLT_debondtemp>200</CLT_debondtemp>
-    <kinetic_model>False</kinetic_model>
   </postflashover>
   <chemistry>
     <nC>0.95</nC>
@@ -172,11 +169,11 @@
     <soot_alpha>2.5</soot_alpha>
     <soot_epsilon>1.2</soot_epsilon>
     <emission_coefficient>0.8</emission_coefficient>
-    <stoichiometric_air_fuel_ratio>6.1</stoichiometric_air_fuel_ratio>
     <post_CO>0.4</post_CO>
     <post_soot>0.14</post_soot>
     <CO_mode>False</CO_mode>
     <soot_mode>False</soot_mode>
   </chemistry>
   <fires />
+  <smoke_detectors />
 </simulation>
