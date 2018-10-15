@@ -27,7 +27,7 @@ Module GLOBAL_Renamed
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2018.052"
+    Public Const Version As String = "2018.053"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
@@ -56,6 +56,7 @@ Module GLOBAL_Renamed
     Public mf_compinit(0 To 3) As Double  '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'inital mass fraction
     Public char_yield(0 To 3) As Double '1 = cellulose; 2 = hemicellulose; 3 = lignin Char yield
 
+    Public init_moisturecontent As Double
     Public CLT_instant As Boolean = False
     Public wall_char(,) As Double
     Public ceil_char(,) As Double

@@ -455,7 +455,7 @@ Public Class frmInputs
                 DFW.WriteElementString("kinetic_cell_charyield", char_yield(1))
                 DFW.WriteElementString("kinetic_hemi_charyield", char_yield(2))
                 DFW.WriteElementString("kinetic_lig_charyield", char_yield(3))
-
+                DFW.WriteElementString("CLT_moisturecontent", init_moisturecontent)
 
                 DFW.WriteEndElement()
 
@@ -1933,6 +1933,10 @@ Public Class frmInputs
                             char_yield(1) = DFR.ReadElementString()
                             char_yield(2) = DFR.ReadElementString()
                             char_yield(3) = DFR.ReadElementString()
+                        End If
+                        If ModelVersion > CSng(2018.052) Then
+                            init_moisturecontent = DFR.ReadElementString()
+                            frmCLT.TXT_MoistureContent.Text = init_moisturecontent * 100
                         End If
 
                         DFR.ReadEndElement() 'clear </postflashover>

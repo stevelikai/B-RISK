@@ -43,6 +43,7 @@ Public Class frmCLT
         txtCLTLoG.Text = CLTLoG
         txtCritFlux.Text = CLTQcrit
         txtDebondTemp.Text = DebondTemp
+        TXT_MoistureContent.Text = init_moisturecontent * 100
         Me.Show()
 
         'CLTflameflux = 17
@@ -321,13 +322,7 @@ Public Class frmCLT
         End If
     End Sub
 
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles txtA_hemi.TextChanged
 
-    End Sub
-
-    Private Sub txtLamellaDepth_TextChanged(sender As Object, e As EventArgs) Handles txtLamellaDepth.TextChanged
-
-    End Sub
 
     Private Sub txtA_hemi_Validating(sender As Object, e As CancelEventArgs) Handles txtA_hemi.Validating
         If IsNumeric(txtA_hemi.Text) Then
@@ -797,5 +792,33 @@ Public Class frmCLT
     Private Sub TextBox_charyield_hemi_Validated(sender As Object, e As EventArgs) Handles TextBox_charyield_hemi.Validated
         ErrorProvider1.Clear()
         char_yield(2) = CDbl(TextBox_charyield_hemi.Text)
+    End Sub
+
+    Private Sub TXT_MoistureContent_TextChanged(sender As Object, e As EventArgs) Handles TXT_MoistureContent.TextChanged
+
+    End Sub
+
+    Private Sub TXT_MoistureContent_Validating(sender As Object, e As CancelEventArgs) Handles TXT_MoistureContent.Validating
+        If IsNumeric(TXT_MoistureContent.Text) Then
+            If (CDbl(TXT_MoistureContent.Text) >= 0) Then
+                'okay
+                Exit Sub
+            End If
+        End If
+
+        ' Cancel the event moving off of the control.
+        e.Cancel = True
+
+        ' Select the offending text.
+        txtA_hemi.Select(0, TXT_MoistureContent.Text.Length)
+
+        ' Give the ErrorProvider the error message to
+        ' display.
+        ErrorProvider1.SetError(TXT_MoistureContent, "Invalid Entry. ")
+    End Sub
+
+    Private Sub TXT_MoistureContent_Validated(sender As Object, e As EventArgs) Handles TXT_MoistureContent.Validated
+        ErrorProvider1.Clear()
+        init_moisturecontent = CDbl(TXT_MoistureContent.Text) / 100
     End Sub
 End Class

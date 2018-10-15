@@ -29,6 +29,8 @@ Module KineticModelCode
             Dim kwood As Double
 
             kwood = CeilingConductivity(room)
+            kwood = 0.285
+
             WoodDensity = CeilingDensity(room)
 
             'Dim mf_init As Double = 0.1 'initial mc
@@ -78,7 +80,6 @@ Module KineticModelCode
 
             If CeilingNodeTemp(ceilingnodestemp) <= 473 Then
                 prop_k = kwood
-
             ElseIf CeilingNodeTemp(ceilingnodestemp) <= 663 Then
                 prop_k = -0.617 + 0.0038 * CeilingNodeTemp(ceilingnodestemp) - 0.000004 * CeilingNodeTemp(ceilingnodestemp) ^ 2
             Else
@@ -404,6 +405,8 @@ Module KineticModelCode
             Dim kwood As Double
 
             kwood = WallConductivity(room)
+            kwood = 0.285
+
             WoodDensity = WallDensity(room)
 
             'Dim mf_init As Double = 0.1 'initial mc

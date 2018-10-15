@@ -2619,6 +2619,7 @@ errorhandler:
         frmCLT.txtCLTLoG.Text = CLTLoG
         frmCLT.txtCritFlux.Text = CLTQcrit
         frmCLT.txtDebondTemp.Text = DebondTemp
+        frmCLT.TXT_MoistureContent.Text = init_moisturecontent * 100
 
         frmCLT.txtA_cell.Text = Format(E_array(1), "0.00E+00")
         frmCLT.txtE_cell.Text = Format(A_array(1), "0.00E+00")

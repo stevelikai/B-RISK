@@ -57,6 +57,8 @@ Partial Class frmCLT
         Me.RB_Kinetic = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TXT_MoistureContent = New System.Windows.Forms.TextBox()
         Me.panel_kinetic = New System.Windows.Forms.TableLayoutPanel()
         Me.txtA_hemi = New System.Windows.Forms.TextBox()
         Me.txtA_cell = New System.Windows.Forms.TextBox()
@@ -151,7 +153,7 @@ Partial Class frmCLT
         '
         'numeric_wallareapercent
         '
-        Me.numeric_wallareapercent.Location = New System.Drawing.Point(210, 29)
+        Me.numeric_wallareapercent.Location = New System.Drawing.Point(223, 14)
         Me.numeric_wallareapercent.Name = "numeric_wallareapercent"
         Me.numeric_wallareapercent.Size = New System.Drawing.Size(59, 20)
         Me.numeric_wallareapercent.TabIndex = 5
@@ -159,7 +161,7 @@ Partial Class frmCLT
         '
         'numeric_ceilareapercent
         '
-        Me.numeric_ceilareapercent.Location = New System.Drawing.Point(210, 59)
+        Me.numeric_ceilareapercent.Location = New System.Drawing.Point(223, 44)
         Me.numeric_ceilareapercent.Name = "numeric_ceilareapercent"
         Me.numeric_ceilareapercent.Size = New System.Drawing.Size(59, 20)
         Me.numeric_ceilareapercent.TabIndex = 6
@@ -168,7 +170,7 @@ Partial Class frmCLT
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(76, 31)
+        Me.Label2.Location = New System.Drawing.Point(89, 16)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(128, 13)
         Me.Label2.TabIndex = 7
@@ -177,7 +179,7 @@ Partial Class frmCLT
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(64, 59)
+        Me.Label3.Location = New System.Drawing.Point(77, 44)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(137, 13)
         Me.Label3.TabIndex = 8
@@ -185,7 +187,7 @@ Partial Class frmCLT
         '
         'txtCharTemp
         '
-        Me.txtCharTemp.Location = New System.Drawing.Point(210, 90)
+        Me.txtCharTemp.Location = New System.Drawing.Point(223, 75)
         Me.txtCharTemp.Name = "txtCharTemp"
         Me.txtCharTemp.Size = New System.Drawing.Size(59, 20)
         Me.txtCharTemp.TabIndex = 9
@@ -194,7 +196,7 @@ Partial Class frmCLT
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(97, 93)
+        Me.Label4.Location = New System.Drawing.Point(110, 78)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(104, 13)
         Me.Label4.TabIndex = 10
@@ -203,7 +205,7 @@ Partial Class frmCLT
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(91, 161)
+        Me.Label5.Location = New System.Drawing.Point(104, 146)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(108, 13)
         Me.Label5.TabIndex = 12
@@ -211,7 +213,7 @@ Partial Class frmCLT
         '
         'txtLamellaDepth
         '
-        Me.txtLamellaDepth.Location = New System.Drawing.Point(210, 158)
+        Me.txtLamellaDepth.Location = New System.Drawing.Point(223, 143)
         Me.txtLamellaDepth.Name = "txtLamellaDepth"
         Me.txtLamellaDepth.Size = New System.Drawing.Size(59, 20)
         Me.txtLamellaDepth.TabIndex = 13
@@ -333,7 +335,7 @@ Partial Class frmCLT
         'lblDebondTemp
         '
         Me.lblDebondTemp.AutoSize = True
-        Me.lblDebondTemp.Location = New System.Drawing.Point(18, 124)
+        Me.lblDebondTemp.Location = New System.Drawing.Point(31, 109)
         Me.lblDebondTemp.Name = "lblDebondTemp"
         Me.lblDebondTemp.Size = New System.Drawing.Size(179, 13)
         Me.lblDebondTemp.TabIndex = 26
@@ -341,7 +343,7 @@ Partial Class frmCLT
         '
         'txtDebondTemp
         '
-        Me.txtDebondTemp.Location = New System.Drawing.Point(210, 125)
+        Me.txtDebondTemp.Location = New System.Drawing.Point(223, 110)
         Me.txtDebondTemp.Name = "txtDebondTemp"
         Me.txtDebondTemp.Size = New System.Drawing.Size(58, 20)
         Me.txtDebondTemp.TabIndex = 27
@@ -395,6 +397,8 @@ Partial Class frmCLT
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label20)
+        Me.GroupBox2.Controls.Add(Me.TXT_MoistureContent)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.txtLamellaDepth)
         Me.GroupBox2.Controls.Add(Me.Label5)
@@ -405,11 +409,28 @@ Partial Class frmCLT
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.txtCharTemp)
-        Me.GroupBox2.Location = New System.Drawing.Point(484, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(484, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(301, 206)
+        Me.GroupBox2.Size = New System.Drawing.Size(301, 202)
         Me.GroupBox2.TabIndex = 31
         Me.GroupBox2.TabStop = False
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(104, 179)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(103, 13)
+        Me.Label20.TabIndex = 29
+        Me.Label20.Text = "Moisture content (%)"
+        '
+        'TXT_MoistureContent
+        '
+        Me.TXT_MoistureContent.Location = New System.Drawing.Point(222, 176)
+        Me.TXT_MoistureContent.Name = "TXT_MoistureContent"
+        Me.TXT_MoistureContent.Size = New System.Drawing.Size(59, 20)
+        Me.TXT_MoistureContent.TabIndex = 28
+        Me.TXT_MoistureContent.Text = "10"
         '
         'panel_kinetic
         '
@@ -788,4 +809,6 @@ Partial Class frmCLT
     Friend WithEvents TextBox_charyield_hemi As TextBox
     Friend WithEvents TextBox_charyield_cell As TextBox
     Friend WithEvents TextBox_charyield_lignin As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents TXT_MoistureContent As TextBox
 End Class

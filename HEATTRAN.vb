@@ -1931,7 +1931,9 @@ h2ohandler:
             Dim wood_alpha, wood_c, wood_fourier As Double
             Dim UWoutbiot, LWoutbiot As Double
 
-            moisturecontent = 0.12 'assume 15%
+            moisturecontent = init_moisturecontent
+
+            'moisturecontent = 0.12 'assume 15%
             chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
 
             If CLTwallpercent > 0 Then
@@ -1982,7 +1984,7 @@ h2ohandler:
 
             If UWallNodeTemp(Wallnodestemp) <= 473 Then
                 prop_ku = 0.285
-                prop_ku = WallConductivity(room)
+                'prop_ku = WallConductivity(room)
             ElseIf UWallNodeTemp(Wallnodestemp) <= 663 Then
                 prop_ku = -0.617 + 0.0038 * UWallNodeTemp(Wallnodestemp) - 0.000004 * UWallNodeTemp(Wallnodestemp) ^ 2
             Else
@@ -1994,7 +1996,7 @@ h2ohandler:
 
             If LWallNodeTemp(Wallnodestemp) <= 473 Then
                 prop_kl = 0.285
-                prop_kl = WallConductivity(room)
+                'prop_kl = WallConductivity(room)
             ElseIf lWallNodeTemp(Wallnodestemp) <= 663 Then
                 prop_kl = -0.617 + 0.0038 * LWallNodeTemp(Wallnodestemp) - 0.000004 * LWallNodeTemp(Wallnodestemp) ^ 2
             Else
@@ -2067,7 +2069,7 @@ h2ohandler:
 
             If UWallNodeTemp(2) <= 473 Then
                 prop_ku = 0.285
-                prop_ku = WallConductivity(room)
+                'prop_ku = WallConductivity(room)
             ElseIf UWallNodeTemp(2) <= 663 Then
                 prop_ku = -0.617 + 0.0038 * UWallNodeTemp(2) - 0.000004 * UWallNodeTemp(2) ^ 2
             Else
@@ -2103,7 +2105,7 @@ h2ohandler:
 
             If LWallNodeTemp(2) <= 473 Then
                 prop_kl = 0.285
-                prop_kl = WallConductivity(room)
+                'prop_kl = WallConductivity(room)
             ElseIf lWallNodeTemp(2) <= 663 Then
                 prop_kl = -0.617 + 0.0038 * LWallNodeTemp(2) - 0.000004 * LWallNodeTemp(2) ^ 2
             Else
@@ -2142,7 +2144,7 @@ h2ohandler:
             For j = 2 To Wallnodestemp - 1
                 If UWallNodeTemp(j + 1) <= 473 Then
                     prop_ku = 0.285
-                    prop_ku = WallConductivity(room)
+                    'prop_ku = WallConductivity(room)
                 ElseIf UWallNodeTemp(j + 1) <= 663 Then
                     prop_ku = -0.617 + 0.0038 * UWallNodeTemp(j + 1) - 0.000004 * UWallNodeTemp(j + 1) ^ 2
                 Else
@@ -2174,7 +2176,7 @@ h2ohandler:
             For j = 2 To Wallnodestemp - 1
                 If LWallNodeTemp(j + 1) <= 473 Then
                     prop_kl = 0.285
-                    prop_kl = WallConductivity(room)
+                    'prop_kl = WallConductivity(room)
                 ElseIf lWallNodeTemp(j + 1) <= 663 Then
                     prop_kl = -0.617 + 0.0038 * LWallNodeTemp(j + 1) - 0.000004 * LWallNodeTemp(j + 1) ^ 2
                 Else
@@ -2262,7 +2264,9 @@ h2ohandler:
             Dim kwood As Double = 0.285
             kwood = CeilingConductivity(room)
 
-            moisturecontent = 0.1 'assume 10% mass fraction
+            ' moisturecontent = 0.1 'assume 10% mass fraction
+            moisturecontent = init_moisturecontent
+
             chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
 
 
@@ -2289,10 +2293,14 @@ h2ohandler:
             Dim char_alpha, char_c, char_fourier As Double
             Dim wood_alpha, wood_c, wood_fourier As Double
             Dim Coutbiot As Double
-            Dim kwood As Double = 0.285
-            kwood = CeilingConductivity(room)
 
-            moisturecontent = 0.12 'assume 15%
+            Dim kwood As Double = 0.285
+
+            'kwood = CeilingConductivity(room)
+
+            'moisturecontent = 0.08 'was 12%
+            moisturecontent = init_moisturecontent
+
             chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
 
             If CLTceilingpercent > 0 Then

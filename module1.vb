@@ -12109,7 +12109,8 @@ errorhandler:
                     For room = 2 To NumberRooms
                         X = X + 10
                         If room = fireroom Then
-                            Print(1, TAB(X), VB6.Format(HeatRelease(fireroom, j, 2) / (1110 * RoomHeight(room) ^ (5 / 2)), "0.0000"))
+                            'Print(1, TAB(X), VB6.Format(HeatRelease(fireroom, j, 2) / (1110 * RoomHeight(room) ^ (5 / 2)), "0.0000"))
+                            Print(1, TAB(10), "Q* =", TAB(X), Format(HeatRelease(fireroom, j, 2) / (1110 * (MinStudHeight(room) / 2 + RoomHeight(room) / 2) ^ (5 / 2)), "0.0000"))
                         Else
                             Print(1, TAB(X), VB6.Format(0, "-"))
                         End If
