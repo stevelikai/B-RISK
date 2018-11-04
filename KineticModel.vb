@@ -8,6 +8,56 @@ Imports CenterSpace.NMath.Analysis
 Module KineticModelCode
     Dim Y_pyrol() As Double
     Dim DYDX_pyrol() As Double
+
+    Function wood_props_k(ByVal T As Double, ByRef ischar As Integer, ByRef maxtemp As Double) As Double
+
+        'T temperature in K
+        'returns thermal conductivity of wood in W/mK
+        If ischar = 1 Then
+            'this is char - use only the equation for char
+            'If T < 663 Then T = 663
+            'If T > 923 Then T = 923
+            T = maxtemp
+
+        End If
+
+        If thermalprops = 1 Then 'wood h/b + hankalin
+
+            If T <= 473 Then
+                wood_props_k = 0.285
+            ElseIf T <= 663 Then
+                wood_props_k = -0.617 + 0.0038 * T - 0.000004 * T ^ 2
+            ElseIf T <= 923 Then
+                wood_props_k = 0.04429 + 0.0001477 * T
+            Else
+                wood_props_k = 0.04429 + 0.0001477 * T
+            End If
+            Exit Function
+
+        ElseIf thermalprops = 2 Then 'eurocode 5
+
+            If T <= 293 Then
+                wood_props_k = 0.12
+            ElseIf T <= 473 Then
+                wood_props_k = 0.12 + (T - 293) / (473 - 293) * (0.15 - 0.12)
+            ElseIf T <= 623 Then
+                wood_props_k = 0.15 + (T - 473) / (623 - 473) * (0.07 - 0.15)
+            ElseIf T <= 773 Then
+                wood_props_k = 0.07 + (T - 623) / (773 - 623) * (0.09 - 0.07)
+            ElseIf T <= 1073 Then
+                wood_props_k = 0.09 + (T - 773) / (1073 - 773) * (0.35 - 0.09)
+            ElseIf T <= 1473 Then
+                wood_props_k = 0.35 + (T - 1073) / (1473 - 1073) * (1.5 - 0.35)
+            Else
+                wood_props_k = 1.5
+            End If
+
+            Exit Function
+        Else
+        End If
+
+    End Function
+
     Sub Implicit_Temps_Ceil_kinetic(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
@@ -29,14 +79,14 @@ Module KineticModelCode
             Dim kwood As Double
 
             kwood = CeilingConductivity(room)
-            kwood = 0.285
-
             WoodDensity = CeilingDensity(room)
 
             'Dim mf_init As Double = 0.1 'initial mc
             Dim mf_init As Double = mf_compinit(0)
 
             'chardensity = 0.63 * WoodDensity / (1 + moisturecontent)
+
+
 
             If CLTceilingpercent > 0 Then
                 NLC = CeilingThickness(room) / 1000 / Lamella 'number of lamella - in two places also in main_program2
@@ -64,13 +114,13 @@ Module KineticModelCode
             End If
 
             Dim CeilingNodeTemp(ceilingnodestemp) As Double
-            Dim CeilingNodeStatus(ceilingnodestemp) As Integer  'array to identify charred element
+
 
             For k = 1 To ceilingnodestemp
                 CeilingNodeTemp(k) = CeilingNode(room, k + ceilingnodeadjust, i)
 
                 'array to identify charred element
-                If CeilingNodeTemp(k) > 300 + 273 Then CeilingNodeStatus(k) = 1
+                If (CeilingNodeTemp(k) > 300 + 273) And (CeilingNodeStatus(k) = 0) Then CeilingNodeStatus(k) = 1
 
             Next
 
@@ -78,13 +128,40 @@ Module KineticModelCode
             Dim CeilingNodeExposed As Double = CeilingNodeTemp(1)
 
 
-            If CeilingNodeTemp(ceilingnodestemp) <= 473 Then
-                prop_k = kwood
-            ElseIf CeilingNodeTemp(ceilingnodestemp) <= 663 Then
-                prop_k = -0.617 + 0.0038 * CeilingNodeTemp(ceilingnodestemp) - 0.000004 * CeilingNodeTemp(ceilingnodestemp) ^ 2
-            Else
-                prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(ceilingnodestemp)
-            End If
+            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp))
+
+            'If thermalprops = 1 Then 'wood h/b + hankalin
+
+            '    kwood = 0.285
+            '    If CeilingNodeTemp(ceilingnodestemp) <= 473 Then
+            '        prop_k = kwood
+            '    ElseIf CeilingNodeTemp(ceilingnodestemp) <= 663 Then
+            '        prop_k = -0.617 + 0.0038 * CeilingNodeTemp(ceilingnodestemp) - 0.000004 * CeilingNodeTemp(ceilingnodestemp) ^ 2
+            '    Else
+            '        prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(ceilingnodestemp)
+            '    End If
+
+            'ElseIf thermalprops = 2 Then 'eurocode 5
+
+            '    If CeilingNodeTemp(ceilingnodestemp) <= 293 Then
+            '        prop_k = 0.12
+            '    ElseIf CeilingNodeTemp(ceilingnodestemp) <= 473 Then
+            '        prop_k = 0.12 + (CeilingNodeTemp(ceilingnodestemp) - 293) / (473 - 293) * (0.15 - 0.12)
+            '    ElseIf CeilingNodeTemp(ceilingnodestemp) <= 623 Then
+            '        prop_k = 0.15 + (CeilingNodeTemp(ceilingnodestemp) - 473) / (623 - 473) * (0.07 - 0.15)
+            '    ElseIf CeilingNodeTemp(ceilingnodestemp) <= 773 Then
+            '        prop_k = 0.07 + (CeilingNodeTemp(ceilingnodestemp) - 623) / (773 - 623) * (0.09 - 0.07)
+            '    ElseIf CeilingNodeTemp(ceilingnodestemp) <= 1073 Then
+            '        prop_k = 0.09 + (CeilingNodeTemp(ceilingnodestemp) - 773) / (1073 - 773) * (0.35 - 0.09)
+            '    ElseIf CeilingNodeTemp(ceilingnodestemp) <= 1473 Then
+            '        prop_k = 0.35 + (CeilingNodeTemp(ceilingnodestemp) - 1073) / (1473 - 1073) * (1.5 - 0.35)
+            '    Else
+            '        prop_k = 1.5
+            '    End If
+
+            'Else
+            'End If
+
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * CeilingDeltaX(room) / prop_k
@@ -132,13 +209,15 @@ Module KineticModelCode
             End If
 
             'exposed side
-            If CeilingNodeTemp(2) <= 473 Then
-                prop_k = kwood
-            ElseIf CeilingNodeTemp(2) <= 663 Then
-                prop_k = -0.617 + 0.0038 * CeilingNodeTemp(2) - 0.000004 * CeilingNodeTemp(2) ^ 2
-            Else
-                prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(2)
-            End If
+            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2))
+
+            'If CeilingNodeTemp(2) <= 473 Then
+            '    prop_k = kwood
+            'ElseIf CeilingNodeTemp(2) <= 663 Then
+            '    prop_k = -0.617 + 0.0038 * CeilingNodeTemp(2) - 0.000004 * CeilingNodeTemp(2) ^ 2
+            'Else
+            '    prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(2)
+            'End If
 
             moisturecontent = CeilingElementMF(1, 0, i) * mf_init
             WoodDensity = CeilingApparentDensity(1, i)
@@ -177,17 +256,19 @@ Module KineticModelCode
                 Next k
             End If
 
-
             'inside nodes
             k = 2
             For j = 2 To ceilingnodestemp - 1
-                If CeilingNodeTemp(j + 1) <= 473 Then
-                    prop_k = kwood
-                ElseIf CeilingNodeTemp(j + 1) <= 663 Then
-                    prop_k = -0.617 + 0.0038 * CeilingNodeTemp(j + 1) - 0.000004 * CeilingNodeTemp(j + 1) ^ 2
-                Else
-                    prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(j + 1)
-                End If
+
+                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1))
+
+                'If CeilingNodeTemp(j + 1) <= 473 Then
+                '    prop_k = kwood
+                'ElseIf CeilingNodeTemp(j + 1) <= 663 Then
+                '    prop_k = -0.617 + 0.0038 * CeilingNodeTemp(j + 1) - 0.000004 * CeilingNodeTemp(j + 1) ^ 2
+                'Else
+                '    prop_k = 0.04429 + 0.0001477 * CeilingNodeTemp(j + 1)
+                'End If
 
                 moisturecontent = CeilingElementMF(j, 0, i) * mf_init
                 WoodDensity = CeilingApparentDensity(j, i)
@@ -235,8 +316,9 @@ Module KineticModelCode
 
             For j = 1 To ceilingnodestemp
                 CeilingNode(room, j + ceilingnodeadjust, i + 1) = CX(j, 1)
-
+                If CX(j, 1) > CeilingNodeMaxTemp(j + ceilingnodeadjust) Then CeilingNodeMaxTemp(j + ceilingnodeadjust) = CX(j, 1)
             Next j
+
             For j = 1 To ceilingnodeadjust
                 CeilingNode(room, j, i + 1) = chartemp + 273 + 1
                 ' CeilingNode(room, j, i + 1) = DebondTemp + 273
@@ -438,7 +520,6 @@ Module KineticModelCode
             End If
 
             Dim wallNodeTemp(wallnodestemp) As Double
-            Dim wallNodeStatus(wallnodestemp) As Integer  'array to identify charred element
 
             For k = 1 To wallnodestemp
                 wallNodeTemp(k) = UWallNode(room, k + wallnodeadjust, i)
@@ -451,15 +532,16 @@ Module KineticModelCode
             Dim wallNodeUnExposed As Double = wallNodeTemp(wallnodestemp)
             Dim wallNodeExposed As Double = wallNodeTemp(1)
 
+            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), wallNodeStatus(wallnodestemp), WallNodeMaxTemp(wallnodestemp))
 
-            If wallNodeTemp(wallnodestemp) <= 473 Then
-                prop_k = kwood
+            'If wallNodeTemp(wallnodestemp) <= 473 Then
+            '    prop_k = kwood
 
-            ElseIf wallNodeTemp(wallnodestemp) <= 663 Then
-                prop_k = -0.617 + 0.0038 * wallNodeTemp(wallnodestemp) - 0.000004 * wallNodeTemp(wallnodestemp) ^ 2
-            Else
-                prop_k = 0.04429 + 0.0001477 * wallNodeTemp(wallnodestemp)
-            End If
+            'ElseIf wallNodeTemp(wallnodestemp) <= 663 Then
+            '    prop_k = -0.617 + 0.0038 * wallNodeTemp(wallnodestemp) - 0.000004 * wallNodeTemp(wallnodestemp) ^ 2
+            'Else
+            '    prop_k = 0.04429 + 0.0001477 * wallNodeTemp(wallnodestemp)
+            'End If
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_k
@@ -506,13 +588,15 @@ Module KineticModelCode
             End If
 
             'exposed side
-            If wallNodeTemp(2) <= 473 Then
-                prop_k = kwood
-            ElseIf wallNodeTemp(2) <= 663 Then
-                prop_k = -0.617 + 0.0038 * wallNodeTemp(2) - 0.000004 * wallNodeTemp(2) ^ 2
-            Else
-                prop_k = 0.04429 + 0.0001477 * wallNodeTemp(2)
-            End If
+            prop_k = wood_props_k(wallNodeTemp(2), wallNodeStatus(2), WallNodeMaxTemp(2))
+
+            'If wallNodeTemp(2) <= 473 Then
+            '    prop_k = kwood
+            'ElseIf wallNodeTemp(2) <= 663 Then
+            '    prop_k = -0.617 + 0.0038 * wallNodeTemp(2) - 0.000004 * wallNodeTemp(2) ^ 2
+            'Else
+            '    prop_k = 0.04429 + 0.0001477 * wallNodeTemp(2)
+            'End If
 
             moisturecontent = UWallElementMF(1, 0, i) * mf_init
             WoodDensity = WallApparentDensity(1, i)
@@ -559,13 +643,15 @@ Module KineticModelCode
             'inside nodes
             k = 2
             For j = 2 To wallnodestemp - 1
-                If wallNodeTemp(j + 1) <= 473 Then
-                    prop_k = kwood
-                ElseIf wallNodeTemp(j + 1) <= 663 Then
-                    prop_k = -0.617 + 0.0038 * wallNodeTemp(j + 1) - 0.000004 * wallNodeTemp(j + 1) ^ 2
-                Else
-                    prop_k = 0.04429 + 0.0001477 * wallNodeTemp(j + 1)
-                End If
+                prop_k = wood_props_k(wallNodeTemp(j + 1), wallNodeStatus(j + 1), WallNodeMaxTemp(j + 1))
+
+                'If wallNodeTemp(j + 1) <= 473 Then
+                '    prop_k = kwood
+                'ElseIf wallNodeTemp(j + 1) <= 663 Then
+                '    prop_k = -0.617 + 0.0038 * wallNodeTemp(j + 1) - 0.000004 * wallNodeTemp(j + 1) ^ 2
+                'Else
+                '    prop_k = 0.04429 + 0.0001477 * wallNodeTemp(j + 1)
+                'End If
 
                 moisturecontent = UWallElementMF(j, 0, i) * mf_init
                 WoodDensity = WallApparentDensity(j, i)
@@ -612,7 +698,7 @@ Module KineticModelCode
 
             For j = 1 To wallnodestemp
                 UWallNode(room, j + wallnodeadjust, i + 1) = WX(j, 1)
-
+                If WX(j, 1) > WallNodeMaxTemp(j + wallnodeadjust) Then WallNodeMaxTemp(j + wallnodeadjust) = WX(j, 1)
             Next j
             For j = 1 To wallnodeadjust
                 UWallNode(room, j, i + 1) = chartemp + 273 + 1

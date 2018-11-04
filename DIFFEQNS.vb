@@ -845,6 +845,10 @@ Module DIFFEQNS
         ReDim LWallNode(NumberRooms, MMaxWallNodes, MaxTime)
         ReDim FloorNode(NumberRooms, MMaxFloorNodes, MaxTime)
 
+        ReDim CeilingNodeMaxTemp(MMaxCeilingNodes)
+        ReDim WallNodeMaxTemp(MMaxWallNodes)
+        ReDim CeilingNodeStatus(MMaxCeilingNodes)
+        ReDim WallNodeStatus(MMaxWallNodes)
         ReDim flamespread(1)
         ReDim product(1)
         ReDim wallparam(3, NumberTimeSteps + 1)
