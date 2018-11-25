@@ -411,7 +411,11 @@ Public Class frmPlot
         ' Returns 0 if no match
         Testpos = InStr(1, title, "Residual mass fractions in element")
         If Testpos > 0 Then
-            Chart1.Titles("Title1").Text = "Residual mass fractions in element " & idr.ToString
+            Dim dp As Single = idr * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Residual mass fractions in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
+
+
 
             For i = 0 To 4
 
