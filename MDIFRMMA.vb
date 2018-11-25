@@ -9614,6 +9614,7 @@ errhandler:
             frmPlot.Chart1.Visible = True
 
             frmPlot.NumericUpDownTime.Maximum = CeilingElementMF.GetUpperBound(0)
+            'Title = Title & " (depth " & frmPlot.NumericUpDownTime.Value * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
             frmPlot.NumericUpDownTime.Visible = True
 
 
