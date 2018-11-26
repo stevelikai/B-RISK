@@ -26,7 +26,7 @@ Module GLOBAL_Renamed
     Public RCNone As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2018.05"
+    Public Const Version As String = "2018.06"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
