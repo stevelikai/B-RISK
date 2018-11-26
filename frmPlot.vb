@@ -391,4 +391,178 @@ Public Class frmPlot
         timeunit = 1
         Me.Close()
     End Sub
+
+    Private Sub NumericUpDownTime_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDownTime.ValueChanged
+
+        Dim Testpos, idr As Integer, description As String, maxpoints As Integer, numpoints As Integer, numsets As Integer
+        Dim DataShift As Integer = 0
+        Dim DataMultiplier As Integer = 1
+        Dim title = Chart1.Titles("Title1").Text
+
+        Chart1.Series.Clear()
+        idr = NumericUpDownTime.Value
+        description = "Component " + CStr(idr)
+        maxpoints = 5 * NumberTimeSteps
+        If NumberTimeSteps < 2 Then Exit Sub
+        numpoints = maxpoints
+        numsets = 5
+        Dim chdata(0 To numpoints - 1, 0 To 2 * numsets - 1) As Object
+
+        ' Returns 0 if no match
+        Testpos = InStr(1, title, "Residual mass fractions in element")
+        If Testpos > 0 Then
+            Dim dp As Single = idr * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Residual mass fractions in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
+
+
+
+            For i = 0 To 4
+
+                If i = 0 Then chdata(0, i) = "Water"
+                If i = 1 Then chdata(0, i) = "Cellulose"
+                If i = 2 Then chdata(0, i) = "Hemicellulose"
+                If i = 3 Then chdata(0, i) = "Lignin"
+                If i = 4 Then chdata(0, i) = "Char residue"
+
+                Chart1.Series.Add(chdata(0, i))
+                Chart1.Series(chdata(0, i)).ChartType = SeriesChartType.FastLine
+
+                For j = 1 To stepcount
+                    chdata(j, i) = tim(j, 1)
+                    If i < 4 Then
+                        chdata(j, i + 1) = (DataMultiplier * CeilingElementMF(idr, i, j) + DataShift) 'data to be plotted
+                    Else
+                        chdata(j, i + 1) = (DataMultiplier * CeilingCharResidue(idr, j) + DataShift) 'data to be plotted
+                    End If
+                    Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                Next
+
+            Next i
+            NumericUpDownTime.Maximum = CeilingElementMF.GetUpperBound(0)
+        End If
+
+        Testpos = InStr(1, title, "Residual mass fractions in wall element")
+        If Testpos > 0 Then
+            Chart1.Titles("Title1").Text = "Residual mass fractions in wall element " & idr.ToString
+
+            For i = 0 To 4
+
+                If i = 0 Then chdata(0, i) = "Water"
+                If i = 1 Then chdata(0, i) = "Cellulose"
+                If i = 2 Then chdata(0, i) = "Hemicellulose"
+                If i = 3 Then chdata(0, i) = "Lignin"
+                If i = 4 Then chdata(0, i) = "Char residue"
+
+                Chart1.Series.Add(chdata(0, i))
+                Chart1.Series(chdata(0, i)).ChartType = SeriesChartType.FastLine
+
+                For j = 1 To stepcount
+                    chdata(j, i) = tim(j, 1)
+                    If i < 4 Then
+                        chdata(j, i + 1) = (DataMultiplier * UWallElementMF(idr, i, j) + DataShift) 'data to be plotted
+                    Else
+                        chdata(j, i + 1) = (DataMultiplier * UWallCharResidue(idr, j) + DataShift) 'data to be plotted
+                    End If
+                    Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                Next
+
+            Next i
+            NumericUpDownTime.Maximum = UWallElementMF.GetUpperBound(0)
+        End If
+
+        Testpos = InStr(1, title, "Wood fuel MLR (kg/m3/s) in element")
+        If Testpos > 0 Then
+            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in element " & idr.ToString
+
+            Dim curve As Integer
+            curve = 0
+            chdata(0, 0) = "MLR"
+
+            Chart1.Series.Add(chdata(0, curve))
+            Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To stepcount
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * CeilingWoodMLR(idr, j) + DataShift) 'data to be plotted
+
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+            NumericUpDownTime.Maximum = CeilingWoodMLR.GetUpperBound(0)
+        End If
+
+        Testpos = InStr(1, title, "Wood fuel MLR (kg/m3/s) in wall element")
+        If Testpos > 0 Then
+            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in wall element " & idr.ToString
+
+            Dim curve As Integer
+            curve = 0
+            chdata(0, 0) = "MLR"
+
+            Chart1.Series.Add(chdata(0, curve))
+            Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To stepcount
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * WallWoodMLR(idr, j) + DataShift) 'data to be plotted
+
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+            NumericUpDownTime.Maximum = WallWoodMLR.GetUpperBound(0)
+        End If
+
+        Testpos = InStr(1, title, "Apparent density (kg/m3)")
+        If Testpos > 0 Then
+            Chart1.Titles("Title1").Text = "Apparent density (kg/m3) in element " & idr.ToString
+
+            Dim curve As Integer
+            curve = 0
+            chdata(0, 0) = "Apparent density (kg/m3)"
+
+            Chart1.Series.Add(chdata(0, curve))
+            Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To NumberTimeSteps
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * CeilingApparentDensity(idr, j) + DataShift) 'data to be plotted
+
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+            NumericUpDownTime.Maximum = CeilingApparentDensity.GetUpperBound(0)
+        End If
+
+        Testpos = InStr(1, title, "Apparent wall density (kg/m3)")
+        If Testpos > 0 Then
+            Chart1.Titles("Title1").Text = "Apparent wall density (kg/m3) in element " & idr.ToString
+
+            Dim curve As Integer
+            curve = 0
+            chdata(0, 0) = "Apparent wall density (kg/m3)"
+
+            Chart1.Series.Add(chdata(0, curve))
+            Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To NumberTimeSteps
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * WallApparentDensity(idr, j) + DataShift) 'data to be plotted
+
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+            NumericUpDownTime.Maximum = WallApparentDensity.GetUpperBound(0)
+        End If
+
+        Chart1.Visible = True
+        NumericUpDownTime.Visible = True
+        BringToFront()
+        Show()
+
+    End Sub
 End Class

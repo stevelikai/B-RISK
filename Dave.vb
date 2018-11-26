@@ -163,9 +163,11 @@ Module DAVE
 		IO = 0
 		If AreaUnderWallCurve(fireroom) > 0 Then
 			Do While WallIgniteStep(fireroom) > 0 And System.Math.Abs(AreaUnderWallCurve(fireroom) - IO) / AreaUnderWallCurve(fireroom) > 0.01 '1%
-				If flagstop = 1 Then Exit Function
-				'calculate the new area under the curve
-				Call Integrate_New_HRR(fireroom, 1, 0, wallhigh, TimeFactorW, IO, QP_wall)
+                If flagstop = 1 Then
+                    Exit Function
+                End If
+                'calculate the new area under the curve
+                Call Integrate_New_HRR(fireroom, 1, 0, wallhigh, TimeFactorW, IO, QP_wall)
 				
 				If System.Math.Abs(AreaUnderWallCurve(fireroom) - IO) / AreaUnderWallCurve(fireroom) <= 0.01 Then Exit Do
 				

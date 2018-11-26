@@ -1931,7 +1931,9 @@ h2ohandler:
             Dim wood_alpha, wood_c, wood_fourier As Double
             Dim UWoutbiot, LWoutbiot As Double
 
-            moisturecontent = 0.12 'assume 15%
+            moisturecontent = init_moisturecontent
+
+            'moisturecontent = 0.12 'assume 15%
             chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
 
             If CLTwallpercent > 0 Then
@@ -1982,18 +1984,19 @@ h2ohandler:
 
             If UWallNodeTemp(Wallnodestemp) <= 473 Then
                 prop_ku = 0.285
-                prop_ku = WallConductivity(room)
+                'prop_ku = WallConductivity(room)
             ElseIf UWallNodeTemp(Wallnodestemp) <= 663 Then
                 prop_ku = -0.617 + 0.0038 * UWallNodeTemp(Wallnodestemp) - 0.000004 * UWallNodeTemp(Wallnodestemp) ^ 2
             Else
                 prop_ku = 0.04429 + 0.0001477 * UWallNodeTemp(Wallnodestemp)
             End If
+
             'Find Biot Numbers -exterior side
             UWoutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_ku
 
             If LWallNodeTemp(Wallnodestemp) <= 473 Then
                 prop_kl = 0.285
-                prop_kl = WallConductivity(room)
+                'prop_kl = WallConductivity(room)
             ElseIf lWallNodeTemp(Wallnodestemp) <= 663 Then
                 prop_kl = -0.617 + 0.0038 * LWallNodeTemp(Wallnodestemp) - 0.000004 * LWallNodeTemp(Wallnodestemp) ^ 2
             Else
@@ -2066,7 +2069,7 @@ h2ohandler:
 
             If UWallNodeTemp(2) <= 473 Then
                 prop_ku = 0.285
-                prop_ku = WallConductivity(room)
+                'prop_ku = WallConductivity(room)
             ElseIf UWallNodeTemp(2) <= 663 Then
                 prop_ku = -0.617 + 0.0038 * UWallNodeTemp(2) - 0.000004 * UWallNodeTemp(2) ^ 2
             Else
@@ -2087,8 +2090,8 @@ h2ohandler:
                 Next k
             Else
                 'wood
-                wood_c = 101.3 + 3.867 * UWallNodeTemp(Wallnodestemp)
-                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (UWallNodeTemp(Wallnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+                wood_c = 101.3 + 3.867 * UWallNodeTemp(2)
+                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (UWallNodeTemp(2) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
                 wood_alpha = prop_ku / (wood_c * WallDensity(room))
                 wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
                 UW(1, 1) = 1 + 2 * wood_fourier
@@ -2102,7 +2105,7 @@ h2ohandler:
 
             If LWallNodeTemp(2) <= 473 Then
                 prop_kl = 0.285
-                prop_kl = WallConductivity(room)
+                'prop_kl = WallConductivity(room)
             ElseIf lWallNodeTemp(2) <= 663 Then
                 prop_kl = -0.617 + 0.0038 * LWallNodeTemp(2) - 0.000004 * LWallNodeTemp(2) ^ 2
             Else
@@ -2123,8 +2126,8 @@ h2ohandler:
                 Next k
             Else
                 'wood
-                wood_c = 101.3 + 3.867 * LWallNodeTemp(Wallnodestemp)
-                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (LWallNodeTemp(Wallnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+                wood_c = 101.3 + 3.867 * LWallNodeTemp(2)
+                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (LWallNodeTemp(2) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
                 wood_alpha = prop_kl / (wood_c * WallDensity(room))
                 wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
                 LW(1, 1) = 1 + 2 * wood_fourier
@@ -2141,7 +2144,7 @@ h2ohandler:
             For j = 2 To Wallnodestemp - 1
                 If UWallNodeTemp(j + 1) <= 473 Then
                     prop_ku = 0.285
-                    prop_ku = WallConductivity(room)
+                    'prop_ku = WallConductivity(room)
                 ElseIf UWallNodeTemp(j + 1) <= 663 Then
                     prop_ku = -0.617 + 0.0038 * UWallNodeTemp(j + 1) - 0.000004 * UWallNodeTemp(j + 1) ^ 2
                 Else
@@ -2157,8 +2160,8 @@ h2ohandler:
                     UW(j, k) = 1 + 2 * char_fourier
                     UW(j, k + 1) = -char_fourier
                 Else
-                    wood_c = 101.3 + 3.867 * UWallNodeTemp(Wallnodestemp)
-                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (UWallNodeTemp(Wallnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+                    wood_c = 101.3 + 3.867 * UWallNodeTemp(j + 1)
+                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (UWallNodeTemp(j + 1) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
                     wood_alpha = prop_ku / (wood_c * WallDensity(room))
                     wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
                     UW(j, k - 1) = -wood_fourier
@@ -2173,7 +2176,7 @@ h2ohandler:
             For j = 2 To Wallnodestemp - 1
                 If LWallNodeTemp(j + 1) <= 473 Then
                     prop_kl = 0.285
-                    prop_kl = WallConductivity(room)
+                    'prop_kl = WallConductivity(room)
                 ElseIf lWallNodeTemp(j + 1) <= 663 Then
                     prop_kl = -0.617 + 0.0038 * LWallNodeTemp(j + 1) - 0.000004 * LWallNodeTemp(j + 1) ^ 2
                 Else
@@ -2189,8 +2192,8 @@ h2ohandler:
                     LW(j, k) = 1 + 2 * char_fourier
                     LW(j, k + 1) = -char_fourier
                 Else
-                    wood_c = 101.3 + 3.867 * LWallNodeTemp(Wallnodestemp)
-                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (LWallNodeTemp(Wallnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+                    wood_c = 101.3 + 3.867 * LWallNodeTemp(j + 1)
+                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (LWallNodeTemp(j + 1) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
                     wood_alpha = prop_kl / (wood_c * WallDensity(room))
                     wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
                     LW(j, k - 1) = -wood_fourier
@@ -2238,6 +2241,39 @@ h2ohandler:
             MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in Implicit_Surface_Temps_CLTW_Char ")
         End Try
     End Sub
+
+    Sub Implicit_Surface_Temps_CLTC_kinetic(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
+        '*  ================================================================
+        '*      This function updates the ceiling nodal, using an
+        '*      implicit finite difference method.
+        '*      in conjunction with a kinetic pyrolysis model 
+        '*  ================================================================
+
+        Try
+            Dim ceilinglayersremaining As Integer
+            Dim k, j As Integer
+            Dim ceilingnodestemp As Integer
+            Dim NLC As Integer
+            Dim ier As Short
+            Dim ceilingnodeadjust As Integer
+            Dim chardensity, moisturecontent, temp As Double
+            Dim prop_k As Double 'W/mK
+            Dim char_alpha, char_c, char_fourier As Double
+            Dim wood_alpha, wood_c, wood_fourier As Double
+            Dim Coutbiot As Double
+            Dim kwood As Double = 0.285
+            kwood = CeilingConductivity(room)
+
+            ' moisturecontent = 0.1 'assume 10% mass fraction
+            moisturecontent = init_moisturecontent
+
+            chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
+
+
+        Catch ex As Exception
+            MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in " & Err.Source)
+        End Try
+    End Sub
     Sub Implicit_Surface_Temps_CLTC_Char(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
         '*  ================================================================
         '*      This function updates the surface temperatures, using an
@@ -2257,10 +2293,14 @@ h2ohandler:
             Dim char_alpha, char_c, char_fourier As Double
             Dim wood_alpha, wood_c, wood_fourier As Double
             Dim Coutbiot As Double
-            Dim kwood As Double = 0.285
-            kwood = CeilingConductivity(room)
 
-            moisturecontent = 0.12 'assume 15%
+            Dim kwood As Double = 0.285
+
+            'kwood = CeilingConductivity(room)
+
+            'moisturecontent = 0.08 'was 12%
+            moisturecontent = init_moisturecontent
+
             chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
 
             If CLTceilingpercent > 0 Then
@@ -2348,6 +2388,7 @@ h2ohandler:
                 UC(1, 2) = -2 * wood_fourier
             End If
 
+            'exposed side
             If CeilingNodeTemp(2) <= 473 Then
                 prop_k = kwood
             ElseIf CeilingNodeTemp(2) <= 663 Then
@@ -2370,8 +2411,8 @@ h2ohandler:
                 Next k
             Else
                 'wood
-                wood_c = 101.3 + 3.867 * CeilingNodeTemp(ceilingnodestemp)
-                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(ceilingnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+                wood_c = 101.3 + 3.867 * CeilingNodeTemp(2)
+                wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(2) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
                 wood_alpha = prop_k / (wood_c * CeilingDensity(room))
                 wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
@@ -2405,8 +2446,8 @@ h2ohandler:
                     UC(j, k) = 1 + 2 * char_fourier
                     UC(j, k + 1) = -char_fourier
                 Else
-                    wood_c = 101.3 + 3.867 * CeilingNodeTemp(ceilingnodestemp)
-                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(ceilingnodestemp) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
+                    wood_c = 101.3 + 3.867 * CeilingNodeTemp(j + 1)
+                    wood_c = (wood_c + 4187 * moisturecontent) / (1 + moisturecontent) + (23.55 * (CeilingNodeTemp(j + 1) - 273) - 1326 * moisturecontent + 2417) * moisturecontent
 
                     wood_alpha = prop_k / (wood_c * CeilingDensity(room))
                     wood_fourier = wood_alpha * Timestep / (CeilingDeltaX(room)) ^ 2
@@ -2451,6 +2492,7 @@ h2ohandler:
             MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in Implicit_Surface_Temps_CLTW_Char")
         End Try
     End Sub
+
     Sub Implicit_Surface_Temps_floor(ByVal room As Integer, ByVal i As Integer, ByRef FloorNode(,,) As Double)
         '*  ================================================================
         '*      This function updates the surface temperatures, using an

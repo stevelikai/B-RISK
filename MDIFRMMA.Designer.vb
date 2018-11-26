@@ -351,6 +351,16 @@
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
         Me.uwallchardepth = New System.Windows.Forms.ToolStripMenuItem()
         Me.ceilingchardepth = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResidualMassFractions2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KineticWoodPyrolysisModelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResidualMassFractionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CeilingWoodMassLossRateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallResidualMassFractbyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPressure = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuCeilingJet = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
@@ -1087,7 +1097,7 @@
         '
         'mnuGraphs
         '
-        Me.mnuGraphs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMultiGraphs, Me.mnuLayerHeight, Me.mnuGasTemperatures, Me.mnuHeat, Me.mnuMassLossGraph, Me.mnuMassLeft, Me.mnuPlumeGraph, Me.mnuWallFlow, Me.mnuVentFlowGraph, Me.mnuSpecies, Me.mnuFEDgraph, Me.mnuVisibilityGraph, Me.mnuVentFires, Me.mnuTargetRadiationGraph, Me.mnuDetectorGraph, Me.mnuSurfaceTemperatures, Me.mnuSurfaceFluxes, Me.mnuConvectHTC, Me.mnuAST, Me.ToolStripMenuItem18, Me.mnuPressure, Me.mnuCeilingJet, Me.mnufloorspread, Me.mnuQuintiereGraph, Me.mnuConeHRR, Me.mnuSPR, Me.mnuGER, Me.mnuUnconstrainedHeat, Me.mnuGlassTempGraph, Me.mnuNormalisedHeatLoad, Me.ToolStripMenuItem23, Me.ToolStripMenuItem28, Me.ToolStripMenuItem29, Me.mnuPlotWoodBurningRate, Me.ToolStripMenuItem31})
+        Me.mnuGraphs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMultiGraphs, Me.mnuLayerHeight, Me.mnuGasTemperatures, Me.mnuHeat, Me.mnuMassLossGraph, Me.mnuMassLeft, Me.mnuPlumeGraph, Me.mnuWallFlow, Me.mnuVentFlowGraph, Me.mnuSpecies, Me.mnuFEDgraph, Me.mnuVisibilityGraph, Me.mnuVentFires, Me.mnuTargetRadiationGraph, Me.mnuDetectorGraph, Me.mnuSurfaceTemperatures, Me.mnuSurfaceFluxes, Me.mnuConvectHTC, Me.mnuAST, Me.ToolStripMenuItem18, Me.KineticWoodPyrolysisModelToolStripMenuItem, Me.mnuPressure, Me.mnuCeilingJet, Me.mnufloorspread, Me.mnuQuintiereGraph, Me.mnuConeHRR, Me.mnuSPR, Me.mnuGER, Me.mnuUnconstrainedHeat, Me.mnuGlassTempGraph, Me.mnuNormalisedHeatLoad, Me.ToolStripMenuItem23, Me.ToolStripMenuItem28, Me.ToolStripMenuItem29, Me.mnuPlotWoodBurningRate, Me.ToolStripMenuItem31})
         Me.mnuGraphs.Image = Global.BRISK.My.Resources.Resources.pic11
         Me.mnuGraphs.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuGraphs.Name = "mnuGraphs"
@@ -1603,7 +1613,7 @@
         '
         'ToolStripMenuItem18
         '
-        Me.ToolStripMenuItem18.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem19, Me.ToolStripMenuItem20, Me.ToolStripMenuItem21, Me.ToolStripMenuItem22, Me.uwallchardepth, Me.ceilingchardepth})
+        Me.ToolStripMenuItem18.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem19, Me.ToolStripMenuItem20, Me.ToolStripMenuItem21, Me.ToolStripMenuItem22, Me.uwallchardepth, Me.ceilingchardepth, Me.ResidualMassFractions2ToolStripMenuItem})
         Me.ToolStripMenuItem18.Name = "ToolStripMenuItem18"
         Me.ToolStripMenuItem18.Size = New System.Drawing.Size(272, 22)
         Me.ToolStripMenuItem18.Text = "Surface Internal Temperatures"
@@ -1611,38 +1621,99 @@
         'ToolStripMenuItem19
         '
         Me.ToolStripMenuItem19.Name = "ToolStripMenuItem19"
-        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem19.Text = "Ceiling"
         '
         'ToolStripMenuItem20
         '
         Me.ToolStripMenuItem20.Name = "ToolStripMenuItem20"
-        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem20.Text = "Upper Wall"
         '
         'ToolStripMenuItem21
         '
         Me.ToolStripMenuItem21.Name = "ToolStripMenuItem21"
-        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem21.Text = "Lower Wall"
         '
         'ToolStripMenuItem22
         '
         Me.ToolStripMenuItem22.Name = "ToolStripMenuItem22"
-        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem22.Text = "Floor"
         '
         'uwallchardepth
         '
         Me.uwallchardepth.Name = "uwallchardepth"
-        Me.uwallchardepth.Size = New System.Drawing.Size(179, 22)
+        Me.uwallchardepth.Size = New System.Drawing.Size(197, 22)
         Me.uwallchardepth.Text = "Wall  - char depth"
         '
         'ceilingchardepth
         '
         Me.ceilingchardepth.Name = "ceilingchardepth"
-        Me.ceilingchardepth.Size = New System.Drawing.Size(179, 22)
+        Me.ceilingchardepth.Size = New System.Drawing.Size(197, 22)
         Me.ceilingchardepth.Text = "Ceiling - char depth"
+        '
+        'ResidualMassFractions2ToolStripMenuItem
+        '
+        Me.ResidualMassFractions2ToolStripMenuItem.Name = "ResidualMassFractions2ToolStripMenuItem"
+        Me.ResidualMassFractions2ToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
+        Me.ResidualMassFractions2ToolStripMenuItem.Text = "Residual mass fractions"
+        '
+        'KineticWoodPyrolysisModelToolStripMenuItem
+        '
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem, Me.ApparentDensitybyElementToolStripMenuItem, Me.WallResidualMassFractbyElementToolStripMenuItem, Me.WallFuelMassLossRatebyElementToolStripMenuItem, Me.WallFuelMassLossRatetotalToolStripMenuItem, Me.WallApparentDensitybyElementToolStripMenuItem})
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Name = "KineticWoodPyrolysisModelToolStripMenuItem"
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Size = New System.Drawing.Size(272, 22)
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Text = "Kinetic wood pyrolysis model"
+        '
+        'ResidualMassFractionsToolStripMenuItem
+        '
+        Me.ResidualMassFractionsToolStripMenuItem.Name = "ResidualMassFractionsToolStripMenuItem"
+        Me.ResidualMassFractionsToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ResidualMassFractionsToolStripMenuItem.Text = "Ceiling Residual mass fract (by element)"
+        '
+        'CeilingWoodMassLossRateToolStripMenuItem
+        '
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Name = "CeilingWoodMassLossRateToolStripMenuItem"
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Text = "Ceiling fuel mass loss rate (by element)"
+        '
+        'CeilingFuelMassLossRatetotalToolStripMenuItem
+        '
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Name = "CeilingFuelMassLossRatetotalToolStripMenuItem"
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Text = "Ceiling fuel mass loss rate (total)"
+        '
+        'ApparentDensitybyElementToolStripMenuItem
+        '
+        Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
+        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Ceiling apparent density (by element)"
+        '
+        'WallResidualMassFractbyElementToolStripMenuItem
+        '
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Name = "WallResidualMassFractbyElementToolStripMenuItem"
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Text = "Wall Residual mass fract (by element)"
+        '
+        'WallFuelMassLossRatebyElementToolStripMenuItem
+        '
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Name = "WallFuelMassLossRatebyElementToolStripMenuItem"
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Text = "Wall fuel mass loss rate (by element)"
+        '
+        'WallFuelMassLossRatetotalToolStripMenuItem
+        '
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Name = "WallFuelMassLossRatetotalToolStripMenuItem"
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Text = "Wall fuel mass loss rate (total)"
+        '
+        'WallApparentDensitybyElementToolStripMenuItem
+        '
+        Me.WallApparentDensitybyElementToolStripMenuItem.Name = "WallApparentDensitybyElementToolStripMenuItem"
+        Me.WallApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallApparentDensitybyElementToolStripMenuItem.Text = "Wall apparent density (by element)"
         '
         'mnuPressure
         '
@@ -2649,5 +2720,15 @@
     Friend WithEvents burningrate As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents areashrinkage As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BatchFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ResidualMassFractions2ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KineticWoodPyrolysisModelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ResidualMassFractionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CeilingWoodMassLossRateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CeilingFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallResidualMassFractbyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallFuelMassLossRatebyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
 #End Region
 End Class

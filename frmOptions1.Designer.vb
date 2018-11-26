@@ -1948,7 +1948,7 @@
         Me.lstTimeStep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.lstTimeStep.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstTimeStep.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.lstTimeStep.Items.AddRange(New Object() {"20", "10", "5", "1", "0.5", "0.1", "0.05", "0.01"})
+        Me.lstTimeStep.Items.AddRange(New Object() {"4", "2", "1", "0.5", "0.25", "0.125"})
         Me.lstTimeStep.Location = New System.Drawing.Point(208, 24)
         Me.lstTimeStep.Name = "lstTimeStep"
         Me.lstTimeStep.RightToLeft = System.Windows.Forms.RightToLeft.No

@@ -22,42 +22,42 @@ Partial Class frmPlot
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series
-        Dim Title2 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Title1 As System.Windows.Forms.DataVisualization.Charting.Title = New System.Windows.Forms.DataVisualization.Charting.Title()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPlot))
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
-        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PageSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.CopyToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.mnuLineColor = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room1ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room3ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.RooToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room5ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room6ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room7ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room8ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room9ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room10ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room11ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Room12ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.AutoResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ExportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.NumericUpDownTime = New System.Windows.Forms.NumericUpDown
-        Me.lblUpDownTime = New System.Windows.Forms.Label
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument
-        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog
-        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog
-        Me.TimeUnitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.SecondsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.MinutesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PageSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuLineColor = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room1ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room3ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RooToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room5ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room6ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room7ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room8ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room9ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room10ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room11ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Room12ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutoResetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExportDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TimeUnitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SecondsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MinutesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NumericUpDownTime = New System.Windows.Forms.NumericUpDown()
+        Me.lblUpDownTime = New System.Windows.Forms.Label()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.NumericUpDownTime, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,22 +65,22 @@ Partial Class frmPlot
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.Chart1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(0, 24)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(641, 340)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
-        Title2.Name = "Title1"
-        Me.Chart1.Titles.Add(Title2)
+        Title1.Name = "Title1"
+        Me.Chart1.Titles.Add(Title1)
         '
         'MenuStrip1
         '
@@ -214,6 +214,27 @@ Partial Class frmPlot
         Me.ExportDataToolStripMenuItem.Size = New System.Drawing.Size(79, 20)
         Me.ExportDataToolStripMenuItem.Text = "Export Data"
         '
+        'TimeUnitsToolStripMenuItem
+        '
+        Me.TimeUnitsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SecondsToolStripMenuItem, Me.MinutesToolStripMenuItem})
+        Me.TimeUnitsToolStripMenuItem.Name = "TimeUnitsToolStripMenuItem"
+        Me.TimeUnitsToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
+        Me.TimeUnitsToolStripMenuItem.Text = "Time units"
+        '
+        'SecondsToolStripMenuItem
+        '
+        Me.SecondsToolStripMenuItem.Checked = True
+        Me.SecondsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.SecondsToolStripMenuItem.Name = "SecondsToolStripMenuItem"
+        Me.SecondsToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.SecondsToolStripMenuItem.Text = "seconds"
+        '
+        'MinutesToolStripMenuItem
+        '
+        Me.MinutesToolStripMenuItem.Name = "MinutesToolStripMenuItem"
+        Me.MinutesToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.MinutesToolStripMenuItem.Text = "minutes"
+        '
         'NumericUpDownTime
         '
         Me.NumericUpDownTime.AutoSize = True
@@ -254,27 +275,6 @@ Partial Class frmPlot
         Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
         Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         Me.PrintPreviewDialog1.Visible = False
-        '
-        'TimeUnitsToolStripMenuItem
-        '
-        Me.TimeUnitsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SecondsToolStripMenuItem, Me.MinutesToolStripMenuItem})
-        Me.TimeUnitsToolStripMenuItem.Name = "TimeUnitsToolStripMenuItem"
-        Me.TimeUnitsToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
-        Me.TimeUnitsToolStripMenuItem.Text = "Time units"
-        '
-        'SecondsToolStripMenuItem
-        '
-        Me.SecondsToolStripMenuItem.Checked = True
-        Me.SecondsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.SecondsToolStripMenuItem.Name = "SecondsToolStripMenuItem"
-        Me.SecondsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SecondsToolStripMenuItem.Text = "seconds"
-        '
-        'MinutesToolStripMenuItem
-        '
-        Me.MinutesToolStripMenuItem.Name = "MinutesToolStripMenuItem"
-        Me.MinutesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.MinutesToolStripMenuItem.Text = "minutes"
         '
         'frmPlot
         '
