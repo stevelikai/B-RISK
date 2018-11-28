@@ -2587,13 +2587,26 @@ errorhandler:
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdWoodOption.Click
-        frmCLT.Show()
+
         If useCLTmodel = True Then
             frmCLT.optCLTOFF.Checked = False
             frmCLT.optCLTON.Checked = True
         Else
             frmCLT.optCLTOFF.Checked = True
             frmCLT.optCLTON.Checked = False
+        End If
+        If IntegralModel = True Then
+            frmCLT.RB_Integral.Checked = True
+            frmCLT.panel_kinetic.Visible = False
+            frmCLT.Panel_integralmodel.Visible = True
+        ElseIf KineticModel = True Then
+            frmCLT.RB_Kinetic.Checked = True
+            frmCLT.panel_kinetic.Visible = True
+            frmCLT.Panel_integralmodel.Visible = False
+        Else
+            frmCLT.RB_dynamic.Checked = True
+            frmCLT.panel_kinetic.Visible = False
+            frmCLT.Panel_integralmodel.Visible = False
         End If
 
         frmCLT.numeric_ceilareapercent.Value = CLTceilingpercent
@@ -2606,6 +2619,31 @@ errorhandler:
         frmCLT.txtCLTLoG.Text = CLTLoG
         frmCLT.txtCritFlux.Text = CLTQcrit
         frmCLT.txtDebondTemp.Text = DebondTemp
+        frmCLT.TXT_MoistureContent.Text = init_moisturecontent * 100
+
+        frmCLT.txtA_cell.Text = Format(E_array(1), "0.00E+00")
+        frmCLT.txtE_cell.Text = Format(A_array(1), "0.00E+00")
+        frmCLT.txtReact_cell.Text = n_array(1)
+        frmCLT.txtInit_cell.Text = mf_compinit(1)
+        frmCLT.txtA_hemi.Text = Format(E_array(2), "0.00E+00")
+        frmCLT.txtE_hemi.Text = Format(A_array(2), "0.00E+00")
+        frmCLT.txtReact_hemi.Text = n_array(2)
+        frmCLT.txtInit_hemi.Text = mf_compinit(2)
+        frmCLT.txtA_lignin.Text = Format(E_array(3), "0.00E+00")
+        frmCLT.txtE_lignin.Text = Format(A_array(3), "0.00E+00")
+        frmCLT.txtReact_lignin.Text = n_array(3)
+        frmCLT.txtInit_lignin.Text = mf_compinit(3)
+        frmCLT.txtA_water.Text = Format(E_array(0), "0.00E+00")
+        frmCLT.txtE_water.Text = Format(A_array(0), "0.00E+00")
+        frmCLT.txtReact_water.Text = n_array(0)
+        frmCLT.txtInit_water.Text = mf_compinit(0)
+        frmCLT.TextBox_charyield_cell.Text = char_yield(1)
+        frmCLT.TextBox_charyield_hemi.Text = char_yield(2)
+        frmCLT.TextBox_charyield_lignin.Text = char_yield(3)
+
+        Hide()
+
+        frmCLT.Show()
 
     End Sub
 

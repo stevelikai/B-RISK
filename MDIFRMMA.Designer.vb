@@ -160,18 +160,18 @@
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIFrmMain))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend5 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend6 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea7 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend7 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea8 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend8 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MainMenu1 = New System.Windows.Forms.MenuStrip()
         Me.mnuFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserModeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -254,7 +254,6 @@
         Me.mnuDmpFile = New System.Windows.Forms.ToolStripMenuItem()
         Me.SolversToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AmbientConditionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CompartmentEffectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PostflashoverBehaviourToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ModelPhysicsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuView = New System.Windows.Forms.ToolStripMenuItem()
@@ -351,6 +350,15 @@
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
         Me.uwallchardepth = New System.Windows.Forms.ToolStripMenuItem()
         Me.ceilingchardepth = New System.Windows.Forms.ToolStripMenuItem()
+        Me.KineticWoodPyrolysisModelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResidualMassFractionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CeilingWoodMassLossRateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallResidualMassFractbyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallFuelMassLossRatetotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallApparentDensitybyElementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPressure = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuCeilingJet = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
@@ -938,7 +946,7 @@
         '
         'mnuOptions
         '
-        Me.mnuOptions.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCreateConeFile, Me.mnuseparator4, Me.mnuPrintout, Me.mnuRunTimeGraphs, Me.mnuGraphsVisible, Me._mnuseparator5_1, Me.mnuSimulation, Me.mnuDmpFile, Me.SolversToolStripMenuItem, Me.AmbientConditionsToolStripMenuItem, Me.CompartmentEffectsToolStripMenuItem, Me.PostflashoverBehaviourToolStripMenuItem, Me.ModelPhysicsToolStripMenuItem})
+        Me.mnuOptions.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCreateConeFile, Me.mnuseparator4, Me.mnuPrintout, Me.mnuRunTimeGraphs, Me.mnuGraphsVisible, Me._mnuseparator5_1, Me.mnuSimulation, Me.mnuDmpFile, Me.SolversToolStripMenuItem, Me.AmbientConditionsToolStripMenuItem, Me.PostflashoverBehaviourToolStripMenuItem, Me.ModelPhysicsToolStripMenuItem})
         Me.mnuOptions.Image = Global.BRISK.My.Resources.Resources.pic73
         Me.mnuOptions.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuOptions.Name = "mnuOptions"
@@ -1027,12 +1035,6 @@
         Me.AmbientConditionsToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
         Me.AmbientConditionsToolStripMenuItem.Text = "Ambient Conditions"
         '
-        'CompartmentEffectsToolStripMenuItem
-        '
-        Me.CompartmentEffectsToolStripMenuItem.Name = "CompartmentEffectsToolStripMenuItem"
-        Me.CompartmentEffectsToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
-        Me.CompartmentEffectsToolStripMenuItem.Text = "Compartment Effects"
-        '
         'PostflashoverBehaviourToolStripMenuItem
         '
         Me.PostflashoverBehaviourToolStripMenuItem.Name = "PostflashoverBehaviourToolStripMenuItem"
@@ -1087,7 +1089,7 @@
         '
         'mnuGraphs
         '
-        Me.mnuGraphs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMultiGraphs, Me.mnuLayerHeight, Me.mnuGasTemperatures, Me.mnuHeat, Me.mnuMassLossGraph, Me.mnuMassLeft, Me.mnuPlumeGraph, Me.mnuWallFlow, Me.mnuVentFlowGraph, Me.mnuSpecies, Me.mnuFEDgraph, Me.mnuVisibilityGraph, Me.mnuVentFires, Me.mnuTargetRadiationGraph, Me.mnuDetectorGraph, Me.mnuSurfaceTemperatures, Me.mnuSurfaceFluxes, Me.mnuConvectHTC, Me.mnuAST, Me.ToolStripMenuItem18, Me.mnuPressure, Me.mnuCeilingJet, Me.mnufloorspread, Me.mnuQuintiereGraph, Me.mnuConeHRR, Me.mnuSPR, Me.mnuGER, Me.mnuUnconstrainedHeat, Me.mnuGlassTempGraph, Me.mnuNormalisedHeatLoad, Me.ToolStripMenuItem23, Me.ToolStripMenuItem28, Me.ToolStripMenuItem29, Me.mnuPlotWoodBurningRate, Me.ToolStripMenuItem31})
+        Me.mnuGraphs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMultiGraphs, Me.mnuLayerHeight, Me.mnuGasTemperatures, Me.mnuHeat, Me.mnuMassLossGraph, Me.mnuMassLeft, Me.mnuPlumeGraph, Me.mnuWallFlow, Me.mnuVentFlowGraph, Me.mnuSpecies, Me.mnuFEDgraph, Me.mnuVisibilityGraph, Me.mnuVentFires, Me.mnuTargetRadiationGraph, Me.mnuDetectorGraph, Me.mnuSurfaceTemperatures, Me.mnuSurfaceFluxes, Me.mnuConvectHTC, Me.mnuAST, Me.ToolStripMenuItem18, Me.KineticWoodPyrolysisModelToolStripMenuItem, Me.mnuPressure, Me.mnuCeilingJet, Me.mnufloorspread, Me.mnuQuintiereGraph, Me.mnuConeHRR, Me.mnuSPR, Me.mnuGER, Me.mnuUnconstrainedHeat, Me.mnuGlassTempGraph, Me.mnuNormalisedHeatLoad, Me.ToolStripMenuItem23, Me.ToolStripMenuItem28, Me.ToolStripMenuItem29, Me.mnuPlotWoodBurningRate, Me.ToolStripMenuItem31})
         Me.mnuGraphs.Image = Global.BRISK.My.Resources.Resources.pic11
         Me.mnuGraphs.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuGraphs.Name = "mnuGraphs"
@@ -1580,25 +1582,25 @@
         'ToolStripMenuItem14
         '
         Me.ToolStripMenuItem14.Name = "ToolStripMenuItem14"
-        Me.ToolStripMenuItem14.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem14.Size = New System.Drawing.Size(180, 22)
         Me.ToolStripMenuItem14.Text = "Ceiling"
         '
         'ToolStripMenuItem15
         '
         Me.ToolStripMenuItem15.Name = "ToolStripMenuItem15"
-        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(180, 22)
         Me.ToolStripMenuItem15.Text = "Upper Wall"
         '
         'ToolStripMenuItem16
         '
         Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
-        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(180, 22)
         Me.ToolStripMenuItem16.Text = "Lower Wall"
         '
         'ToolStripMenuItem17
         '
         Me.ToolStripMenuItem17.Name = "ToolStripMenuItem17"
-        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(180, 22)
         Me.ToolStripMenuItem17.Text = "Floor"
         '
         'ToolStripMenuItem18
@@ -1611,38 +1613,93 @@
         'ToolStripMenuItem19
         '
         Me.ToolStripMenuItem19.Name = "ToolStripMenuItem19"
-        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem19.Text = "Ceiling"
         '
         'ToolStripMenuItem20
         '
         Me.ToolStripMenuItem20.Name = "ToolStripMenuItem20"
-        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem20.Text = "Upper Wall"
         '
         'ToolStripMenuItem21
         '
         Me.ToolStripMenuItem21.Name = "ToolStripMenuItem21"
-        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem21.Text = "Lower Wall"
         '
         'ToolStripMenuItem22
         '
         Me.ToolStripMenuItem22.Name = "ToolStripMenuItem22"
-        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(197, 22)
         Me.ToolStripMenuItem22.Text = "Floor"
         '
         'uwallchardepth
         '
         Me.uwallchardepth.Name = "uwallchardepth"
-        Me.uwallchardepth.Size = New System.Drawing.Size(179, 22)
+        Me.uwallchardepth.Size = New System.Drawing.Size(197, 22)
         Me.uwallchardepth.Text = "Wall  - char depth"
         '
         'ceilingchardepth
         '
         Me.ceilingchardepth.Name = "ceilingchardepth"
-        Me.ceilingchardepth.Size = New System.Drawing.Size(179, 22)
+        Me.ceilingchardepth.Size = New System.Drawing.Size(197, 22)
         Me.ceilingchardepth.Text = "Ceiling - char depth"
+        '
+        'KineticWoodPyrolysisModelToolStripMenuItem
+        '
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem, Me.ApparentDensitybyElementToolStripMenuItem, Me.WallResidualMassFractbyElementToolStripMenuItem, Me.WallFuelMassLossRatebyElementToolStripMenuItem, Me.WallFuelMassLossRatetotalToolStripMenuItem, Me.WallApparentDensitybyElementToolStripMenuItem})
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Name = "KineticWoodPyrolysisModelToolStripMenuItem"
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Size = New System.Drawing.Size(272, 22)
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Text = "Kinetic wood pyrolysis model"
+        '
+        'ResidualMassFractionsToolStripMenuItem
+        '
+        Me.ResidualMassFractionsToolStripMenuItem.Name = "ResidualMassFractionsToolStripMenuItem"
+        Me.ResidualMassFractionsToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ResidualMassFractionsToolStripMenuItem.Text = "Ceiling Residual mass fract (by element)"
+        '
+        'CeilingWoodMassLossRateToolStripMenuItem
+        '
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Name = "CeilingWoodMassLossRateToolStripMenuItem"
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Text = "Ceiling fuel mass loss rate (by element)"
+        '
+        'CeilingFuelMassLossRatetotalToolStripMenuItem
+        '
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Name = "CeilingFuelMassLossRatetotalToolStripMenuItem"
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Text = "Ceiling fuel mass loss rate (total)"
+        '
+        'ApparentDensitybyElementToolStripMenuItem
+        '
+        Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
+        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ApparentDensitybyElementToolStripMenuItem.Text = "Ceiling apparent density (by element)"
+        '
+        'WallResidualMassFractbyElementToolStripMenuItem
+        '
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Name = "WallResidualMassFractbyElementToolStripMenuItem"
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Text = "Wall Residual mass fract (by element)"
+        '
+        'WallFuelMassLossRatebyElementToolStripMenuItem
+        '
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Name = "WallFuelMassLossRatebyElementToolStripMenuItem"
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Text = "Wall fuel mass loss rate (by element)"
+        '
+        'WallFuelMassLossRatetotalToolStripMenuItem
+        '
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Name = "WallFuelMassLossRatetotalToolStripMenuItem"
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Text = "Wall fuel mass loss rate (total)"
+        '
+        'WallApparentDensitybyElementToolStripMenuItem
+        '
+        Me.WallApparentDensitybyElementToolStripMenuItem.Name = "WallApparentDensitybyElementToolStripMenuItem"
+        Me.WallApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallApparentDensitybyElementToolStripMenuItem.Text = "Wall apparent density (by element)"
         '
         'mnuPressure
         '
@@ -2392,76 +2449,76 @@
         '
         'ChartRuntime4
         '
-        ChartArea1.AxisX.Title = "Time (sec)"
-        ChartArea1.AxisY.Title = "Heat Release Rate (kW)"
-        ChartArea1.Name = "ChartArea1"
-        Me.ChartRuntime4.ChartAreas.Add(ChartArea1)
+        ChartArea5.AxisX.Title = "Time (sec)"
+        ChartArea5.AxisY.Title = "Heat Release Rate (kW)"
+        ChartArea5.Name = "ChartArea1"
+        Me.ChartRuntime4.ChartAreas.Add(ChartArea5)
         Me.ChartRuntime4.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend1.Name = "Legend1"
-        Me.ChartRuntime4.Legends.Add(Legend1)
+        Legend5.Name = "Legend1"
+        Me.ChartRuntime4.Legends.Add(Legend5)
         Me.ChartRuntime4.Location = New System.Drawing.Point(451, 237)
         Me.ChartRuntime4.Name = "ChartRuntime4"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.ChartRuntime4.Series.Add(Series1)
+        Series5.ChartArea = "ChartArea1"
+        Series5.Legend = "Legend1"
+        Series5.Name = "Series1"
+        Me.ChartRuntime4.Series.Add(Series5)
         Me.ChartRuntime4.Size = New System.Drawing.Size(443, 228)
         Me.ChartRuntime4.TabIndex = 38
         Me.ChartRuntime4.Visible = False
         '
         'ChartRuntime2
         '
-        ChartArea2.AxisX.Title = "Time (sec)"
-        ChartArea2.AxisY.Title = "Heat Release Rate (kW)"
-        ChartArea2.Name = "ChartArea1"
-        Me.ChartRuntime2.ChartAreas.Add(ChartArea2)
+        ChartArea6.AxisX.Title = "Time (sec)"
+        ChartArea6.AxisY.Title = "Heat Release Rate (kW)"
+        ChartArea6.Name = "ChartArea1"
+        Me.ChartRuntime2.ChartAreas.Add(ChartArea6)
         Me.ChartRuntime2.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend2.Name = "Legend1"
-        Me.ChartRuntime2.Legends.Add(Legend2)
+        Legend6.Name = "Legend1"
+        Me.ChartRuntime2.Legends.Add(Legend6)
         Me.ChartRuntime2.Location = New System.Drawing.Point(451, 3)
         Me.ChartRuntime2.Name = "ChartRuntime2"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.ChartRuntime2.Series.Add(Series2)
+        Series6.ChartArea = "ChartArea1"
+        Series6.Legend = "Legend1"
+        Series6.Name = "Series1"
+        Me.ChartRuntime2.Series.Add(Series6)
         Me.ChartRuntime2.Size = New System.Drawing.Size(443, 228)
         Me.ChartRuntime2.TabIndex = 37
         Me.ChartRuntime2.Visible = False
         '
         'ChartRuntime3
         '
-        ChartArea3.AxisX.Title = "Time (sec)"
-        ChartArea3.AxisY.Title = "Heat Release Rate (kW)"
-        ChartArea3.Name = "ChartArea1"
-        Me.ChartRuntime3.ChartAreas.Add(ChartArea3)
+        ChartArea7.AxisX.Title = "Time (sec)"
+        ChartArea7.AxisY.Title = "Heat Release Rate (kW)"
+        ChartArea7.Name = "ChartArea1"
+        Me.ChartRuntime3.ChartAreas.Add(ChartArea7)
         Me.ChartRuntime3.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.ChartRuntime3.Legends.Add(Legend3)
+        Legend7.Name = "Legend1"
+        Me.ChartRuntime3.Legends.Add(Legend7)
         Me.ChartRuntime3.Location = New System.Drawing.Point(3, 237)
         Me.ChartRuntime3.Name = "ChartRuntime3"
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.ChartRuntime3.Series.Add(Series3)
+        Series7.ChartArea = "ChartArea1"
+        Series7.Legend = "Legend1"
+        Series7.Name = "Series1"
+        Me.ChartRuntime3.Series.Add(Series7)
         Me.ChartRuntime3.Size = New System.Drawing.Size(442, 228)
         Me.ChartRuntime3.TabIndex = 35
         Me.ChartRuntime3.Visible = False
         '
         'ChartRuntime1
         '
-        ChartArea4.AxisX.Title = "Time (sec)"
-        ChartArea4.AxisY.Title = "Heat Release Rate (kW)"
-        ChartArea4.Name = "ChartArea1"
-        Me.ChartRuntime1.ChartAreas.Add(ChartArea4)
+        ChartArea8.AxisX.Title = "Time (sec)"
+        ChartArea8.AxisY.Title = "Heat Release Rate (kW)"
+        ChartArea8.Name = "ChartArea1"
+        Me.ChartRuntime1.ChartAreas.Add(ChartArea8)
         Me.ChartRuntime1.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend4.Name = "Legend1"
-        Me.ChartRuntime1.Legends.Add(Legend4)
+        Legend8.Name = "Legend1"
+        Me.ChartRuntime1.Legends.Add(Legend8)
         Me.ChartRuntime1.Location = New System.Drawing.Point(3, 3)
         Me.ChartRuntime1.Name = "ChartRuntime1"
-        Series4.ChartArea = "ChartArea1"
-        Series4.Legend = "Legend1"
-        Series4.Name = "Series1"
-        Me.ChartRuntime1.Series.Add(Series4)
+        Series8.ChartArea = "ChartArea1"
+        Series8.Legend = "Legend1"
+        Series8.Name = "Series1"
+        Me.ChartRuntime1.Series.Add(Series8)
         Me.ChartRuntime1.Size = New System.Drawing.Size(442, 228)
         Me.ChartRuntime1.TabIndex = 36
         Me.ChartRuntime1.Visible = False
@@ -2554,7 +2611,6 @@
     Friend WithEvents MaterialConeFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SolversToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AmbientConditionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CompartmentEffectsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PostflashoverBehaviourToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ModelPhysicsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SaveBaseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -2649,5 +2705,14 @@
     Friend WithEvents burningrate As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents areashrinkage As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BatchFilesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents KineticWoodPyrolysisModelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ResidualMassFractionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CeilingWoodMassLossRateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CeilingFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallResidualMassFractbyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallFuelMassLossRatebyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
 #End Region
 End Class

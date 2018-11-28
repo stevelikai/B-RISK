@@ -11,6 +11,7 @@ Module STIFFsolv
     Dim Y_stiff(,) As Double
     Dim DYDX_stiff(,) As Double
 
+
     Function Rigid(ByVal T As Double, ByVal Y As DoubleVector) As DoubleVector
 
         Dim Nvariables As Integer = 19
@@ -32,6 +33,10 @@ Module STIFFsolv
         Return dy
 
     End Function
+
+
+
+
 
     Sub ODE_Solver_NMath(ByRef Ystart(,) As Double)
         Try
@@ -70,14 +75,16 @@ Module STIFFsolv
             Dim SolverOptions As New VariableOrderOdeSolver.Options()
 
             ' Gets and sets the bound on the estimated error at each integration step. 
-            SolverOptions.AbsoluteTolerance = New DoubleVector(0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001)
+            SolverOptions.AbsoluteTolerance = New DoubleVector(0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001)
+            'SolverOptions.AbsoluteTolerance = New DoubleVector(0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001, 0.000001)
             'SolverOptions.AbsoluteTolerance = New DoubleVector() 'this would need to be resized and populated based on the number of rooms in the model.
 
             ' Bound on the estimated error at each integration step. At the ith integration step the error, e[i] for the estimated solution y[i] satisfies e[i] <= max(RelativeTolerance*Math.Abs(y[i]), AbsoluteTolerance[i]) 
-            SolverOptions.RelativeTolerance = 0.00001
+            SolverOptions.RelativeTolerance = 0.001
+            'SolverOptions.RelativeTolerance = 0.00001
 
             'Increases the number of output points by the specified factor producing smoother output. If Refine is n which is greater than 1, the solver subdivides each time step into n smaller intervals and returns solutions at each time point. The extra values produced for Refine are computed by means of continuous extension formulas The default for RungeKutta45OdeSolver solver is 4. 
-            SolverOptions.Refine = 10
+            SolverOptions.Refine = 1
 
             SolverOptions.MaxStepSize = 0.0001
 
@@ -576,15 +583,12 @@ specieshandler:
 
             If useCLTmodel = True And IntegralModel = True Then
                 mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
+            ElseIf useCLTmodel = True And KineticModel = True Then
+                mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling)
             Else
                 mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
             End If
 
-            'If frmOptions1.optRCNone.Value = False Then
-            '    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall / (WallEffectiveHeatofCombustion(fireroom) * 1000)
-            '    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
-            '    If FloorEffectiveHeatofCombustion(fireroom) > 0 Then mrate_floor = QFloor / (FloorEffectiveHeatofCombustion(fireroom) * 1000)
-            'End If
         Else
             For i = 1 To NumberObjects
 
@@ -607,8 +611,20 @@ specieshandler:
                     If FloorEffectiveHeatofCombustion(fireroom) > 0 Then mrate_floor = QFloor / (FloorEffectiveHeatofCombustion(fireroom) * 1000)
 
                 ElseIf i = 1 And useCLTmodel = True Then
-                    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall / (WallEffectiveHeatofCombustion(fireroom) * 1000)
-                    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
+                    If KineticModel = True Then
+                        If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then
+                            mrate_ceiling = CeilingWoodMLR_tot(stepcount)  'kg/s
+                            QCeiling = mrate_ceiling * CeilingEffectiveHeatofCombustion(fireroom) * 1000
+                        End If
+                        If WallEffectiveHeatofCombustion(fireroom) > 0 Then
+                            'mrate_wall =( UwallWoodMLR_tot(stepcount) * upperwallarea+LwallWoodMLR_tot(stepcount) * lowerwallarea) * WallThickness(fireroom) / 1000 'kg/s
+                        End If
+
+                    Else
+                        If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall / (WallEffectiveHeatofCombustion(fireroom) * 1000)
+                        If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
+                    End If
+
                     'If mrate_wall > 1 Then Stop
                 End If
             Next i

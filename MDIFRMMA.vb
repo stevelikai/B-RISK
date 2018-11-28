@@ -288,8 +288,13 @@ Friend Class MDIFrmMain
                 ToolStripMenuItem28.Visible = True
                 ToolStripMenuItem29.Visible = True
                 mnuNormalisedHeatLoad.Visible = True
-                BatchFilesToolStripMenuItem.Visible = True
+                'BatchFilesToolStripMenuItem.Visible = True
                 frmCLT.Panel_integralmodel.Visible = True
+                frmCLT.RB_Integral.Visible = True
+                frmCLT.RB_Kinetic.Visible = True
+                ToolStripMenuItem31.Visible = True
+                KineticWoodPyrolysisModelToolStripMenuItem.Visible = True
+                mnuPlotWoodBurningRate.Visible = True
             Else
                 TalkToEVACNZToolStripMenuItem.Visible = False
                 'frmOptions1.cmdWoodOption.Visible = False
@@ -301,8 +306,14 @@ Friend Class MDIFrmMain
                 ToolStripMenuItem28.Visible = False
                 ToolStripMenuItem29.Visible = False
                 mnuNormalisedHeatLoad.Visible = False
-                BatchFilesToolStripMenuItem.Visible = False
+                'BatchFilesToolStripMenuItem.Visible = False
                 frmCLT.Panel_integralmodel.Visible = False
+                frmCLT.RB_dynamic.Checked = True
+                frmCLT.RB_Integral.Visible = False
+                frmCLT.RB_Kinetic.Visible = False
+                ToolStripMenuItem31.Visible = False
+                KineticWoodPyrolysisModelToolStripMenuItem.Visible = False
+                mnuPlotWoodBurningRate.Visible = False
             End If
 
         Catch ex As Exception
@@ -350,12 +361,21 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmNewSmokeDetector)
         Me.AddOwnedForm(frmViewDocs)
         Me.AddOwnedForm(frmRoomList)
-
-        frmInputs.Read_BaseFile_xml(RiskDataDirectory & "basemodel_default.xml", False)
-
         Me.Show()
         Me.Enabled = False
 
+        If Environment.GetCommandLineArgs.Length >= 2 Then
+            MasterDirectory = Environment.GetCommandLineArgs(1)
+            manualrun = True
+            frmInputs.Show()
+
+            Call batchfiles()
+            Me.Close()
+        Else
+            manualrun = False
+        End If
+
+        frmInputs.Read_BaseFile_xml(RiskDataDirectory & "basemodel_default.xml", False)
         mnuEULA.PerformClick()
 
     End Sub
@@ -7042,7 +7062,7 @@ errhandler:
 
     End Sub
 
-    Private Sub CompartmentEffectsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompartmentEffectsToolStripMenuItem.Click
+    Private Sub CompartmentEffectsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         mnuSimulation.PerformClick()
         frmOptions1.SSTab2.SelectedIndex = 9
         frmOptions1.Show()
@@ -8148,9 +8168,10 @@ errhandler:
             Description = "Room " + CStr(idr)
             If NumberTimeSteps < 2 Then Exit Sub
 
-            If IntegralModel = False Then
+            'If IntegralModel = False And KineticModel = False Then
+            'If IntegralModel = False Then
 
-                Title = "Enter char or isotherm temperature?"   ' Set title.
+            Title = "Enter char or isotherm temperature?"   ' Set title.
                 Message = "Enter the temperature (C)"   ' Set prompt.
                 dDefault = "300"   ' Set default.
                 ' Display message, title, and default value.
@@ -8168,7 +8189,7 @@ errhandler:
                 Dim T(0 To NumberwallNodes) As Double
 
                 'define variables
-                Title = "Upper wall char depth (mm) - based on " & crittemp.ToString & " C isotherm"
+                Title = "Upper wall char depth (mm) - based on " & MyValue.ToString & " C isotherm"
                 'Title = "Upper wall char depth (mm)"
 
                 For j = 0 To NumberTimeSteps
@@ -8199,16 +8220,23 @@ errhandler:
 
 
                 Next
-            Else
-                'define variables
-                Title = "Upper wall char depth (mm) - based on integral model for burning rate"
-                'Title = "Upper wall char depth (mm)"
+            'ElseIf IntegralModel = True Then
+            '    'define variables
+            '    Title = "Upper wall char depth (mm) - based on integral model for burning rate"
+            '    'Title = "Upper wall char depth (mm)"
 
-                For j = 0 To NumberTimeSteps
-                    datatobeplotted(idr, j) = wall_char(j, 2)
-                Next
-            End If
+            '    For j = 0 To NumberTimeSteps
+            '        datatobeplotted(idr, j) = wall_char(j, 2)
+            '    Next
+            'ElseIf KineticModel = True Then
+            '    'define variables
+            '    Title = "Upper wall char depth (mm) - based on kinetic model for burning rate"
+            '    'Title = "Upper wall char depth (mm)"
 
+            '    For j = 0 To NumberTimeSteps
+            '        datatobeplotted(idr, j) = wall_char(j, 2)
+            '    Next
+            'End If
 
             'define variables
             DataShift = 0
@@ -8221,6 +8249,7 @@ errhandler:
             MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in uwallchardepth_Click")
         End Try
     End Sub
+
     Private Sub ceilingdepth_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ceilingchardepth.Click
         '*  ===============================================================
         '*  Show a graph of the char depth in ceiling versus time.
@@ -8305,7 +8334,7 @@ errhandler:
 
 
                 Next
-            Else
+            ElseIf IntegralModel = True Then
                 'define variables
                 Title = "Ceiling char depth (mm) - based on integral model for burning rate"
                 'Title = "Upper wall char depth (mm)"
@@ -8313,6 +8342,14 @@ errhandler:
                 For j = 0 To NumberTimeSteps
                     datatobeplotted(idr, j) = ceil_char(j, 2)
                 Next
+                'ElseIf KineticModel = True Then
+                '    'define variables
+                '    Title = "Ceiling char depth (mm) - based on kinetic model for burning rate"
+                '    'Title = "Upper wall char depth (mm)"
+
+                '    For j = 0 To NumberTimeSteps
+                '        datatobeplotted(idr, j) = ceil_char(j, 2)
+                '    Next
             End If
 
 
@@ -9325,17 +9362,34 @@ errhandler:
 
     Private Sub BatchFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BatchFilesToolStripMenuItem.Click
 
-        'select the master folder
-        FolderBrowserDialog1.Description = "Select the Batch File Root Folder"
-        FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
-        FolderBrowserDialog1.ShowDialog()
-        MasterDirectory = FolderBrowserDialog1.SelectedPath
+        Call batchfiles()
 
-        If MasterDirectory = "" Then Exit Sub
 
-        'seek confirmation from the user that they want to run the simulation
-        Dim response As Short = MsgBox("Do you want to run all simulations now?", MB_YESNO + MB_ICONQUESTION, ProgramTitle)
-        If response = IDNO Then Exit Sub
+    End Sub
+    Private Sub batchfiles()
+
+        If manualrun = True Then
+            'called from the command line
+
+        Else
+            'select the master folder
+            FolderBrowserDialog1.Description = "Select the Batch File Root Folder. This is the folder that contains a subfolder for each simulation to be run. The name of each subfolder must start with 'basemodel_'."
+            FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
+            FolderBrowserDialog1.ShowDialog()
+            MasterDirectory = FolderBrowserDialog1.SelectedPath
+
+            'seek confirmation from the user that they want to run the simulation
+            Dim response As Short = MsgBox("Do you want to run all simulations now?", MB_YESNO + MB_ICONQUESTION, ProgramTitle)
+            If response = IDNO Then Exit Sub
+
+        End If
+
+        If MasterDirectory = "" Then
+            MsgBox("Master directory not specified", MB_EXCLAIM, ProgramTitle)
+            Exit Sub
+        End If
+
+
         batch = True
         'loop through all the subfolders
         For Each Dir As String In System.IO.Directory.GetDirectories(MasterDirectory)
@@ -9350,6 +9404,7 @@ errhandler:
                 frmInputs.Read_BaseFile_xml(opendatafile, True)
 
                 basefile = opendatafile
+                'MsgBox("base filename: " & basefile, MB_ICONINFORMATION, ProgramTitle)
 
                 'go away and run this project
                 Call frmInputs.readytorun()
@@ -9362,7 +9417,661 @@ errhandler:
         batch = False
 
         MsgBox("Batch file simulations complete.", MsgBoxStyle.Information)
-
     End Sub
 
+    Private Sub CeilingWoodMassLossRateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CeilingWoodMassLossRateToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the residual mass fractions for water, cellulose, hemicellulose and lignin
+
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim i As Integer, j As Integer, maxpoints As Long
+
+        Dim Message, dDefault, MyValue As String
+        Dim numpoints, numsets As Integer
+
+        Try
+            Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
+            Message = "Enter the element"   ' Set prompt.
+            dDefault = "1"   ' Set default.
+            ' Display message, title, and default value.
+            MyValue = InputBox(Message, Title, dDefault)
+            If Not IsNumeric(MyValue) Then
+                Exit Sub
+            End If
+            idr = CInt(MyValue) 'store the element number
+
+            'define variables
+
+            Title = "Wood fuel MLR (kg/m3/s) in element " & idr.ToString
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            maxpoints = 5 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 5
+
+            Dim chdata(0 To numpoints - 1, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 0
+            chdata(0, 0) = "MLR"
+
+            frmPlot.Chart1.Series.Add(chdata(0, curve))
+            frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To stepcount
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * CeilingWoodMLR(idr, j) + DataShift) 'data to be plotted
+
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+            frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = CeilingWoodMLR.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+            frmPlot.Show()
+
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, Err.Source & "Line " & Err.Erl)
+        End Try
+    End Sub
+
+    Private Sub ResidualMassFractionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResidualMassFractionsToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the wood fuel MLR
+
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim i As Integer, j As Integer, maxpoints As Long
+
+        Dim Message, dDefault, MyValue As String
+        Dim numpoints, numsets As Integer
+
+        Try
+
+            Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
+            Message = "Enter the element"   ' Set prompt.
+            dDefault = "1"   ' Set default.
+                ' Display message, title, and default value.
+                MyValue = InputBox(Message, Title, dDefault)
+                If Not IsNumeric(MyValue) Then
+                    Exit Sub
+                End If
+                idr = CInt(MyValue) 'store the element number
+
+
+            'define variables
+
+            Title = "Residual mass fractions in element " & idr.ToString
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            Description = "Component " + CStr(idr)
+            maxpoints = 5 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 5
+
+            Dim chdata(0 To numpoints - 1, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 1
+
+            For i = 0 To 4
+
+                If i = 0 Then chdata(0, i) = "Water"
+                If i = 1 Then chdata(0, i) = "Cellulose"
+                If i = 2 Then chdata(0, i) = "Hemicellulose"
+                If i = 3 Then chdata(0, i) = "Lignin"
+                If i = 4 Then chdata(0, i) = "Char residue"
+
+                frmPlot.Chart1.Series.Add(chdata(0, i))
+                frmPlot.Chart1.Series(chdata(0, i)).ChartType = SeriesChartType.FastLine
+
+                For j = 1 To stepcount
+                    chdata(j, i) = tim(j, 1)
+                    If i < 4 Then
+                        chdata(j, i + 1) = (DataMultiplier * CeilingElementMF(idr, i, j) + DataShift) 'data to be plotted
+                    Else
+                        chdata(j, i + 1) = (DataMultiplier * CeilingCharResidue(idr, j) + DataShift) 'data to be plotted
+                    End If
+                    frmPlot.Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                Next
+
+            Next i
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+
+            frmPlot.NumericUpDownTime.Maximum = CeilingElementMF.GetUpperBound(0)
+            'Title = Title & " (depth " & frmPlot.NumericUpDownTime.Value * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+
+
+            frmPlot.BringToFront()
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, Err.Source & "Line " & Err.Erl)
+        End Try
+    End Sub
+
+    Private Sub CeilingFuelMassLossRatetotalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CeilingFuelMassLossRatetotalToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the wood fuel MLR
+
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim j As Integer, maxpoints As Long
+        Dim numpoints, numsets As Integer
+
+        Try
+
+            'define variables
+            Title = "Total ceiling MLR (kg/s)"
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            maxpoints = 1 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 1
+
+            Dim chdata(0 To numpoints, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 0
+            chdata(0, 0) = "Total ceiling MLR (kg/s)"
+
+            frmPlot.Chart1.Series.Add(chdata(0, curve))
+            frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To NumberTimeSteps
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * CeilingWoodMLR_tot(j) + DataShift) 'data to be plotted
+
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+            frmPlot.BringToFront()
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly)
+        End Try
+    End Sub
+
+    Private Sub ApparentDensitybyElementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ApparentDensitybyElementToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the apparent density
+        Dim Message, dDefault, MyValue As String
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim j As Integer, maxpoints As Long
+        Dim numpoints, numsets As Integer
+
+        Try
+            Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
+            Message = "Enter the element"   ' Set prompt.
+            dDefault = "1"   ' Set default.
+            ' Display message, title, and default value.
+            MyValue = InputBox(Message, Title, dDefault)
+            If Not IsNumeric(MyValue) Then
+                Exit Sub
+            End If
+            idr = CInt(MyValue) 'store the element number
+
+            'define variables
+            Title = "Apparent density (kg/m3)"
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            maxpoints = 1 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 1
+
+            Dim chdata(0 To numpoints, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 0
+            chdata(0, 0) = "Apparent density (kg/m3)"
+
+            frmPlot.Chart1.Series.Add(chdata(0, curve))
+            frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To NumberTimeSteps
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * CeilingApparentDensity(idr, j) + DataShift) 'data to be plotted
+
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+            frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = CeilingApparentDensity.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly)
+        End Try
+    End Sub
+
+    Private Sub WallResidualMassFractbyElementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WallResidualMassFractbyElementToolStripMenuItem.Click
+        'kinetic wood pyrolysis model 
+        'plot the wood fuel MLR - wall
+
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim i As Integer, j As Integer, maxpoints As Long
+
+        Dim Message, dDefault, MyValue As String
+        Dim numpoints, numsets As Integer
+
+        Try
+            Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
+            Message = "Enter the element"   ' Set prompt.
+            dDefault = "1"   ' Set default.
+            ' Display message, title, and default value.
+            MyValue = InputBox(Message, Title, dDefault)
+            If Not IsNumeric(MyValue) Then
+                Exit Sub
+            End If
+            idr = CInt(MyValue) 'store the element number
+
+            'define variables
+            Title = "Residual mass fractions in wall element " & idr.ToString
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            'Description = "Component " + CStr(idr)
+            maxpoints = 5 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 5
+
+            Dim chdata(0 To numpoints - 1, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 1
+
+            For i = 0 To 4
+
+                If i = 0 Then chdata(0, i) = "Water"
+                If i = 1 Then chdata(0, i) = "Cellulose"
+                If i = 2 Then chdata(0, i) = "Hemicellulose"
+                If i = 3 Then chdata(0, i) = "Lignin"
+                If i = 4 Then chdata(0, i) = "Char residue"
+
+                frmPlot.Chart1.Series.Add(chdata(0, i))
+                frmPlot.Chart1.Series(chdata(0, i)).ChartType = SeriesChartType.FastLine
+
+                For j = 1 To stepcount
+                    chdata(j, i) = tim(j, 1)
+                    If i < 4 Then
+                        chdata(j, i + 1) = (DataMultiplier * UWallElementMF(idr, i, j) + DataShift) 'data to be plotted
+                    Else
+                        chdata(j, i + 1) = (DataMultiplier * UWallCharResidue(idr, j) + DataShift) 'data to be plotted
+                    End If
+                    frmPlot.Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                Next
+
+            Next i
+
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+
+            frmPlot.NumericUpDownTime.Maximum = UWallElementMF.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+
+            frmPlot.BringToFront()
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, Err.Source & "Line " & Err.Erl)
+        End Try
+    End Sub
+
+    Private Sub WallFuelMassLossRatebyElementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WallFuelMassLossRatebyElementToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the residual mass fractions for water, cellulose, hemicellulose and lignin - wall
+
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim i As Integer, j As Integer, maxpoints As Long
+
+        Dim Message, dDefault, MyValue As String
+        Dim numpoints, numsets As Integer
+
+        Try
+            Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
+            Message = "Enter the element"   ' Set prompt.
+            dDefault = "1"   ' Set default.
+            ' Display message, title, and default value.
+            MyValue = InputBox(Message, Title, dDefault)
+            If Not IsNumeric(MyValue) Then
+                Exit Sub
+            End If
+            idr = CInt(MyValue) 'store the element number
+
+            'define variables
+
+            Title = "Wood fuel MLR (kg/m3/s) in wall element " & idr.ToString
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            maxpoints = 5 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 5
+
+            Dim chdata(0 To numpoints - 1, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 0
+            chdata(0, 0) = "MLR"
+
+            frmPlot.Chart1.Series.Add(chdata(0, curve))
+            frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To stepcount
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * WallWoodMLR(idr, j) + DataShift) 'data to be plotted
+
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+            frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = WallWoodMLR.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, Err.Source & "Line " & Err.Erl)
+        End Try
+    End Sub
+
+    Private Sub WallFuelMassLossRatetotalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WallFuelMassLossRatetotalToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the wood fuel MLR - wall
+
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim j As Integer, maxpoints As Long
+        Dim numpoints, numsets As Integer
+
+        Try
+
+            'define variables
+            Title = "Total wall MLR (kg/s)"
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            maxpoints = 1 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 1
+
+            Dim chdata(0 To numpoints, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 0
+            chdata(0, 0) = "Total wall MLR (kg/s)"
+
+            frmPlot.Chart1.Series.Add(chdata(0, curve))
+            frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To NumberTimeSteps
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * WallWoodMLR_tot(j) + DataShift) 'data to be plotted
+
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+            frmPlot.BringToFront()
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly)
+        End Try
+    End Sub
+
+    Private Sub WallApparentDensitybyElementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WallApparentDensitybyElementToolStripMenuItem.Click
+        'kinetic wood pyrolysis model
+        'plot the apparent density - wall
+
+        Dim Message, dDefault, MyValue As String
+        Dim Title As String, DataShift As Double, MaxYValue As Double
+        Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
+        Dim j As Integer, maxpoints As Long
+        Dim numpoints, numsets As Integer
+
+        Try
+            Title = "Select data for which finite difference element (exposed surface = 1)?"   ' Set title.
+            Message = "Enter the element"   ' Set prompt.
+            dDefault = "1"   ' Set default.
+            ' Display message, title, and default value.
+            MyValue = InputBox(Message, Title, dDefault)
+            If Not IsNumeric(MyValue) Then
+                Exit Sub
+            End If
+            idr = CInt(MyValue) 'store the element number
+
+            'define variables
+            Title = "Apparent wall density (kg/m3)"
+            DataShift = 0
+            DataMultiplier = 1
+            GraphStyle = 4            '2=user-defined
+            MaxYValue = 0
+            frmPlot.Chart1.Series.Clear()
+            Dim depth As Single = 0
+            Dim maxtemp As Double = 0
+
+            maxpoints = 1 * NumberTimeSteps
+            If NumberTimeSteps < 2 Then Exit Sub
+
+            numpoints = maxpoints
+            numsets = 1
+
+            Dim chdata(0 To numpoints, 0 To 2 * numsets - 1) As Object
+            Dim curve As Integer
+
+            curve = 0
+            chdata(0, 0) = "Apparent wall density (kg/m3)"
+
+            frmPlot.Chart1.Series.Add(chdata(0, curve))
+            frmPlot.Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
+
+            For j = 1 To NumberTimeSteps
+                chdata(j, curve) = tim(j, 1)
+
+                chdata(j, curve + 1) = (DataMultiplier * WallApparentDensity(idr, j) + DataShift) 'data to be plotted
+
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+            Next
+
+
+            frmPlot.Chart1.BackColor = Color.AliceBlue
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
+            frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
+            frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
+            frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
+            frmPlot.Chart1.Legends("Legend1").BorderDashStyle = ChartDashStyle.Solid
+            frmPlot.Chart1.Legends("Legend1").Docking = Docking.Right
+            frmPlot.Chart1.Titles("Title1").Text = Title
+
+            frmPlot.Chart1.Visible = True
+            frmPlot.BringToFront()
+            frmPlot.NumericUpDownTime.Maximum = WallApparentDensity.GetUpperBound(0)
+            frmPlot.NumericUpDownTime.Visible = True
+            frmPlot.Show()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly)
+        End Try
+    End Sub
+
+    Private Sub ToolStripMenuItem18_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem18.Click
+
+    End Sub
 End Class

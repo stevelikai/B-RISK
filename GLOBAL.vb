@@ -24,6 +24,7 @@ Module GLOBAL_Renamed
     Public autosaveXL As Boolean = False
     Public FlameExtinctionModel As Boolean = True
     Public RCNone As Boolean
+    Public manualrun As Boolean
 
     'Global variables used in the program
     Public Const Version As String = "2018.06"
@@ -48,7 +49,15 @@ Module GLOBAL_Renamed
     Public NHLte(,) As Double
     Public upgrade As Boolean
     Public ventid As Integer
+    Public Const thermalprops As Integer = 1 '1 = wood h/k + Hankalin; 2 = eurocode5 
 
+    Public E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'activation energy
+    Public A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'pre expontenial factor
+    Public n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'reaction order
+    Public mf_compinit(0 To 3) As Double  '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'inital mass fraction
+    Public char_yield(0 To 3) As Double '1 = cellulose; 2 = hemicellulose; 3 = lignin Char yield
+
+    Public init_moisturecontent As Double
     Public CLT_instant As Boolean = False
     Public wall_char(,) As Double
     Public ceil_char(,) As Double
@@ -56,6 +65,7 @@ Module GLOBAL_Renamed
     Public CLTceilingpercent As Integer
     Public Lamella As Single
     Public IntegralModel As Boolean
+    Public KineticModel As Boolean
     Public CLTQcrit As Double
     Public CLTflameflux As Double
     Public CLTLoG As Double
@@ -64,14 +74,33 @@ Module GLOBAL_Renamed
     Public Lamella1 As Single
     Public Lamella2 As Single
     Public DebondTemp As Double
+    Public CLTwalldelamT As Double
+    Public CLTceildelamT As Double
     Public mcNumberIterations As Integer = 1 'number of monte carlo iterations
     Public furnaceNHL(,) As Double
     Public furnaceST(,) As Double
     Public furnaceqnet(,) As Double
     Public CeilingNode(,,) As Double
+    Public CeilingNodeMaxTemp() As Double
+    Public WallNodeMaxTemp() As Double
+    Public CeilingNodeStatus() As Integer
+    Public WallNodeStatus() As Integer
     Public UWallNode(,,) As Double
     Public LWallNode(,,) As Double
     Public FloorNode(,,) As Double
+    Public elementcounter As Integer
+    Public CeilingElementMF(,,) As Double
+    Public UWallElementMF(,,) As Double
+    Public CeilingCharResidue(,) As Double
+    Public UWallCharResidue(,) As Double
+    Public CeilingResidualMass(,) As Double
+    Public WallResidualMass(,) As Double
+    Public CeilingApparentDensity(,) As Double
+    Public WallApparentDensity(,) As Double
+    Public CeilingWoodMLR(,) As Double
+    Public WallWoodMLR(,) As Double
+    Public CeilingWoodMLR_tot() As Double
+    Public WallWoodMLR_tot() As Double
     Public item_location(,) As Single 'details of items in fire room
     Public vectorlength(,) As Single 'length of midpoint vectors from source to target items, ignition time in 2nd dimension
     Public targetdistance(,) As Single 'length of the vector from centre of a source to the nearest part of a target object

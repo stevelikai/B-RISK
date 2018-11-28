@@ -435,6 +435,28 @@ Public Class frmInputs
                 DFW.WriteElementString("CLT_ignitiontemp", CLTigtemp)
                 DFW.WriteElementString("CLT_calibration", CLTcalibrationfactor)
                 DFW.WriteElementString("CLT_debondtemp", DebondTemp)
+                DFW.WriteElementString("kinetic_model", KineticModel)
+                DFW.WriteElementString("kinetic_hemi_Ei", E_array(2))
+                DFW.WriteElementString("kinetic_hemi_Ai", A_array(2))
+                DFW.WriteElementString("kinetic_hemi_ni", n_array(2))
+                DFW.WriteElementString("kinetic_hemi_mf", mf_compinit(2))
+                DFW.WriteElementString("kinetic_cell_Ei", E_array(1))
+                DFW.WriteElementString("kinetic_cell_Ai", A_array(1))
+                DFW.WriteElementString("kinetic_cell_ni", n_array(1))
+                DFW.WriteElementString("kinetic_cell_mf", mf_compinit(1))
+                DFW.WriteElementString("kinetic_lig_Ei", E_array(3))
+                DFW.WriteElementString("kinetic_lig_Ai", A_array(3))
+                DFW.WriteElementString("kinetic_lig_ni", n_array(3))
+                DFW.WriteElementString("kinetic_lig_mf", mf_compinit(3))
+                DFW.WriteElementString("kinetic_wat_Ei", E_array(0))
+                DFW.WriteElementString("kinetic_wat_Ai", A_array(0))
+                DFW.WriteElementString("kinetic_wat_ni", n_array(0))
+                DFW.WriteElementString("kinetic_wat_mf", mf_compinit(0))
+                DFW.WriteElementString("kinetic_cell_charyield", char_yield(1))
+                DFW.WriteElementString("kinetic_hemi_charyield", char_yield(2))
+                DFW.WriteElementString("kinetic_lig_charyield", char_yield(3))
+                DFW.WriteElementString("CLT_moisturecontent", init_moisturecontent)
+
                 DFW.WriteEndElement()
 
                 DFW.WriteStartElement("chemistry")
@@ -1864,9 +1886,9 @@ Public Class frmInputs
                         If ModelVersion > CSng(2017.05) Then
                             IntegralModel = DFR.ReadElementString()
                             If IntegralModel = True Then
-                                frmCLT.chkWoodIntegralModel.Checked = True
+                                frmCLT.RB_Integral.Checked = True
                             Else
-                                frmCLT.chkWoodIntegralModel.Checked = False
+                                frmCLT.RB_Integral.Checked = False
                             End If
                             Lamella = DFR.ReadElementString()
                             CLTQcrit = DFR.ReadElementString()
@@ -1879,10 +1901,44 @@ Public Class frmInputs
                             DebondTemp = DFR.ReadElementString()
                             frmCLT.txtDebondTemp.Text = DebondTemp
                         End If
+                        If ModelVersion > CSng(2018.05) Then
+                            KineticModel = DFR.ReadElementString()
+                            If KineticModel = True Then
+                                frmCLT.RB_Kinetic.Checked = True
+                            Else
+                                frmCLT.RB_Kinetic.Checked = False
+                            End If
+                        End If
                         If ModelVersion < CSng(2018.02) Then
                             useCLTmodel = False
                             frmCLT.optCLTOFF.Checked = True
                         End If
+                        If ModelVersion > CSng(2018.051) Then
+                            E_array(2) = DFR.ReadElementString()
+                            A_array(2) = DFR.ReadElementString()
+                            n_array(2) = DFR.ReadElementString()
+                            mf_compinit(2) = DFR.ReadElementString()
+                            E_array(1) = DFR.ReadElementString()
+                            A_array(1) = DFR.ReadElementString()
+                            n_array(1) = DFR.ReadElementString()
+                            mf_compinit(1) = DFR.ReadElementString()
+                            E_array(3) = DFR.ReadElementString()
+                            A_array(3) = DFR.ReadElementString()
+                            n_array(3) = DFR.ReadElementString()
+                            mf_compinit(3) = DFR.ReadElementString()
+                            E_array(0) = DFR.ReadElementString()
+                            A_array(0) = DFR.ReadElementString()
+                            n_array(0) = DFR.ReadElementString()
+                            mf_compinit(0) = DFR.ReadElementString()
+                            char_yield(1) = DFR.ReadElementString()
+                            char_yield(2) = DFR.ReadElementString()
+                            char_yield(3) = DFR.ReadElementString()
+                        End If
+                        If ModelVersion > CSng(2018.052) Then
+                            init_moisturecontent = DFR.ReadElementString()
+                            frmCLT.TXT_MoistureContent.Text = init_moisturecontent * 100
+                        End If
+
                         DFR.ReadEndElement() 'clear </postflashover>
 
                         'End If

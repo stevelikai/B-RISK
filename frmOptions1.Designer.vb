@@ -1948,7 +1948,7 @@
         Me.lstTimeStep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.lstTimeStep.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstTimeStep.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.lstTimeStep.Items.AddRange(New Object() {"20", "10", "5", "1", "0.5", "0.1", "0.05", "0.01"})
+        Me.lstTimeStep.Items.AddRange(New Object() {"4", "2", "1", "0.5", "0.25", "0.125"})
         Me.lstTimeStep.Location = New System.Drawing.Point(208, 24)
         Me.lstTimeStep.Name = "lstTimeStep"
         Me.lstTimeStep.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -2482,7 +2482,7 @@
         Me.Frame26.Name = "Frame26"
         Me.Frame26.Padding = New System.Windows.Forms.Padding(0)
         Me.Frame26.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.Frame26.Size = New System.Drawing.Size(469, 156)
+        Me.Frame26.Size = New System.Drawing.Size(469, 132)
         Me.Frame26.TabIndex = 162
         Me.Frame26.TabStop = False
         Me.Frame26.Text = "CO Production"
@@ -2533,10 +2533,10 @@
         Me.optCOauto.Cursor = System.Windows.Forms.Cursors.Default
         Me.optCOauto.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.optCOauto.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.optCOauto.Location = New System.Drawing.Point(21, 128)
+        Me.optCOauto.Location = New System.Drawing.Point(286, 24)
         Me.optCOauto.Name = "optCOauto"
         Me.optCOauto.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.optCOauto.Size = New System.Drawing.Size(177, 25)
+        Me.optCOauto.Size = New System.Drawing.Size(160, 25)
         Me.optCOauto.TabIndex = 165
         Me.optCOauto.TabStop = True
         Me.optCOauto.Text = "auto (based on GER)"
@@ -2597,7 +2597,7 @@
         Me.Frame27.Controls.Add(Me.Label29)
         Me.Frame27.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Frame27.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Frame27.Location = New System.Drawing.Point(16, 186)
+        Me.Frame27.Location = New System.Drawing.Point(16, 162)
         Me.Frame27.Name = "Frame27"
         Me.Frame27.Padding = New System.Windows.Forms.Padding(0)
         Me.Frame27.RightToLeft = System.Windows.Forms.RightToLeft.No
