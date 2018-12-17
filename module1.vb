@@ -1501,13 +1501,23 @@ toxicityhandler:
             'only need free burn MLT here 
             'well ventilated
             Q = 1000 * EnergyYield(id) * FuelBurningRate(0, fireroom, stepcount) 'kW freeburn
-            Get_HRR = Q
-            If useCLTmodel = True Then
-                'hrr = Q
-            Else
-                Exit Function
+
+            Dim mwall, mceiling, temp As Double 'returns contribution from wall, ceiling kg/s
+            If useCLTmodel = True And IntegralModel = True Then 'using MS & JQ integral model for timber 
+                ' hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
+            ElseIf useCLTmodel = True And KineticModel = True Then
+                'If FuelResponseEffects = False Then
+                temp = MassLoss_Total_Kinetic(tim, mwall, mceiling)
+                'Else
+                'need the contents as well
+                Q = Q + WallEffectiveHeatofCombustion(fireroom) * mwall * 1000 + CeilingEffectiveHeatofCombustion(fireroom) * mceiling * 1000
+                'End If
+
             End If
 
+            Get_HRR = Q
+
+            Exit Function
         End If
 
         'broke bit
@@ -1566,10 +1576,15 @@ toxicityhandler:
                 If useCLTmodel = True And IntegralModel = True Then 'using MS & JQ integral model for timber 
                     hrr = MassLoss_Total_pluswood(tim, mwall, mceiling) * NewHoC_fuel * 1000 'spearpoint quintiere
                 ElseIf useCLTmodel = True And kineticModel = True Then
-                    'new
-                    hrr = MassLoss_Total_Kinetic(tim, mwall, mceiling) * NewHoC_fuel * 1000
+                    If FuelResponseEffects = False Then
+                        hrr = MassLoss_Total_Kinetic(tim, mwall, mceiling) * NewHoC_fuel * 1000
+                    Else
+                        'need the contents as well
+                        hrr = WallEffectiveHeatofCombustion(fireroom) * mwall * 1000 + CeilingEffectiveHeatofCombustion(fireroom) * mceiling * 1000
+                    End If
+
                 Else
-                    hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
+                        hrr = MassLoss_Total(tim) * NewHoC_fuel * 1000
                 End If
 
                 Get_HRR = hrr
@@ -4032,8 +4047,6 @@ here:
                 AFB = AF
             ElseIf GER > 1 + delta Then
                 AFB = (O2lower * mplume / O2Ambient) / S / (FBMLR / AF * O2lower / O2Ambient + (1 - ef) * incidentflux / Leff)
-
-
             Else
                 'linear transition
                 AFB = (O2lower * mplume / O2Ambient) / S / (FBMLR / AF * O2lower / O2Ambient + (1 - ef) * incidentflux / Leff)
@@ -4141,7 +4154,228 @@ here:
         End Try
 
     End Function
+    Function MassLoss_ObjectwithFuelResponse_CLT(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double) As Double
+        '*  ===================================================================
+        '*  This function return the value of the fuel mass loss rate for a
+        '*  specified burning object at a specified time including fuel response effects
+        '*
+        '*  tim = time (sec)
+        '*  ID = object identifier
+        '*
+        '*  ===================================================================
+        ' incidentflux includes contribution from gas layer, room surfaces, and point source fire onto the surface of the floor
+        'for heptane fuel
 
+        Dim QW As Double
+        Dim k As Integer
+        QW = 0
+
+        Dim Leff As Double = ObjectLHoG(id) * 1000 'kJ/kg heptane on water, effective heat of gasification from Mizukami et al FSJ (2016)
+        Dim ec As Double = EmissionCoefficient 'emission coefficient for heptane
+
+        Dim S As Double = StoichAFratio 'stoichiometric air to fuel mass ratio 
+
+        StoichAFratio = 0
+        If StoichAFratio = 0 Then
+            S = EnergyYield(id) / deltaHair 'stoichiometric air to fuel mass ratio 
+        End If
+
+        Dim r = S * O2Ambient 'stoichiometric oxygen to fuel mass ratio for heptane
+
+        Dim FBMLR As Double = 0
+        Dim FBMLRuser As Double = 0
+        Dim diameter As Double = ObjectPoolDiameter(id)
+        Dim ventilation_contrib As Double = 0
+        Dim thermal_contrib As Double = 0
+        Dim peak As Double = 0
+        Dim ef As Double = 0 'flame emissivity
+        Dim Pathlength As Double = 0
+
+        Try
+
+            If ObjectPyrolysisOption(id) = 0 Then 'use this for user freeburn MLR data provided
+                If EnergyYield(id) > 0 Then
+
+                    'get free burn item MLR
+                    Dim A, B, C As Double
+                    For i = 1 To NumberDataPoints(id) - 1
+                        If tim >= (MLRData(1, i, id) + ObjectIgnTime(id)) Then
+                            If tim < (MLRData(1, i + 1, id) + ObjectIgnTime(id)) Then
+                                A = tim - (MLRData(1, i, id) + ObjectIgnTime(id))
+                                B = MLRData(1, i + 1, id) - MLRData(1, i, id) 'sec
+                                C = MLRData(2, i + 1, id) - MLRData(2, i, id) 'kw
+                                FBMLRuser = MLRData(2, i, id) + (A / B) * C
+                                If FBMLRuser < 0 Then FBMLRuser = 0
+                                FBMLR = FBMLRuser 'kg/s
+
+                                Exit For
+                            End If
+                        End If
+                    Next
+                End If
+
+                If TotalFuel(stepcount - 1) > ObjectMass(id) Then
+                    If CDec(tim) Mod CDec(Timestep) = 0 Then
+                        FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
+                    End If
+                    Exit Function
+                End If
+
+                'equiv diameter based on top surface
+                diameter = Sqrt(4 * ObjLength(id) * ObjWidth(id) / PI)
+                If stepcount > 1 Then diameter = Sqrt(diameter ^ 2 * FuelBurningRate(5, fireroom, stepcount - 1))
+
+                Pathlength = 0.6 * diameter
+                ef = (1 - Exp(-ec * Pathlength)) 'flame emissivity
+
+
+            ElseIf ObjectPyrolysisOption(id) = 1 Then 'pool fire
+
+                ec = 1.1 / 0.6 'heptane
+                FBMLRuser = ObjectPoolFBMLR(id) * (1 - Exp(-ec * 0.6 * ObjectPoolDiameter(id))) 'kg/m2/s
+                FBMLR = FBMLRuser * 0.25 * PI * ObjectPoolDiameter(id) ^ 2 'kg/s
+
+                'new diameter based on AFB/AF from the previous timestep
+                If stepcount > 1 Then diameter = Sqrt(diameter ^ 2 * FuelBurningRate(5, fireroom, stepcount - 1))
+                Pathlength = 0.6 * diameter
+                ef = (1 - Exp(-ec * Pathlength)) 'flame emissivity
+
+                If stepcount * Timestep < ObjectPoolRamp(id) Then
+                    FBMLR = stepcount * Timestep * FBMLR / ObjectPoolRamp(id) 'ramping function
+                End If
+
+                If TotalFuel(stepcount - 1) > ObjectPoolDensity(id) * ObjectPoolVolume(id) / 1000 Then
+                    If CDec(tim) Mod CDec(Timestep) = 0 Then
+                        FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
+                    End If
+                    Exit Function
+                End If
+
+            ElseIf ObjectPyrolysisOption(id) = 2 Then 'cribs
+                'eqn 5.43 in Utiskul's thesis
+
+            End If
+
+
+            Dim Tf As Double
+            Dim cp As Double = cplx(fireroom) 'specific heat of lower layer gases kJ/kg/K
+            Dim Qexternal As Double = 0
+            Dim Qext As Double = 0 'net heat feedback to the nonflaming area
+            Dim Qextb As Double = 0 'net heat feedback to the flaming area
+            Dim GER As Double = 0
+            Dim AFB As Double = 0 'm2 burning surface area of the fuel
+            Dim AF As Double = 0 'm2 total surface area of the fuel 
+
+            If ObjectPyrolysisOption(id) = 0 Then
+                'user data
+
+                AF = 1000 * EnergyYield(id) * FBMLR / ObjectMLUA(2, 1) 'm2
+
+
+
+            ElseIf ObjectPyrolysisOption(id) = 1 Then
+                'pool fire
+                AF = PI * ObjectPoolDiameter(id) ^ 2 / 4 'm2 total surface area of the fuel 
+            ElseIf ObjectPyrolysisOption(id) = 2 Then
+                'wood cribs to do
+                AF = PI * ObjectPoolDiameter(id) ^ 2 / 4 'm2 total surface area of the fuel 
+            End If
+
+            ventilation_contrib = FBMLR * O2lower / O2Ambient 'kg/s
+
+
+            Dim masslosstempold As Double
+            Dim masslosstemp As Double = 0
+            If stepcount > 1 Then masslosstemp = FuelBurningRate(3, fireroom, stepcount - 1)
+
+here:
+
+            If mplume > 0 Then
+                GER = EnergyYield(id) * masslosstemp / (13.1 * mplume * O2lower)
+            End If
+
+            Dim delta As Double = 0
+            Dim delta2 As Double
+            If GER < 1 - delta Then
+                AFB = AF
+            ElseIf GER > 1 + delta Then
+                AFB = (O2lower * mplume / O2Ambient) / S / (FBMLR / AF * O2lower / O2Ambient + (1 - ef) * incidentflux / Leff)
+
+
+            Else
+                'linear transition
+                AFB = (O2lower * mplume / O2Ambient) / S / (FBMLR / AF * O2lower / O2Ambient + (1 - ef) * incidentflux / Leff)
+                delta2 = (AF - AFB) * (GER - (1 - delta)) / (2 * delta)
+                AFB = AF - delta2
+            End If
+
+            If AFB > AF Then AFB = AF '05012018
+
+
+
+            If AF > 0 Then
+                ventilation_contrib = AFB / AF * FBMLR * O2lower / O2Ambient 'kg/s 
+            End If
+
+            Qext = incidentflux * (AF - AFB)
+            Qextb = (1 - ef) * incidentflux * AFB 'kW
+            Qexternal = Qext + Qextb
+
+            thermal_contrib = Qexternal / Leff 'kg/s
+
+            masslosstempold = masslosstemp
+            masslosstemp = ventilation_contrib + thermal_contrib 'kg/s
+            k = k + 1
+            If k < 3 Then GoTo here
+
+
+            If GER > 1 Then
+                burningrate = O2lower * mplume / (O2Ambient * S)
+            Else
+                burningrate = ventilation_contrib + thermal_contrib 'same as MLR
+            End If
+
+            If FlameExtinctionModel = True And burningrate > 0 Then 'if using flame extinction model
+                'extinction model
+                Dim RHS As Double = 0
+                Dim TTemp As Double
+
+                TTemp = InteriorTemp
+
+                'this should use Qext,b not Qext?
+                RHS = (1000 * EnergyYield(id) - Leff + cp * (ObjectPoolVapTemp(id) - (TTemp - 273)) + Qextb / burningrate) / (1 + r / O2lower)
+
+
+
+                Tf = RHS / cp + (TTemp - 273)
+                If Tf < 1300 Then 'C
+                    'extinction
+                    burningrate = 0
+                    ventilation_contrib = 0
+                    masslosstemp = thermal_contrib
+                End If
+            End If
+
+            MassLoss_ObjectwithFuelResponse_CLT = masslosstemp 'kg/s
+
+            If CDec(tim) Mod CDec(Timestep) = 0 Then
+                FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
+                FuelBurningRate(1, fireroom, stepcount) = ventilation_contrib 'contrib to mass loss rate
+                FuelBurningRate(2, fireroom, stepcount) = thermal_contrib 'contrib to mass loss rate
+                FuelBurningRate(3, fireroom, stepcount) = ventilation_contrib + thermal_contrib 'total mass loss
+                FuelBurningRate(4, fireroom, stepcount) = burningrate
+                If AF > 0 Then
+                    FuelBurningRate(5, fireroom, stepcount) = AFB / AF 'fuel area shrinkage ratio
+                End If
+                FuelMassLossRate(stepcount, fireroom) = masslosstemp
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in Module1.vb MassLoss_ObjectwithFuelResponse_CLT")
+        End Try
+
+    End Function
 
     Function MassLoss_Object(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByRef QFloor As Double, ByRef QWall As Double, ByRef QCeiling As Double) As Double
         '*  ===================================================================

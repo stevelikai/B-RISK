@@ -255,7 +255,7 @@ Module DIFFEQNS
     Public Sub hrr_estimate_fuelresponse(ByVal room As Integer, ByVal Mass_Upper As Double, ByRef massplume As Double, ByRef heatreleaselimit As Double, ByVal X As Double, ByVal layerheight As Double, ByVal uppertemp As Double, ByVal lowertemp As Double, ByVal O2Upper As Double, ByVal O2Lower As Double, ByVal mw_upper As Double, ByVal mw_lower As Double, ByVal TUHC As Double, ByVal hc As Double, ByVal incidentflux As Double)
         'routine only called for fireroom
         'iterates between mplume and ventilation limited burning
-        Dim heatreleased, Qplume, burningrate As Double
+        Dim heatreleased, Qplume, burningrate, mrate_wall, mrate_ceiling As Double
         Dim count As Integer
         Dim mrate() As Double
         ReDim mrate(NumberObjects)
@@ -273,9 +273,14 @@ Module DIFFEQNS
 
 
         'redo 
-        Call mass_rate_withfuelresponse(X, mrate, 0, 0, 0, O2Lower, lowertemp, massplume, incidentflux, burningrate)
+        Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, 0, O2Lower, lowertemp, massplume, incidentflux, burningrate)
 
-        heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW
+        If useCLTmodel = True And KineticModel = True Then
+            heatreleaselimit = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+        Else
+            heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW
+        End If
+
 
         count = 1
         heatreleased = HeatRelease(fireroom, i, 1) 'max theoretical hrr from the fuel
@@ -294,9 +299,13 @@ Module DIFFEQNS
 
                 'recalculate oxygen limit using new plume flow
                 'HeatRelease(fireroom, i, 2) = O2_limit_cfast(fireroom, Mass_Upper, heatreleased, mplume, uppertemp(fireroom, i), O2MassFraction(fireroom, i, 1), O2MassFraction(fireroom, i, 2), mw_upper, mw_lower, Qplume)
-                Call mass_rate_withfuelresponse(X, mrate, 0, 0, 0, O2Lower, lowertemp, massplume, incidentflux, burningrate)
+                Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, 0, O2Lower, lowertemp, massplume, incidentflux, burningrate)
 
-                heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW
+                If useCLTmodel = True And KineticModel = True Then
+                    heatreleaselimit = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+                Else
+                    heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW
+                End If
 
                 count = count + 1
                 If count > 50 Then
@@ -1843,6 +1852,7 @@ Module DIFFEQNS
                 End If
             End If
 
+            'If i = 185 Then Stop
             'call the ODE solver routine for the zone model
             Call ODE_Solver3(Ystart)
             'Call ODE_Solver_NMath(Ystart)
@@ -2484,7 +2494,12 @@ Module DIFFEQNS
                     'only want the contents mass consumed here, so deduct the contribution from wood surfaces
                     TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
                 ElseIf KineticModel = True And useCLTmodel = True Then
-                    TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
+                    If FuelResponseEffects = True Then
+                        TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep
+                    Else
+                        TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
+                    End If
+
                 Else
                     TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep 'use this for simple dynamic CLT model
                 End If

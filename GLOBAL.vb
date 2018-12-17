@@ -49,7 +49,7 @@ Module GLOBAL_Renamed
     Public NHLte(,) As Double
     Public upgrade As Boolean
     Public ventid As Integer
-    Public Const thermalprops As Integer = 1 '1 = wood h/k + Hankalin; 2 = eurocode5 
+    Public Const thermalprops As Integer = 1 '1 = wood h/k + Hankalin; 2 = eurocode5 ; 3 = hybrid hankalin switching to EC5 above 600C
 
     Public E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'activation energy
     Public A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'pre expontenial factor

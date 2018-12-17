@@ -53,7 +53,22 @@ Module KineticModelCode
             End If
 
             Exit Function
-        Else
+
+        ElseIf thermalprops = 3 Then 'hybrid
+
+            If T <= 473 Then
+                wood_props_k = 0.285
+            ElseIf T <= 663 Then
+                wood_props_k = -0.617 + 0.0038 * T - 0.000004 * T ^ 2
+            ElseIf T <= 873 Then 'below 600C use hankalin
+                wood_props_k = 0.04429 + 0.0001477 * T
+            ElseIf T <= 1073 Then 'above use EC5
+                wood_props_k = 0.09 + (T - 773) / (1073 - 773) * (0.35 - 0.09)
+            ElseIf T <= 1473 Then
+                wood_props_k = 0.35 + (T - 1073) / (1473 - 1073) * (1.5 - 0.35)
+            Else
+                wood_props_k = 1.5
+            End If
         End If
 
     End Function
@@ -758,32 +773,34 @@ Module KineticModelCode
 
             Dim ceilingexposedpercent As Double = CLTceilingpercent
 
-                DT = CLTceildelamT + flashover_time 'time of delamination
-                If DT > flashover_time + 1 Then
-                    ElapsedTime = tim(i, 1) - DT
-                    If ElapsedTime < DelamDuration Then 'within 60 s of when delamination happened
-                        ceilingexposedpercent = CLTceilingpercent / DelamDuration * (tim(i, 1) - DT)
-                    End If
+            DT = CLTceildelamT + flashover_time 'time of delamination
+            If DT > flashover_time + 1 Then
+                ElapsedTime = tim(i, 1) - DT
+                If ElapsedTime < DelamDuration Then 'within 60 s of when delamination happened
+                    ceilingexposedpercent = CLTceilingpercent / DelamDuration * (tim(i, 1) - DT)
+                End If
+            End If
+
+            For count = 1 To elements 'loop through each finite difference element in the ceiling
+                If i = 1 Then
+                    'For m = 1 To 3
+                    'CeilingResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
+                    'Next
+                    CeilingResidualMass(count, i) = DensityInitial * (mf_compinit(1) + mf_compinit(2) + mf_compinit(3)) 'initialise
+
+                    CeilingApparentDensity(count, i) = DensityInitial
                 End If
 
-                For count = 1 To elements 'loop through each finite difference element in the ceiling
-                    If i = 1 Then
-                        For m = 1 To 3
-                        CeilingResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
-                    Next
-                        CeilingApparentDensity(count, i) = DensityInitial
-                    End If
-
-                    For m = 0 To 3
-                        Zstart(m) = CeilingElementMF(count, m, i)
-                    Next
-                    elementcounter = count
+                For m = 0 To 3
+                    Zstart(m) = CeilingElementMF(count, m, i)
+                Next
+                elementcounter = count
 
                 If ceilingexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "C")
 
                 For m = 0 To 3
-                        CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
-                    Next
+                    CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
+                Next
 
                 'total mass fraction of char residue in this element
                 CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - CeilingElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - CeilingElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
@@ -794,7 +811,7 @@ Module KineticModelCode
                 'mass loss rate of wood fuel over this timestep 'kg/s
                 If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
 
-                'If CeilingWoodMLR(count, i + 1) > 5 Then CeilingWoodMLR(count, i + 1) = 5 'kg/m3/s keep a lid on it!
+                'If CeilingWoodMLR(count, i + 1) > 10 Then CeilingWoodMLR(count, i + 1) = 10 'kg/m3/s keep a lid on it!
 
                 area = ceilingexposedpercent / 100 * RoomFloorArea(fireroom) 'm2
 
@@ -810,9 +827,9 @@ Module KineticModelCode
                 'apparent density of this element 'kg/m3 
                 CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
 
-                    'put a lower limit on the apparent density
-                    If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
-                Next
+                'put a lower limit on the apparent density
+                If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
+            Next
 
             'the wall
             'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
@@ -836,9 +853,10 @@ Module KineticModelCode
             'For count = (1 + elements - layersremaining * elements / NL) To elements 'loop through each finite difference element in the ceiling
             For count = 1 To elements 'loop through each finite difference element in the ceiling
                 If i = 1 Then
-                    For m = 1 To 3
-                        WallResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
-                    Next
+                    ' For m = 1 To 3
+                    'WallResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
+                    'Next
+                    WallResidualMass(count, i) = DensityInitial * (mf_compinit(1) + mf_compinit(2) + mf_compinit(3)) 'initialise
                     WallApparentDensity(count, i) = DensityInitial
                 End If
 
@@ -1205,6 +1223,80 @@ Module KineticModelCode
 
         MassLoss_Total_Kinetic = total + wood_MLR 'includes contents+surfaces
         MLRsave = MassLoss_Total_Kinetic
+
+        Tsave = T
+
+    End Function
+    Function MassLoss_surfaceonly_Kinetic(ByVal T As Double, ByRef mwall As Double, ByRef mceiling As Double) As Double
+        '*  ====================================================================
+        '*  This function return the value of the total fuel mass loss rate for
+        '*  a combination of wood cribs and burning wood surfaces at a given time T (sec)
+        '*  Spearpoint, M.. & Quintiere, J.. 2000. Predicting the burning of wood using an integral model. 
+        '*  Combustion and Flame. 123(3):308–325. DOI: 10.1016/S0010-2180(00)00162-0.
+        '*  ====================================================================
+
+        Static Tsave, mwallsave, mceilingsave, MLRsave As Double
+
+        If T = Tsave Then
+            'nO need to calculate function again for same T
+            mceiling = mceilingsave
+            mwall = mwallsave
+            MassLoss_surfaceonly_Kinetic = MLRsave
+            Exit Function
+        End If
+
+        Dim totalarea As Double
+        Dim mass, wood_MLR As Double
+
+        'this procedure only called if flashover is true and postflashover model is selected.
+        'assume wood surface linings start burning at flashover
+
+        totalarea = 0
+        burnmode = False
+
+        mass = InitialFuelMass 'kg wood cribs
+
+        Dim thickness_ceil As Double = CeilingThickness(fireroom) / 1000 'm thick of wood
+        Dim thickness_wall As Double = WallThickness(fireroom) / 1000  'm thick of wood
+
+
+        Dim woodtotal As Double = 0
+
+        'If Flashover = True And g_post = True Then
+        'in this case, we should only need this subroutine once per timestep
+
+        'ceiling - interpolating
+        mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
+        mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
+
+        'End If
+
+        If IEEERemainder(T, Timestep) = 0 Then
+            If CLTwallpercent > 0 Then
+                If Lamella2 > thickness_wall + gcd_Machine_Error Then
+                    'no more fuel
+                    mwall = 0
+                End If
+            End If
+            If CLTceilingpercent > 0 Then
+                If Lamella1 > thickness_ceil + gcd_Machine_Error Then
+                    'no more fuel
+                    mceiling = 0
+                End If
+            End If
+
+        End If
+
+        wall_char(stepcount, 1) = mwall 'kg/s
+        ceil_char(stepcount, 1) = mceiling
+
+        wood_MLR = mceiling + mwall 'kg/s  total MLR
+
+        mwallsave = mwall
+        mceilingsave = mceiling
+
+        MassLoss_surfaceonly_Kinetic = wood_MLR
+        MLRsave = MassLoss_surfaceonly_Kinetic
 
         Tsave = T
 

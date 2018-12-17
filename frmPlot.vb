@@ -415,8 +415,6 @@ Public Class frmPlot
             Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / CeilingElementMF.GetUpperBound(0)
             Chart1.Titles("Title1").Text = "Residual mass fractions in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
-
-
             For i = 0 To 4
 
                 If i = 0 Then chdata(0, i) = "Water"
@@ -444,7 +442,9 @@ Public Class frmPlot
 
         Testpos = InStr(1, title, "Residual mass fractions in wall element")
         If Testpos > 0 Then
-            Chart1.Titles("Title1").Text = "Residual mass fractions in wall element " & idr.ToString
+            Dim dp As Single = idr * WallThickness(fireroom) / UWallElementMF.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * WallThickness(fireroom) / UWallElementMF.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Residual mass fractions in wall element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             For i = 0 To 4
 
@@ -473,7 +473,9 @@ Public Class frmPlot
 
         Testpos = InStr(1, title, "Wood fuel MLR (kg/m3/s) in element")
         If Testpos > 0 Then
-            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in element " & idr.ToString
+            Dim dp As Single = idr * CeilingThickness(fireroom) / CeilingWoodMLR.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / CeilingWoodMLR.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             Dim curve As Integer
             curve = 0
@@ -495,7 +497,9 @@ Public Class frmPlot
 
         Testpos = InStr(1, title, "Wood fuel MLR (kg/m3/s) in wall element")
         If Testpos > 0 Then
-            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in wall element " & idr.ToString
+            Dim dp As Single = idr * WallThickness(fireroom) / WallWoodMLR.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * WallThickness(fireroom) / WallWoodMLR.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in wall element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             Dim curve As Integer
             curve = 0
@@ -517,7 +521,9 @@ Public Class frmPlot
 
         Testpos = InStr(1, title, "Apparent density (kg/m3)")
         If Testpos > 0 Then
-            Chart1.Titles("Title1").Text = "Apparent density (kg/m3) in element " & idr.ToString
+            Dim dp As Single = idr * CeilingThickness(fireroom) / CeilingApparentDensity.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / CeilingApparentDensity.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Apparent density (kg/m3) in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             Dim curve As Integer
             curve = 0
@@ -539,7 +545,9 @@ Public Class frmPlot
 
         Testpos = InStr(1, title, "Apparent wall density (kg/m3)")
         If Testpos > 0 Then
-            Chart1.Titles("Title1").Text = "Apparent wall density (kg/m3) in element " & idr.ToString
+            Dim dp As Single = idr * CeilingThickness(fireroom) / WallApparentDensity.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / WallApparentDensity.GetUpperBound(0)
+            Chart1.Titles("Title1").Text = "Apparent wall density (kg/m3) in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             Dim curve As Integer
             curve = 0

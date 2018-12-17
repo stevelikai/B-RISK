@@ -9504,6 +9504,7 @@ errhandler:
     Private Sub ResidualMassFractionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResidualMassFractionsToolStripMenuItem.Click
         'kinetic wood pyrolysis model
         'plot the wood fuel MLR
+        'ceiling
 
         Dim Title As String, DataShift As Double, MaxYValue As Double
         Dim DataMultiplier As Double, GraphStyle As Integer, idr As Integer
@@ -9574,7 +9575,7 @@ errhandler:
             frmPlot.Chart1.BackColor = Color.AliceBlue
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction (-)"
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
@@ -9818,7 +9819,7 @@ errhandler:
             frmPlot.Chart1.BackColor = Color.AliceBlue
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction (-)"
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"

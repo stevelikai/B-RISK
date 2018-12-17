@@ -575,10 +575,10 @@ specieshandler:
 
 
     Public Sub mass_rate(ByVal T As Double, ByRef mrate() As Double, ByRef mrate_wall As Double, ByRef mrate_ceiling As Double, ByRef mrate_floor As Double)
-		
-		Dim i As Integer
-		Dim QCeiling, QWall, QFloor As Single
-		
+
+        Dim i As Integer
+        Dim QCeiling, QWall, QFloor As Single
+
         If Flashover = True And g_post = True Then
 
             If useCLTmodel = True And IntegralModel = True Then
@@ -629,43 +629,50 @@ specieshandler:
                 End If
             Next i
         End If
-		
+
     End Sub
+
     Public Sub mass_rate_withfuelresponse(ByVal T As Double, ByRef mrate() As Double, ByRef mrate_wall As Double, ByRef mrate_ceiling As Double, ByRef mrate_floor As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double)
 
         Dim i As Integer
-        Dim QCeiling, QWall, QFloor As Single
+        Dim dummy As Double
 
         If Flashover = True And g_post = True Then
 
-            'If frmCLT.chkWoodIntegralModel.Checked = True Then
-            'mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
-            'Else
             mrate(1) = MassLoss_ObjectwithFuelResponse(1, T, Qburner, O2lower, ltemp, mplume, incidentflux, burningrate)
-            'mrate(1) = MassLoss_ObjectwithFuelResponse(1, T, Qburner, QFloor, QWall, QCeiling, O2lower, ltemp, mplume, incidentflux, burningrate)
-            'End If
 
         Else
             For i = 1 To NumberObjects
 
                 mrate(i) = MassLoss_ObjectwithFuelResponse(i, T, Qburner, O2lower, ltemp, mplume, incidentflux, burningrate)
-                'mrate(i) = MassLoss_ObjectwithFuelResponse(i, T, Qburner, QFloor, QWall, QCeiling, O2lower, ltemp, mplume, incidentflux, burningrate)
 
 
-                If i = burner_id And frmOptions1.optRCNone.Checked = False Then
-                    If Qburner > 0 Then mrate(i) = Qburner / (NewEnergyYield(i) * 1000) 'kg/sec
+                'If i = burner_id And frmOptions1.optRCNone.Checked = False Then
+                '    If Qburner > 0 Then mrate(i) = Qburner / (NewEnergyYield(i) * 1000) 'kg/sec
 
-                    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall1 / (WallEffectiveHeatofCombustion(fireroom) * 1000)
-                    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling1 / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
-                    If FloorEffectiveHeatofCombustion(fireroom) > 0 Then mrate_floor = QFloor1 / (FloorEffectiveHeatofCombustion(fireroom) * 1000)
-                End If
-
-                If useCLTmodel = True Then
-                    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall1 / (WallEffectiveHeatofCombustion(fireroom) * 1000)
-                    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling1 / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
-                End If
+                '    If WallEffectiveHeatofCombustion(fireroom) > 0 Then mrate_wall = QWall1 / (WallEffectiveHeatofCombustion(fireroom) * 1000)
+                '    If CeilingEffectiveHeatofCombustion(fireroom) > 0 Then mrate_ceiling = QCeiling1 / (CeilingEffectiveHeatofCombustion(fireroom) * 1000)
+                '    If FloorEffectiveHeatofCombustion(fireroom) > 0 Then mrate_floor = QFloor1 / (FloorEffectiveHeatofCombustion(fireroom) * 1000)
+                'End If
 
             Next i
+            ' If T = 183 Then Stop
+            If useCLTmodel = True Then 'must use kinetic submodel with CLT.
+
+                'just need the MLR for wall and ceiling
+                If useCLTmodel = True And IntegralModel = True Then
+
+                    'mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling) 'spearpoint quintiere
+                ElseIf useCLTmodel = True And KineticModel = True Then
+                    'mrate(1) = MassLoss_ObjectwithCLT(1, T, Qburner, mrate_floor, mrate_wall, mrate_ceiling)
+                    dummy = MassLoss_surfaceonly_Kinetic(T, mrate_wall, mrate_ceiling)
+                    'If mrate_wall > 0 Then Stop
+                Else
+                    'mrate(1) = MassLoss_Object(1, T, Qburner, QFloor, QWall, QCeiling)
+                End If
+
+            End If
+
         End If
 
     End Sub
@@ -2354,7 +2361,8 @@ errorhandler:
         'effective molecular weight of the layers for fireroom
         mw_upper = MolecularWeightCO * COMassFraction(fireroom, stepcount, 1) + MolecularWeightCO2 * CO2MassFraction(fireroom, stepcount, 1) + MolecularWeightH2O * H2OMassFraction(fireroom, stepcount, 1) + MolecularWeightHCN * HCNMassFraction(fireroom, stepcount, 1) + MolecularWeightO2 * O2MassFraction(fireroom, stepcount, 1) + MolecularWeightN2 * (1 - O2MassFraction(fireroom, stepcount, 1) - COMassFraction(fireroom, stepcount, 1) - CO2MassFraction(fireroom, stepcount, 1) - H2OMassFraction(fireroom, stepcount, 1) - HCNMassFraction(fireroom, stepcount, 1))
         mw_lower = MolecularWeightCO * COMassFraction(fireroom, stepcount, 2) + MolecularWeightCO2 * CO2MassFraction(fireroom, stepcount, 2) + MolecularWeightH2O * H2OMassFraction(fireroom, stepcount, 2) + MolecularWeightHCN * HCNMassFraction(fireroom, stepcount, 2) + MolecularWeightO2 * O2MassFraction(fireroom, stepcount, 2) + MolecularWeightN2 * (1 - O2MassFraction(fireroom, stepcount, 2) - COMassFraction(fireroom, stepcount, 2) - CO2MassFraction(fireroom, stepcount, 2) - H2OMassFraction(fireroom, stepcount, 2) - HCNMassFraction(fireroom, stepcount, 2))
-        mplume = 0
+        'mplume = 0
+        mplume = massplumeflow(i - 1, fireroom)
         count = 0
 
         'mass of upper layer in fireroom
@@ -2411,14 +2419,22 @@ errorhandler:
         'determine mass flow in the plume
         mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), HeatRelease(fireroom, i, 2), uppertemp(fireroom, i), lowertemp(fireroom, i))
 
+
         Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
         'Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, -QFloor(fireroom, i - 1), burningrate)
 
+        'If useCLTmodel = True Then
+        'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+        'Else
         HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
+        'End If
+
 
         count = 1
         'heatreleased = HeatRelease(fireroom, i, 1) 'max theoretical hrr from the fuel
         'Qplume = HeatRelease(fireroom, i, 1)
+
+        'If mrate_ceiling > 0.01 Then Stop
 
         'If heatreleased > 0 Then
         Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
@@ -2435,7 +2451,12 @@ errorhandler:
             Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
             'Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, -QFloor(fireroom, i - 1), burningrate)
 
+
+            'If useCLTmodel = True Then
+            'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+            'Else
             HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
+            'End If
 
             count = count + 1
             If count > 50 Then
@@ -2668,7 +2689,14 @@ errorhandler:
                     massplumeX(j) = Mass_Plume_2012(X, layerz(j), HeatRelease(j, stepcount, 1), Y(j, 2), Y(j, 3))
                     Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, mrate_floor, Y(j, 15), Y(j, 3), massplumeX(j), Target(fireroom, i), burningrate)
                     'Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, mrate_floor, Y(j, 15), Y(j, 3), massplumeX(j), -QFloor(fireroom, i), burningrate)
-                    hrrlimit(fireroom) = 1000 * EnergyYield(1) * burningrate
+
+                    If useCLTmodel = True And KineticModel = True Then
+                        hrrlimit(fireroom) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(j) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(j) * mrate_ceiling
+                    Else
+                        hrrlimit(fireroom) = 1000 * EnergyYield(1) * burningrate
+                    End If
+
+
                     Call hrr_estimate_fuelresponse(fireroom, Mass_Upper(fireroom), massplumeX(fireroom), hrrlimit(fireroom), X, layerz(fireroom), Y(fireroom, 2), Y(fireroom, 3), Y(fireroom, 5), Y(fireroom, 15), mw_upper(fireroom), mw_lower(fireroom), Y(fireroom, 6), weighted_hc, Target(fireroom, i))
                     'Call hrr_estimate_fuelresponse(fireroom, Mass_Upper(fireroom), massplumeX(fireroom), hrrlimit(fireroom), X, layerz(fireroom), Y(fireroom, 2), Y(fireroom, 3), Y(fireroom, 5), Y(fireroom, 15), mw_upper(fireroom), mw_lower(fireroom), Y(fireroom, 6), weighted_hc, -QFloor(fireroom, i))
 
@@ -2918,6 +2946,7 @@ errorhandler:
             If X = tim(i, 1) Then
 
                 If j = fireroom Then GlobalER(i) = GER
+
                 FuelMassLossRate(i, j) = fuelmassloss(j) 'in the case of CLT model this includes contents, wall, ceiling mass otherwise not
                 If j = fireroom Then WoodBurningRate(i) = mrate_ceiling + mrate_wall + mrate_floor 'kg/s use in CLT model
                 WallFlowtoUpper(j, i) = -M_wall_u + (1 - frac_to_lower) * M_wall

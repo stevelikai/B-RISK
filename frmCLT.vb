@@ -821,4 +821,24 @@ Public Class frmCLT
         ErrorProvider1.Clear()
         init_moisturecontent = CDbl(TXT_MoistureContent.Text) / 100
     End Sub
+
+    Private Sub txtInit_water_Validated(sender As Object, e As EventArgs) Handles txtInit_water.Validated
+        ErrorProvider1.Clear()
+        mf_compinit(0) = CDbl(txtInit_water.Text)
+    End Sub
+
+    Private Sub txtInit_lignin_Validated(sender As Object, e As EventArgs) Handles txtInit_lignin.Validated
+        ErrorProvider1.Clear()
+        mf_compinit(3) = CDbl(txtInit_lignin.Text)
+    End Sub
+
+    Private Sub txtInit_hemi_Validated(sender As Object, e As EventArgs) Handles txtInit_hemi.Validated
+        ErrorProvider1.Clear()
+        mf_compinit(2) = CDbl(txtInit_hemi.Text)
+    End Sub
+
+    Private Sub txtInit_cell_Validated(sender As Object, e As EventArgs) Handles txtInit_cell.Validated
+        ErrorProvider1.Clear()
+        mf_compinit(1) = CDbl(txtInit_cell.Text)
+    End Sub
 End Class
