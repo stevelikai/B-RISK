@@ -384,7 +384,7 @@ anglehandler:
         'define elements in MatA() and MatB()
         Call MatrixAB(room, MatA, MatB, Z, A1, A2, A3, A4, uppertemp, lowertemp, YCO2, YH2O, YCO2Lower, YH2Olower, volume)
 
-        'define elements in MatC() 4 x 1
+        'define elements in MatC() 4 x 1 - point source fire  + gas layers
         Call MatrixC(room, Q, Z, A1, A2, A3, A4, matc, uppertemp, lowertemp)
 
         'define elements in MatE() - black body emissive powers
@@ -3683,7 +3683,7 @@ MatprdErrorHandler:
         Next k
 
     End Sub
-	
+
     Sub MatrixC(ByVal room As Integer, ByVal Q As Double, ByVal Z As Double, ByVal A1 As Double, ByVal A2 As Double, ByVal A3 As Double, ByVal A4 As Double, ByRef matc(,) As Double, ByVal UT As Double, ByVal LT As Double)
         '************************************************************
         '*  Procedure defines the elements in the Matrix C. This includes
@@ -3854,7 +3854,177 @@ MatprdErrorHandler:
         Application.DoEvents()
 
     End Sub
-	
+    Sub MatrixZ(ByVal room As Integer, ByVal Q As Double, ByVal Z As Double, ByVal A1 As Double, ByVal A2 As Double, ByVal A3 As Double, ByVal A4 As Double, ByRef matc(,) As Double, ByVal UT As Double, ByVal LT As Double)
+        '************************************************************
+        '*  Procedure defines the elements in the Matrix C. This includes
+        '*  the radiant heat flux striking each wall due to a point source
+        '*  fire and that due to an emitting gas layer.
+        '*
+        '*  Q = total heat release (kW)
+        '*  Z = position of the layer interface above floor
+        '*  A1 = ceiling area
+        '*  A2 = upper wall area
+        '*  A3 = lower wall area
+        '*  A4 = floor area
+        '*  MatZ() = the returned matrix 4 rows x 1 col
+        '*  UT = upper layer temp
+        '*  LT = lower layer temp
+        '*
+        '*  Called by: FourWallRad
+        '*  Calls: wAngle
+        '*
+        '*  Revised: 24 November 1995 Colleen Wade
+        '************************************************************
+
+        Dim k As Integer
+        Dim b, A, Area As Double
+        Dim qgaslower, qfire, qgasupper As Double
+        Dim j As Integer
+        Dim PointSource, firehi As Double
+
+        A = TransmissionFactor(2, 2, room) 'upper layer transmission fire to surface k
+        b = TransmissionFactor(3, 3, room) 'lower layer transmission fire to surface k
+
+        radfireUpper = 0
+        radfireLower = 0
+
+        On Error Resume Next
+        'assume point source located at approx 1/2 flame height
+        'Dim QF As Double = HeatRelease(fireroom, stepcount, 2)
+        ' Dim HRRUA As Double = ObjectMLUA(2, 1)
+        'Dim maxheight As Double = FireHeight(1) + 0.5 * (RoomHeight(fireroom) - FireHeight(1))
+
+        'firehi = FireHeight(1) + 0.5 * (0.235 * QF ^ (2 / 5) - 1.02 * Sqrt(4 * QF / PI / HRRUA))
+        'If stepcount = 30000 Then Stop
+        'If firehi > maxheight Then
+        '    firehi = maxheight
+        'End If
+        'If firehi < FireHeight(1) Then
+        '    firehi = FireHeight(1)
+        'End If
+
+        '2014.13 and below
+        ' firehi = FireHeight(1) + 0.23 * 0.5 * NewRadiantLossFraction(1) * HeatRelease(fireroom, stepcount, 2) ^ (2 / 5)
+        'If firehi > RoomHeight(fireroom) Then
+        'firehi = RoomHeight(fireroom)
+        'End If
+
+        'radiant heat flux striking the k'th rectangular wall segment due to the fire
+        For k = 1 To 4
+            '    If room = fireroom Then
+            '        'PointSource = NewRadiantLossFraction(1) * Q * wAngle(k, Z) / (4 * PI)
+            '        PointSource = NewRadiantLossFraction(1) * Q * wAngle(k, Z, firehi) 'kW directed toward the surface concerned
+            '    Else
+            '        PointSource = 0
+            '    End If
+            '    If k = 1 Then
+            '        'ceiling
+            '        Area = A1
+            '        If firehi < Z Then
+            '            qfire = A * b * PointSource / Area 'assume fire in lower
+            '        Else
+            '            qfire = A * PointSource / Area 'assume fire in upper layer
+            '        End If
+            '    ElseIf k = 2 Then
+            '        'upper wall
+            '        Area = A2
+            '        If Area <> 0 Then
+            '            If firehi < Z Then
+            '                qfire = A * b * PointSource / Area
+            '            Else
+            '                qfire = A * PointSource / Area 'assume fire in upper layer
+            '            End If
+            '        Else : qfire = 0
+            '        End If
+
+            '    ElseIf k = 3 Then
+            '        'lower wall
+            '        Area = A3
+            '        If Area <> 0 Then
+            '            If firehi < Z Then
+            '                qfire = b * PointSource / Area
+            '            Else
+            '                qfire = A * b * PointSource / Area
+            '            End If
+            '        Else : qfire = 0
+            '        End If
+            '    ElseIf k = 4 Then
+            '        'floor
+            '        Area = A4
+            '        If firehi < Z Then
+            '            qfire = b * PointSource / Area
+            '        Else
+            '            qfire = A * b * PointSource / Area
+            '        End If
+            '    End If
+
+            'radiant heat absorbed by the upper layer due to point source fire
+            'If k < 3 Then
+            '    radfireUpper = radfireUpper + b * (1 - A) * PointSource 'kW
+            'End If
+
+            ''radiant heat absorbed by the lower layer due to point source fire
+            'radfireLower = radfireLower + (1 - b) * PointSource 'kW
+
+            'If k < 3 Then
+            '    If firehi < Z Then
+            '        radfireUpper = radfireUpper + b * (1 - A) * PointSource 'kW
+            '        radfireLower = radfireLower + (1 - b) * PointSource 'kW
+            '    Else
+            '        radfireUpper = radfireUpper + (1 - A) * PointSource 'kW
+            '        radfireLower = radfireLower  'kW
+            '    End If
+            'End If
+            'If k > 2 Then
+            '    If firehi < Z Then
+            '        radfireUpper = radfireUpper  'kW
+            '        radfireLower = radfireLower + (1 - b) * PointSource 'kW
+            '    Else
+            '        radfireUpper = radfireUpper + (1 - A) * PointSource 'kW
+            '        radfireLower = radfireLower + A * (1 - b) * PointSource 'kW
+            '    End If
+            'End If
+
+
+            'radiant heat flux striking the k'th rectangular wall segment due to emitting gas layer
+            qgaslower = 0 'kW/m2
+            qgasupper = 0 'kW/m2
+
+            For j = 1 To 4
+                If j <= 2 And k <= 2 Then
+                    'upper to upper
+                    qgaslower = qgaslower
+                    qgasupper = F(k, j, room) * StefanBoltzmann / 1000 * (1 - A) * (UT ^ 4) + qgasupper
+                ElseIf j <= 2 And k > 2 Then
+                    'upper to lower
+                    'from Forney's paper
+                    'qgaslower = F(k, j, room) * StefanBoltzmann / 1000 * (1 - b) * LT ^ 4 + qgaslower
+                    'qgasupper = F(k, j, room) * StefanBoltzmann / 1000 * b * (1 - A) * UT ^ 4 + qgasupper
+                    'what I think they should be
+                    qgaslower = F(k, j, room) * A * (1 - b) * StefanBoltzmann / 1000 * LT ^ 4 + qgaslower
+                    qgasupper = F(k, j, room) * (1 - A) * StefanBoltzmann / 1000 * UT ^ 4 + qgasupper
+                ElseIf j > 2 And k <= 2 Then
+                    'lower to upper
+                    'from Forney's paper
+                    'qgaslower = F(k, j, room) * StefanBoltzmann / 1000 * (1 - b) * LT ^ 4 * b + qgaslower
+                    'qgasupper = F(k, j, room) * StefanBoltzmann / 1000 * (1 - A) * UT ^ 4 + qgasupper
+                    'what I think they should be
+                    qgaslower = F(k, j, room) * (1 - b) * StefanBoltzmann / 1000 * LT ^ 4 + qgaslower
+                    qgasupper = F(k, j, room) * b * (1 - A) * StefanBoltzmann / 1000 * UT ^ 4 + qgasupper
+                ElseIf j > 2 And k > 2 Then
+                    'lower to lower
+                    qgaslower = F(k, j, room) * StefanBoltzmann / 1000 * (1 - b) * LT ^ 4 + qgaslower
+                    qgasupper = qgasupper
+                End If
+            Next j
+            matc(k, 1) = (qfire + qgasupper + qgaslower) 'kW/m2
+
+        Next k
+        On Error GoTo 0
+        Application.DoEvents()
+
+    End Sub
+
     Sub MatrixD(ByRef MatD(,) As Double, ByVal room As Integer)
         '************************************************************
         '*  Procedure defines the elements in the Matrix D, a scaling

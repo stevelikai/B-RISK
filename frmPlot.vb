@@ -267,15 +267,248 @@ Public Class frmPlot
 
     Private Sub ExportDataToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExportDataToolStripMenuItem.Click
 
-        Dim i, j, k As Integer
+        Dim i, j, k, element As Integer
         Dim sname As String = ""
         Dim oExcel As Object
         Dim oBook As Object
         Dim oSheet As Object
+        Dim DataMultiplier As Double = 1
+        Dim Datashift As Double = 0
+        Dim idr = CInt(NumericUpDownTime.Value) 'store the element number
+        Dim saveflag As Boolean = False
 
         Try
 
             Dim getname As String = ""
+
+            'Start a new workbook in Excel
+            oExcel = CreateObject("Excel.Application")
+            oBook = oExcel.Workbooks.Add
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Apparent wall density") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
+
+                getname = RiskDataDirectory & "excel_UW_density_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Apparent wall density"
+
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * WallApparentDensity(idr, j) + Datashift) 'data to be plotted
+
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 3).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Apparent wall density (kg/m3)"
+
+                oBook.worksheets.add()
+                saveflag = True
+
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Apparent density") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
+
+                getname = RiskDataDirectory & "excel_ceil_density_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Apparent ceiling density"
+
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * CeilingApparentDensity(idr, j) + Datashift) 'data to be plotted
+
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 3).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Apparent ceiling density (kg/m3)"
+
+                oBook.worksheets.add()
+                saveflag = True
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Total ceiling MLR (kg/s)") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
+
+                getname = RiskDataDirectory & "excel_ceil_woodMLR_total_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Ceiling Wood fuel MLR"
+
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * CeilingWoodMLR_tot(j) + Datashift) 'data to be plotted
+
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 3).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Total ceiling MLR (kg/s)"
+
+                oBook.worksheets.add()
+                saveflag = True
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Total wall MLR (kg/s)") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
+
+                getname = RiskDataDirectory & "excel_UW_woodMLR_total_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Wall Wood fuel MLR"
+
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * WallWoodMLR_tot(j) + Datashift) 'data to be plotted
+
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 3).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Total wall MLR (kg/s)"
+
+                oBook.worksheets.add()
+                saveflag = True
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Wood fuel MLR (kg/m3/s) in wall") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
+
+                getname = RiskDataDirectory & "excel_UW_woodMLR_" & Convert.ToString(idr) & "_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Wall Wood fuel MLR"
+
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * WallWoodMLR(idr, j) + Datashift) 'data to be plotted
+
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 3).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Wood fuel MLR (kg/m3/s) for element " & Convert.ToString(idr)
+
+                oBook.worksheets.add()
+                saveflag = True
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Wood fuel MLR (kg/m3/s)") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
+
+                getname = RiskDataDirectory & "excel_ceil_woodMLR_" & Convert.ToString(idr) & "_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Ceiling Wood fuel MLR"
+
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * CeilingWoodMLR(idr, j) + Datashift) 'data to be plotted
+
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 3).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Wood fuel MLR (kg/m3/s) for element " & Convert.ToString(idr)
+
+                oBook.worksheets.add()
+                saveflag = True
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Residual mass fraction in wall (-)") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 6) As Object
+                getname = RiskDataDirectory & "excel_UW_residualMF_" & Convert.ToString(idr) & "_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Wall residual mass fraction"
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * UWallElementMF(idr, 0, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 3) = (DataMultiplier * UWallElementMF(idr, 1, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 4) = (DataMultiplier * UWallElementMF(idr, 2, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 5) = (DataMultiplier * UWallElementMF(idr, 3, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 6) = (DataMultiplier * UWallCharResidue(idr, j) + Datashift) 'data to be plotted
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 7).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Water"
+                oSheet.Range("D1").Value = "Cellulose"
+                oSheet.Range("E1").Value = "Hemicellulose"
+                oSheet.Range("F1").Value = "Lignin"
+                oSheet.Range("G1").Value = "Char residue"
+
+                oBook.worksheets.add()
+                saveflag = True
+            End If
+
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Residual mass fraction") = True Then
+
+                Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 6) As Object
+                getname = RiskDataDirectory & "excel_ceil_residualMF_" & Convert.ToString(idr) & "_" & Convert.ToString(frmInputs.txtBaseName.Text)
+                sname = "Ceiling residual mass fraction"
+                oSheet = oBook.Worksheets(1)
+                oSheet.name = sname
+
+                For j = 1 To NumberTimeSteps + 1
+                    DataArray2(j, 0) = tim(j, 1) 's
+                    DataArray2(j, 1) = tim(j, 1) / 60 'min
+                    DataArray2(j, 2) = (DataMultiplier * CeilingElementMF(idr, 0, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 3) = (DataMultiplier * CeilingElementMF(idr, 1, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 4) = (DataMultiplier * CeilingElementMF(idr, 2, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 5) = (DataMultiplier * CeilingElementMF(idr, 3, j) + Datashift) 'data to be plotted
+                    DataArray2(j, 6) = (DataMultiplier * CeilingCharResidue(idr, j) + Datashift) 'data to be plotted
+                Next
+                oSheet.Range("A1").Resize(NumberTimeSteps + 2, 7).Value = DataArray2
+                oSheet.Range("A1").Value = "time (sec)"
+                oSheet.Range("B1").Value = "time (min)"
+                oSheet.Range("C1").Value = "Water"
+                oSheet.Range("D1").Value = "Cellulose"
+                oSheet.Range("E1").Value = "Hemicellulose"
+                oSheet.Range("F1").Value = "Lignin"
+                oSheet.Range("G1").Value = "Char residue"
+
+                oBook.worksheets.add()
+                saveflag = True
+
+            End If
+
+            If saveflag = True Then
+                'Save the Workbook and Quit Excel
+                oBook.SaveAs(getname)
+                oExcel.Quit()
+                oExcel = Nothing
+                oBook = Nothing
+                oSheet = Nothing
+                MsgBox("File " & getname & " saved.", MsgBoxStyle.Information)
+                'Me.Close()
+                Exit Sub
+
+            End If
 
 
             Select Case Chart1.ChartAreas("ChartArea1").AxisY.Title
@@ -309,12 +542,7 @@ Public Class frmPlot
                     Exit Sub
             End Select
 
-            'Start a new workbook in Excel
-            oExcel = CreateObject("Excel.Application")
-            oBook = oExcel.Workbooks.Add
-
             'Create an array
-            'Dim DataArray(0 To SimTime / Timestep + 4, 0 To 3) As Object
             Dim DataArray(0 To 6 * 3600 / Timestep + 4, 0 To 3) As Object
 
             'Add headers to the worksheet on row 1
@@ -360,9 +588,9 @@ Public Class frmPlot
             oExcel = Nothing
             oBook = Nothing
             oSheet = Nothing
-            Me.Close()
-            MsgBox("File " & getname & " saved.", MsgBoxStyle.Information)
 
+            MsgBox("File " & getname & " saved.", MsgBoxStyle.Information)
+            'Me.Close()
             Exit Sub
 
         Catch ex As Exception
@@ -400,6 +628,7 @@ Public Class frmPlot
         Dim title = Chart1.Titles("Title1").Text
 
         Chart1.Series.Clear()
+
         idr = NumericUpDownTime.Value
         description = "Component " + CStr(idr)
         maxpoints = 5 * NumberTimeSteps
@@ -427,13 +656,13 @@ Public Class frmPlot
                 Chart1.Series(chdata(0, i)).ChartType = SeriesChartType.FastLine
 
                 For j = 1 To stepcount
-                    chdata(j, i) = tim(j, 1)
+                    chdata(j, i) = tim(j, 1) / timeunit
                     If i < 4 Then
                         chdata(j, i + 1) = (DataMultiplier * CeilingElementMF(idr, i, j) + DataShift) 'data to be plotted
                     Else
                         chdata(j, i + 1) = (DataMultiplier * CeilingCharResidue(idr, j) + DataShift) 'data to be plotted
                     End If
-                    Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                    Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, i + 1))
                 Next
 
             Next i
@@ -458,13 +687,13 @@ Public Class frmPlot
                 Chart1.Series(chdata(0, i)).ChartType = SeriesChartType.FastLine
 
                 For j = 1 To stepcount
-                    chdata(j, i) = tim(j, 1)
+                    chdata(j, i) = tim(j, 1) / timeunit
                     If i < 4 Then
                         chdata(j, i + 1) = (DataMultiplier * UWallElementMF(idr, i, j) + DataShift) 'data to be plotted
                     Else
                         chdata(j, i + 1) = (DataMultiplier * UWallCharResidue(idr, j) + DataShift) 'data to be plotted
                     End If
-                    Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                    Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, i + 1))
                 Next
 
             Next i
@@ -485,11 +714,11 @@ Public Class frmPlot
             Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
 
             For j = 1 To stepcount
-                chdata(j, curve) = tim(j, 1)
+                chdata(j, curve) = tim(j, 1) / timeunit
 
                 chdata(j, curve + 1) = (DataMultiplier * CeilingWoodMLR(idr, j) + DataShift) 'data to be plotted
 
-                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
             NumericUpDownTime.Maximum = CeilingWoodMLR.GetUpperBound(0)
@@ -509,11 +738,11 @@ Public Class frmPlot
             Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
 
             For j = 1 To stepcount
-                chdata(j, curve) = tim(j, 1)
+                chdata(j, curve) = tim(j, 1) / timeunit
 
                 chdata(j, curve + 1) = (DataMultiplier * WallWoodMLR(idr, j) + DataShift) 'data to be plotted
 
-                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
             NumericUpDownTime.Maximum = WallWoodMLR.GetUpperBound(0)
@@ -533,11 +762,11 @@ Public Class frmPlot
             Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
 
             For j = 1 To NumberTimeSteps
-                chdata(j, curve) = tim(j, 1)
+                chdata(j, curve) = tim(j, 1) / timeunit
 
                 chdata(j, curve + 1) = (DataMultiplier * CeilingApparentDensity(idr, j) + DataShift) 'data to be plotted
 
-                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
             NumericUpDownTime.Maximum = CeilingApparentDensity.GetUpperBound(0)
@@ -545,8 +774,8 @@ Public Class frmPlot
 
         Testpos = InStr(1, title, "Apparent wall density (kg/m3)")
         If Testpos > 0 Then
-            Dim dp As Single = idr * CeilingThickness(fireroom) / WallApparentDensity.GetUpperBound(0)
-            Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / WallApparentDensity.GetUpperBound(0)
+            Dim dp As Single = idr * WallThickness(fireroom) / WallApparentDensity.GetUpperBound(0)
+            Dim dp1 As Single = (idr - 1) * WallThickness(fireroom) / WallApparentDensity.GetUpperBound(0)
             Chart1.Titles("Title1").Text = "Apparent wall density (kg/m3) in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             Dim curve As Integer
@@ -557,11 +786,11 @@ Public Class frmPlot
             Chart1.Series(chdata(0, curve)).ChartType = SeriesChartType.FastLine
 
             For j = 1 To NumberTimeSteps
-                chdata(j, curve) = tim(j, 1)
+                chdata(j, curve) = tim(j, 1) / timeunit
 
                 chdata(j, curve + 1) = (DataMultiplier * WallApparentDensity(idr, j) + DataShift) 'data to be plotted
 
-                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
             NumericUpDownTime.Maximum = WallApparentDensity.GetUpperBound(0)

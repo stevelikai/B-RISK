@@ -162,9 +162,9 @@ Module DIFFEQNS
         'find the heat flux to the floor  (out of floor +ve)
         If A4 > 0 Then
             floorconvect = floorconvect / A4
-            QFloor(room, stepcount) = floorconvect + prd(4, 1) 'kW/m2
-            QFloorAST(room, 3, stepcount) = -prd(4, 1)
-            QFloorAST(room, 0, stepcount) = matc(4, 1)
+            QFloor(room, stepcount) = floorconvect + prd(4, 1) 'kW/m2  'total net heat flux to floor
+            QFloorAST(room, 3, stepcount) = -prd(4, 1) 'net radiant heat flux to floor
+            QFloorAST(room, 0, stepcount) = matc(4, 1) 'incident heat flux to floor
             QFloorAST(room, 1, stepcount) = InsideConvCoeff4
         Else
             QFloor(room, stepcount) = 0

@@ -2423,47 +2423,70 @@ errorhandler:
         Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
         'Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, -QFloor(fireroom, i - 1), burningrate)
 
-        'If useCLTmodel = True Then
-        'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
-        'Else
+
         HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
         'End If
 
-
         count = 1
-        'heatreleased = HeatRelease(fireroom, i, 1) 'max theoretical hrr from the fuel
-        'Qplume = HeatRelease(fireroom, i, 1)
-
-        'If mrate_ceiling > 0.01 Then Stop
-
-        'If heatreleased > 0 Then
-        Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
-
-            'fire is ventilation-limited
-            heatreleased = HeatRelease(fireroom, i, 2)
-            If heatreleased = 0 Then Exit Do
-
-            'Mass flow in the plume
-            mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), heatreleased, uppertemp(fireroom, i), lowertemp(fireroom, i))
-
-            'recalculate oxygen limit using new plume flow
-            'HeatRelease(fireroom, i, 2) = O2_limit_cfast(fireroom, Mass_Upper, heatreleased, mplume, uppertemp(fireroom, i), O2MassFraction(fireroom, i, 1), O2MassFraction(fireroom, i, 2), mw_upper, mw_lower, Qplume)
-            Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
-            'Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, -QFloor(fireroom, i - 1), burningrate)
 
 
-            'If useCLTmodel = True Then
-            'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
-            'Else
-            HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
-            'End If
 
-            count = count + 1
-            If count > 50 Then
-                Exit Do
-            End If
-        Loop
-        'End If
+        If useCLTmodel = True And KineticModel = True Then
+
+            HeatRelease(fireroom, i, 1) = 1000 * EnergyYield(1) * mrate(1) + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+            heatreleased = HeatRelease(fireroom, i, 1) 'max theoretical hrr from the fuel
+            'Qplume = HeatRelease(fireroom, i, 1)
+
+            Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
+                If tim(i, 1) = 216 Then Stop
+
+                'fire is ventilation-limited
+                heatreleased = HeatRelease(fireroom, i, 2)
+
+                If heatreleased = 0 Then Exit Do
+
+                'Mass flow in the plume
+                mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), heatreleased, uppertemp(fireroom, i), lowertemp(fireroom, i))
+
+                'recalculate oxygen limit using new plume flow
+                HeatRelease(fireroom, i, 2) = O2_limit_cfast(fireroom, Mass_Upper, heatreleased, mplume, uppertemp(fireroom, i), O2MassFraction(fireroom, i, 1), O2MassFraction(fireroom, i, 2), mw_upper, mw_lower, Qplume)
+
+
+                'If useCLTmodel = True Then
+                'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+                'Else
+                ' HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
+                'End If
+
+                count = count + 1
+                If count > 50 Then
+                    Exit Do
+                End If
+            Loop
+
+        Else
+
+            Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
+
+                'fire is ventilation-limited
+                heatreleased = HeatRelease(fireroom, i, 2)
+
+                If heatreleased = 0 Then Exit Do
+
+                'Mass flow in the plume
+                mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), heatreleased, uppertemp(fireroom, i), lowertemp(fireroom, i))
+
+                Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
+                'Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, -QFloor(fireroom, i - 1), burningrate)
+                HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
+
+                count = count + 1
+                If count > 50 Then
+                    Exit Do
+                End If
+            Loop
+        End If
+
 
         massplumeflow(i, fireroom) = mplume
 
@@ -2686,16 +2709,12 @@ errorhandler:
 
 
                 If FuelResponseEffects = True Then
-                    massplumeX(j) = Mass_Plume_2012(X, layerz(j), HeatRelease(j, stepcount, 1), Y(j, 2), Y(j, 3))
+                    'massplumeX(j) = Mass_Plume_2012(X, layerz(j), HeatRelease(j, stepcount, 1), Y(j, 2), Y(j, 3)) '18/12/18 - switched to line below
+                    massplumeX(j) = Mass_Plume_2012(X, layerz(j), HeatRelease(j, stepcount, 2), Y(j, 2), Y(j, 3))
                     Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, mrate_floor, Y(j, 15), Y(j, 3), massplumeX(j), Target(fireroom, i), burningrate)
                     'Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, mrate_floor, Y(j, 15), Y(j, 3), massplumeX(j), -QFloor(fireroom, i), burningrate)
 
-                    If useCLTmodel = True And KineticModel = True Then
-                        hrrlimit(fireroom) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(j) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(j) * mrate_ceiling
-                    Else
-                        hrrlimit(fireroom) = 1000 * EnergyYield(1) * burningrate
-                    End If
-
+                    hrrlimit(fireroom) = 1000 * EnergyYield(1) * burningrate
 
                     Call hrr_estimate_fuelresponse(fireroom, Mass_Upper(fireroom), massplumeX(fireroom), hrrlimit(fireroom), X, layerz(fireroom), Y(fireroom, 2), Y(fireroom, 3), Y(fireroom, 5), Y(fireroom, 15), mw_upper(fireroom), mw_lower(fireroom), Y(fireroom, 6), weighted_hc, Target(fireroom, i))
                     'Call hrr_estimate_fuelresponse(fireroom, Mass_Upper(fireroom), massplumeX(fireroom), hrrlimit(fireroom), X, layerz(fireroom), Y(fireroom, 2), Y(fireroom, 3), Y(fireroom, 5), Y(fireroom, 15), mw_upper(fireroom), mw_lower(fireroom), Y(fireroom, 6), weighted_hc, -QFloor(fireroom, i))

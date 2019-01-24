@@ -521,7 +521,7 @@ Module KineticModelCode
                     Exit Sub
                 End If
 
-                wallnodestemp = (Ceilingnodes - 1) * (walllayersremaining) + 1 'remove one layer and recalc number of nodes
+                wallnodestemp = (Wallnodes - 1) * (walllayersremaining) + 1 'remove one layer and recalc number of nodes
                 wallnodeadjust = (Wallnodes - 1) * NLW + 1 - wallnodestemp
 
                 'Find DeltaX
@@ -1213,6 +1213,11 @@ Module KineticModelCode
 
         End If
 
+        If FuelResponseEffects = True Then
+            mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
+            mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
+
+        End If
         wall_char(stepcount, 1) = mwall 'kg/s
         ceil_char(stepcount, 1) = mceiling
 

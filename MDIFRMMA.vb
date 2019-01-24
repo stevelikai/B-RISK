@@ -9440,6 +9440,7 @@ errhandler:
                 Exit Sub
             End If
             idr = CInt(MyValue) 'store the element number
+            frmPlot.NumericUpDownTime.Value = idr
 
             'define variables
 
@@ -9472,7 +9473,7 @@ errhandler:
 
                 chdata(j, curve + 1) = (DataMultiplier * CeilingWoodMLR(idr, j) + DataShift) 'data to be plotted
 
-                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
             frmPlot.Chart1.BackColor = Color.AliceBlue
@@ -9481,7 +9482,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -9523,7 +9528,8 @@ errhandler:
                 If Not IsNumeric(MyValue) Then
                     Exit Sub
                 End If
-                idr = CInt(MyValue) 'store the element number
+            idr = CInt(MyValue) 'store the element number
+            frmPlot.NumericUpDownTime.Value = idr
 
 
             'define variables
@@ -9567,7 +9573,7 @@ errhandler:
                     Else
                         chdata(j, i + 1) = (DataMultiplier * CeilingCharResidue(idr, j) + DataShift) 'data to be plotted
                     End If
-                    frmPlot.Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                    frmPlot.Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, i + 1))
                 Next
 
             Next i
@@ -9578,7 +9584,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction (-)"
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -9642,7 +9652,7 @@ errhandler:
 
                 chdata(j, curve + 1) = (DataMultiplier * CeilingWoodMLR_tot(j) + DataShift) 'data to be plotted
 
-                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
 
@@ -9652,7 +9662,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -9688,6 +9702,7 @@ errhandler:
                 Exit Sub
             End If
             idr = CInt(MyValue) 'store the element number
+            frmPlot.NumericUpDownTime.Value = idr
 
             'define variables
             Title = "Apparent density (kg/m3)"
@@ -9719,7 +9734,7 @@ errhandler:
 
                 chdata(j, curve + 1) = (DataMultiplier * CeilingApparentDensity(idr, j) + DataShift) 'data to be plotted
 
-                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
 
@@ -9729,7 +9744,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -9769,6 +9788,7 @@ errhandler:
                 Exit Sub
             End If
             idr = CInt(MyValue) 'store the element number
+            frmPlot.NumericUpDownTime.Value = idr
 
             'define variables
             Title = "Residual mass fractions in wall element " & idr.ToString
@@ -9810,7 +9830,7 @@ errhandler:
                     Else
                         chdata(j, i + 1) = (DataMultiplier * UWallCharResidue(idr, j) + DataShift) 'data to be plotted
                     End If
-                    frmPlot.Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1), chdata(j, i + 1))
+                    frmPlot.Chart1.Series(chdata(0, i)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, i + 1))
                 Next
 
             Next i
@@ -9819,10 +9839,14 @@ errhandler:
             frmPlot.Chart1.BackColor = Color.AliceBlue
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction (-)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction in wall (-)"
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -9864,6 +9888,7 @@ errhandler:
                 Exit Sub
             End If
             idr = CInt(MyValue) 'store the element number
+            frmPlot.NumericUpDownTime.Value = idr
 
             'define variables
 
@@ -9896,7 +9921,7 @@ errhandler:
 
                 chdata(j, curve + 1) = (DataMultiplier * WallWoodMLR(idr, j) + DataShift) 'data to be plotted
 
-                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
             frmPlot.Chart1.BackColor = Color.AliceBlue
@@ -9905,7 +9930,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -9965,7 +9994,7 @@ errhandler:
 
                 chdata(j, curve + 1) = (DataMultiplier * WallWoodMLR_tot(j) + DataShift) 'data to be plotted
 
-                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
 
@@ -9975,7 +10004,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
@@ -10012,6 +10045,7 @@ errhandler:
                 Exit Sub
             End If
             idr = CInt(MyValue) 'store the element number
+            frmPlot.NumericUpDownTime.Value = idr
 
             'define variables
             Title = "Apparent wall density (kg/m3)"
@@ -10043,7 +10077,7 @@ errhandler:
 
                 chdata(j, curve + 1) = (DataMultiplier * WallApparentDensity(idr, j) + DataShift) 'data to be plotted
 
-                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1), chdata(j, curve + 1))
+                frmPlot.Chart1.Series(chdata(0, curve)).Points.AddXY(tim(j, 1) / timeunit, chdata(j, curve + 1))
             Next
 
 
@@ -10053,7 +10087,11 @@ errhandler:
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = Title
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            If timeunit = 60 Then
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (min)"
+            Else
+                frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Title = "Time (sec)"
+            End If
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.IsMarginVisible = False
             frmPlot.Chart1.Legends("Legend1").BorderWidth = 1
             frmPlot.Chart1.Legends("Legend1").BackColor = Color.White
