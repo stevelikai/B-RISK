@@ -1613,37 +1613,37 @@
         'ToolStripMenuItem19
         '
         Me.ToolStripMenuItem19.Name = "ToolStripMenuItem19"
-        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(179, 22)
         Me.ToolStripMenuItem19.Text = "Ceiling"
         '
         'ToolStripMenuItem20
         '
         Me.ToolStripMenuItem20.Name = "ToolStripMenuItem20"
-        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(179, 22)
         Me.ToolStripMenuItem20.Text = "Upper Wall"
         '
         'ToolStripMenuItem21
         '
         Me.ToolStripMenuItem21.Name = "ToolStripMenuItem21"
-        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(179, 22)
         Me.ToolStripMenuItem21.Text = "Lower Wall"
         '
         'ToolStripMenuItem22
         '
         Me.ToolStripMenuItem22.Name = "ToolStripMenuItem22"
-        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(179, 22)
         Me.ToolStripMenuItem22.Text = "Floor"
         '
         'uwallchardepth
         '
         Me.uwallchardepth.Name = "uwallchardepth"
-        Me.uwallchardepth.Size = New System.Drawing.Size(180, 22)
+        Me.uwallchardepth.Size = New System.Drawing.Size(179, 22)
         Me.uwallchardepth.Text = "Wall  - char depth"
         '
         'ceilingchardepth
         '
         Me.ceilingchardepth.Name = "ceilingchardepth"
-        Me.ceilingchardepth.Size = New System.Drawing.Size(180, 22)
+        Me.ceilingchardepth.Size = New System.Drawing.Size(179, 22)
         Me.ceilingchardepth.Text = "Ceiling - char depth"
         '
         'KineticWoodPyrolysisModelToolStripMenuItem

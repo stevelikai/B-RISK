@@ -22,7 +22,6 @@ Module MAIN
     Dim data_keep(,,) As Single
     Dim oSprinklers As New List(Of oSprinkler)
 
-
     Dim result1 As Double
     Dim result2 As Double
 
@@ -4514,6 +4513,7 @@ here:
             If CLTwallpercent > 0 Then
 
                 For curve = 1 To NumberwallNodes
+                    'If curve = 175 Then Stop
                     X(NumberwallNodes - curve + 1) = UWallNode(idr, curve, j) 'descending order
                     depth = (curve - 1) * WallThickness(idr) / (NumberwallNodes - 1)
                     Y(NumberwallNodes - curve + 1) = depth

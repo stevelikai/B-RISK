@@ -56,7 +56,6 @@ Friend Class MDIFrmMain
         'to the system image list.
         Dim iImage As Integer
     End Structure
-
     '
     ' NOTE:
     '    Many of these flags only work with
@@ -8308,7 +8307,9 @@ errhandler:
 
                 For j = 0 To NumberTimeSteps
                     'If j Mod outputinterval = 0 Then
+                    'If j = 7200 Then Stop
                     For curve = 1 To NumberceilingNodes
+                        'If curve = NumberceilingNodes Then Stop
                         X(NumberceilingNodes - curve + 1) = CeilingNode(idr, curve, j) 'descending order
                         If HaveCeilingSubstrate(idr) = True Then
                             depth = (curve - 1) * CeilingThickness(idr) / (Ceilingnodes - 1)
@@ -9444,7 +9445,7 @@ errhandler:
 
             'define variables
 
-            Title = "Wood fuel MLR (kg/m3/s) in element " & idr.ToString
+            Title = "Wood fuel MLR (kg/m3/s) in ceiling element " & idr.ToString
             DataShift = 0
             DataMultiplier = 1
             GraphStyle = 4            '2=user-defined
@@ -9581,7 +9582,7 @@ errhandler:
             frmPlot.Chart1.BackColor = Color.AliceBlue
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderWidth = 1
             frmPlot.Chart1.ChartAreas("ChartArea1").BorderDashStyle = ChartDashStyle.Solid
-            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction (-)"
+            frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.Title = "Residual mass fraction in ceiling (-)"
             'frmPlot.Chart1.ChartAreas("ChartArea1").AxisY.LabelStyle.Format = "0.0"
             frmPlot.Chart1.ChartAreas("ChartArea1").AxisX.Maximum = [Double].NaN
             If timeunit = 60 Then

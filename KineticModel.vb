@@ -4,7 +4,6 @@ Imports System.Math
 Imports CenterSpace.NMath.Core
 Imports CenterSpace.NMath.Analysis
 
-
 Module KineticModelCode
     Dim Y_pyrol() As Double
     Dim DYDX_pyrol() As Double
@@ -828,7 +827,9 @@ Module KineticModelCode
                 CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
 
                 'put a lower limit on the apparent density
-                If CeilingApparentDensity(count, i + 1) < chardensity Then CeilingApparentDensity(count, i + 1) = chardensity
+                If CeilingApparentDensity(count, i + 1) < chardensity Then
+                    'CeilingApparentDensity(count, i + 1) = chardensity
+                End If
             Next
 
             'the wall
@@ -893,7 +894,9 @@ Module KineticModelCode
                 WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * DensityInitial + WallResidualMass(count, i + 1) 'water + char + solids
 
                 'put a lower limit on the apparent density
-                If WallApparentDensity(count, i + 1) < chardensity Then WallApparentDensity(count, i + 1) = chardensity
+                If WallApparentDensity(count, i + 1) < chardensity Then
+                    'WallApparentDensity(count, i + 1) = chardensity
+                End If
             Next
 
 

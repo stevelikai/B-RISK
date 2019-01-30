@@ -411,7 +411,7 @@ Public Class frmPlot
                 saveflag = True
             End If
 
-            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Wood fuel MLR (kg/m3/s)") = True Then
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Wood fuel MLR (kg/m3/s) in ceiling") = True Then
 
                 Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 2) As Object
 
@@ -466,7 +466,7 @@ Public Class frmPlot
                 saveflag = True
             End If
 
-            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Residual mass fraction") = True Then
+            If Chart1.ChartAreas("ChartArea1").AxisY.Title.Contains("Residual mass fraction in ceiling") = True Then
 
                 Dim DataArray2(0 To NumberTimeSteps + 1, 0 To 6) As Object
                 getname = RiskDataDirectory & "excel_ceil_residualMF_" & Convert.ToString(idr) & "_" & Convert.ToString(frmInputs.txtBaseName.Text)
@@ -574,7 +574,6 @@ Public Class frmPlot
                     End Select
 
                 Next
-
             Next
             'Transfer the array to the worksheet starting at cell A2
             'oSheet.Range("A2").Resize(SimTime / Timestep + 1, 4).Value = DataArray
