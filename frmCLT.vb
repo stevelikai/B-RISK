@@ -6,6 +6,14 @@ Public Class frmCLT
         'call procedure to centre form
         Centre_Form(Me)
 
+        If DevKey = True Then
+
+        Else
+            RB_dynamic.Checked = True
+            IntegralModel = False
+            KineticModel = False
+        End If
+
         If useCLTmodel = True Then
             optCLTON.Checked = True
         Else
@@ -28,9 +36,9 @@ Public Class frmCLT
             RB_Kinetic.Checked = True
             RB_dynamic.Checked = False
             RB_Integral.Checked = False
-
+            panel_kinetic.Visible = True
         Else
-
+            panel_kinetic.Visible = False
         End If
 
         numeric_ceilareapercent.Value = CLTceilingpercent
@@ -44,13 +52,6 @@ Public Class frmCLT
         txtCritFlux.Text = CLTQcrit
         txtDebondTemp.Text = DebondTemp
         TXT_MoistureContent.Text = init_moisturecontent * 100
-        Me.Show()
-
-        'CLTflameflux = 17
-        'CLTigtemp = 384
-        'CLTLoG = 1.6
-        'CLTQcrit = 16
-        'CLTcalibrationfactor = 1
 
         txtA_cell.Text = Format(E_array(1), "0.00E+00")
         txtA_hemi.Text = Format(E_array(2), "0.00E+00")
@@ -71,6 +72,9 @@ Public Class frmCLT
         TextBox_charyield_cell.Text = char_yield(1)
         TextBox_charyield_hemi.Text = char_yield(2)
         TextBox_charyield_lignin.Text = char_yield(3)
+
+        Me.Show()
+
 
     End Sub
 

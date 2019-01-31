@@ -1,0 +1,407 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BRISK
+</name>
+</assembly>
+<members>
+<member name="T:BRISK.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Abort">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.alpha2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.alpha3">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Armchair">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Bluepin">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.BOOK2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Cancel">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Clipboard">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.CNTRL">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Company">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Database">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Down">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.fireimageheader">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.FLARE">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.GEOMTRY1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Go">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.itextsharp">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.itextsharp_pdfa">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.itextsharp_xtra">
+<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic11">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic1338490003_55">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic1338490349_tv">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic17">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic31">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.pic73">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.picExcel16">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.picExit">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.picHelpsymbol">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.picStop">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.powerlaw">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.powerlaw1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.powerlaw2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Radiation">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Reader16">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.Refresh">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.sprinkler">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.sprinkler1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.TRIANGLE">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BRISK.My.Resources.Resources.View">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:BRISK.fireDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:BRISK.fireDataSet.Fire_DataDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:BRISK.fireDataSet.Fire_DataRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:BRISK.fireDataSet.Fire_DataRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:BRISK.fireDataSetTableAdapters.Fire_DataTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:BRISK.fireDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:BRISK.fireDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(BRISK.fireDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:BRISK.fireDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(BRISK.fireDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:BRISK.fireDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(BRISK.fireDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:BRISK.fireDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:BRISK.fireDataSetTableAdapters.TableAdapterManager.UpdateAll(BRISK.fireDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:BRISK.fireDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:BRISK.fireDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="T:BRISK.Branzfire.System.Windows.Forms.DataVisualization.Charting.Utilities.HistogramChartHelper">
+ <summary>
+ Helper class that creates a histogram chart. Histogram is a data
+ distribution chart which shows how many values, from the data series,
+ are inside each segment interval.  
+ 
+ You can define how many intervals you want to have using the SegmentIntervalNumber
+ field or the exact length of the interval using the SegmentIntervalWidth
+ field. Actual segment interval number can be slightly different due
+ to the automatic interval rounding.
+ </summary>
+</member>
+<member name="F:BRISK.Branzfire.System.Windows.Forms.DataVisualization.Charting.Utilities.HistogramChartHelper.SegmentIntervalNumber">
+ <summary>
+ Number of class intervals the data range is devided in.
+ This property only has affect when "SegmentIntervalWidth" is 
+ set to double.NaN.
+ </summary>
+</member>
+<member name="F:BRISK.Branzfire.System.Windows.Forms.DataVisualization.Charting.Utilities.HistogramChartHelper.SegmentIntervalWidth">
+ <summary>
+ Histogram class interval width. Setting this value to "double.NaN"
+ will result in automatic width calculation based on the data range
+ and number of required interval specified in "SegmentIntervalNumber".
+ </summary>
+</member>
+<member name="F:BRISK.Branzfire.System.Windows.Forms.DataVisualization.Charting.Utilities.HistogramChartHelper.ShowPercentOnSecondaryYAxis">
+ <summary>
+ Indicates that percent frequency should be shown on the right axis
+ </summary>
+</member>
+<member name="M:BRISK.Branzfire.System.Windows.Forms.DataVisualization.Charting.Utilities.HistogramChartHelper.CreateHistogram(System.Windows.Forms.DataVisualization.Charting.Chart,System.String,System.String)">
+ <summary>
+ Creates a histogram chart.
+ </summary>
+ <param name="chartControl">Chart control reference.</param>
+ <param name="dataSeriesName">Name of the series which stores the original data.</param>
+ <param name="histogramSeriesName">Name of the histogram series.</param>
+</member>
+<member name="M:BRISK.Branzfire.System.Windows.Forms.DataVisualization.Charting.Utilities.HistogramChartHelper.RoundInterval(System.Double)">
+ <summary>
+ Helper method which rounds specified axsi interval.
+ </summary>
+ <param name="interval">Calculated axis interval.</param>
+ <returns>Rounded axis interval.</returns>
+</member>
+<member name="T:BRISK.output">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSet.Table1DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSet.Table1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSet.Table1RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSetTableAdapters.Table1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:BRISK.thermalDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(BRISK.thermalDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:BRISK.thermalDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(BRISK.thermalDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:BRISK.thermalDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(BRISK.thermalDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:BRISK.thermalDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:BRISK.thermalDataSetTableAdapters.TableAdapterManager.UpdateAll(BRISK.thermalDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:BRISK.thermalDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>

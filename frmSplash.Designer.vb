@@ -83,7 +83,7 @@
         Me.lblCopyright.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblCopyright.Size = New System.Drawing.Size(107, 13)
         Me.lblCopyright.TabIndex = 3
-        Me.lblCopyright.Text = "Copyright 2018"
+        Me.lblCopyright.Text = "Copyright 2019"
         '
         'lblCompany
         '
@@ -110,7 +110,7 @@
         Me.lblVersion.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblVersion.Size = New System.Drawing.Size(107, 19)
         Me.lblVersion.TabIndex = 4
-        Me.lblVersion.Text = "Version 2018"
+        Me.lblVersion.Text = "Version 2019"
         Me.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'lblPlatform

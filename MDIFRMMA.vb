@@ -252,19 +252,48 @@ Friend Class MDIFrmMain
 
         'call procedure to setup helpfile variables
         'Call SetAppHelp(Me.hwnd)
+        Try
 
-        ChDir((My.Application.Info.DirectoryPath))
-        'call procedure to set defaults for a new model
 
-        'get name of user application data folder
-        'Call get_folders()
-        UserAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-        UserPersonalDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
-        ApplicationPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath)
-        CommonFilesFolder = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)
-        'DocsFolder = ApplicationPath & "\docs\"
-        DocsFolder = Application.StartupPath & "\docs\"
-        DataFolder = Application.StartupPath & "\data\"
+            ChDir((My.Application.Info.DirectoryPath))
+            'call procedure to set defaults for a new model
+
+            'get name of user application data folder
+            'Call get_folders()
+            'UserAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+            ApplicationPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath)
+
+            CommonFilesFolder = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments)
+            UserPersonalDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
+
+            DocsFolder = Application.StartupPath & "\Docs\"
+            DataFolder = Application.StartupPath & "\Data\"
+            ConeFolder = Application.StartupPath & "\Cone\"
+            DbasesFolder = Application.StartupPath & "\Dbases\"
+            UserDBasesFolder = UserPersonalDataFolder & "\B-RISK\dbases\"
+
+            If My.Computer.FileSystem.DirectoryExists(UserPersonalDataFolder & "\B-RISK\") = True Then
+                If My.Computer.FileSystem.DirectoryExists(UserPersonalDataFolder & "\B-RISK\riskdata\") = False Then
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Riskdata", UserPersonalDataFolder & "\B-RISK\riskdata\")
+                Else
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Riskdata\basemodel_default", UserPersonalDataFolder & "\B-RISK\riskdata\basemodel_default\", True)
+                End If
+                If My.Computer.FileSystem.DirectoryExists(UserPersonalDataFolder & "\B-RISK\dbases\") = False Then
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Dbases", UserPersonalDataFolder & "\B-RISK\dbases\")
+                End If
+                If My.Computer.FileSystem.DirectoryExists(UserPersonalDataFolder & "\B-RISK\cone\") = False Then
+                    My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Cone", UserPersonalDataFolder & "\B-RISK\cone\")
+                End If
+            Else
+                'create it
+                My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Riskdata", UserPersonalDataFolder & "\B-RISK\riskdata\")
+                My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Dbases", UserPersonalDataFolder & "\B-RISK\dbases\")
+                My.Computer.FileSystem.CopyDirectory(Application.StartupPath & "\Cone", UserPersonalDataFolder & "\B-RISK\cone\")
+            End If
+
+        Catch ex As Exception
+            MsgBox(Err.Description & " (Exception in MDIFrmMain_load - Line " & Err.Erl & ")", MsgBoxStyle.Exclamation, "Exception in MDIFrmMain_load - Line " & Err.Erl)
+        End Try
 
         'Call get_folders(CSIDL_PROGRAMS, ProgramFolder)
         Try
@@ -272,6 +301,9 @@ Friend Class MDIFrmMain
             'registry
             'DefaultRiskDataDirectory = GetSetting("BRISK", "options", "DefaultRiskDataDirectory")
             DefaultRiskDataDirectory = My.Settings.riskdatafolder
+
+
+
             If My.Settings.devkeycode = DevKeyCode Then
                 DevKey = True
             End If
@@ -321,7 +353,7 @@ Friend Class MDIFrmMain
         End Try
 
         If DefaultRiskDataDirectory = "" Then
-            'DefaultRiskDataDirectory = UserAppDataFolder & gcs_folder_ext & "\" & "riskdata\"
+
             DefaultRiskDataDirectory = UserPersonalDataFolder & gcs_folder_ext & "\" & "riskdata\"
         End If
         frmInputs.Label4.Text = "Default riskdata folder is: " & DefaultRiskDataDirectory
@@ -901,7 +933,7 @@ Friend Class MDIFrmMain
         '===========================================================
         '   Saves results directly in a .csv file
         '===========================================================
-
+        'not used
         On Error GoTo more
 
         Dim s, Txt As String
@@ -3764,174 +3796,174 @@ runerrorhandler:
 
 
 
-    Public Sub mnuRunBatch_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuRunBatch.Click
-        Dim frmGraphs As Object
-        'folder not used
-        '*  ==========================================================
-        '*  This subprocedure shows a custom dialog box for
-        '*  opening a file.
-        '*  ==========================================================
-        Dim j, response, vent As Short
-        Dim start, simend As Double
-        Dim room As Integer
-        Dim myfile As String
-        Dim modnames(500) As String
-        Dim i As Short
-        On Error GoTo errhandler
-        batch = True 'we are running batch files
+    '    Public Sub mnuRunBatch_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuRunBatch.Click
+    '        Dim frmGraphs As Object
+    '        'folder not used
+    '        '*  ==========================================================
+    '        '*  This subprocedure shows a custom dialog box for
+    '        '*  opening a file.
+    '        '*  ==========================================================
+    '        Dim j, response, vent As Short
+    '        Dim start, simend As Double
+    '        Dim room As Integer
+    '        Dim myfile As String
+    '        Dim modnames(500) As String
+    '        Dim i As Short
+    '        On Error GoTo errhandler
+    '        batch = True 'we are running batch files
 
-        'set directory to open in
-        'DataDirectory = App.Path + "\" + "data\"
-        If BatchFileFolder = "" Then BatchFileFolder = UserAppDataFolder & gcs_folder_ext & "\data"
-        DataDirectory = BatchFileFolder & "\"
+    '        'set directory to open in
+    '        'DataDirectory = App.Path + "\" + "data\"
+    '        ' If BatchFileFolder = "" Then BatchFileFolder = UserAppDataFolder & gcs_folder_ext & "\data"
+    '        DataDirectory = BatchFileFolder & "\"
 
-        i = 1
-        'modnames(i) = Dir(DataDirectory & "*.mod")
-        modnames(i) = Path.GetFileName(DataDirectory & "*.mod")
+    '        i = 1
+    '        'modnames(i) = Dir(DataDirectory & "*.mod")
+    '        modnames(i) = Path.GetFileName(DataDirectory & "*.mod")
 
-        While modnames(i) <> "" And i < 500
-            modnames(i) = DataDirectory & modnames(i)
-            i = i + 1
-            modnames(i) = Dir()
-        End While
+    '        While modnames(i) <> "" And i < 500
+    '            modnames(i) = DataDirectory & modnames(i)
+    '            i = i + 1
+    '            modnames(i) = Dir()
+    '        End While
 
-        'show the progress indicator bar at the bottom of the screen
-        Me.ToolStripProgressBar1.Visible = True
+    '        'show the progress indicator bar at the bottom of the screen
+    '        Me.ToolStripProgressBar1.Visible = True
 
-        i = 1
+    '        i = 1
 
-        While modnames(i) <> "" And batch = True
+    '        While modnames(i) <> "" And batch = True
 
-            'Call the open file procedure
-            'UPGRADE_WARNING: Dir has a new behavior. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"'
-            'DataFile = Dir(modnames(i))
-            'Call Open_File(DataDirectory & DataFile, batch)
-            Call Open_File(modnames(i), batch)
-            DataFile = Path.GetFileName(modnames(i))
-            ToolStripStatusLabel1.Text = DataFile
-            ToolStripStatusLabel2.Text = Description
+    '            'Call the open file procedure
+    '            'UPGRADE_WARNING: Dir has a new behavior. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"'
+    '            'DataFile = Dir(modnames(i))
+    '            'Call Open_File(DataDirectory & DataFile, batch)
+    '            Call Open_File(modnames(i), batch)
+    '            DataFile = Path.GetFileName(modnames(i))
+    '            ToolStripStatusLabel1.Text = DataFile
+    '            ToolStripStatusLabel2.Text = Description
 
-            '---------------------
-            'run model
-            ReDim FirstTime(NumberRooms)
-            On Error GoTo runerrorhandler
+    '            '---------------------
+    '            'run model
+    '            ReDim FirstTime(NumberRooms)
+    '            On Error GoTo runerrorhandler
 
-            flagstop = 0
-            For room = 1 To NumberRooms
-                FirstTime(room) = True
-            Next room
-            Flashover = False
+    '            flagstop = 0
+    '            For room = 1 To NumberRooms
+    '                FirstTime(room) = True
+    '            Next room
+    '            Flashover = False
 
-            'note start time of simulation
-            start = VB.Timer()
+    '            'note start time of simulation
+    '            start = VB.Timer()
 
-            'check to see that some heat release rate data has been entered by the user
-            If NumberDataPoints(1) = 0 And frmOptions1.optRCNone.Checked = True Then
-                'MsgBox "You have not yet provided a design fire", vbInformation
-                Exit Sub
-            End If
+    '            'check to see that some heat release rate data has been entered by the user
+    '            If NumberDataPoints(1) = 0 And frmOptions1.optRCNone.Checked = True Then
+    '                'MsgBox "You have not yet provided a design fire", vbInformation
+    '                Exit Sub
+    '            End If
 
-            'frmBlank.Show
+    '            'frmBlank.Show
 
-            'show the progress indicator bar at the bottom of the screen
-            'MDIFrmMain.ProgressBar1.Visible = True
+    '            'show the progress indicator bar at the bottom of the screen
+    '            'MDIFrmMain.ProgressBar1.Visible = True
 
-            'update all variables and calculate derived variables
-            Derived_Variables()
-            If flagstop = 1 Then Exit Sub
-            Number_TimeSteps()
+    '            'update all variables and calculate derived variables
+    '            Derived_Variables()
+    '            If flagstop = 1 Then Exit Sub
+    '            Number_TimeSteps()
 
-            ResetWindows()
+    '            ResetWindows()
 
-            If NumberTimeSteps > 1 Then
-                Me.mnuExcel.Enabled = True
-            Else
-                Me.mnuExcel.Enabled = False
-            End If
+    '            If NumberTimeSteps > 1 Then
+    '                Me.mnuExcel.Enabled = True
+    '            Else
+    '                Me.mnuExcel.Enabled = False
+    '            End If
 
-            'Resize the data storage arrays based on the number of timesteps needed
-            Size_Arrays()
+    '            'Resize the data storage arrays based on the number of timesteps needed
+    '            Size_Arrays()
 
-            'check for a valid vent
-            Check_Vent()
+    '            'check for a valid vent
+    '            Check_Vent()
 
-            'get the plume correlation to be used
-            Get_Plume()
+    '            'get the plume correlation to be used
+    '            Get_Plume()
 
-            'call procedure to initialize endpoint strings
-            Initialize_EndPointFlags()
+    '            'call procedure to initialize endpoint strings
+    '            Initialize_EndPointFlags()
 
-            'hide graphs on screen
-            ChartRuntime1.Visible = False
+    '            'hide graphs on screen
+    '            ChartRuntime1.Visible = False
 
-            'solve the ordinary differential equations for layer height
-            'and upper layer temperature
-            Dim osprinklers As New List(Of oSprinkler)
-            Dim osprdistributions As New List(Of oDistribution)
-            Dim oSmokeDets As New List(Of oSmokeDet)
-            Dim osddistributions As New List(Of oDistribution)
+    '            'solve the ordinary differential equations for layer height
+    '            'and upper layer temperature
+    '            Dim osprinklers As New List(Of oSprinkler)
+    '            Dim osprdistributions As New List(Of oDistribution)
+    '            Dim oSmokeDets As New List(Of oSmokeDet)
+    '            Dim osddistributions As New List(Of oDistribution)
 
-            main_program2(1, osprinklers, osprdistributions, oSmokeDets, osddistributions)
+    '            main_program2(1, osprinklers, osprdistributions, oSmokeDets, osddistributions)
 
-            'reset the vent opening times
-            ReDim VentBreakTime(MaxNumberRooms + 1, MaxNumberRooms + 1, MaxNumberVents)
-            For room = 1 To NumberRooms
-                For j = 1 To NumberRooms + 1
-                    If j > room Then
-                        For vent = 1 To NumberVents(room, j)
-                            VentBreakTime(room, j, vent) = VentOpenTime(room, j, vent)
-                            VentOpenTime(room, j, vent) = oldVentOpenTime(room, j, vent)
-                        Next vent
-                    End If
-                Next j
-            Next room
+    '            'reset the vent opening times
+    '            ReDim VentBreakTime(MaxNumberRooms + 1, MaxNumberRooms + 1, MaxNumberVents)
+    '            For room = 1 To NumberRooms
+    '                For j = 1 To NumberRooms + 1
+    '                    If j > room Then
+    '                        For vent = 1 To NumberVents(room, j)
+    '                            VentBreakTime(room, j, vent) = VentOpenTime(room, j, vent)
+    '                            VentOpenTime(room, j, vent) = oldVentOpenTime(room, j, vent)
+    '                        Next vent
+    '                    End If
+    '                Next j
+    '            Next room
 
-            'calculate any volume fractions required
-            Volume_Fractions()
+    '            'calculate any volume fractions required
+    '            Volume_Fractions()
 
-            'calculation incapacitation FED's for toxicity
-            ReDim FEDSum(NumberRooms, NumberTimeSteps + 2)
-            ReDim FEDRadSum(NumberRooms, NumberTimeSteps + 1)
-            ReDim SurfaceRad(NumberRooms, NumberTimeSteps + 2)
+    '            'calculation incapacitation FED's for toxicity
+    '            ReDim FEDSum(NumberRooms, NumberTimeSteps + 2)
+    '            ReDim FEDRadSum(NumberRooms, NumberTimeSteps + 1)
+    '            ReDim SurfaceRad(NumberRooms, NumberTimeSteps + 2)
 
-            If FEDCO = True Then
-                Call FED_CO_iso13571_multi()
-            Else
-                Call FED_gases_multi()
-            End If
+    '            If FEDCO = True Then
+    '                Call FED_CO_iso13571_multi()
+    '            Else
+    '                Call FED_gases_multi()
+    '            End If
 
-            Call FED_thermal_iso13571_multi()
+    '            Call FED_thermal_iso13571_multi()
 
-            'note end time of simulation
-            simend = VB.Timer()
-            runtime = simend - start
+    '            'note end time of simulation
+    '            simend = VB.Timer()
+    '            runtime = simend - start
 
-            Me.ToolStripProgressBar1.Value = 0
+    '            Me.ToolStripProgressBar1.Value = 0
 
-            Dim filepathbatch As String = BatchFileFolder & "\" & VB.Left(DataFile, Len(DataFile) - 4) & ".out"
-            Call view_output(filepathbatch)
+    '            Dim filepathbatch As String = BatchFileFolder & "\" & VB.Left(DataFile, Len(DataFile) - 4) & ".out"
+    '            Call View_output(filepathbatch)
 
-            i = i + 1
-        End While
+    '            i = i + 1
+    '        End While
 
-        Me.ToolStripProgressBar1.Visible = False
+    '        Me.ToolStripProgressBar1.Visible = False
 
-        batch = False
-        MsgBox("Batch files run complete")
+    '        batch = False
+    '        MsgBox("Batch files run complete")
 
-        Exit Sub
+    '        Exit Sub
 
-errhandler:
-        'User pressed Cancel button
-        FileClose(1)
-        batch = False
-        Exit Sub
+    'errhandler:
+    '        'User pressed Cancel button
+    '        FileClose(1)
+    '        batch = False
+    '        Exit Sub
 
-runerrorhandler:
-        MsgBox(ErrorToString(Err.Number))
-        batch = False
-        Exit Sub
-    End Sub
+    'runerrorhandler:
+    '        MsgBox(ErrorToString(Err.Number))
+    '        batch = False
+    '        Exit Sub
+    '    End Sub
 
     Public Sub mnuSaveFireDatabase_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs)
         Dim SaveBox As System.Windows.Forms.Control
@@ -4169,15 +4201,15 @@ SaveResultsErrHandler:
 
     End Sub
 
-    Public Sub mnuSelectFolder_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuSelectFolder.Click
+    'Public Sub mnuSelectFolder_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuSelectFolder.Click
 
-        FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
-        FolderBrowserDialog1.ShowDialog()
-        BatchFileFolder = FolderBrowserDialog1.SelectedPath
-        If BatchFileFolder = "" Then BatchFileFolder = UserAppDataFolder & gcs_folder_ext & "\data"
-        MsgBox("Batch File Folder is " & BatchFileFolder)
+    '    FolderBrowserDialog1.RootFolder = Environment.SpecialFolder.MyComputer
+    '    FolderBrowserDialog1.ShowDialog()
+    '    BatchFileFolder = FolderBrowserDialog1.SelectedPath
+    '    '  If BatchFileFolder = "" Then BatchFileFolder = UserAppDataFolder & gcs_folder_ext & "\data"
+    '    MsgBox("Batch File Folder is " & BatchFileFolder)
 
-    End Sub
+    'End Sub
 
     Public Sub mnuSimulation_Click(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles mnuSimulation.Click
 
@@ -9405,6 +9437,9 @@ errhandler:
 
                 basefile = opendatafile
                 'MsgBox("base filename: " & basefile, MB_ICONINFORMATION, ProgramTitle)
+                frmInputs.Label5.Text = "Current project folder is: " & RiskDataDirectory
+                ToolStripStatusLabel1.Text = DataFile
+                ToolStripStatusLabel2.Text = Description
 
                 'go away and run this project
                 Call frmInputs.readytorun()

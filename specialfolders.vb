@@ -26,48 +26,8 @@ Module folders
 	Private Const S_OK As Short = 0
 	Private Const S_FALSE As Short = 1
 	Private Const E_INVALIDARG As Integer = &H80070057 ' Invalid CSIDL Value
-	
-	Private Declare Function SHGetFolderPath Lib "shfolder"  Alias "SHGetFolderPathA"(ByVal hwndOwner As Integer, ByVal nFolder As Integer, ByVal hToken As Integer, ByVal dwFlags As Integer, ByVal pszPath As String) As Integer
-	
-    Public Sub get_folders()
 
-        'Dim strBuffer As String
-        Dim strPath As String
-        Dim lngReturn As Integer
-        Dim lngCSIDL As Integer
+    'Private Declare Function SHGetFolderPath Lib "shfolder"  Alias "SHGetFolderPathA"(ByVal hwndOwner As Integer, ByVal nFolder As Integer, ByVal hToken As Integer, ByVal dwFlags As Integer, ByVal pszPath As String) As Integer
 
-        '
-        ' When a listbox item is clicked, get the
-        ' associated folder's path.
-        '
-        'lngCSIDL = CSIDL_COMMON_APPDATA '= folder required eg CSIDL_APPDATA
-        lngCSIDL = CSIDL_PERSONAL 'my documents
-        strPath = New String(Chr(0), MAX_PATH)
 
-        ' Get the folder's path. If the
-        ' "Create" flag is used, the folder will be created
-        ' if it does not exist.
-        '
-        lngReturn = SHGetFolderPath(0, lngCSIDL, 0, SHGFP_TYPE_CURRENT, strPath)
-        'lngReturn = SHGetFolderPath(0, lngCSIDL Or CSIDL_FLAG_CREATE, 0, SHGFP_TYPE_CURRENT, strPath)
-
-        Select Case lngReturn
-            Case S_OK
-                UserAppDataFolder = Left(strPath, InStr(1, strPath, Chr(0)) - 1)
-                'lblPath.caption = Left$(strPath, InStr(1, strPath, Chr(0)) - 1)
-
-            Case S_FALSE
-                'lblPath.caption = "Folder Does Not Exist"
-
-            Case E_INVALIDARG
-                'lblPath.caption = "Folder Not Valid on this OS"
-
-            Case Else
-                'lblPath.caption = "Folder Not Valid on this OS"
-        End Select
-
-        DocsFolder = Application.StartupPath & "\docs\"
-        DataFolder = Application.StartupPath & "\data\"
-
-    End Sub
 End Module

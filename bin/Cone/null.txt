@@ -1,0 +1,15 @@
+"inert material - no heat release"
+"Number of HRR Curves", 1
+"Heat Flux",35
+"Number of HRR Data Pairs", 2
+"sec,kw/m2"
+0,0
+1200,0
+"Ignition Data"
+"Number of Pairs",2
+"kw/m2,sec,kw/m2 " 
+50,1000,0
+35,1000,0
+"Flame Spread Parameter", 100
+"Min Surface Temp For Spread",1000
+"Effective Heat of Combustion", 0

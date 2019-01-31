@@ -27,7 +27,7 @@ Module GLOBAL_Renamed
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2018.06"
+    Public Const Version As String = "2019.01"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
@@ -230,6 +230,9 @@ Module GLOBAL_Renamed
     Public CommonFilesFolder As String
     Public DocsFolder As String
     Public DataFolder As String
+    Public ConeFolder As String
+    Public DbasesFolder As String
+    Public UserDbasesFolder As String
     Public UserPersonalDataFolder As String
     Public BatchFileFolder As String
     Public CVentlogfile As String

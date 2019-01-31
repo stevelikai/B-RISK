@@ -242,8 +242,8 @@ Public Class frmInputs
                 DFW.WriteElementString("time_step", Timestep)
                 DFW.WriteElementString("error_control", Error_Control)
                 DFW.WriteElementString("error_control_ventflows", Error_Control_ventflow)
-                DFW.WriteElementString("fire_dbase", FireDatabaseName)
-                DFW.WriteElementString("mat_dbase", MaterialsDatabaseName)
+                DFW.WriteElementString("fire_dbase", System.IO.Path.GetFileName(FireDatabaseName))
+                DFW.WriteElementString("mat_dbase", System.IO.Path.GetFileName(MaterialsDatabaseName))
                 DFW.WriteElementString("ceiling_jet", cjModel)
                 DFW.WriteElementString("vent_logfile", ventlog)
                 DFW.WriteElementString("LE_Solver", LEsolver)
@@ -1498,8 +1498,15 @@ Public Class frmInputs
                         Timestep = DFR.ReadElementString()
                         Error_Control = DFR.ReadElementContentAsDouble
                         If ModelVersion > CSng(2012.46) Then Error_Control_ventflow = DFR.ReadElementContentAsDouble
+
+
                         FireDatabaseName = DFR.ReadElementString()
                         MaterialsDatabaseName = DFR.ReadElementString()
+                        If ModelVersion > CSng(2019.0) Then
+                            FireDatabaseName = UserDbasesFolder & FireDatabaseName
+                            MaterialsDatabaseName = UserDbasesFolder & MaterialsDatabaseName
+                        End If
+
                         cjModel = DFR.ReadElementString()
                         ventlog = DFR.ReadElementString()
                         LEsolver = DFR.ReadElementString()

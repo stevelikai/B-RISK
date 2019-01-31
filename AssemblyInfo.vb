@@ -13,10 +13,10 @@ Imports System.Runtime.InteropServices
 
 
 <Assembly: AssemblyTitle("B-RISK")> 
-<Assembly: AssemblyDescription("A simulation model for enclosure fires.")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyDescription("A simulation model for enclosure fires.")>
+<Assembly: AssemblyCompany("BRANZ")>
 <Assembly: AssemblyProduct("B-RISK")>
-<Assembly: AssemblyCopyright("BRANZ 2018")>
+<Assembly: AssemblyCopyright("BRANZ 2019")>
 <Assembly: AssemblyTrademark("B-RISK")> 
 <Assembly: AssemblyCulture("")>
 
@@ -30,10 +30,10 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("2018.05")>
+<Assembly: AssemblyVersion("2019.01")>
 
 
 
 <Assembly: NeutralResourcesLanguageAttribute("en-NZ")>
-<Assembly: AssemblyFileVersion("2018.05")>
+<Assembly: AssemblyFileVersion("2019.01")>
 <Assembly: ComVisibleAttribute(True)> 
