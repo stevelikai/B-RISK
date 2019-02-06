@@ -4533,6 +4533,7 @@ here:
 
                     If IntegralModel = True Or KineticModel = True Then
                         CLTwalldelamT = tim(stepcount, 1) - flashover_time
+                        'CLTwalldelamT = 70 * 60 - flashover_time 'test
                     End If
 
                 End If

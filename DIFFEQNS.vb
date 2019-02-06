@@ -847,11 +847,17 @@ Module DIFFEQNS
             If MaxFloorNodes(i) > MMaxFloorNodes Then MMaxFloorNodes = MaxFloorNodes(i)
         Next i
         'dimension the arrays
+        Erase IgWallNode
         ReDim IgWallNode(NumberRooms, MMaxWallNodes, MaxTime) 'for quintiere's room corner model
+        Erase IgCeilingNode
         ReDim IgCeilingNode(NumberRooms, MMaxCeilingNodes, MaxTime)
+        Erase UWallNode
         ReDim UWallNode(NumberRooms, MMaxWallNodes, MaxTime)
+        Erase CeilingNode
         ReDim CeilingNode(NumberRooms, MMaxCeilingNodes, MaxTime)
+        Erase LWallNode
         ReDim LWallNode(NumberRooms, MMaxWallNodes, MaxTime)
+        Erase FloorNode
         ReDim FloorNode(NumberRooms, MMaxFloorNodes, MaxTime)
 
         ReDim CeilingNodeMaxTemp(MMaxCeilingNodes)
@@ -865,25 +871,38 @@ Module DIFFEQNS
         ReDim cplx(NumberRooms)
 
         If useCLTmodel = True Then
-
+            Erase wall_char
             ReDim wall_char(NumberTimeSteps + 1, 0 To 2) '0 MJ/m2 cumulative; 1 MLR (kg/s); 2 chardepth (m)
+            Erase ceil_char
             ReDim ceil_char(NumberTimeSteps + 1, 0 To 2)
 
             If KineticModel = True Then
                 'kinetic model
                 Dim Zstart(,) As Double
-                ReDim CeilingElementMF(MMaxCeilingNodes - 1, 4, MaxTime) 'store the residual mass fractions of each component at each timestep
-                ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
 
+                Erase CeilingElementMF
+                ReDim CeilingElementMF(MMaxCeilingNodes - 1, 4, MaxTime) 'store the residual mass fractions of each component at each timestep
+                Erase UWallElementMF
+                ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
+                Erase CeilingCharResidue
                 ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
+                Erase UWallCharResidue
                 ReDim UWallCharResidue(MMaxWallNodes - 1, MaxTime)
+                Erase CeilingResidualMass
                 ReDim CeilingResidualMass(MMaxCeilingNodes - 1, MaxTime)
+                Erase WallResidualMass
                 ReDim WallResidualMass(MMaxWallNodes - 1, MaxTime)
+                Erase CeilingApparentDensity
                 ReDim CeilingApparentDensity(MMaxCeilingNodes - 1, MaxTime)
+                Erase WallApparentDensity
                 ReDim WallApparentDensity(MMaxWallNodes - 1, MaxTime)
+                Erase CeilingWoodMLR
                 ReDim CeilingWoodMLR(MMaxCeilingNodes - 1, MaxTime)
+                Erase WallWoodMLR
                 ReDim WallWoodMLR(MMaxWallNodes - 1, MaxTime)
+                Erase CeilingWoodMLR_tot
                 ReDim CeilingWoodMLR_tot(MaxTime + 1)
+                Erase WallWoodMLR_tot
                 ReDim WallWoodMLR_tot(MaxTime + 1)
 
 
@@ -891,7 +910,6 @@ Module DIFFEQNS
                 For m = 1 To MMaxCeilingNodes - 1
                     For j = 0 To 3
                         CeilingElementMF(m, j, 1) = 1
-
                     Next
                     CeilingCharResidue(m, 1) = 0
                     CeilingResidualMass(m, 1) = 0
@@ -901,22 +919,21 @@ Module DIFFEQNS
                 For m = 1 To MMaxWallNodes - 1
                     For j = 0 To 3
                         UWallElementMF(m, j, 1) = 1
-
-
                     Next
                     UWallCharResidue(m, 1) = 0
-
+                    WallResidualMass(m, 1) = 0
+                    WallWoodMLR(m, 1) = 0
                 Next
 
-                ReDim Zstart(0 To 3, MMaxCeilingNodes)  'variables for wood pyrolysis model
+                'ReDim Zstart(0 To 3, MMaxCeilingNodes)  'variables for wood pyrolysis model
 
-                'three component kinetic scheme
-                Dim dt As Integer = i 'current timestep
-                For count = 1 To MMaxCeilingNodes
-                    For m = 0 To 3
-                        Zstart(m, count) = 1
-                    Next
-                Next
+                ''three component kinetic scheme
+                'Dim dt As Integer = i 'current timestep
+                'For count = 1 To MMaxCeilingNodes
+                '    For m = 0 To 3
+                '        Zstart(m, count) = 1
+                '    Next
+                'Next
 
             End If
 
@@ -1170,11 +1187,12 @@ Module DIFFEQNS
                         'implicit FD scheme
                         'one layer boundary
                         If useCLTmodel = True Then
-
-                            If KineticModel = True And i > 1 Then
+                            'If KineticModel = True And i > 1 Then
+                            If KineticModel = True Then
                                 Call Implicit_Temps_Ceil_kinetic(room, (i), CeilingNode) 'any substrate is ignored for HT
                                 Call Implicit_Temps_UWall_kinetic(room, (i), UWallNode) 'any substrate is ignored for HT
-                                Call Implicit_Surface_Temps_LWall(room, (i), LWallNode) 'no lower wall involvement in pyrolysis, all wall burns using the uwall properties
+                                Call Implicit_Temps_LWall_kinetic(room, (i), LWallNode) 'any substrate is ignored for HT
+                                'Call Implicit_Surface_Temps_LWall(room, (i), LWallNode) 'no lower wall involvement in pyrolysis, all wall burns using the uwall properties
                             Else
                                 'use for simple CLT and Integral models
                                 Call Implicit_Surface_Temps_CLTC_Char(room, (i), CeilingNode) 'any substrate is ignored for HT

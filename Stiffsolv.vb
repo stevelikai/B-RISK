@@ -2438,7 +2438,7 @@ errorhandler:
             'Qplume = HeatRelease(fireroom, i, 1)
 
             Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
-                If tim(i, 1) = 216 Then Stop
+                'If tim(i, 1) = 216 Then Stop
 
                 'fire is ventilation-limited
                 heatreleased = HeatRelease(fireroom, i, 2)
