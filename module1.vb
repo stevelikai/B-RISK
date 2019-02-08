@@ -17575,11 +17575,12 @@ errorhandler:
 
         Catch ex As Exception
             'oExcel.Application.Quit()
+
+            MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in module1.vb create_excel")
             'release the objects
             oExcel = Nothing
             oBook = Nothing
             oSheet = Nothing
-            MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in module1.vb create_excel")
         End Try
     End Sub
 

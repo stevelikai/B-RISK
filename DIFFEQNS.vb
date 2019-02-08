@@ -881,7 +881,7 @@ Module DIFFEQNS
                 Dim Zstart(,) As Double
 
                 Erase CeilingElementMF
-                ReDim CeilingElementMF(MMaxCeilingNodes - 1, 4, MaxTime) 'store the residual mass fractions of each component at each timestep
+                ReDim CeilingElementMF(MMaxCeilingNodes - 1, 0 To 4, MaxTime) 'store the residual mass fractions of each component at each timestep
                 Erase UWallElementMF
                 ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
                 Erase CeilingCharResidue

@@ -529,7 +529,7 @@ Module KineticModelCode
             Dim wallNodeTemp(wallnodestemp) As Double
 
             For k = 1 To wallnodestemp
-                wallNodeTemp(k) = UWallNode(room, k + wallnodeadjust, i)
+                wallNodeTemp(k) = LWallNode(room, k + wallnodeadjust, i)
 
                 'array to identify charred element
                 If wallNodeTemp(k) > 300 + 273 Then WallNodeStatus(k) = 1
@@ -538,8 +538,8 @@ Module KineticModelCode
 
             Dim wallNodeUnExposed As Double = wallNodeTemp(wallnodestemp)
             Dim wallNodeExposed As Double = wallNodeTemp(1)
-
-            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), WallNodeStatus(wallnodestemp), WallNodeMaxTemp(wallnodestemp))
+            moisturecontent = mf_init
+            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), WallNodeStatus(wallnodestemp), wallNodeTemp(wallnodestemp))
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_k
@@ -547,7 +547,7 @@ Module KineticModelCode
             Dim UW(wallnodestemp, wallnodestemp) As Double
             Dim WX(wallnodestemp, 1) As Double
 
-            moisturecontent = UWallElementMF(wallnodestemp - 1, 0, i) * mf_init 'mass fraction of the original wet wood
+            moisturecontent = mf_init 'mass fraction of the original wet wood
             'If i > 1 Then WoodDensity = WallApparentDensity(wallnodestemp - 1, i)
             'If i = 1 Then WoodDensity = WallDensity(room)
 
@@ -560,7 +560,7 @@ Module KineticModelCode
                 char_fourier = char_alpha * Timestep / (WallDeltaX(room)) ^ 2
 
                 'exterior boundary conditions
-                WX(wallnodestemp, 1) = 2 * char_fourier * Coutbiot * ((ExteriorTemp - wallNodeUnExposed) - Surface_Emissivity(2, room) / OutsideConvCoeff * StefanBoltzmann * (wallNodeUnExposed ^ 4 - ExteriorTemp ^ 4)) + wallNodeUnExposed
+                WX(wallnodestemp, 1) = 2 * char_fourier * Coutbiot * ((ExteriorTemp - wallNodeUnExposed) - Surface_Emissivity(3, room) / OutsideConvCoeff * StefanBoltzmann * (wallNodeUnExposed ^ 4 - ExteriorTemp ^ 4)) + wallNodeUnExposed
                 UW(wallnodestemp, wallnodestemp - 1) = -2 * char_fourier
                 UW(wallnodestemp, wallnodestemp) = 1 + 2 * char_fourier
                 UW(1, 1) = 1 + 2 * char_fourier
@@ -579,7 +579,7 @@ Module KineticModelCode
                 wood_fourier = wood_alpha * Timestep / (WallDeltaX(room)) ^ 2
 
                 'exterior boundary conditions
-                WX(wallnodestemp, 1) = 2 * wood_fourier * Coutbiot * ((ExteriorTemp - wallNodeUnExposed) - Surface_Emissivity(2, room) / OutsideConvCoeff * StefanBoltzmann * (wallNodeUnExposed ^ 4 - ExteriorTemp ^ 4)) + wallNodeUnExposed
+                WX(wallnodestemp, 1) = 2 * wood_fourier * Coutbiot * ((ExteriorTemp - wallNodeUnExposed) - Surface_Emissivity(3, room) / OutsideConvCoeff * StefanBoltzmann * (wallNodeUnExposed ^ 4 - ExteriorTemp ^ 4)) + wallNodeUnExposed
                 UW(wallnodestemp, wallnodestemp - 1) = -2 * wood_fourier
                 UW(wallnodestemp, wallnodestemp) = 1 + 2 * wood_fourier
                 UW(1, 1) = 1 + 2 * wood_fourier
@@ -587,9 +587,9 @@ Module KineticModelCode
             End If
 
             'exposed side
-            prop_k = wood_props_k(wallNodeTemp(2), WallNodeStatus(2), WallNodeMaxTemp(2))
+            prop_k = wood_props_k(wallNodeTemp(2), WallNodeStatus(2), wallNodeTemp(2))
 
-            moisturecontent = mf_init
+
 
             If WallNodeStatus(2) = 1 Then 'char
                 temp = wallNodeTemp(2) - 273 'node temp in deg C
@@ -599,7 +599,7 @@ Module KineticModelCode
                 UW(1, 1) = 1 + 2 * char_fourier
                 UW(1, 2) = -2 * char_fourier
                 'interior boundary conditions
-                WX(1, 1) = -2 * QUpperWall(room, i) * 1000 * char_fourier * WallDeltaX(room) / prop_k + wallNodeExposed
+                WX(1, 1) = -2 * QLowerWall(room, i) * 1000 * char_fourier * WallDeltaX(room) / prop_k + wallNodeExposed
 
 
                 For k = 2 To wallnodestemp - 1
@@ -631,9 +631,9 @@ Module KineticModelCode
             'inside nodes
             k = 2
             For j = 2 To wallnodestemp - 1
-                prop_k = wood_props_k(wallNodeTemp(j + 1), WallNodeStatus(j + 1), WallNodeMaxTemp(j + 1))
+                prop_k = wood_props_k(wallNodeTemp(j + 1), WallNodeStatus(j + 1), wallNodeTemp(j + 1))
 
-                moisturecontent = mf_init
+                'moisturecontent = mf_init
 
                 If WallNodeStatus(j + 1) = 1 Then
                     temp = wallNodeTemp(j + 1) - 273
@@ -673,7 +673,7 @@ Module KineticModelCode
 
             For j = 1 To wallnodestemp
                 LWallNode(room, j, i + 1) = WX(j, 1)
-                If WX(j, 1) > WallNodeMaxTemp(j) Then WallNodeMaxTemp(j) = WX(j, 1)
+                'If WX(j, 1) > WallNodeMaxTemp(j) Then WallNodeMaxTemp(j) = WX(j, 1)
             Next j
 
             'store surface temps at next timestep in another array
@@ -1117,7 +1117,7 @@ Module KineticModelCode
                 End If
             Next
 
-
+            Exit Sub
         Catch ex As Exception
             MsgBox(Err.Description, MsgBoxStyle.Exclamation, "Exception in " & Err.Source & " Line " & Err.Erl)
             flagstop = 1
