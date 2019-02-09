@@ -83,8 +83,12 @@ Module GLOBAL_Renamed
     Public CeilingNode(,,) As Double
     Public CeilingNodeMaxTemp() As Double
     Public WallNodeMaxTemp() As Double
+    Public UWallNodeMaxTemp() As Double
+    Public LWallNodeMaxTemp() As Double
     Public CeilingNodeStatus() As Integer
     Public WallNodeStatus() As Integer
+    Public UWallNodeStatus() As Integer
+    Public LWallNodeStatus() As Integer
     Public UWallNode(,,) As Double
     Public LWallNode(,,) As Double
     Public FloorNode(,,) As Double

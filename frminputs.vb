@@ -11159,6 +11159,7 @@ skipline:
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StopToolStripButton1.Click
         FlagSimStop = True
         flagstop = 1
+        batch = False 'cancel batch files as well
         If TalkToEVACNZ = True Then enzsimtime = SimTime
     End Sub
     Private Sub Item_locate(ByVal thisitem As Integer, ByVal oitems As Object, ByVal n As Integer)
@@ -23505,7 +23506,7 @@ more:
             counter = 1
             FlagSimStop = False
             rtb_log.Text = ""
-
+            rtb_log.Text = opendatafile & rtb_log.Text
             Dim PeakHRRsave As Single = PeakHRR
             Dim AlphaTsave = AlphaT
 

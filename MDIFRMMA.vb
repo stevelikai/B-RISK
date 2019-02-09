@@ -3809,7 +3809,7 @@ runerrorhandler:
             DataFile = Path.GetFileName(modnames(i))
             ToolStripStatusLabel1.Text = DataFile
             ToolStripStatusLabel2.Text = Description
-
+            frmInputs.rtb_log.Text = modnames(i).ToString & Chr(13) & frmInputs.rtb_log.Text
             '---------------------
             'run model
             ReDim FirstTime(NumberRooms)
