@@ -7276,8 +7276,10 @@ here:
         '   return a value for the convective heat transfer coefficient
         '   revised 5/1/97 Colleen Wade
         '=====================================================================
-        'Get_Convection_Coefficient2 = 0
-        'Exit Function
+        If useCLTmodel = True Then
+            Get_Convection_Coefficient2 = 35
+            Exit Function
+        End If
 
         Dim k, Pr, h, GR, V, L As Double
         Dim constant As Single
@@ -17521,6 +17523,97 @@ errorhandler:
 
             'Transfer the array to the worksheet starting at cell A1
             oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
+
+            Erase DataArray
+
+            If useCLTmodel = True Then
+
+                oBook.Worksheets.add()
+                oSheet = oBook.ActiveSheet
+                oSheet.name = "Char depth"
+
+                Dim crittemp As Double = 300 + 273 'char temp
+                Dim datatobeplotted1(0 To NumberTimeSteps + 1) As Double
+                Dim datatobeplotted2(0 To NumberTimeSteps + 1) As Double
+                Dim maxtemp As Double = 0
+                Dim depth As Double = 0
+                Dim chardepth As Double = 0
+                Dim idr = fireroom
+                Dim NumberwallNodes, NumberceilingNodes As Integer
+                NumberwallNodes = UBound(UWallNode, 2)
+                NumberceilingNodes = UBound(CeilingNode, 2)
+                Dim X(0 To NumberwallNodes) As Double
+                Dim Y(0 To NumberwallNodes) As Double
+                Dim T(0 To NumberwallNodes) As Double
+
+                For j = 0 To NumberTimeSteps
+                    For curve = 1 To NumberwallNodes
+                        X(NumberwallNodes - curve + 1) = UWallNode(idr, curve, j) 'descending order
+                        depth = (curve - 1) * WallThickness(idr) / (NumberwallNodes - 1)
+                        Y(NumberwallNodes - curve + 1) = depth
+                        T(NumberwallNodes - curve + 1) = j * Timestep
+                    Next
+                    'char depth by interpolation
+                    Interpolate_D(X, Y, NumberwallNodes, crittemp, chardepth)
+                    datatobeplotted1(j) = chardepth
+
+                    If j > 1 Then
+                        If datatobeplotted1(j) < datatobeplotted1(j - 1) Then
+                            datatobeplotted1(j) = datatobeplotted1(j - 1)
+                        End If
+                    End If
+                Next
+                ReDim X(0 To NumberceilingNodes)
+                ReDim Y(0 To NumberceilingNodes)
+                ReDim T(0 To NumberceilingNodes)
+                For j = 0 To NumberTimeSteps
+                    For curve = 1 To NumberceilingNodes
+                        X(NumberceilingNodes - curve + 1) = CeilingNode(idr, curve, j) 'descending order
+                        depth = (curve - 1) * CeilingThickness(idr) / (NumberceilingNodes - 1)
+                        Y(NumberceilingNodes - curve + 1) = depth
+                        T(NumberceilingNodes - curve + 1) = j * Timestep
+                    Next
+                    'char depth by interpolation
+                    Interpolate_D(X, Y, NumberceilingNodes, crittemp, chardepth)
+                    datatobeplotted2(j) = chardepth
+
+                    If j > 1 Then
+                        If datatobeplotted2(j) < datatobeplotted2(j - 1) Then
+                            datatobeplotted2(j) = datatobeplotted2(j - 1)
+                        End If
+                    End If
+                Next
+
+                Dim DataArrayChar(0 To (NumberTimeSteps * Timestep / ExcelInterval + 1), 0 To 3) As Object
+                DataArrayChar(0, 0) = "Time (min)"
+                DataArrayChar(0, 1) = "Upper Wall Char Depth (mm)"
+                DataArrayChar(0, 2) = "Ceiling Char Depth (mm)"
+
+                If NumberTimeSteps > 0 Then
+
+                    Do While NumberTimeSteps * Timestep / ExcelInterval * NumberRooms * 3 > 32000 'the maximum number of data points able to be plotted in excel chart
+                        ExcelInterval = ExcelInterval * 2
+                    Loop
+                    count = 0
+                    k = 2 'row
+                    For j = 1 To NumberTimeSteps + 1
+                        count = count + 1
+                        If Round(Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval, 4) = 0 Then
+                            MDIFrmMain.ToolStripStatusLabel3.Text = "Saving to Excel ... Please Wait"
+                            DataArrayChar(k - 1, 0) = Format(tim(j, 1) / 60, "general number")
+                            DataArrayChar(k - 1, 1) = datatobeplotted1(j - 1)
+                            DataArrayChar(k - 1, 2) = datatobeplotted2(j - 1)
+
+                            k = k + 1
+                        End If
+                    Next j
+                End If
+                'Transfer the array to the worksheet starting at cell A1
+                oSheet.Range("A1").Resize(k - 1, 3).Value = DataArrayChar
+                Erase DataArrayChar
+                Erase datatobeplotted1
+                Erase datatobeplotted2
+            End If
 
             MDIFrmMain.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
             'If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))

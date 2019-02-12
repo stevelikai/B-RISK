@@ -1281,65 +1281,65 @@ errhandler:
                             DataArray(k - 1, 6) = Format(ventfire(room, j), s)
                             DataArray(k - 1, 7) = Format(CO2VolumeFraction(room, j, 1) * 100, s)
                             DataArray(k - 1, 8) = Format(COVolumeFraction(room, j, 1) * 1000000, s)
-                            DataArray(k - 1, 9) = VB6.Format(O2VolumeFraction(room, j, 1) * 100, s)
-                            DataArray(k - 1, 10) = VB6.Format(CO2VolumeFraction(room, j, 2) * 100, s)
-                            DataArray(k - 1, 11) = VB6.Format(COVolumeFraction(room, j, 2) * 1000000, s)
-                            DataArray(k - 1, 12) = VB6.Format(O2VolumeFraction(room, j, 2) * 100, s)
-                            DataArray(k - 1, 13) = VB6.Format(FEDSum(room, j), s)
-                            DataArray(k - 1, 14) = VB6.Format(Upperwalltemp(room, j) - 273, s)
-                            DataArray(k - 1, 15) = VB6.Format(CeilingTemp(room, j) - 273, s)
-                            DataArray(k - 1, 16) = VB6.Format(Target(room, j), s)
-                            DataArray(k - 1, 17) = VB6.Format(lowertemp(room, j) - 273, s)
-                            DataArray(k - 1, 18) = VB6.Format(LowerWallTemp(room, j) - 273, s)
-                            DataArray(k - 1, 19) = VB6.Format(FloorTemp(room, j) - 273, s)
-                            DataArray(k - 1, 20) = VB6.Format(Y_pyrolysis(room, j), s)
-                            DataArray(k - 1, 21) = VB6.Format(X_pyrolysis(room, j), s)
-                            DataArray(k - 1, 22) = VB6.Format(Z_pyrolysis(room, j), s)
-                            DataArray(k - 1, 23) = VB6.Format(FlameVelocity(room, 1, j), s)
-                            DataArray(k - 1, 24) = VB6.Format(FlameVelocity(room, 2, j), s)
-                            DataArray(k - 1, 25) = VB6.Format(RoomPressure(room, j), s)
-                            DataArray(k - 1, 26) = VB6.Format(Visibility(room, j), s)
-                            DataArray(k - 1, 27) = VB6.Format(FlowToUpper(room, j), s)
-                            DataArray(k - 1, 28) = VB6.Format(FlowToLower(room, j), s)
-                            DataArray(k - 1, 29) = VB6.Format(SurfaceRad(room, j), s)
-                            DataArray(k - 1, 30) = VB6.Format(FEDRadSum(room, j), s)
-                            DataArray(k - 1, 31) = VB6.Format(OD_upper(room, j), s)
-                            DataArray(k - 1, 32) = VB6.Format(OD_lower(room, j), s)
-                            DataArray(k - 1, 33) = VB6.Format(2.3 * OD_upper(room, j), s)
-                            DataArray(k - 1, 34) = VB6.Format(2.3 * OD_lower(room, j), s)
-                            DataArray(k - 1, 35) = VB6.Format(UFlowToOutside(room, j), s)
-                            DataArray(k - 1, 36) = VB6.Format(HCNVolumeFraction(room, j, 1) * 1000000, s)
-                            DataArray(k - 1, 37) = VB6.Format(HCNVolumeFraction(room, j, 2) * 1000000, s)
-                            DataArray(k - 1, 38) = VB6.Format(SPR(room, j), s)
-                            DataArray(k - 1, 39) = VB6.Format(UnexposedUpperwalltemp(room, j) - 273, s)
-                            DataArray(k - 1, 40) = VB6.Format(UnexposedLowerwalltemp(room, j) - 273, s)
-                            DataArray(k - 1, 41) = VB6.Format(UnexposedCeilingtemp(room, j) - 273, s)
-                            DataArray(k - 1, 42) = VB6.Format(UnexposedFloortemp(room, j) - 273, s)
+                            DataArray(k - 1, 9) = Format(O2VolumeFraction(room, j, 1) * 100, s)
+                            DataArray(k - 1, 10) = Format(CO2VolumeFraction(room, j, 2) * 100, s)
+                            DataArray(k - 1, 11) = Format(COVolumeFraction(room, j, 2) * 1000000, s)
+                            DataArray(k - 1, 12) = Format(O2VolumeFraction(room, j, 2) * 100, s)
+                            DataArray(k - 1, 13) = Format(FEDSum(room, j), s)
+                            DataArray(k - 1, 14) = Format(Upperwalltemp(room, j) - 273, s)
+                            DataArray(k - 1, 15) = Format(CeilingTemp(room, j) - 273, s)
+                            DataArray(k - 1, 16) = Format(Target(room, j), s)
+                            DataArray(k - 1, 17) = Format(lowertemp(room, j) - 273, s)
+                            DataArray(k - 1, 18) = Format(LowerWallTemp(room, j) - 273, s)
+                            DataArray(k - 1, 19) = Format(FloorTemp(room, j) - 273, s)
+                            DataArray(k - 1, 20) = Format(Y_pyrolysis(room, j), s)
+                            DataArray(k - 1, 21) = Format(X_pyrolysis(room, j), s)
+                            DataArray(k - 1, 22) = Format(Z_pyrolysis(room, j), s)
+                            DataArray(k - 1, 23) = Format(FlameVelocity(room, 1, j), s)
+                            DataArray(k - 1, 24) = Format(FlameVelocity(room, 2, j), s)
+                            DataArray(k - 1, 25) = Format(RoomPressure(room, j), s)
+                            DataArray(k - 1, 26) = Format(Visibility(room, j), s)
+                            DataArray(k - 1, 27) = Format(FlowToUpper(room, j), s)
+                            DataArray(k - 1, 28) = Format(FlowToLower(room, j), s)
+                            DataArray(k - 1, 29) = Format(SurfaceRad(room, j), s)
+                            DataArray(k - 1, 30) = Format(FEDRadSum(room, j), s)
+                            DataArray(k - 1, 31) = Format(OD_upper(room, j), s)
+                            DataArray(k - 1, 32) = Format(OD_lower(room, j), s)
+                            DataArray(k - 1, 33) = Format(2.3 * OD_upper(room, j), s)
+                            DataArray(k - 1, 34) = Format(2.3 * OD_lower(room, j), s)
+                            DataArray(k - 1, 35) = Format(UFlowToOutside(room, j), s)
+                            DataArray(k - 1, 36) = Format(HCNVolumeFraction(room, j, 1) * 1000000, s)
+                            DataArray(k - 1, 37) = Format(HCNVolumeFraction(room, j, 2) * 1000000, s)
+                            DataArray(k - 1, 38) = Format(SPR(room, j), s)
+                            DataArray(k - 1, 39) = Format(UnexposedUpperwalltemp(room, j) - 273, s)
+                            DataArray(k - 1, 40) = Format(UnexposedLowerwalltemp(room, j) - 273, s)
+                            DataArray(k - 1, 41) = Format(UnexposedCeilingtemp(room, j) - 273, s)
+                            DataArray(k - 1, 42) = Format(UnexposedFloortemp(room, j) - 273, s)
 
-                            DataArray(k - 1, 49) = VB6.Format(NHL(1, room, j), s)
-                            DataArray(k - 1, 50) = VB6.Format(QCeiling(room, j), s)
-                            DataArray(k - 1, 51) = VB6.Format(QUpperWall(room, j), s)
-                            DataArray(k - 1, 52) = VB6.Format(QLowerWall(room, j), s)
-                            DataArray(k - 1, 53) = VB6.Format(QFloor(room, j), s)
+                            DataArray(k - 1, 49) = Format(NHL(1, room, j), s)
+                            DataArray(k - 1, 50) = Format(QCeiling(room, j), s)
+                            DataArray(k - 1, 51) = Format(QUpperWall(room, j), s)
+                            DataArray(k - 1, 52) = Format(QLowerWall(room, j), s)
+                            DataArray(k - 1, 53) = Format(QFloor(room, j), s)
 
                             If room = fireroom Then
-                                DataArray(k - 1, 43) = VB6.Format(CJetTemp(j, 1, 0) - 273, s)
-                                DataArray(k - 1, 44) = VB6.Format(CJetTemp(j, 2, 0) - 273, s)
-                                DataArray(k - 1, 45) = VB6.Format(GlobalER(j), s)
+                                DataArray(k - 1, 43) = Format(CJetTemp(j, 1, 0) - 273, s)
+                                DataArray(k - 1, 44) = Format(CJetTemp(j, 2, 0) - 273, s)
+                                DataArray(k - 1, 45) = Format(GlobalER(j), s)
 
                                 If NumSmokeDetectors > 0 Then
-                                    DataArray(k - 1, 46) = VB6.Format(OD_outsideSD(1, j), s) 'for SD1 only
-                                    DataArray(k - 1, 47) = VB6.Format(OD_insideSD(1, j), s) 'for SD1 only
+                                    DataArray(k - 1, 46) = Format(OD_outsideSD(1, j), s) 'for SD1 only
+                                    DataArray(k - 1, 47) = Format(OD_insideSD(1, j), s) 'for SD1 only
                                 End If
 
-                                DataArray(k - 1, 48) = VB6.Format(LinkTemp(room, j) - 273, s)
+                                DataArray(k - 1, 48) = Format(LinkTemp(room, j) - 273, s)
 
-                                DataArray(k - 1, 54) = VB6.Format(FuelBurningRate(0, room, j), s)
-                                DataArray(k - 1, 55) = VB6.Format(FuelBurningRate(1, room, j), s)
-                                DataArray(k - 1, 56) = VB6.Format(FuelBurningRate(2, room, j), s)
-                                DataArray(k - 1, 57) = VB6.Format(FuelBurningRate(3, room, j), s)
-                                DataArray(k - 1, 58) = VB6.Format(FuelBurningRate(4, room, j), s)
-                                DataArray(k - 1, 59) = VB6.Format(FuelBurningRate(5, room, j), s)
+                                DataArray(k - 1, 54) = Format(FuelBurningRate(0, room, j), s)
+                                DataArray(k - 1, 55) = Format(FuelBurningRate(1, room, j), s)
+                                DataArray(k - 1, 56) = Format(FuelBurningRate(2, room, j), s)
+                                DataArray(k - 1, 57) = Format(FuelBurningRate(3, room, j), s)
+                                DataArray(k - 1, 58) = Format(FuelBurningRate(4, room, j), s)
+                                DataArray(k - 1, 59) = Format(FuelBurningRate(5, room, j), s)
                                 DataArray(k - 1, 60) = Format(HeatRelease(room, j, 1), s)
 
                                 If useCLTmodel = True Then
@@ -1393,7 +1393,98 @@ errhandler:
             'Transfer the array to the worksheet starting at cell A1
             oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
 
-            Me.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
+            Erase DataArray
+
+            If useCLTmodel = True Then
+
+                oBook.Worksheets.add()
+                oSheet = oBook.ActiveSheet
+                oSheet.name = "Char depth"
+
+                Dim crittemp As Double = 300 + 273 'char temp
+                Dim datatobeplotted1(0 To NumberTimeSteps + 1) As Double
+                Dim datatobeplotted2(0 To NumberTimeSteps + 1) As Double
+                Dim maxtemp As Double = 0
+                Dim depth As Double = 0
+                Dim chardepth As Double = 0
+                Dim idr = fireroom
+                Dim NumberwallNodes, NumberceilingNodes As Integer
+                NumberwallNodes = UBound(UWallNode, 2)
+                NumberceilingNodes = UBound(CeilingNode, 2)
+                Dim X(0 To NumberwallNodes) As Double
+                Dim Y(0 To NumberwallNodes) As Double
+                Dim T(0 To NumberwallNodes) As Double
+
+                For j = 0 To NumberTimeSteps
+                    For curve = 1 To NumberwallNodes
+                        X(NumberwallNodes - curve + 1) = UWallNode(idr, curve, j) 'descending order
+                        depth = (curve - 1) * WallThickness(idr) / (NumberwallNodes - 1)
+                        Y(NumberwallNodes - curve + 1) = depth
+                        T(NumberwallNodes - curve + 1) = j * Timestep
+                    Next
+                    'char depth by interpolation
+                    Interpolate_D(X, Y, NumberwallNodes, crittemp, Chardepth)
+                    datatobeplotted1(j) = chardepth
+
+                    If j > 1 Then
+                        If datatobeplotted1(j) < datatobeplotted1(j - 1) Then
+                            datatobeplotted1(j) = datatobeplotted1(j - 1)
+                        End If
+                    End If
+                Next
+                ReDim X(0 To NumberceilingNodes)
+                ReDim Y(0 To NumberceilingNodes)
+                ReDim T(0 To NumberceilingNodes)
+                For j = 0 To NumberTimeSteps
+                    For curve = 1 To NumberceilingNodes
+                        X(NumberceilingNodes - curve + 1) = CeilingNode(idr, curve, j) 'descending order
+                        depth = (curve - 1) * CeilingThickness(idr) / (NumberceilingNodes - 1)
+                        Y(NumberceilingNodes - curve + 1) = depth
+                        T(NumberceilingNodes - curve + 1) = j * Timestep
+                    Next
+                    'char depth by interpolation
+                    Interpolate_D(X, Y, NumberceilingNodes, crittemp, chardepth)
+                    datatobeplotted2(j) = chardepth
+
+                    If j > 1 Then
+                        If datatobeplotted2(j) < datatobeplotted2(j - 1) Then
+                            datatobeplotted2(j) = datatobeplotted2(j - 1)
+                        End If
+                    End If
+                Next
+
+                Dim DataArrayChar(0 To (NumberTimeSteps * Timestep / ExcelInterval + 1), 0 To 3) As Object
+                DataArrayChar(0, 0) = "Time (min)"
+                DataArrayChar(0, 1) = "Upper Wall Char Depth (mm)"
+                DataArrayChar(0, 2) = "Ceiling Char Depth (mm)"
+
+                If NumberTimeSteps > 0 Then
+
+                    Do While NumberTimeSteps * Timestep / ExcelInterval * NumberRooms * 3 > 32000 'the maximum number of data points able to be plotted in excel chart
+                        ExcelInterval = ExcelInterval * 2
+                    Loop
+                    count = 0
+                    k = 2 'row
+                    For j = 1 To NumberTimeSteps + 1
+                        count = count + 1
+                        If Round(Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval, 4) = 0 Then
+                            ToolStripStatusLabel3.Text = "Saving to Excel ... Please Wait"
+                            DataArrayChar(k - 1, 0) = Format(tim(j, 1) / 60, "general number")
+                            DataArrayChar(k - 1, 1) = datatobeplotted1(j - 1)
+                            DataArrayChar(k - 1, 2) = datatobeplotted2(j - 1)
+
+                            k = k + 1
+                        End If
+                    Next j
+                End If
+                'Transfer the array to the worksheet starting at cell A1
+                oSheet.Range("A1").Resize(k - 1, 3).Value = DataArrayChar
+                Erase DataArrayChar
+                Erase datatobeplotted1
+                Erase datatobeplotted2
+            End If
+
+            'Me.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
             'If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))
             'If frmprintvar.chkUT.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,C:C", "Upper Layer Temp (C)", "C2", "A2:A" & CStr(rowcount), "C2:C" & CStr(rowcount))
             'If frmprintvar.chkLT.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,R:R", "Lower Layer Temp (C)", "R2", "A2:A" & CStr(rowcount), "R2:R" & CStr(rowcount))
@@ -1410,6 +1501,9 @@ errhandler:
             'If frmprintvar.chkLCO.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,L:L", "Lower Layer CO (ppm)", "L2", "A2:A" & CStr(rowcount), "L2:L" & CStr(rowcount))
             'If frmprintvar.chkUCO.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,I:I", "Upper Layer CO (ppm)", "I2", "A2:A" & CStr(rowcount), "I2:I" & CStr(rowcount))
             'If frmprintvar.chkPressure.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,Z:Z", "Pressure (Pa)", "Z2", "A2:A" & CStr(rowcount), "Z2:Z" & CStr(rowcount))
+
+
+
 
             'save the worksheet
             'On Error Resume Next
@@ -10112,6 +10206,10 @@ errhandler:
     End Sub
 
     Private Sub ToolStripMenuItem18_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem18.Click
+
+    End Sub
+
+    Private Sub mnuBatchFiles_Click(sender As Object, e As EventArgs) Handles mnuBatchFiles.Click
 
     End Sub
 End Class

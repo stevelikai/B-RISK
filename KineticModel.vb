@@ -68,6 +68,11 @@ Module KineticModelCode
             Else
                 wood_props_k = 1.5
             End If
+
+        ElseIf thermalprops = 4 Then 'hybrid
+
+            wood_props_k = 0.2 'constant
+
         End If
 
     End Function
@@ -1324,13 +1329,13 @@ Module KineticModelCode
             Dim ElapsedTime As Double
             Dim DT As Double
 
-            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
-
             Dim rmw, area As Double
 
             'the ceiling
             'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
             'CeilingElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
+            DensityInitial = CeilingDensity(fireroom)
+            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             ReDim Zstart(0 To 3)
             elements = maxceilingnodes - 1
@@ -1396,6 +1401,8 @@ Module KineticModelCode
             'the wall
             'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
             'WallElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
+            DensityInitial = WallDensity(fireroom)
+            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             NL = WallThickness(fireroom) / 1000 / Lamella 'number of lamella - in two places also in main_program2
             layersremaining = NL - Lamella2 / Lamella + 1

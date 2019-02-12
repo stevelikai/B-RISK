@@ -132,6 +132,8 @@ Module DIFFEQNS
         InsideConvCoeff4 = Get_Convection_Coefficient2(A4, LT, FT, CStr(HORIZONTAL))
         floorconvect = InsideConvCoeff4 / 1000 * (FT - LT) * A4
 
+
+
         'get total heat added to lower layer
         lowerabsorb = LowerAbsorbRad + floorconvect + lowerwallconvect 'kW
 
