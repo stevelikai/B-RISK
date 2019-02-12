@@ -83,6 +83,7 @@ Partial Class frmNewRoom
         Me.lblFloorSurface = New System.Windows.Forms.Label()
         Me.lblFloorSubstrate = New System.Windows.Forms.Label()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -727,11 +728,21 @@ Partial Class frmNewRoom
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(357, 324)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(154, 26)
+        Me.Button1.TabIndex = 27
+        Me.Button1.Text = "Apply materials to all rooms"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmNewRoom
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(761, 359)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -814,4 +825,5 @@ Partial Class frmNewRoom
     Friend WithEvents lblFloorSurface As Label
     Friend WithEvents lblFloorSubstrate As Label
     Friend WithEvents ErrorProvider1 As ErrorProvider
+    Friend WithEvents Button1 As Button
 End Class

@@ -661,4 +661,135 @@ Public Class frmNewRoom
             RoomDB.SaveRooms(oRooms, oroomdistributions)
         End If
     End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Try
+            If IsValidData() Then
+                Dim currentroom As Integer = Me.txtID.Text
+
+                oRooms = RoomDB.GetRooms
+                oroomdistributions = RoomDB.GetRoomDistributions
+
+                For Each Me.oRoom In oRooms
+
+                    'If Me.oRoom.num = Me.txtID.Text Then
+                    'oRoom.width = txtWidth.Text
+                    'oRoom.length = txtLength.Text
+                    'oRoom.minheight = txtMinHeight.Text
+                    'oRoom.maxheight = txtMaxHeight.Text
+                    'oRoom.elevation = txtElevation.Text
+                    'oRoom.absx = TextAbsX.Text
+                    'oRoom.absy = TextAbsY.Text
+                    'oRoom.description = txtDescription.Text
+
+                    'For Each x In oroomdistributions
+                    'If x.id = Me.txtID.Text Then
+                    'If x.varname = "width" Then x.varvalue = txtWidth.Text
+                    'If x.varname = "length" Then x.varvalue = txtLength.Text
+                    'End If
+                    'Next
+
+                    WallSubThickness(oRoom.num) = CDbl(txtWallSubstrateThickness.Text)
+                    If WallSubThickness(oRoom.num) = 0 Then
+                        HaveWallSubstrate(oRoom.num) = False
+                        WallSubstrate(oRoom.num) = "None"
+                    Else
+                        HaveWallSubstrate(oRoom.num) = True
+                        WallSubstrate(oRoom.num) = lblWallSubstrate.Text
+                    End If
+                    WallThickness(oRoom.num) = CDbl(txtWallSurfaceThickness.Text)
+                    WallSurface(oRoom.num) = lblWallSurface.Text
+
+                    CeilingSubThickness(oRoom.num) = CDbl(txtCeilingSubstrateThickness.Text)
+                    If CeilingSubThickness(oRoom.num) = 0 Then
+                        HaveCeilingSubstrate(oRoom.num) = False
+                        CeilingSubstrate(oRoom.num) = "None"
+                    Else
+                        HaveCeilingSubstrate(oRoom.num) = True
+                        CeilingSubstrate(oRoom.num) = lblCeilingSubstrate.Text
+                    End If
+                    CeilingThickness(oRoom.num) = CDbl(txtCeilingSurfaceThickness.Text)
+                    CeilingSurface(oRoom.num) = lblCeilingSurface.Text
+
+                    FloorSubThickness(oRoom.num) = CDbl(txtFloorSubstrateThickness.Text)
+                    If FloorSubThickness(oRoom.num) = 0 Then
+                        HaveFloorSubstrate(oRoom.num) = False
+                        FloorSubstrate(oRoom.num) = "None"
+                    Else
+                        HaveFloorSubstrate(oRoom.num) = True
+                        FloorSubstrate(oRoom.num) = lblFloorSubstrate.Text
+                    End If
+                    FloorThickness(oRoom.num) = CDbl(txtFloorSurfaceThickness.Text)
+                    FloorSurface(oRoom.num) = lblFloorSurface.Text
+
+                    'End If
+
+                    WallSurface(oRoom.num) = WallSurface(currentroom)
+                    WallConductivity(oRoom.num) = WallConductivity(currentroom)
+                    WallSpecificHeat(oRoom.num) = WallSpecificHeat(currentroom)
+                    WallDensity(oRoom.num) = WallDensity(currentroom)
+                    Surface_Emissivity(2, oRoom.num) = Surface_Emissivity(2, currentroom)
+                    Surface_Emissivity(3, oRoom.num) = Surface_Emissivity(3, currentroom)
+                    WallTSMin(oRoom.num) = WallTSMin(currentroom)
+                    WallEffectiveHeatofCombustion(oRoom.num) = WallEffectiveHeatofCombustion(currentroom)
+                    WallSootYield(oRoom.num) = WallSootYield(currentroom)
+                    WallH2OYield(oRoom.num) = WallH2OYield(currentroom)
+                    WallCO2Yield(oRoom.num) = WallCO2Yield(currentroom)
+                    WallFlameSpreadParameter(oRoom.num) = WallFlameSpreadParameter(currentroom)
+                    WallConeDataFile(oRoom.num) = WallConeDataFile(currentroom)
+                    WallSubstrate(oRoom.num) = WallSubstrate(currentroom)
+                    WallSubConductivity(oRoom.num) = WallSubConductivity(currentroom)
+                    WallSubSpecificHeat(oRoom.num) = WallSubSpecificHeat(currentroom)
+                    WallSubDensity(oRoom.num) = WallSubDensity(currentroom)
+
+                    CeilingSurface(oRoom.num) = CeilingSurface(currentroom)
+                    CeilingConductivity(oRoom.num) = CeilingConductivity(currentroom)
+                    CeilingSpecificHeat(oRoom.num) = CeilingSpecificHeat(currentroom)
+                    CeilingDensity(oRoom.num) = CeilingDensity(currentroom)
+                    Surface_Emissivity(1, oRoom.num) = Surface_Emissivity(1, currentroom)
+                    CeilingEffectiveHeatofCombustion(oRoom.num) = CeilingEffectiveHeatofCombustion(currentroom)
+                    CeilingSootYield(oRoom.num) = CeilingSootYield(currentroom)
+                    CeilingH2OYield(oRoom.num) = CeilingH2OYield(currentroom)
+                    CeilingCO2Yield(oRoom.num) = CeilingCO2Yield(currentroom)
+                    CeilingConeDataFile(oRoom.num) = CeilingConeDataFile(currentroom)
+                    CeilingSubstrate(oRoom.num) = CeilingSubstrate(currentroom)
+                    CeilingSubConductivity(oRoom.num) = CeilingSubConductivity(currentroom)
+                    CeilingSubSpecificHeat(oRoom.num) = CeilingSubSpecificHeat(currentroom)
+                    CeilingSubDensity(oRoom.num) = CeilingSubDensity(currentroom)
+
+                    FloorSurface(oRoom.num) = FloorSurface(currentroom)
+                    FloorConductivity(oRoom.num) = FloorConductivity(currentroom)
+                    FloorSpecificHeat(oRoom.num) = FloorSpecificHeat(currentroom)
+                    FloorDensity(oRoom.num) = FloorDensity(currentroom)
+                    Surface_Emissivity(4, oRoom.num) = Surface_Emissivity(4, currentroom)
+                    FloorTSMin(oRoom.num) = FloorTSMin(currentroom)
+                    FloorEffectiveHeatofCombustion(oRoom.num) = FloorEffectiveHeatofCombustion(currentroom)
+                    FloorSootYield(oRoom.num) = FloorSootYield(currentroom)
+                    FloorH2OYield(oRoom.num) = FloorH2OYield(currentroom)
+                    FloorCO2Yield(oRoom.num) = FloorCO2Yield(currentroom)
+                    FloorFlameSpreadParameter(oRoom.num) = FloorFlameSpreadParameter(currentroom)
+                    FloorConeDataFile(oRoom.num) = FloorConeDataFile(currentroom)
+                    FloorSubstrate(oRoom.num) = FloorSubstrate(currentroom)
+                    FloorSubConductivity(oRoom.num) = FloorSubConductivity(currentroom)
+                    FloorSubSpecificHeat(oRoom.num) = FloorSubSpecificHeat(currentroom)
+                    FloorSubDensity(oRoom.num) = FloorSubDensity(currentroom)
+                Next
+
+                If oRoom IsNot Nothing Then
+                    RoomDB.SaveRooms(oRooms, oroomdistributions)
+                    frmRoomList.FillRoomList(oRooms)
+                    Resize_Rooms()
+                    frmRoomList.fillroomarrays(oRooms)
+                    frmRoomList.addroomcleanup(oRoom)
+                End If
+
+            End If
+
+            MsgBox("Materials added to all rooms.")
+            'Me.Close()
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.Exclamation, "frmNewRoom.vb Button1_click")
+        End Try
+    End Sub
 End Class
