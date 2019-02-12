@@ -1,0 +1,1971 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NMathStatsPremiumChartMicrosoft</name>
+    </assembly>
+    <members>
+        <member name="T:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart">
+            <summary>
+            Class NMathStatsChart provides static methods for plotting NMath Stats types using
+            the Microsoft Chart Controls for .NET.
+            </summary>
+            <remarks>
+            Overloads of the ToChart() function are provided for common NMath Stats types. ToChart() returns
+            an instance of System.Windows.Forms.DataVisualization.Charting.Chart, which can
+            be customized as desired.
+            <code>
+            Double Matrix data = new DoubleMatrix( 100, 10, rnd );
+            DoublePCA pca = new DoublePCA( data );
+            Chart chart = NMathStatsChart.ToChart( pca );
+            chart.Titles.Add("Hello World");
+            </code>
+            The default look of the chart is governed by static properties on this class: DefaultSize,
+            DefaultTitleFont, DefaultAxisTitleFont, DefaultMajorGridLineColor, and DefaultMarker.
+            <br/>
+            For prototyping and debugging, the Show() function shows a given chart in a default form.
+            <code>
+            NMathStatsChart.Show( chart );
+            </code>
+            Note that when the window is closed, the chart is disposed.
+            <br/>
+            If you do not need to customize the chart, overloads of Show() are also provided for common
+            NMath Stats types.
+            <code>
+            NMathStatsChart.Show( pca );
+            </code>
+            This is equivalent to calling:
+            <code>
+            NMathStatsChart.Show( NMathStatsChart.ToChart( pca ) );
+            </code>
+            The Save() function saves a chart to a file or stream. 
+            <code>
+            NMathStatsChart.Save( chart, "chart.png", ChartImageFormat.Png );
+            </code>
+            If you are developing a Windows Forms application using the Designer, add a Microsoft Chart
+            control to your form, then update it with an NMath Stats object using the appropriate Update()
+            function after initialization. 
+            <code>
+            public Form1()
+            {
+              InitializeComponent();
+              
+              Double Matrix data = new DoubleMatrix( 100, 10, rnd );
+              DoublePCA pca = new DoublePCA( data );
+              NMathStatsChart.Update( ref this.chart1, pca );
+            }
+            </code>
+            This has the following effect on your existing chart object:
+            a new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used;
+            axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added; titles are added only if the given chart does not currently contain any titles;
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="T:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction">
+            <summary>
+            Enumeration for specifying the function to plot for a probability distribution.
+            </summary>
+        </member>
+        <member name="F:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction.PDF">
+            <summary>
+            Probability density function.
+            </summary>
+        </member>
+        <member name="F:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction.CDF">
+            <summary>
+            Cumulative distribution function.
+            </summary>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.IDFColumn)">
+            <summary>
+            Returns a line chart containing the given column data.
+            </summary>
+            <param name="y">The y values.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if the given column is not numeric.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.IDFColumn)">
+            <summary>
+            Updates the given chart with the given column data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if the given column is not numeric.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.IDFColumn)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if the given column is not numeric.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( y ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a line chart containing the given column data.
+            </summary>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if the given column is not numeric.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the given column data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if the given column is not numeric.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if the given column is not numeric.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( y, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Stats.IDFColumn)">
+            <summary>
+            Returns a new point (scatter) chart containing the given x-y data.
+            </summary>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if either column is not numeric.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Stats.IDFColumn)">
+            <summary>
+            Updates the given chart with the given x-y data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if either column is not numeric.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Stats.IDFColumn)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if either column is not numeric.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( x, y ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.IDFColumn[])">
+            <summary>
+            Returns a new line chart for the given columns.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.IDFColumn[])">
+            <summary>
+            Updates the given chart with the given data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.IDFColumn[])">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.IDFColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a new line chart for the given columns.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.IDFColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the given data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.IDFColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFIntColumn)">
+            <summary>
+            Returns a line chart containing the given column data.
+            </summary>
+            <param name="y">The y values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFIntColumn)">
+            <summary>
+            Updates the given chart with the given column data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="y">The y values.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFIntColumn)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="y">The y values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( y ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFIntColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a line chart containing the given column data.
+            </summary>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFIntColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the given column data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFIntColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( y, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFIntColumn,CenterSpace.NMath.Stats.DFIntColumn)">
+            <summary>
+            Returns a new point (scatter) chart containing the given x-y data.
+            </summary>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFIntColumn,CenterSpace.NMath.Stats.DFIntColumn)">
+            <summary>
+            Updates the given chart with the given x-y data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFIntColumn,CenterSpace.NMath.Stats.DFIntColumn)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( x, y ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFIntColumn[])">
+            <summary>
+            Returns a new line chart for the given columns.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFIntColumn[])">
+            <summary>
+            Updates the given chart with the given data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFIntColumn[])">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFIntColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a new line chart for the given columns.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFIntColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the given data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFIntColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFNumericColumn)">
+            <summary>
+            Returns a line chart containing the given column data.
+            </summary>
+            <param name="y">The y values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFNumericColumn)">
+            <summary>
+            Updates the given chart with the given column data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="y">The y values.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFNumericColumn)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="y">The y values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( y ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFNumericColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a line chart containing the given column data.
+            </summary>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFNumericColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the given column data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFNumericColumn,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="y">The y values.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( y, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFNumericColumn,CenterSpace.NMath.Stats.DFNumericColumn)">
+            <summary>
+            Returns a new point (scatter) chart containing the given x-y data.
+            </summary>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFNumericColumn,CenterSpace.NMath.Stats.DFNumericColumn)">
+            <summary>
+            Updates the given chart with the given x-y data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFNumericColumn,CenterSpace.NMath.Stats.DFNumericColumn)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="x">The x values.</param>
+            <param name="y">The y values.</param>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( x, y ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFNumericColumn[])">
+            <summary>
+            Returns a new line chart for the given columns.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFNumericColumn[])">
+            <summary>
+            Updates the given chart with the given data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFNumericColumn[])">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DFNumericColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a new line chart for the given columns.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DFNumericColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the given data.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DFNumericColumn[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DataFrame)">
+            <summary>
+            Returns a new line chart for the columns of the given data frame.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DataFrame)">
+            <summary>
+            Updates the given chart with the columns of the given data frame.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Cols data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DataFrame)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data ) );
+            </code>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DataFrame,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a new line chart for the columns of the given data frame.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DataFrame,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the columns of the given data frame.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Non-numeric columns are ignored.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first data.Cols data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DataFrame,CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, xUnits ) );
+            </code>
+            Non-numeric columns are ignored.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DataFrame,System.Int32,System.Int32)">
+            <summary>
+            Returns a new point chart for the specified columns of the given data frame (x, y) .
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xColIndex">The index of the column containing the x data.</param>
+            <param name="yColIndex">The index of the column containing the y data.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if either column is not numeric.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DataFrame,System.Int32,System.Int32)">
+            <summary>
+            Updates the given chart with the columns of the given data frame.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="xColIndex">The index of the column containing the x data.</param>
+            <param name="yColIndex">The index of the column containing the y data.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if either column is not numeric.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DataFrame,System.Int32,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="xColIndex">The index of the column containing the x data.</param>
+            <param name="yColIndex">The index of the column containing the y data.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if either column is not numeric.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, xColIndex, yColIndex ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DataFrame,System.Int32[])">
+            <summary>
+            Returns a new line chart for the specified columns of the given data frame.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="colIndices">The indices of the columns to plot.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if any column is not numeric.</exception>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DataFrame,System.Int32[])">
+            <summary>
+            Updates the given chart with the specified columns of the given data frame.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="colIndices">The indices of the columns to plot.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if any column is not numeric.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first colIndices.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DataFrame,System.Int32[])">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="colIndices">The indices of the rows to plot.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if any column is not numeric.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, colIndices ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DataFrame,System.Int32[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Returns a new line chart for the specified columns of the given data frame.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="colIndices">The indices of the columns to plot.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if any column is not numeric.</exception>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DataFrame,System.Int32[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Updates the given chart with the specified columns of the given data frame.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="data">The data.</param>
+            <param name="colIndices">The indices of the columns to plot.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if any column is not numeric.</exception>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first colIndices.Length data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DataFrame,System.Int32[],CenterSpace.NMath.Charting.Microsoft.NMathChart.Unit)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="colIndices">The indices of the rows to plot.</param>
+            <param name="xUnits">The units for the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">Thrown if any column is not numeric.</exception>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( data, colIndices, xUnits ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.BetaDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.BetaDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.BetaDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.BinomialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.BinomialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.BinomialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.ChiSquareDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.ChiSquareDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.ChiSquareDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.ExponentialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.ExponentialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.ExponentialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.FDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.FDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.FDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.GammaDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.GammaDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.GammaDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.GeometricDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.GeometricDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.GeometricDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.JohnsonDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.JohnsonDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.JohnsonDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.LogisticDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.LogisticDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.LogisticDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.LognormalDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.LognormalDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.LognormalDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.NegativeBinomialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.NegativeBinomialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.NegativeBinomialDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.NormalDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.NormalDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.NormalDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.PoissonDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.PoissonDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.PoissonDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.TDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.TDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.TDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.TriangularDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.TriangularDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.TriangularDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.UniformDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.UniformDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.UniformDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.WeibullDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Returns a new line chart plotting the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.WeibullDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Updates the given chart with the specified distribution.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <returns>A new chart.</returns>
+            <remarks>
+            Plots the specified function of the given distribution for 0.0001 &lt;= p &lt;= 0.9999.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.WeibullDistribution,CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="dist">The distribution.</param>
+            <param name="function">The distribution function to plot.</param>
+            <param name="numInterpolatedValues">The number of interpolated values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( dist, function, numInterpolatedValues ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.LinearRegression,System.Int32)">
+            <summary>
+            Returns a new line chart by interpolating over the given linear regression.
+            </summary>
+            <param name="lr">Linear Regression.</param>
+            <param name="predictorIndex">The predictor (independent) variable to plot on the x-axis.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">
+            Thrown if the given predictorIndex is outside the range of columns in lr.PredictorMatrix.
+            </exception>
+            <remarks>
+            The multidimensional linear regression fit is plotted projected onto the plane of the specified 
+            predictor variable.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.LinearRegression,System.Int32)">
+            <summary>
+            Updates the given chart with the specified linear regression.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="lr">Linear Regression.</param>
+            <param name="predictorIndex">The predictor (independent) variable to plot on the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">
+            Thrown if the given predictorIndex is outside the range of columns in lr.PredictorMatrix.
+            </exception>
+            <remarks>
+            The multidimensional linear regression fit is plotted projected onto the plane of the specified 
+            predictor variable.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first two data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.LinearRegression,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="lr">Linear Regression.</param>
+            <param name="predictorIndex">The predictor (independent) variable to plot on the x-axis.</param>
+            <exception cref="T:CenterSpace.NMath.Core.InvalidArgumentException">
+            Thrown if the given predictorIndex is outside the range of columns in lr.PredictorMatrix.
+            </exception>
+            <remarks>
+            The multidimensional linear regression fit is plotted projected onto the plane of the specified 
+            predictor variable.
+            <br/>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( lr, predictorIndex ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.ClusterSet,CenterSpace.NMath.Core.DoubleMatrix,System.Int32,System.Int32)">
+            <summary>
+            Returns a new point chart plotting the given clusters.
+            </summary>
+            <param name="clusters">The cluster assignments.</param>
+            <param name="data">A matrix of data. Each row in the matrix represents an object that was clustered.</param>
+            <param name="xColIndex">The index of the matrix column containing the x data.</param>
+            <param name="yColIndex">The index of the matrix column containing the y data.</param>
+            <returns>A new chart.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.IndexOutOfRangeException">Thrown if either column index is outside the
+            range of the columns of the given data matrix.</exception>
+            <remarks>
+            Instances of class ClusterSet are created by ClusterAnalysis, KMeanClustering, and NMFClustering objects
+            and cannot be constructed independently.
+            <br/>
+            Objects are shown plotted in the specified x,y plane, colored according to their cluster assignment.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.ClusterSet,CenterSpace.NMath.Core.DoubleMatrix,System.Int32,System.Int32)">
+            <summary>
+            Updates the given chart with the specified clusters.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="clusters">The cluster assignments.</param>
+            <param name="data">A matrix of data. Each row in the matrix represents an object that was clustered.</param>
+            <param name="xColIndex">The index of the matrix column containing the x data.</param>
+            <param name="yColIndex">The index of the matrix column containing the y data.</param>
+            <exception cref="T:CenterSpace.NMath.Core.IndexOutOfRangeException">Thrown if either column index is outside the
+            range of the columns of the given data matrix.</exception>
+            <remarks>
+            Instances of class ClusterSet are created by ClusterAnalysis, KMeanClustering, and NMFClustering objects
+            and cannot be constructed independently.
+            <br/>
+            Objects are shown plotted in the specified x,y plane, and colored according to their cluster assignment.
+            <br/>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first clusters.NumberOfClusters data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.ClusterSet,CenterSpace.NMath.Core.DoubleMatrix,System.Int32,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="clusters">The cluster assignments.</param>
+            <param name="data">A matrix of data. Each row in the matrix represents an object that was clustered.</param>
+            <param name="xColIndex">The index of the matrix column containing the x data.</param>
+            <param name="yColIndex">The index of the matrix column containing the y data.</param>
+            <exception cref="T:CenterSpace.NMath.Core.IndexOutOfRangeException">Thrown if either column index is outside the
+            range of the columns of the given data matrix.</exception>
+            <remarks>
+            Instances of class ClusterSet are created by ClusterAnalysis, KMeanClustering, and NMFClustering objects
+            and cannot be constructed independently.
+            <br/>
+            Objects are shown plotted in the specified x,y plane, colored according to their cluster assignment.
+            <br/>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( clusters, data, xColIndex, yColIndex ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.FloatPCA)">
+            <summary>
+            Returns a Scree chart for the given principal component analysis.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.FloatPCA)">
+            <summary>
+            Updates the given chart with a Scree chart for the given principal component analysis.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="pca">A principal component analysis object.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first two data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.FloatPCA)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( pca ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.FloatPCA,System.Int32,System.Int32)">
+            <summary>
+            Returns a point (scatter) chart plotting the specified two principal components
+            against one another.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <param name="xIndex">The index of the principal component to use for the x values.</param>
+            <param name="yIndex">The index of the principal component to use for the y values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.FloatPCA,System.Int32,System.Int32)">
+            <summary>
+            Updates the given chart with a point (scatter) chart plotting the specified two
+            principal components against one another.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="pca">A principal component analysis object.</param>
+            <param name="xIndex">The index of the principal component to use for the x values.</param>
+            <param name="yIndex">The index of the principal component to use for the y values.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.FloatPCA,System.Int32,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <param name="xIndex">The index of the principal component to use for the x values.</param>
+            <param name="yIndex">The index of the principal component to use for the y values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( pca, xIndex, yIndex ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DoublePCA)">
+            <summary>
+            Returns a Scree chart for the given principal component analysis.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DoublePCA)">
+            <summary>
+            Updates the given chart with a Scree chart for the given principal component analysis.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="pca">A principal component analysis object.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first two data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DoublePCA)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( pca ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.DoublePCA,System.Int32,System.Int32)">
+            <summary>
+            Returns a point (scatter) chart plotting the specified two principal components
+            against one another.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <param name="xIndex">The index of the principal component to use for the x values.</param>
+            <param name="yIndex">The index of the principal component to use for the y values.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.DoublePCA,System.Int32,System.Int32)">
+            <summary>
+            Updates the given chart with a point (scatter) chart plotting the specified two
+            principal components against one another.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="pca">A principal component analysis object.</param>
+            <param name="xIndex">The index of the principal component to use for the x values.</param>
+            <param name="yIndex">The index of the principal component to use for the y values.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            chart.Series[0] is replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.DoublePCA,System.Int32,System.Int32)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="pca">A principal component analysis object.</param>
+            <param name="xIndex">The index of the principal component to use for the x values.</param>
+            <param name="yIndex">The index of the principal component to use for the y values.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( pca, xIndex, yIndex ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.ToChart(CenterSpace.NMath.Stats.GoodnessOfFit,System.Double)">
+            <summary>
+            Returns a bar chart plotting the model parameter values and <c>1 - alpha</c> confidence intervals.
+            </summary>
+            <param name="gof">A goodness of fit object.</param>
+            <param name="alpha">A significance level.</param>
+            <returns>A new chart.</returns>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Update(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.GoodnessOfFit,System.Double)">
+            <summary>
+            Updates the given chart with a bar chart plotting the model parameter values and <c>1 - alpha</c> confidence intervals.
+            </summary>
+            <param name="chart">A chart.</param>
+            <param name="gof">A goodness of fit object.</param>
+            <param name="alpha">A significance level.</param>
+            <remarks>
+            A new, default ChartArea is added if one does not exist, otherwise chart.ChartAreas[0] is used.
+            Axis titles, and DefaultAxisTitleFont and DefaultMajorGridLineColor, only have an effect if
+            a new ChartArea is added.
+            <br/>
+            Titles are added only if chart does not currently contain any titles.
+            <br/>
+            The first two data series are replaced, or added if necessary.
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.Show(CenterSpace.NMath.Stats.GoodnessOfFit,System.Double)">
+            <summary>
+            Shows a new chart in a default form.
+            </summary>
+            <param name="gof">A goodness of fit object.</param>
+            <param name="alpha">A significance level.</param>
+            <remarks>
+            Equivalent to:
+            <code>
+            NMathStatsChart.Show( ToChart( gof, alpha ) );
+            </code>
+            </remarks>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.BindXY(CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Stats.IDFColumn,System.Windows.Forms.DataVisualization.Charting.SeriesChartType,System.Windows.Forms.DataVisualization.Charting.MarkerStyle)">
+            <summary>
+            Returns a data series of the given data.
+            </summary>
+            <param name="x">The x data.</param>
+            <param name="y">The y data.</param>
+            <param name="type">The chart type.</param>
+            <param name="marker">The marker style to use.</param>
+            <returns>A new data series.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.BindXY(CenterSpace.NMath.Stats.IDFColumn,CenterSpace.NMath.Stats.IDFColumn,System.Windows.Forms.DataVisualization.Charting.SeriesChartType,System.Windows.Forms.DataVisualization.Charting.MarkerStyle)">
+            <summary>
+            Returns a data series of the given data.
+            </summary>
+            <param name="x">The x data.</param>
+            <param name="y">The y data.</param>
+            <param name="type">The chart type.</param>
+            <param name="marker">The marker style to use.</param>
+            <returns>A new data series.</returns>
+            <exception cref="T:CenterSpace.NMath.Core.MismatchedSizeException">Thrown if x and y have different lengths.</exception>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.UpdateContinuousDistribution(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.ProbabilityDistribution,System.Collections.Generic.List{System.String},CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.UpdateDiscreteDistribution(System.Windows.Forms.DataVisualization.Charting.Chart@,CenterSpace.NMath.Stats.ProbabilityDistribution,System.Collections.Generic.List{System.String},CenterSpace.NMath.Charting.Microsoft.NMathStatsChart.DistributionFunction)">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

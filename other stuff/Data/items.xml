@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <version>2015.03</version>
+  <Item>
+    <id>1</id>
+    <description>description</description>
+    <detaileddescription>new item</detaileddescription>
+    <userlabel>OBJ</userlabel>
+    <type>Generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0.3</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>9.5</critical_flux_pilot>
+    <critical_flux_auto>22</critical_flux_auto>
+    <FTP_limit_pilot>481</FTP_limit_pilot>
+    <FTP_limit_auto>427</FTP_limit_auto>
+    <FTP_index_pilot>1</FTP_index_pilot>
+    <FTP_index_auto>1</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>3</xleft>
+    <ybottom>2</ybottom>
+    <constantA>0</constantA>
+    <constantB>0</constantB>
+    <windeffect>1</windeffect>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>20</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>soot yield</varname>
+      <value>0.07</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>co2 yield</varname>
+      <value>1.5</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>Latent Heat of Gasification</varname>
+      <value>3</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>Radiant Loss Fraction</varname>
+      <value>0.35</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+    <idistribution>
+      <varname>HRRUA</varname>
+      <value>250</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+</Items>

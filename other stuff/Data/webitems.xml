@@ -1,0 +1,3417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <version>2012.04</version>
+  <Item>
+    <id>1</id>
+    <description>16 stacked chairs</description>
+    <detaileddescription>Chairs constructed from foam and cellulosic material.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>40</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,35,18,54,282,65,762,84,1802,107,1595,130,1485,142,1498,192,1300,226,1273,246,1154,269,1207,318,1044,368,1013,403,1115,430,1132,487,974,583,767,648,608,725,515,813,467,871,471,917,405,940,374,951,247,986,163
+			,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>15</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>2</id>
+    <description>8 stacked chairs</description>
+    <detaileddescription>Chairs constructed from foam and cellulosic material.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>20</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,
+0,31,4.41,46,198.24,81,497.80,96,828.19,123,859.03,142,634.36,219,585.90,272,488.99,349,356.83,391,414.10,422,533.04,449,629.96,449,779.74,457,938.33,480,731.28,483,603.52,537,458.15,560,352.42,598,268.72,675,176.21,802,154.19,932,145.37,1043,140.97,1182,70.48,1293,35.24,1385,35.24,1465,39.65,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>15</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>3</id>
+    <description>8 stacked chairs in the open</description>
+    <detaileddescription>Chairs constructed from foam and cellulosic material.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>20</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,
+0,31,4.41,46,163,61,286.34,77,440.53,107,339.21,130,396.48,188,436.12,199,480.18,226,480.18,280,374.45,384,251.10,510,370.04,610,295.15,763,255.51,917,198.24,1063,96.92,1201,83.70,1327,57.27,1435,22.03,1481,13.22,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>12</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>4</id>
+    <description>Polyethylene basket</description>
+    <detaileddescription>A 0.63 kg polyethylene basket plus 0.20 kg of shredded paper. Source of ignition unknown.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.83</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,240,0,300,3.70,380,1.40,400,2.50,450,1.20,490,1.20,515,0.75,540,1.20,600,1.20,620,0.45,740,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>5</id>
+    <description>Polyethylene basket</description>
+    <detaileddescription>A 0.53 kg polyethylene basket plus 0.20 kg of shredded paper. Source of ignition unknown.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.73</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,60,0,120,18,200,7.80,240,4.50,380,2.80,640,2.80,780,3.30,1000,6.50,1050,8.75,1070,9.20,1110,8.75,1200,8.40,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>6</id>
+    <description>Polyethylene basket</description>
+    <detaileddescription>A 0.53 kg polyethylene basket plus 0.40 kg of milk cartons. Source of ignition unknown.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.93</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,200,0.40,340,15,450,13.75,510,12.50,585,12.10,720,4.20,780,2.45,810,2.90,890,1.90,900,2.50,1010,2.50,1015,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>7</id>
+    <description>Double bed and night table</description>
+    <detaileddescription>Double bed, bedding and night table.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>53.7</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,200,100,230,2100,290,200,480,100,650,400,690,1500,750,800,900,500,1500,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18.1</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>8</id>
+    <description>Double bed and night table</description>
+    <detaileddescription>Double bed, bedding and night table.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>53.7</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,260,300,280,3500,300,3200,360,6800,430,6800,550,2200,730,750,1500,300,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18.1</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>9</id>
+    <description>Bookcase</description>
+    <detaileddescription>Aluminium frame with 12.7 mm plywood. Two hinged doors located on front lower third and two book shelves above.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>30.39</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,10,0,25,10,40,0,60,28,70,0,80,0,90,19,100,0,115,0,120,1,130,1,140,0,165,0,175,17,180,0,220,0,235,13.50,240,0,250,0,265,13.50,270,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>10</id>
+    <description>Bunk bed</description>
+    <detaileddescription />
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,1,59,9,180,37,191,123,202,218,214,862,225,2579,237,4317,248,3885,260,2943,297,1394,334,841,371,654,408,745,445,860,482,643,520,620,883,230,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>11</id>
+    <description>Bean bag chair</description>
+    <detaileddescription>Bean bag chair containing vinyl/PS foam beads.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>7.3</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,80,300,60,375,110,550,490,720,470,800,150,1200,50,1350,80,1500,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>32.8</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>12</id>
+    <description>Citroen motor vehicle</description>
+    <detaileddescription>A 1986 model Citroen BX 14 RE motor vehicle. Minor combustible items inside passenger compartment and two suitcases in the boot, 7.2 kg and 8.8 kg full of clothes.  Approximately 41 litres of 4 star petrol in tank. Ignition in engine compartment.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,4,66.97,86,62.33,164,368.21,244,307.40,326,373.75,404,699.87,484,1302.57,566,2121.75,644,3076.79,724,3281.35,806,4062.85,884,4371.34,964,4106.57,1046,4231.12,1124,3744.79,1204,3362.64,1286,3001.64,1364,2672.99,1444,2460.85,1526,2217.43,1604,2060.96,1684,1784.88,1766,1501.52,1844,1452.85,1924,1241.99,2006,1102.06,2084,928.13,2164,824.91,2246,721.83,2324,700.08,2404,629.20,2486,547.99,2564,463.18,2644,450.09,2726,366,2804,298.56,2884,260.46,2966,220.53,3044,182.90,3124,159.21,3205,128,3284,107,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>13</id>
+    <description>Cottonseed cooking oil</description>
+    <detaileddescription>Cottonseed cooking oil in a 12 inch pan.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,5,116,1000,116,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>40</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>14</id>
+    <description>Curtain</description>
+    <detaileddescription>Cotton curtain.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>1.87</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,140,0,175,240,290,30,410,10,600,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>15</id>
+    <description>Mixed material curtains</description>
+    <detaileddescription>39% cotton, 16% polyester, 45% acrylic.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>1.43</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,345,0,380,100,415,130,475,60,510,38,550,22,585,14,635,8,840,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>13</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>16</id>
+    <description>Mixed material curtains</description>
+    <detaileddescription>39% cotton, 16% polyester, 45% acrylic.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>1.43</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,480,0,510,117,540,150,600,50,630,29,660,19,700,10,840,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>12</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>17</id>
+    <description>Easy chair, Test 45</description>
+    <detaileddescription>Wood frame easy chair, polyeurathane cushions,  polyolefin fabric</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>28.34</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,150,300,1800,350,2100,400,300,600,150,900,75,1200,50,1950,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>18</id>
+    <description>Easy chair, Test 48</description>
+    <detaileddescription>Polystyrene frame chair, polyurethane seat and cushions.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>11.52</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,140,200,320,275,950,300,800,325,875,350,460,400,575,450,410,550,250,600,125,750,50,1050,25,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>19</id>
+    <description>Easy chair, Test 49</description>
+    <detaileddescription>Wooden frame chair, solid polyurethane foam seat cushion. Shredded polyurethane back cushion. Cotton fabric cover.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>15.68</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,50,25,150,190,200,160,225,150,300,180,375,125,450,100,550,30,750,20,950,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>20</id>
+    <description>Easy chair, Test 64</description>
+    <detaileddescription>One piece wood reinforced cold-molded flexible polyurethane foam frame chair. 25-50mm polyester batting covered with polyurethane foam imitation leather.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>15.98</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,20,300,0,600,20,900,75,1200,200,1350,450,1500,310,1650,190,1800,140,1950,100,2100,90,2250,50,2400,40,2550,25,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>21</id>
+    <description>Easy chair, Test 66</description>
+    <detaileddescription>Wood frame chair with polyurethane foam and polyester filled cushions. Cotton fabric cover and twisted paper welt cord.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>23.02</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,3700,0,3750,335,3800,400,3850,500,3875,450,3950,650,4000,275,4125,150,4400,125,4500,0,4750,100,4800,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>22</id>
+    <description>Easy chair, F21</description>
+    <detaileddescription>Wood frame easy chair, polyeurathane padding, polyolefin fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>28.2</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,155,80,187,200,212,365,250,1860,260,1940,270,1930,280,1945,300,1500,360,500,420,250,512,200,675,250,840,160,1200,115,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18.1</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>23</id>
+    <description>Easy chair, F22</description>
+    <detaileddescription>Wood frame easy chair, cotton padding, cotton fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>31.9</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,200,45,465,48,840,115,885,200,910,390,940,215,1025,210,1112,275,1200,295,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>24</id>
+    <description>Easy chair, F23</description>
+    <detaileddescription>Wood frame easy chair, cotton padding, polyolefin fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>31.2</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,90,0,275,225,365,1000,440,700,565,415,640,330,1200,130,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>16.8</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>25</id>
+    <description>Easy chair, Test F24</description>
+    <detaileddescription>Wood frame easy chair, polyurethane padding, cotton fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>28.3</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,145,0,450,110,525,200,600,370,640,700,700,625,800,350,895,210,1200,165,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>15.1</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>26</id>
+    <description>Easy chair, Test F25</description>
+    <detaileddescription>Wood frame easy chair, polyeurathane padding, polyolefin fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>27.8</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,90,0,140,157,180,770,230,770,260,1992,330,698,370,370,430,260,1000,126,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>17</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>27</id>
+    <description>Easy chair, Test F28</description>
+    <detaileddescription>Wood frame easy chair, PU/PE/cotton padding, cotton fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>29.2</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,40,0,130,50,200,50,330,423,370,423,420,730,500,586,550,395,700,204,1000,106,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>28</id>
+    <description>Easy chair, Test F30</description>
+    <detaileddescription>Polyurethane foam frame, polyurethane foam padding, polyolefin fabric cover. </detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>25.2</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,35,0,90,141,165,672,215,770,235,1063,310,398,400,142,800,161,1800,18,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>20.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>29</id>
+    <description>Loveseat</description>
+    <detaileddescription>Metal frame. Four solid polyurethane foam filled cushions. Cushions covered in plastic coated fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,0,225,0,250,50,300,75,350,70,450,200,500,300,525,250,600,325,625,275,675,375,700,160,750,225,800,25,900,10,975,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>30</id>
+    <description>Loveseat</description>
+    <detaileddescription>Oak frame with 9.5 mm plywood exterior end panels. End panels covered with polyurethane foam and plastic coated fabric cover. Solid polyurethane foam seat and back cushions with cotton layer and plastic coated fabric cover.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>54.6</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,225,50,250,0,300,0,450,0,525,0,600,300,675,450,750,600,800,1050,850,950,900,750,1050,650,1200,350,1350,250,1500,150,1800,200,2100,100,2400,75,2700,50,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>31</id>
+    <description>Loveseat</description>
+    <detaileddescription>Wood frame loveseat, polyurethane padding, polyolefin fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,75,85,120,200,150,475,220,2740,235,2840,240,2835,250,2838,260,2450,270,2675,320,1210,345,615,362,645,370,485,430,255,1200,130,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>17.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>32</id>
+    <description>Maestro motor vehicle</description>
+    <detaileddescription>A 1982 model Austin Maestro 1.3L motor vehicle. Minor combustible items inside passenger compartment and two suitcases in the boot, 7.2 kg and 8.8 kg full of clothes.  Approximately 40 litres of 4 star petrol in tank. Ignition by No.7 crib placed on the drivers seat.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,3,0.3,41,1.3,81,2.5,123,2.45,161,44.7,201,367.2,243,937.7,281,1540.7,321,2433.0,363,2558.5,401,2954.5,441,3100.3,483,3335.4,521,3495.5,561,3479.2,603,3402.5,641,3650.6,681,3978.9,723,4350.4,761,4403.3,801,4831.2,843,6239.0,881,7652.4,921,8496.3,963,8091.3,1001,7053.1,1041,4194.0,1083,3042.3,1121,2001.4,1161,660.7,1203,511.4,1241,494.6,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>33</id>
+    <description>Mattress</description>
+    <detaileddescription>Polyurethane foam mattress with rayon ticking. Bedding materials.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>10.5</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,370,100,480,1580,700,275,800,135,900,135,910,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>34.3</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>34</id>
+    <description>Mattress and boxspring base, Test 67</description>
+    <detaileddescription>Mattress 40% blended cotton felt, 40% polyurethane foam, 20% sisal spring cover. Wood frame base with plastic net coil spring unit and blended cotton felt insulator.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>62.36</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,100,0,540,200,640,530,750,290,835,290,910,660,980,420,1140,240,1450,110,1900,70,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>35</id>
+    <description>Mattress</description>
+    <detaileddescription>Full-size spring-core mattress covered with quilted ticking over layers of PU foam fibre batting and second layer of foam.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,0,225,0,300,50,450,60,525,100,600,150,675,225,750,1350,800,1775,850,225,900,150,1050,75,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>36</id>
+    <description>Metal patient chair, Test 47</description>
+    <detaileddescription>Metal frame chair. Seat and back filled with solid polyurethane foam and polyester fibre layer. Back and seat supported by 16 mm particle board. Wooden arm rests.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>20.82</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,75,80,150,250,160,160,170,10,250,110,350,50,450,25,600,10,750,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>37</id>
+    <description>Metal chair, Test 53</description>
+    <detaileddescription>Metal frame chair. Padded seat and back cushions filled with solid polyurethane foam. Cushions attached to 12.7 mm plywood and they had a plastic coated fabric cover.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>15.54</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,100,35,150,125,200,110,250,270,300,220,325,285,350,110,370,75,450,25,550,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>38</id>
+    <description>Metal chair, Test 75</description>
+    <detaileddescription>Metal frame. Seat and back lightly padded with polyurethane foam covered with plastic coated fabric. Seat and back attached to plywood boards.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>7.49</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,85,200,100,175,170,250,120,350,100,450,105,600,100,750,110,900,120,1200,115,1500,80,1750,80,1800,50,2100,40,2250,25
+,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>39</id>
+    <description>Molded chair, Test 51</description>
+    <detaileddescription>One-piece molded glass fibre construction with metal legs.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>5.28</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,25,0,50,34,70,15,90,27,100,19,110,0,140,16,150,0,165,7,180,0,210,0,240,6,250,0,290,5,300,0,360,0,480,0,570,0,580,12,590,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>40</id>
+    <description>Molded chair, Test 51</description>
+    <detaileddescription>One-piece molded thermoplastic chair.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>11.26</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,1500,0,1750,150,1800,0,1950,0,2200,600,2400,600,2500,800,2550,600,2700,350,2850,150,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>41</id>
+    <description>Stack of wood pallets</description>
+    <detaileddescription>1.22m high stack of wood pallets.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,130,0,165,100,200,300,255,1000,330,3000,345,3400,380,3700,625,3650,675,3500,745,3000,775,2450,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>42</id>
+    <description>Stack of wood pallets</description>
+    <detaileddescription>Approximately six pallets in a stack.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,1,90,107,181,241,271,496,362,698,452,846,543,1458,634,1844,649,1847,664,1842,740,1511,817,1257,893,1079,970,814,1046,606,1123,470,1200,370,1217,351,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>43</id>
+    <description>Refuse bag</description>
+    <detaileddescription>One bag of paper filled refuse.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>1.17</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,2,1.81,25,66.06,60,133.03,117,115.84,151,79.64,180,48.87,295,8.14,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>16</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>44</id>
+    <description>Refuse bags</description>
+    <detaileddescription>Two bags of paper filled refuse.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>2.34</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,18,70.59,59,175.57,117,287.78,175,156.56,212,104.07,239,62.44,303,104.07,347,40.72,363,16.29,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>16</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>45</id>
+    <description>Refuse bags</description>
+    <detaileddescription>Three bags of paper filled refuse.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>3.51</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0.00,1,1.81,9,64.25,27,164.71,60,342.08,115,323.08,180,229.86,240,107.69,305,61.54,363,63.35,426,19.00,483,42.53,543,16.29,582,19.00,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>16</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>46</id>
+    <description>Latex pillow</description>
+    <detaileddescription>Latex foam filling, 50% polyester/50% cotton case. 65% polyester/35% cotton pillowcase, 6 newspaper balls.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>1.24</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,50,25,100,30,150,50,200,72,250,98,300,116,350,104,400,74,450,17,500,7,550,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>27.6</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>47</id>
+    <description>Polyurethane foam pillow</description>
+    <detaileddescription>Shredded polyurethane foam filling, non-woven case. 65% polyester/35% cotton pillowcase, 6 newspaper balls.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.88</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,40,18.50,120,16,185,28.50,425,14.50,550,42,660,25,740,28.50,875,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>22</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>48</id>
+    <description>Polyurethane foam pillow</description>
+    <detaileddescription>Shredded polyurethane foam filling, non-woven case. 65% polyester/35% cotton pillowcase, 6 newspaper balls.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.86</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,45,19.50,175,16,295,22.50,385,22.50,495,36,645,21,1120,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>23.7</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>49</id>
+    <description>Polyester fibrefill pillow</description>
+    <detaileddescription>Polyester fibrefill filling, 80% polyester/20% cotton case. 65% polyester/35% cotton pillowcase, 6 newspaper balls.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.84</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,40,20,50,20.50,75,20,145,12,200,11.90,220,12.10,298,24.60,415,34,485,11.50,625,5.50,740,3,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>20</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>50</id>
+    <description>Feather pillow</description>
+    <detaileddescription>Feather filling, cotton case. 65% polyester/35% cotton pillowcase, 6 newspaper balls.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>1.2</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,45,11.5,100,15.8,335,9.5,400,5,650,0.5,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18.3</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>51</id>
+    <description>Polyester fibrefill pillow</description>
+    <detaileddescription>Polyester fibrefill filling, fibreglass case. 65% polyester/35% cotton pillowcase, 6 newspaper balls.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0.92</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,50,20.50,70,21,95,20,175,8.60,445,4,550,5.20,750,0.50,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>17.4</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>52</id>
+    <description>Sofa, Test 38</description>
+    <detaileddescription>Wooden frame. Polyurethane foam cushions with polyolefin cover.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>51.5</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,150,500,250,3100,275,2700,300,3150,350,3050,400,400,600,250,900,100,1200,75,1500,50,1800,40,2025,0,1800,50,2100,40,2250,25,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>53</id>
+    <description>Sofa, Test F32</description>
+    <detaileddescription>Wood frame sofa, polyeurathane padding, polyolefin fabric.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>51.5</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,100,160,130,400,175,1385,185,2100,225,3080,235,2700,250,3100,262,2998,270,3070,305,2180,345,1030,370,625,410,480,510,240,645,270,900,155,1200,90,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>18.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>54</id>
+    <description>Bag of straw</description>
+    <detaileddescription>Single bag of straw, grass and duff.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>4.1</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,19,70.59,54,180.09,75,229.86,118,341.18,185,333.03,218,261.54,241,185.52,265,162.90,350,96.83,425,94.12,536,69.68,572,102.26,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>16</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>55</id>
+    <description>Television set</description>
+    <detaileddescription>24" black and white television in wood cabinet manufactured in the early 1960's.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>32.7</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,200,0,315,235,450,170,600,176,750,150,765,160,980,71,1475,30,1800,26,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>56</id>
+    <description>RHR from television set</description>
+    <detaileddescription>26" black and white television in wood cabinet manufactured in the early 1960's.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>39.8</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,360,8,520,88,625,275,745,180,1150,90,1300,88,1610,50,1615,75,1800,37,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>15</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>57</id>
+    <description>Wardrobe</description>
+    <detaileddescription>0.69 mm sheet steel with sheet metal shelf and hinged metal doors on the front. Coated with brown paint.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>41</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,30,87,50,700,60,770,125,200,240,80,360,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.8</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>58</id>
+    <description>Wardrobe</description>
+    <detaileddescription>12.7mm thick Douglas-fir plywood. Two hinged doors on front. Unfinished surfaces. Contained 1.93kg of clothing and paper.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>68</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,55,600,90,3300,115,3000,125,3200,190,600,225,380,550,380,580,500,600,380,640,380,690,1500,730,700,770,400,820,275,1200,275,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>59</id>
+    <description>Wardrobe</description>
+    <detaileddescription>12.7mm thick Douglas-fir plywood. Two hinged doors on front. Unfinished surfaces. Contained 1.93kg of clothing and paper. </detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>68</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,30,0,50,400,60,290,110,3500,130,2900,180,2400,225,1500,260,1250,270,1050,315,1200,365,3150,390,1660,435,800,480,440,1200,180,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>60</id>
+    <description>Wardrobe</description>
+    <detaileddescription>3.2 mm mahogany veneer plywood and hardboard on 19 x 40 mm hardwood frame. Top  bottom and back were hardboard with plywood sides and doors. Two rolling doors provided access to interior.  384mm deep shelf extended across width. 1.93 kg clothing and paper.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>36</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,60,175,90,1750,120,3150,150,6400,180,1050,240,600,360,350,480,350,600,250,720,175,840,100,1080,100,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>16.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>61</id>
+    <description>Wardrobe</description>
+    <detaileddescription>3.2 mm mahogany veneer plywood and hardboard on 19 x 40 mm hardwood frame. Top  bottom and back were hardboard with plywood sides and doors. Two rolling doors provided access to interior.  384mm deep shelf extended across width. 1.93 kg clothing and paper. Inside covered with one coat of fire-retardant paint.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>37.3</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,40,175,100,490,165,4900,175,5150,215,140,235,670,320,350,1200,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>15.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>62</id>
+    <description>Plywood wardrobe</description>
+    <detaileddescription>12.7mm thick Douglas-fir plywood. Two hinged doors on front. Unfinished surfaces. Contained 1.93kg of clothing and paper.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>68</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,20,0,61,374.21,69,1100.63,78,2465.41,88,3125.79,102,3147.80,120,2905.66,128,3015.72,139,2707.55,147,2905.66,159,2641.51,177,2487.42,192,2157.23,200,2311.32,212,2201.26,222,1805.03,237,1452.83,267,1166.67,277,1232.70,286,1100.63,300,1078.62,314,1122.64,322,1408.81,332,1540.88,339,2069.18,357,2663.52,404,1078.62,422,770.44,437,748.43,463,572.33,479,572.33,500,528.30,518,572.33,538,440.25,569,572.33,596,440.25,610,528.30,624,396.23,647,396.23,669,528.30,687,462.26,720,440.25,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>63</id>
+    <description>Wardrobe</description>
+    <detaileddescription>3.2 mm mahogany veneer plywood and hardboard on 19 x 40 mm hardwood frame. Top, bottom and back were hardboard with plywood sides and doors. Two rolling doors provided access to interior.  384mm deep shelf extended across width. 1.93 kg clothing and paper. Inside and outside covered with two coats of fire-retardant paint.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>37.3</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,90,450,140,1550,160,2000,180,2900,250,525,290,280,1200,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>14.2</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>64</id>
+    <description>Wardrobe</description>
+    <detaileddescription>Constructed from 19.1mm thick particle board with thin plastic coating. One hinged door  swing down desk, two drawers and four shelves. Back of wardrobe covered with a thin sheet of hardboard. Contained 0.80 kg clothing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>120.33</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,145,1030,275,1250,300,1950,315,1050,350,1350,410,980,455,1250,530,600,600,525,650,1000,675,350,900,500,1075,1275,1250,600,1400,375,1750,255,1865,300,2250,150,2520,150,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>17.5</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>65</id>
+    <description>Artificial plant</description>
+    <detaileddescription>Palm, small and bushy, about 1 m high. Palm leaves treated with glycerine mounted on an artificial stem. Match ignition source</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,15,2,30,190,45,30,60,4,75,0,90,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>66</id>
+    <description>Artificial plant</description>
+    <detaileddescription>Palm, tall and slim, about 1 m high. Palm leaves treated with glycerine mounted on an artificial stem. Match ignition source.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,15,2,30,15,45,47,60,10,75,5,90,20,105,30,120,5,135,3,150,2,180,3,210,10,240,3,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>67</id>
+    <description>Artificial plant</description>
+    <detaileddescription>Ficus Benjamina, about 1 m high. Polyester treated textile leaves mounted on an natural stem. Gas burner ignition source.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,15,2,30,3,45,5,60,5,75,5,90,5,105,4,120,4,135,4,150,4,180,4,210,4,240,4,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>68</id>
+    <description>Christmas tree</description>
+    <detaileddescription>Green Christmas tree.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>6.5</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,350,0,395,30,520,10,540,30,600,30,625,20,705,20,740,65,750,45,880,20,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>69</id>
+    <description>Christmas tree</description>
+    <detaileddescription>Dry Christmas tree.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>7</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,300,0,325,625,350,615,375,650,400,100,500,30,600,20,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>70</id>
+    <description>Christmas tree</description>
+    <detaileddescription>Dry Christmas tree.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>7.4</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,100,0,150,500,200,80,300,30,400,15,500,10,600,5,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>71</id>
+    <description>Car, Test 1</description>
+    <detaileddescription>Sedan passenger car manufactured in the late 1970's freeburning in the calorimeter. The fuel burned from the mouth of the filler pipe.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,120,0,240,0,360,620,480,1160,600,1350,720,1000,840,1450,960,1250,1080,1350,1200,1180,1320,1150,1440,1050,1560,950,1680,850,1800,840,1920,770,2040,1250,2160,1500,2280,950,2400,850,2520,650,2640,700,2760,720,2880,620,3000,570,3120,520,3240,470,3360,420,3480,370,3600,320,3720,280,3840,250,3960,230,4080,210,4200,190,4320,170,4440,160,4560,140,4680,130,4800,123,4920,115,5040,108,5160,100,5280,93,5400,85,5520,78,5640,70,5760,65,5880,60,6000,55,6120,55,6240,55,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>72</id>
+    <description>Car, Test 2</description>
+    <detaileddescription>Sedan passenger car manufactured in the late 1970's freeburning in the calorimeter. The fuel burned from the mouth of the fuel tank and from a pool under the car when the filler pipe and the fuel hose had melted.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,120,0,240,500,360,800,480,920,600,1450,720,1800,840,1120,960,1470,1080,1350,1200,1200,1320,1250,1440,1550,1560,1800,1680,1670,1800,1500,1920,1150,2040,480,2160,450,2280,400,2400,350,2520,320,2640,280,2760,240,2880,220,3000,190,3120,175,3240,150,3360,140,3480,130,3600,125,3720,120,3840,115,3960,110,4080,105,4200,100,4320,97,4440,93,4560,90,4680,86,4800,83,4920,79,5040,76,5160,72,5280,69,5400,65,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>73</id>
+    <description>Car, Test 3</description>
+    <detaileddescription>Sedan passenger car manufactured in the late 1970's freeburning in the calorimeter. The fuel burned from the mouth of the fuel tank when the filler pipe had melted.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,120,0,240,0,360,1000,480,850,600,1600,720,1300,840,1950,960,1500,1080,1200,1200,1050,1320,1000,1440,800,1560,650,1680,620,1800,920,1920,840,2040,750,2160,1250,2280,1050,2400,1100,2520,1000,2640,950,2760,850,2880,700,3000,650,3120,620,3240,610,3360,620,3480,580,3600,530,3720,450,3840,400,3960,380,4080,360,4200,350,4320,328,4440,306,4560,284,4680,262,4800,240,4920,230,5040,220,5160,210,5280,200,5400,190,5520,180,5640,170,5760,160,5880,150,6000,140,6120,130,6240,120,6360,110,6480,100,6600,98,6720,95,6840,93,6960,90,7080,88,7200,85,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>74</id>
+    <description>Laptop computers, P-2</description>
+    <detaileddescription>Single pallet of 34 laptop computers. Packaging consisted of a corrugated cardboard box and polystyrene foam packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,19,12,51,101,59,168,101,269,115,544,133,446,161,395,197,517,211,801,244,1370,257,1263,293,1434,313,1336,329,1379,364,1214,388,1199,412,1147,435,1177,452,1272,464,1489,479,1706,488,1563,505,1508,521,1810,535,1508,549,1560,564,1621,567,1532,592,1688,603,1581,623,1694,640,1453,688,1208,716,1080,765,1107,793,954,829,841,888,807,900,321,919,150,947,64,972,49,984,9,1032,15,1072,3,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>75</id>
+    <description>Language packs, P-4</description>
+    <detaileddescription>Single pallet of 32 software language packs/keyboards. Packaging consisted of a corrugated cardboard keyboard carton and a plastic bag.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,1,9,27,34,49,153,71,278,105,333,132,346,148,318,171,1052,183,1991,200,1300,215,1416,232,1440,267,1205,324,875,336,853,352,777,365,1135,375,1177,391,1284,417,914,463,810,505,697,555,657,611,661,620,740,635,758,663,648,695,615,711,697,741,596,757,682,817,581,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>76</id>
+    <description>Desktop computers, P-3</description>
+    <detaileddescription>Single pallet of 16 desktop computers. Packaging consisted of a single wall corrugated cardboard box and polystyrene foam packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,45,83,64,315,83,278,112,1021,131,1407,163,951,192,1260,212,1428,224,1226,309,1076,347,969,376,927,392,985,417,966,427,1012,451,985,484,878,524,875,549,927,563,911,573,936,588,878,615,869,632,431,656,193,681,95,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>77</id>
+    <description>Boxed computer monitor</description>
+    <detaileddescription>Computer monitor in a single wall corrugated carboard box and polystrene packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>18.38</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,128,0,164,10,217,31,245,83,250,219,255,231,264,182,278,369,282,361,300,215,309,198,315,218,348,151,357,157,371,126,379,163,415,144,421,103,441,93,450,73,457,87,463,87,480,58,486,85,505,65,512,79,534,77,547,51,558,33,569,55,595,47,601,34,611,33,621,48,635,15,641,35,667,36,669,24,680,39,697,0,703,22,722,13,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>78</id>
+    <description>Language pack</description>
+    <detaileddescription>Software language pack/keyboard. Packaging consisted of a corrugated cardboard keyboard carton and a plastic bag.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>3.14</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,0,131,0,174,40,250,37,271,47,311,48,330,53,381,41,432,55,464,37,477,45,514,29,538,10,653,4,748,3,786,30,819,100,830,242,847,128,876,92,899,92,916,68,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>79</id>
+    <description>Laptop computer</description>
+    <detaileddescription>Laptop computer in a corrugated cardboard box and polystyrene foam packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>3.41</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,0,129,0,160,9,207,14,242,20,267,37,305,72,321,71,328,182,338,374,350,150,377,86,395,80,458,107,469,98,485,141,512,105,522,130,540,112,597,119,620,84,628,113,633,78,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>80</id>
+    <description>Desktop computer</description>
+    <detaileddescription>Desktop computer in a single wall corrugated cardboard box and polystyrene foam packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>5.93</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,102,0,131,18,192,40,242,116,266,362,297,209,305,258,324,185,378,93,384,104,406,68,436,44,446,45,460,63,501,41,552,41,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>81</id>
+    <description>Computer monitors, P-1</description>
+    <detaileddescription>Pallet of 12 computer monitors. Each monitor was packaged in a single wall corrugated carboard box and polystrene packing. Stack was not stabalised against collapse.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,25,13,45,174,58,495,77,468,94,736,105,535,112,509,120,803,131,1927,144,4792,150,4832,161,3989,169,3748,173,3841,185,3841,191,3681,198,3681,211,3841,216,3788,222,3855,243,2998,252,2958,257,2891,264,3132,269,3507,276,3520,282,3306,289,3293,305,2985,311,3052,318,3038,322,2864,336,2730,342,2530,352,2382,360,2141,366,1566,391,549,408,361,419,321,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>82</id>
+    <description>Computer monitors, P-5</description>
+    <detaileddescription>Pallet of 12 computer monitors. Each monitor was packaged in a single wall corrugated carboard box and polystrene packing. Stack was stabalised against collapse by using a fence.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>
+0,
+0,24,13,44,174,59,468,78,495,94,736,112,790,118,924,132,5675,138,6438,143,6023,150,5769,165,3922,178,3038,193,2690,219,2423,227,2302,239,2583,252,2182,281,1673,290,1660,299,1606,307,1620,311,1633,334,1579,354,1740,359,1874,393,1807,401,1740,413,1820,419,1968,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>83</id>
+    <description>Computer monitors, P-6</description>
+    <detaileddescription>Two pallets side-by-side of 12 computer monitors in each pallet. Each monitor was packaged in a single wall corrugated carboard box and polystrene packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,42,319,60,1072,71,1217,78,1507,90,3130,102,2638,109,4087,126,14348,133,16580,139,16899,145,16754,149,16290,155,16232,162,16493,168,16203,193,4145,198,2870,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>84</id>
+    <description>Computer monitors, P-10</description>
+    <detaileddescription>Pallet of 20 computer monitors stacked 5 high. Each monitor was packaged in a single wall corrugated carboard box and polystrene packing.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,30,87,54,348,85,609,96,986,108,928,115,1101,120,1913,139,8754,145,10435,161,8609,168,9855,180,13710,192,13043,198,13333,228,3159,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>85</id>
+    <description>Video cassette tapes</description>
+    <detaileddescription>100 boxed videos on wooden shelves</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,3.39,4.88,512.21,617.07,569.88,509.76,831.07,531.71,1024.42,436.59,1255.09,536.59,1319.54,687.8,1414.52,463.41,1651.97,282.93,1960.65,170.73,2493.22,87.8,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>86</id>
+    <description>Soft toy mountain</description>
+    <detaileddescription>259 childrens toys to a height of 950 mm in a medium density fibreboard plinth. Toys largely polyester fibre skin with polyester wool filing. Ignition source was a ball of tissue paper soaked in 20 ml of industrial methylated spirits. Sprinklers operated at a judged maximum fire size.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>46</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,2,0,75,0,138,293,205,700,250,938,308,1261,332,745,340,386,360,124,386,54,431,75,468,36,549,3,651
+		,0
+		,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>87</id>
+    <description>Soft toy mountain</description>
+    <detaileddescription>340 childrens toys to a height of 1325 mm in a medium density fibreboard plinth. Toys largely polyester fibre skin with polyester wool filing. Ignition source was a ball of tissue paper soaked in 20 ml of industrial methylated spirits.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>35.5</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>2,0,78,0,159,253,222,576,274,917,287,851,332,1053,347,1216,377,1167,394,1228,418,1119,459,1357,498,1475,539,1659,608,1276,634,1207,651,1258,685,1125,724,1035,769,1146,787,1309,804,1315,812,1433,830,1276,843,1336,892,1207,929,1065,963,1047,972,1122,1017,881,1054,845,1114,775,1129,733,1166,821,1207,998,1226,986,1265,1345,1291,1134,1323,890,1375,739,1399,392,1422,184,1455,69,1506,18,1552,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>88</id>
+    <description>Pallet arrays</description>
+    <detaileddescription>Six 1.2 m high stacks of 8 to 9 pallets per stack. The central 167 kg (ignition) stack was conditioned to between 11% and 14% moisture content. Ignition source was a small cradle of fibreboard strips soaked in 300 ml of industrial methylated spirits. Delayed sprinkler operation at 480 s.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>167</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,145,0,216,191,268,649,436,3796,446,4169,454,3978,492,4760,519,3424,529,3501,540,3386,603,3806,623,3987,641,4569,690,782,711
+,353
+,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>89</id>
+    <description>Pallet arrays</description>
+    <detaileddescription>Six 1.2 m high stacks of 8 to 9 pallets per stack. The central 167 kg (ignition) stack was conditioned to between 11% and 14% moisture content. Ignition source was a small cradle of fibreboard strips soaked in 300 ml of industrial methylated spirits. Fours sprinklers operated between 245 s and 280 s.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>167</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,139,38,208,248,240,563,342,563,409,696,475,706,615,983,711,935,767,734,833,878,977,954,1007,763,1092,658,1178,258,1248,486,1267,439,1274
+,0
+,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>90</id>
+    <description>Stacked cardboard boxes</description>
+    <detaileddescription>Six 2.1 m high stacks of cardboard boxes were arranged in two rows of three stacks. Each stack, placed on a 1.2m square wooden pallet, was 4 boxes high and contained 16 boxes altogether. Boxes were double walled cardboard, 48.3 cm x 61 cm x 61 cm and each weighed 2.7 kg. Each box contained either two pieces of moulded expanded polystyrene packing, or the equivalent weight of expanded polystyrene chips (0.38 kg). Ignition was a ball of crumpled newspaper. Delayed sprinkler operation at 940 s.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,786,25,815,108,881,817,934,3050,960,5425,991,1975,1008,1717,1019,1717,1048,2275,1074,333,1107,92,1140,50,1197,117,1281,8,1305
+,0
+,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>91</id>
+    <description>Stacked cardboard boxes</description>
+    <detaileddescription>Six 2.1 m high stacks of cardboard boxes were arranged in two rows of three stacks. Each stack, placed on a 1.2m square wooden pallet, was 4 boxes high and contained 16 boxes altogether. Boxes were double walled cardboard, 48.3 cm x 61 cm x 61 cm and each weighed 2.7 kg. Each box contained either two pieces of moulded expanded polystyrene packing, or the equivalent weight of expanded polystyrene chips (0.38 kg). Ignition was a ball of crumpled newspaper. Sprinklers operated between 1203 s and 1270 s.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,1158,0,1197,458,1215,483,1221,558,1235,567,1239,458,1274,408,1314,625,1336,500,1349,633,1362,500,1377,275,1406,217,1430,317,1456,317,1481,242,1496,308,1593,75,1626,283,1656,817,1661,1300,1676,1517,1696,750,1711,242,1738,92,1808
+,0
+,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>92</id>
+    <description>Carry-on luggage</description>
+    <detaileddescription>Air-side airport design fire consisting of two carry-on bags burning simultaneously</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,128,2,258,90,334,261,382,406,417,504,458,472,491,381,569,330,599,260,727,174,934,122,1151,94,1353,67,1561,63,1757,58,1776,11,1833,4,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>93</id>
+    <description>Luggage on trolley</description>
+    <detaileddescription>Land-side airport design fire consisting of bags on a piled-high luggage trolley. The bags were filled with clothing and other representative materials</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,94,6,217,282,278,306,339,465,438,635,494,882,539,888,572,971,585,1138,618,1006,646,1218,681,1053,738,865,820,612,937,418,1052,332,1184,247,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>94</id>
+    <description>Christmas tree, Test no.1</description>
+    <detaileddescription> Height 2.6 m, width at widest point 1.7 m, moisture content 30%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>17.2</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,13,32,23,83,30,198,34,352,36,799,40,1387,41,1739,42,2378,43,2857,44,3222,45,3464,46,3656,46,3727,49,3867,51,4232,54,3765,56,3925,59,3842,61,3842,64,3273,66,3426,68,3023,69,2832,71,2678,73,2403,75,2116,78,1809,81,1540,85,1246,89,984,91,908,92,882,95,658,97,620,99,524,104,454,110,256,113,256,119,121,123,121,128,58,132,45,139,32,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>95</id>
+    <description>Christmas tree, Test no.2</description>
+    <detaileddescription> Height 2.7 m, width at widest point 1.3 m, moisture content 27%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>15.9</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,6,33,8,56,9,128,14,588,15,799,17,1002,18,1149,20,1275,21,1314,25,1280,28,1463,32,1434,35,1666,38,1548,41,1684,43,1602,45,1614,48,1566,50,1630,53,1494,56,1506,59,1483,63,1422,66,1401,68,1326,70,1218,73,1074,78,959,81,956,87,740,90,727,92,786,98,671,108,506,110,498,116,419,120,426,135,239,138,223,143,180,147,180,157,141,166,156,168,144,176,144,181,108,185,113,189,90,204,72,214,77,223,69,232,66,242,64,250,59,256,61,268,61,277,64,300,56,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>96</id>
+    <description>Christmas tree, Test no.3</description>
+    <detaileddescription> Height 2.3 m, width at widest point 1.7 m, moisture content 30%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>20</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,4,9,9,18,15,212,22,535,28,877,33,1246,36,1745,39,2298,42,2677,43,3332,44,3766,47,4449,48,4957,51,5169,53,5197,56,4846,58,5105,61,4366,64,3978,67,3258,71,2603,74,1883,76,1431,78,1117,81,1182,83,803,89,609,94,637,99,498,102,508,104,425,107,452,109,425,115,360,121,351,127,286,136,231,143,194,148,185,156,194,170,166,179,148,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>97</id>
+    <description>Christmas tree, Test no.4</description>
+    <detaileddescription> Height 2.5 m, width at widest point 1.2 m, moisture content 30%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>9.5</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,10,68,14,142,20,147,25,132,30,161,36,237,42,359,46,535,51,791,55,1097,60,1302,63,1507,68,1570,71,1644,79,1241,81,1192,84,1080,87,1101,91,962,98,774,104,562,107,493,109,479,112,357,114,352,119,249,125,183,127,183,132,142,136,120,142,98,149,68,155,61,158,54,162,56,165,54,171,56,175,49,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>98</id>
+    <description>Christmas tree, Test no.5</description>
+    <detaileddescription> Height 2.5 m, width at widest point 1.7 m, moisture content 28%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>19.1</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,13,132,21,290,28,469,34,580,37,743,42,912,45,1212,49,1528,51,1829,52,2140,55,2440,58,2688,60,2935,61,3299,65,3215,66,3536,70,3236,71,3241,73,3014,76,3373,79,3273,82,2972,102,1228,104,1123,106,938,110,791,116,522,124,411,133,248,137,248,143,174,150,163,159,158,166,137,172,137,180,95,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>99</id>
+    <description>Christmas tree, Test no.6</description>
+    <detaileddescription> Height 2.5 m, width at widest point 1.1 m, moisture content 32%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>12.7</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,20,27,31,99,39,130,44,158,49,205,56,264,61,373,69,592,75,890,78,1315,81,1729,84,1723,86,1870,89,1935,92,1795,94,1764,99,1442,101,1455,111,901,115,890,117,791,125,596,130,462,134,387,137,366,140,305,147,253,150,212,155,178,161,140,165,147,167,130,172,137,179,123,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>100</id>
+    <description>Christmas tree, Test no.7</description>
+    <detaileddescription> Height 3.1 m, width at widest point 1.5 m, moisture content 25%. Conditioned at 23 degC, 50% RH for 3 weeks. Ignition by electric match.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>18.6</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,10,37,19,174,31,1937,33,1795,44,3157,45,3014,49,2956,57,3183,59,2877,64,2381,68,1605,77,1008,86,702,90,533,94,523,98,443,101,385,103,380,106,311,126,169,129,169,132,148,135,143,142,132,147,127,156,100,164,84,167,95,172,79,180,69,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>101</id>
+    <description>Television set, TV1</description>
+    <detaileddescription>28 inch TV in a plastic case. Ignition with a 1kW propane gas flame.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>31.83</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,32,4,77,4,105,55,116,72,121,71,147,272,173,154,188,248,202,228,212,239,225,219,242,170,257,106,270,106,288,131,301,139,317,153,343,159,364,150,382,141,395,133,409,133,419,128,438,138,464,133,487,128,511,128,551,126,574,126,597,125,631,110,723,108,762,101,815,92,868,88,912,80,956,73,1000,65,1203,52,1358,43,1548,40,1659,32,1747,24,1800,22,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>31.9</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>102</id>
+    <description>Television set, TV2</description>
+    <detaileddescription>25 inch TV in a plastic case. Ignition with a 1kW propane gas flame.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>24.42</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,2,6,81,26,105,54,121,148,147,215,162,237,176,164,189,152,200,165,217,146,239,154,265,162,314,162,344,161,374,153,409,143,428,139,469,135,490,129,537,121,571,113,595,104,635,95,698,86,752,67,825,64,888,52,1004,46,1096,38,1198,32,1291,28,1407,18,1495,13,1601,6,1635,12,1693,8,1756,12,1805,,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>28.2</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>103</id>
+    <description>Television set, TV3</description>
+    <detaileddescription>28 inch TV in a plastic case. Ignition with a 1kW propane gas flame.</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>30.53</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,3,2,84,4,110,6,155,15,186,28,207,42,228,166,238,211,263,123,289,123,302,137,323,130,343,166,356,179,374,182,398,191,416,197,443,190,469,184,502,172,533,164,572,154,584,139,597,137,611,132,631,138,684,124,791,112,907,99,1014,98,1077,89,1140,73,1223,65,1325,56,1393,48,1446,40,1489,34,1553,30,1630,25,1698,14,1756,5,1795,2,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>28.6</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>104</id>
+    <description>Mattress 1:21</description>
+    <detaileddescription>120 mm polyether foam, cotton/viscose fabric</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,64,106,82,201,91,328,104,481,118,571,140,695,164,575,178,482,189,490,199,489,220,563,229,687,235,815,250,937,278,617,286,485,316,333,358,154,406,70,477,32,720,19,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>21.6</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>105</id>
+    <description>Mattress 1:22</description>
+    <detaileddescription>100 mm latex foam, cotton/viscose fabric</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,83,30,121,70,125,99,149,68,202,101,263,149,310,213,342,320,365,284,389,302,408,301,416,320,438,265,455,301,503,258,525,209,595,164,737,100,852,61,907,85,937,73,1048,84,1211,71,1260,72,1297,47,1324,57,1349,56,1375,40,1399,58,1505,34,1619,19,1789,12,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>13</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>106</id>
+    <description>Mattress 1:23</description>
+    <detaileddescription>150 mm spring interior mattress with 10 mm + 10 mm polyether foam and polyester fabric</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,16,1,36,94,59,330,64,335,74,326,85,349,95,302,103,197,119,122,125,140,141,86,171,51,241,24,359,16,481,10,601,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>24.4</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>107</id>
+    <description>Mattress 1:25</description>
+    <detaileddescription>50 mm impregnated foam, FR vinyl reinforced sheet</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,24,0,28,3,39,3,52,11,65,10,69,12,78,12,81,11,84,13,99,13,105,10,113,9,119,5,125,30,137,6,148,5,154,1,163,2,173,3,190,1,197,1,201,2,206,2,212,0,239,0,256,1,268,1,275,3,283,1,296,4,309,1,324,1,419,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>108</id>
+    <description>Mattress 3:17</description>
+    <detaileddescription>90 mm HR urethane foam, FR treated cotton fabric</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,5,25,26,35,54,36,65,42,79,37,111,50,133,15,149,10,176,10,223,35,260,77,290,166,316,228,325,275,335,281,355,238,364,189,376,270,385,254,393,261,407,229,424,208,443,223,452,261,457,266,478,231,488,214,505,185,512,183,536,236,572,230,599,249,612,257,632,280,660,253,688,281,712,250,745,202,764,197,791,174,802,178,820,159,840,155,853,141,863,120,922,74,949,54,1007,40,1066,39,1093,35,1196,29,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+    <idistribution>
+      <varname>heat of combustion</varname>
+      <value>29.8</value>
+      <distribution>None</distribution>
+      <mean>0</mean>
+      <variance>0</variance>
+      <lbound>0</lbound>
+      <ubound>0</ubound>
+      <mode>0</mode>
+      <alpha>0</alpha>
+      <beta>0</beta>
+    </idistribution>
+  </Item>
+  <Item>
+    <id>109</id>
+    <description>Wood pallets and plastic pallets</description>
+    <detaileddescription>1.5 m high stack of wood pallets and plastic pallets (82 / 18%)</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,116,92,187,170,251,549,355,1804,406,3529,478,4431,561,5346,607,5660,665,7033,716,6641,787,7033,826,7699,871,5830,903,6680,942,6183,1000,5020,1039,4052,1142,3163,1226,2484,1387,1987,1671,1608,2032,1124,2084,954,2103,1111,2290,902,2407,915,2574,771,2806,693,3161,549,3213,288,3394,105,3413,0,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>110</id>
+    <description>Wood pallets and mattresses</description>
+    <detaileddescription>1.5 m high stack of wood pallets and PUR (polyurethane) mattresses (82 / 18%)</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,129,222,290,1477,355,2039,458,1895,607,2954,645,2693,761,3895,877,2065,1013,1294,1174,562,1387,288,1748,118,2278,105,2658,78,3103,65,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+  <Item>
+    <id>111</id>
+    <description>Cartons and polyester cups</description>
+    <detaileddescription>1.5 m high stack of cartons with PS (polystyrene) cups (81 / 19%)</detaileddescription>
+    <userlabel />
+    <type>generic</type>
+    <length>0.3</length>
+    <width>0.3</width>
+    <height>0</height>
+    <elevation>0</elevation>
+    <mass>0</mass>
+    <critical_flux_pilot>20</critical_flux_pilot>
+    <critical_flux_auto>20</critical_flux_auto>
+    <FTP_limit_pilot>0</FTP_limit_pilot>
+    <FTP_limit_auto>0</FTP_limit_auto>
+    <FTP_index_pilot>0</FTP_index_pilot>
+    <FTP_index_auto>0</FTP_index_auto>
+    <probability>0</probability>
+    <hrr>0,0,52,353,91,2392,168,6810,232,5582,310,4484,413,3647,548,2784,684,1895,865,1020,1129,693,1471,601,1742,471,2058,471,2374,418,2497,65,</hrr>
+    <ignition_time>0</ignition_time>
+    <max_num>1</max_num>
+    <xleft>0</xleft>
+    <ybottom>0</ybottom>
+    <radiantlossfraction>0.3</radiantlossfraction>
+  </Item>
+</Items>
