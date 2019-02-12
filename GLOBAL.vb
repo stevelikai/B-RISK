@@ -49,14 +49,14 @@ Module GLOBAL_Renamed
     Public NHLte(,) As Double
     Public upgrade As Boolean
     Public ventid As Integer
-    Public Const thermalprops As Integer = 1 '1 = wood h/k + Hankalin; 2 = eurocode5 ; 3 = hybrid hankalin switching to EC5 above 600C; 4 = 0.2 constant
+    Public Const thermalprops As Integer = 4 '1 = wood h/k + Hankalin; 2 = eurocode5 ; 3 = hybrid hankalin switching to EC5 above 600C; 4 = 0.2 constant
 
     Public E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'activation energy
     Public A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'pre expontenial factor
     Public n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'reaction order
     Public mf_compinit(0 To 3) As Double  '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'inital mass fraction
     Public char_yield(0 To 3) As Double '1 = cellulose; 2 = hemicellulose; 3 = lignin Char yield
-
+    Public CharYield As Double = 0.35 'used in clt kinetic global equiv model
     Public init_moisturecontent As Double
     Public CLT_instant As Boolean = False
     Public wall_char(,) As Double
