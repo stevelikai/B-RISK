@@ -127,7 +127,7 @@
     <value>The CLT dynamic charring model calculates the depth of char into the wall and ceiling materials and determines the mass of material. This material is treated as additional fuel and the total FLED is adjusted at each timestep based on the depth of charring at that time.
 
 
-Should be used with the post flashover wood crib model. Use only a one-room model. Do not use substrate materials for wall and ceiling lining. Check wall/ceiling thickness is a mutiple of the specified lamella thickness.
+Should be used with the post flashover wood crib model. Use only a one-room model. Do not use substrate materials for wall and ceiling lining. Check wall/ceiling thickness is an exact mutiple of the specified lamella thickness.
 
 </value>
   </data>

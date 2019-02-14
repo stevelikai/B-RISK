@@ -71,6 +71,7 @@ Public Class frmCLT
         TextBox_charyield_cell.Text = char_yield(1)
         TextBox_charyield_hemi.Text = char_yield(2)
         TextBox_charyield_lignin.Text = char_yield(3)
+        ComboBox1_k.SelectedIndex = thermalprops - 1
 
     End Sub
 

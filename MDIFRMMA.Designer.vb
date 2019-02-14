@@ -220,6 +220,7 @@
         Me.mnuRoom = New System.Windows.Forms.ToolStripMenuItem()
         Me.RoomsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SurfaceMaterialsDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MassTimberCLTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WallVentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CeilingVentsNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -469,7 +470,6 @@
         Me.ChartRuntime2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime3 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.MassTimberCLTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainMenu1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -805,6 +805,12 @@
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Name = "SurfaceMaterialsDatabaseToolStripMenuItem"
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Size = New System.Drawing.Size(309, 30)
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Text = "Surface Materials Database"
+        '
+        'MassTimberCLTToolStripMenuItem
+        '
+        Me.MassTimberCLTToolStripMenuItem.Name = "MassTimberCLTToolStripMenuItem"
+        Me.MassTimberCLTToolStripMenuItem.Size = New System.Drawing.Size(309, 30)
+        Me.MassTimberCLTToolStripMenuItem.Text = "Mass timber (CLT)"
         '
         'VentsToolStripMenuItem
         '
@@ -2525,12 +2531,6 @@
         Me.ChartRuntime1.Size = New System.Drawing.Size(442, 228)
         Me.ChartRuntime1.TabIndex = 36
         Me.ChartRuntime1.Visible = False
-        '
-        'MassTimberCLTToolStripMenuItem
-        '
-        Me.MassTimberCLTToolStripMenuItem.Name = "MassTimberCLTToolStripMenuItem"
-        Me.MassTimberCLTToolStripMenuItem.Size = New System.Drawing.Size(309, 30)
-        Me.MassTimberCLTToolStripMenuItem.Text = "Mass timber (CLT)"
         '
         'MDIFrmMain
         '

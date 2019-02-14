@@ -56,6 +56,7 @@ Partial Class frmCLT
         Me.RB_Integral = New System.Windows.Forms.RadioButton()
         Me.RB_Kinetic = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComboBox1_k = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TXT_MoistureContent = New System.Windows.Forms.TextBox()
@@ -88,7 +89,6 @@ Partial Class frmCLT
         Me.TextBox_charyield_hemi = New System.Windows.Forms.TextBox()
         Me.TextBox_charyield_cell = New System.Windows.Forms.TextBox()
         Me.TextBox_charyield_lignin = New System.Windows.Forms.TextBox()
-        Me.ComboBox1_k = New System.Windows.Forms.ComboBox()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numeric_wallareapercent, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numeric_ceilareapercent, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -428,6 +428,16 @@ Partial Class frmCLT
         Me.GroupBox1.TabIndex = 30
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Select wood pyrolysis model"
+        '
+        'ComboBox1_k
+        '
+        Me.ComboBox1_k.FormattingEnabled = True
+        Me.ComboBox1_k.Items.AddRange(New Object() {"Hankalin thermal conductivity", "Eurocode 5 thermal conductivity", "Hybrid", "Constant thermal conductivity (0.2)"})
+        Me.ComboBox1_k.Location = New System.Drawing.Point(221, 494)
+        Me.ComboBox1_k.MaxDropDownItems = 4
+        Me.ComboBox1_k.Name = "ComboBox1_k"
+        Me.ComboBox1_k.Size = New System.Drawing.Size(316, 28)
+        Me.ComboBox1_k.TabIndex = 27
         '
         'GroupBox2
         '
@@ -781,16 +791,6 @@ Partial Class frmCLT
         Me.TextBox_charyield_lignin.Size = New System.Drawing.Size(108, 26)
         Me.TextBox_charyield_lignin.TabIndex = 28
         Me.TextBox_charyield_lignin.Text = "0.40"
-        '
-        'ComboBox1_k
-        '
-        Me.ComboBox1_k.FormattingEnabled = True
-        Me.ComboBox1_k.Items.AddRange(New Object() {"Hankalin thermal conductivity", "Eurocode 5 thermal conductivity", "Hybrid", "Constant thermal conductivity (0.2)"})
-        Me.ComboBox1_k.Location = New System.Drawing.Point(221, 494)
-        Me.ComboBox1_k.MaxDropDownItems = 4
-        Me.ComboBox1_k.Name = "ComboBox1_k"
-        Me.ComboBox1_k.Size = New System.Drawing.Size(316, 28)
-        Me.ComboBox1_k.TabIndex = 27
         '
         'frmCLT
         '

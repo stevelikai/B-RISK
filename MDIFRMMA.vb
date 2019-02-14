@@ -291,6 +291,7 @@ Friend Class MDIFrmMain
                 frmCLT.Panel_integralmodel.Visible = True
                 frmCLT.RB_Integral.Visible = True
                 frmCLT.RB_Kinetic.Visible = True
+                frmCLT.ComboBox1_k.Visible = True
                 ToolStripMenuItem31.Visible = True
                 KineticWoodPyrolysisModelToolStripMenuItem.Visible = True
                 mnuPlotWoodBurningRate.Visible = True
@@ -310,6 +311,7 @@ Friend Class MDIFrmMain
                 frmCLT.RB_dynamic.Checked = True
                 frmCLT.RB_Integral.Visible = False
                 frmCLT.RB_Kinetic.Visible = False
+                frmCLT.ComboBox1_k.Visible = False
                 ToolStripMenuItem31.Visible = False
                 KineticWoodPyrolysisModelToolStripMenuItem.Visible = False
                 mnuPlotWoodBurningRate.Visible = False
@@ -10194,9 +10196,11 @@ errhandler:
         If useCLTmodel = True Then
             frmCLT.optCLTOFF.Checked = False
             frmCLT.optCLTON.Checked = True
+
         Else
             frmCLT.optCLTOFF.Checked = True
             frmCLT.optCLTON.Checked = False
+
         End If
         If IntegralModel = True Then
             frmCLT.RB_Integral.Checked = True
@@ -10206,10 +10210,12 @@ errhandler:
             frmCLT.RB_Kinetic.Checked = True
             frmCLT.panel_kinetic.Visible = True
             frmCLT.Panel_integralmodel.Visible = False
+
         Else
             frmCLT.RB_dynamic.Checked = True
             frmCLT.panel_kinetic.Visible = False
             frmCLT.Panel_integralmodel.Visible = False
+
         End If
 
         frmCLT.numeric_ceilareapercent.Value = CLTceilingpercent
