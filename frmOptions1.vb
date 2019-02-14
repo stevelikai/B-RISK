@@ -2640,7 +2640,7 @@ errorhandler:
         frmCLT.TextBox_charyield_cell.Text = char_yield(1)
         frmCLT.TextBox_charyield_hemi.Text = char_yield(2)
         frmCLT.TextBox_charyield_lignin.Text = char_yield(3)
-
+        frmCLT.ComboBox1_k.SelectedIndex = thermalprops - 1
         Hide()
 
         frmCLT.Show()

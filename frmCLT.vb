@@ -76,6 +76,16 @@ Public Class frmCLT
 
     Private Sub cmdClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdClose.Click
 
+        If ComboBox1_k.SelectedIndex = 0 Then
+            thermalprops = 1
+        ElseIf ComboBox1_k.SelectedIndex = 1 Then
+            thermalprops = 2
+        ElseIf ComboBox1_k.SelectedIndex = 2 Then
+            thermalprops = 3
+        ElseIf ComboBox1_k.SelectedIndex = 3 Then
+            thermalprops = 4
+        End If
+
         If optCLTON.Checked = True Then
             useCLTmodel = True
         Else

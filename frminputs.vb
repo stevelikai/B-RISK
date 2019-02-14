@@ -456,6 +456,7 @@ Public Class frmInputs
                 DFW.WriteElementString("kinetic_hemi_charyield", char_yield(2))
                 DFW.WriteElementString("kinetic_lig_charyield", char_yield(3))
                 DFW.WriteElementString("CLT_moisturecontent", init_moisturecontent)
+                DFW.WriteElementString("thermal_props", thermalprops)
 
                 DFW.WriteEndElement()
 
@@ -1938,7 +1939,10 @@ Public Class frmInputs
                             init_moisturecontent = DFR.ReadElementString()
                             frmCLT.TXT_MoistureContent.Text = init_moisturecontent * 100
                         End If
-
+                        If ModelVersion > CSng(2019.01) Then
+                            thermalprops = DFR.ReadElementString()
+                            frmCLT.ComboBox1_k.SelectedIndex = thermalprops - 1
+                        End If
                         DFR.ReadEndElement() 'clear </postflashover>
 
                         'End If

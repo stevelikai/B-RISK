@@ -469,6 +469,7 @@
         Me.ChartRuntime2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime3 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ChartRuntime1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.MassTimberCLTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainMenu1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -482,10 +483,11 @@
         'MainMenu1
         '
         Me.MainMenu1.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.MainMenu1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MainMenu1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFile, Me.mnuInputs, Me.mnuRoom, Me.VentsToolStripMenuItem, Me.mnuDetection, Me.mnuFireSpec, Me.mnuTenability, Me.mnuFlameSpread, Me.mnuOptions, Me.mnuView, Me.mnuGraphs, Me.mnuSmokeView, Me.mnuHelp, Me.mnuStop1, Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MainMenu1.Location = New System.Drawing.Point(0, 0)
         Me.MainMenu1.Name = "MainMenu1"
-        Me.MainMenu1.Size = New System.Drawing.Size(1249, 24)
+        Me.MainMenu1.Size = New System.Drawing.Size(1249, 33)
         Me.MainMenu1.TabIndex = 5
         '
         'mnuFile
@@ -494,7 +496,7 @@
         Me.mnuFile.Image = Global.BRISK.My.Resources.Resources.Company
         Me.mnuFile.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuFile.Name = "mnuFile"
-        Me.mnuFile.Size = New System.Drawing.Size(53, 20)
+        Me.mnuFile.Size = New System.Drawing.Size(74, 29)
         Me.mnuFile.Text = "File"
         Me.mnuFile.ToolTipText = "File menu"
         '
@@ -502,13 +504,13 @@
         '
         Me.UserModeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NZBCVM2ToolStripMenuItem, Me.RiskSimulatorToolStripMenuItem, Me.TalkToEVACNZToolStripMenuItem})
         Me.UserModeToolStripMenuItem.Name = "UserModeToolStripMenuItem"
-        Me.UserModeToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.UserModeToolStripMenuItem.Size = New System.Drawing.Size(364, 30)
         Me.UserModeToolStripMenuItem.Text = "User Mode"
         '
         'NZBCVM2ToolStripMenuItem
         '
         Me.NZBCVM2ToolStripMenuItem.Name = "NZBCVM2ToolStripMenuItem"
-        Me.NZBCVM2ToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.NZBCVM2ToolStripMenuItem.Size = New System.Drawing.Size(250, 30)
         Me.NZBCVM2ToolStripMenuItem.Text = "NZBC - VM2"
         '
         'RiskSimulatorToolStripMenuItem
@@ -516,135 +518,135 @@
         Me.RiskSimulatorToolStripMenuItem.Checked = True
         Me.RiskSimulatorToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.RiskSimulatorToolStripMenuItem.Name = "RiskSimulatorToolStripMenuItem"
-        Me.RiskSimulatorToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.RiskSimulatorToolStripMenuItem.Size = New System.Drawing.Size(250, 30)
         Me.RiskSimulatorToolStripMenuItem.Text = "Risk Simulator"
         '
         'TalkToEVACNZToolStripMenuItem
         '
         Me.TalkToEVACNZToolStripMenuItem.CheckOnClick = True
         Me.TalkToEVACNZToolStripMenuItem.Name = "TalkToEVACNZToolStripMenuItem"
-        Me.TalkToEVACNZToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.TalkToEVACNZToolStripMenuItem.Size = New System.Drawing.Size(250, 30)
         Me.TalkToEVACNZToolStripMenuItem.Text = "Talk to EvacuatioNZ"
         '
         'mnuNewFile
         '
         Me.mnuNewFile.Name = "mnuNewFile"
         Me.mnuNewFile.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.mnuNewFile.Size = New System.Drawing.Size(251, 22)
+        Me.mnuNewFile.Size = New System.Drawing.Size(364, 30)
         Me.mnuNewFile.Text = "&New"
         '
         'mnuISO9705
         '
         Me.mnuISO9705.Name = "mnuISO9705"
-        Me.mnuISO9705.Size = New System.Drawing.Size(251, 22)
+        Me.mnuISO9705.Size = New System.Drawing.Size(364, 30)
         Me.mnuISO9705.Text = "New ISO9705 Simulation"
         '
         'OpenBaseModelToolStripMenuItem
         '
         Me.OpenBaseModelToolStripMenuItem.Name = "OpenBaseModelToolStripMenuItem"
-        Me.OpenBaseModelToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.OpenBaseModelToolStripMenuItem.Size = New System.Drawing.Size(364, 30)
         Me.OpenBaseModelToolStripMenuItem.Text = "Open Base Model"
         '
         'SaveBaseToolStripMenuItem
         '
         Me.SaveBaseToolStripMenuItem.Name = "SaveBaseToolStripMenuItem"
-        Me.SaveBaseToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.SaveBaseToolStripMenuItem.Size = New System.Drawing.Size(364, 30)
         Me.SaveBaseToolStripMenuItem.Text = "Save Base Model"
         '
         'SaveBaseModelAsAsToolStripMenuItem
         '
         Me.SaveBaseModelAsAsToolStripMenuItem.Name = "SaveBaseModelAsAsToolStripMenuItem"
-        Me.SaveBaseModelAsAsToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.SaveBaseModelAsAsToolStripMenuItem.Size = New System.Drawing.Size(364, 30)
         Me.SaveBaseModelAsAsToolStripMenuItem.Text = "Save Base Model As"
         '
         'LoadIterationToolStripMenuItem
         '
         Me.LoadIterationToolStripMenuItem.Name = "LoadIterationToolStripMenuItem"
-        Me.LoadIterationToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.LoadIterationToolStripMenuItem.Size = New System.Drawing.Size(364, 30)
         Me.LoadIterationToolStripMenuItem.Text = "Load Input*.xml File"
         '
         'mnuSetRiskdataFolder
         '
         Me.mnuSetRiskdataFolder.Name = "mnuSetRiskdataFolder"
-        Me.mnuSetRiskdataFolder.Size = New System.Drawing.Size(251, 22)
+        Me.mnuSetRiskdataFolder.Size = New System.Drawing.Size(364, 30)
         Me.mnuSetRiskdataFolder.Text = "Set Default Parent Riskdata Folder"
         '
         'UtilitiesToolStripMenuItem
         '
         Me.UtilitiesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenBRANZFIREModFileToolStripMenuItem, Me.ChangeFireDatabaseFileToolStripMenuItem, Me.ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem, Me.DevelopmentKeyToolStripMenuItem, Me.EvacuatioNZSettingsToolStripMenuItem, Me.BatchFilesToolStripMenuItem})
         Me.UtilitiesToolStripMenuItem.Name = "UtilitiesToolStripMenuItem"
-        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.UtilitiesToolStripMenuItem.Size = New System.Drawing.Size(364, 30)
         Me.UtilitiesToolStripMenuItem.Text = "Utilities"
         '
         'OpenBRANZFIREModFileToolStripMenuItem
         '
         Me.OpenBRANZFIREModFileToolStripMenuItem.Name = "OpenBRANZFIREModFileToolStripMenuItem"
-        Me.OpenBRANZFIREModFileToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.OpenBRANZFIREModFileToolStripMenuItem.Size = New System.Drawing.Size(459, 30)
         Me.OpenBRANZFIREModFileToolStripMenuItem.Text = "Open BRANZFIRE Mod File"
         Me.OpenBRANZFIREModFileToolStripMenuItem.Visible = False
         '
         'ChangeFireDatabaseFileToolStripMenuItem
         '
         Me.ChangeFireDatabaseFileToolStripMenuItem.Name = "ChangeFireDatabaseFileToolStripMenuItem"
-        Me.ChangeFireDatabaseFileToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.ChangeFireDatabaseFileToolStripMenuItem.Size = New System.Drawing.Size(459, 30)
         Me.ChangeFireDatabaseFileToolStripMenuItem.Text = "Change Fire Database File (fire.mdb)"
         '
         'ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem
         '
         Me.ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem.Name = "ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem"
-        Me.ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem.Size = New System.Drawing.Size(459, 30)
         Me.ChangeMaterialsDatabaseFilethermalmdbToolStripMenuItem.Text = "Change Materials Database File (thermal.mdb)"
         '
         'DevelopmentKeyToolStripMenuItem
         '
         Me.DevelopmentKeyToolStripMenuItem.Name = "DevelopmentKeyToolStripMenuItem"
-        Me.DevelopmentKeyToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.DevelopmentKeyToolStripMenuItem.Size = New System.Drawing.Size(459, 30)
         Me.DevelopmentKeyToolStripMenuItem.Text = "Development Key"
         '
         'EvacuatioNZSettingsToolStripMenuItem
         '
         Me.EvacuatioNZSettingsToolStripMenuItem.Name = "EvacuatioNZSettingsToolStripMenuItem"
-        Me.EvacuatioNZSettingsToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.EvacuatioNZSettingsToolStripMenuItem.Size = New System.Drawing.Size(459, 30)
         Me.EvacuatioNZSettingsToolStripMenuItem.Text = "EvacuatioNZ settings"
         '
         'BatchFilesToolStripMenuItem
         '
         Me.BatchFilesToolStripMenuItem.Name = "BatchFilesToolStripMenuItem"
-        Me.BatchFilesToolStripMenuItem.Size = New System.Drawing.Size(318, 22)
+        Me.BatchFilesToolStripMenuItem.Size = New System.Drawing.Size(459, 30)
         Me.BatchFilesToolStripMenuItem.Text = "Batch Files"
         '
         'mnuExport
         '
         Me.mnuExport.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCSV, Me.mnuExcel, Me.mnuGlassExcel, Me.mnuBREAK1, Me.TempToolStripMenuItem, Me.BoundaryNodeTemperaturesToolStripMenuItem})
         Me.mnuExport.Name = "mnuExport"
-        Me.mnuExport.Size = New System.Drawing.Size(251, 22)
+        Me.mnuExport.Size = New System.Drawing.Size(364, 30)
         Me.mnuExport.Text = "Export"
         '
         'mnuCSV
         '
         Me.mnuCSV.Name = "mnuCSV"
-        Me.mnuCSV.Size = New System.Drawing.Size(271, 22)
+        Me.mnuCSV.Size = New System.Drawing.Size(395, 30)
         Me.mnuCSV.Text = "Export Results to .CSV File "
         Me.mnuCSV.Visible = False
         '
         'mnuExcel
         '
         Me.mnuExcel.Name = "mnuExcel"
-        Me.mnuExcel.Size = New System.Drawing.Size(271, 22)
+        Me.mnuExcel.Size = New System.Drawing.Size(395, 30)
         Me.mnuExcel.Text = "Export Results to Microsoft Excel"
         '
         'mnuGlassExcel
         '
         Me.mnuGlassExcel.Enabled = False
         Me.mnuGlassExcel.Name = "mnuGlassExcel"
-        Me.mnuGlassExcel.Size = New System.Drawing.Size(271, 22)
+        Me.mnuGlassExcel.Size = New System.Drawing.Size(395, 30)
         Me.mnuGlassExcel.Text = "Export Glass Breakage Results to Excel"
         Me.mnuGlassExcel.Visible = False
         '
         'mnuBREAK1
         '
         Me.mnuBREAK1.Name = "mnuBREAK1"
-        Me.mnuBREAK1.Size = New System.Drawing.Size(271, 22)
+        Me.mnuBREAK1.Size = New System.Drawing.Size(395, 30)
         Me.mnuBREAK1.Text = "Create BREAK1 input file"
         Me.mnuBREAK1.Visible = False
         '
@@ -652,7 +654,7 @@
         '
         Me.TempToolStripMenuItem.Enabled = False
         Me.TempToolStripMenuItem.Name = "TempToolStripMenuItem"
-        Me.TempToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.TempToolStripMenuItem.Size = New System.Drawing.Size(395, 30)
         Me.TempToolStripMenuItem.Text = "temp"
         Me.TempToolStripMenuItem.Visible = False
         '
@@ -660,37 +662,37 @@
         '
         Me.BoundaryNodeTemperaturesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpperWallToolStripMenuItem, Me.CeilingToolStripMenuItem2})
         Me.BoundaryNodeTemperaturesToolStripMenuItem.Name = "BoundaryNodeTemperaturesToolStripMenuItem"
-        Me.BoundaryNodeTemperaturesToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.BoundaryNodeTemperaturesToolStripMenuItem.Size = New System.Drawing.Size(395, 30)
         Me.BoundaryNodeTemperaturesToolStripMenuItem.Text = "Boundary node temperatures"
         '
         'UpperWallToolStripMenuItem
         '
         Me.UpperWallToolStripMenuItem.Name = "UpperWallToolStripMenuItem"
-        Me.UpperWallToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.UpperWallToolStripMenuItem.Size = New System.Drawing.Size(178, 30)
         Me.UpperWallToolStripMenuItem.Text = "upper wall"
         '
         'CeilingToolStripMenuItem2
         '
         Me.CeilingToolStripMenuItem2.Name = "CeilingToolStripMenuItem2"
-        Me.CeilingToolStripMenuItem2.Size = New System.Drawing.Size(129, 22)
+        Me.CeilingToolStripMenuItem2.Size = New System.Drawing.Size(178, 30)
         Me.CeilingToolStripMenuItem2.Text = "ceiling"
         '
         '_mnuseparator_1
         '
         Me._mnuseparator_1.Name = "_mnuseparator_1"
-        Me._mnuseparator_1.Size = New System.Drawing.Size(248, 6)
+        Me._mnuseparator_1.Size = New System.Drawing.Size(361, 6)
         '
         'mnuPageSetup
         '
         Me.mnuPageSetup.Name = "mnuPageSetup"
-        Me.mnuPageSetup.Size = New System.Drawing.Size(251, 22)
+        Me.mnuPageSetup.Size = New System.Drawing.Size(364, 30)
         Me.mnuPageSetup.Text = "Page Setup"
         '
         'mnuPrint
         '
         Me.mnuPrint.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPrinter, Me.mnuPrintGraph, Me.mnuTextFile})
         Me.mnuPrint.Name = "mnuPrint"
-        Me.mnuPrint.Size = New System.Drawing.Size(251, 22)
+        Me.mnuPrint.Size = New System.Drawing.Size(364, 30)
         Me.mnuPrint.Text = "&Print"
         Me.mnuPrint.Visible = False
         '
@@ -698,13 +700,13 @@
         '
         Me.mnuPrinter.Name = "mnuPrinter"
         Me.mnuPrinter.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
-        Me.mnuPrinter.Size = New System.Drawing.Size(274, 22)
+        Me.mnuPrinter.Size = New System.Drawing.Size(397, 30)
         Me.mnuPrinter.Text = "Summary of Input and Results"
         '
         'mnuPrintGraph
         '
         Me.mnuPrintGraph.Name = "mnuPrintGraph"
-        Me.mnuPrintGraph.Size = New System.Drawing.Size(274, 22)
+        Me.mnuPrintGraph.Size = New System.Drawing.Size(397, 30)
         Me.mnuPrintGraph.Text = "Print Current Graph"
         Me.mnuPrintGraph.Visible = False
         '
@@ -712,25 +714,25 @@
         '
         Me.mnuTextFile.Enabled = False
         Me.mnuTextFile.Name = "mnuTextFile"
-        Me.mnuTextFile.Size = New System.Drawing.Size(274, 22)
+        Me.mnuTextFile.Size = New System.Drawing.Size(397, 30)
         Me.mnuTextFile.Text = "Print to File"
         Me.mnuTextFile.Visible = False
         '
         '_mnuseparator1_2
         '
         Me._mnuseparator1_2.Name = "_mnuseparator1_2"
-        Me._mnuseparator1_2.Size = New System.Drawing.Size(248, 6)
+        Me._mnuseparator1_2.Size = New System.Drawing.Size(361, 6)
         '
         'mnuExit
         '
         Me.mnuExit.Name = "mnuExit"
-        Me.mnuExit.Size = New System.Drawing.Size(251, 22)
+        Me.mnuExit.Size = New System.Drawing.Size(364, 30)
         Me.mnuExit.Text = "E&xit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(251, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(364, 30)
         Me.ToolStripMenuItem1.Text = "Save Output to XML"
         Me.ToolStripMenuItem1.Visible = False
         '
@@ -738,14 +740,14 @@
         '
         Me.mnuFileOpen.Name = "mnuFileOpen"
         Me.mnuFileOpen.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.mnuFileOpen.Size = New System.Drawing.Size(251, 22)
+        Me.mnuFileOpen.Size = New System.Drawing.Size(364, 30)
         Me.mnuFileOpen.Text = "&Open Existing Model"
         Me.mnuFileOpen.Visible = False
         '
         'mnuSaveModelData
         '
         Me.mnuSaveModelData.Name = "mnuSaveModelData"
-        Me.mnuSaveModelData.Size = New System.Drawing.Size(251, 22)
+        Me.mnuSaveModelData.Size = New System.Drawing.Size(364, 30)
         Me.mnuSaveModelData.Text = "&Save Model"
         Me.mnuSaveModelData.Visible = False
         '
@@ -753,26 +755,26 @@
         '
         Me.mnuBatchFiles.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSelectFolder, Me.mnuRunBatch, Me.mnuUpdateVersionInputFiles})
         Me.mnuBatchFiles.Name = "mnuBatchFiles"
-        Me.mnuBatchFiles.Size = New System.Drawing.Size(251, 22)
+        Me.mnuBatchFiles.Size = New System.Drawing.Size(364, 30)
         Me.mnuBatchFiles.Text = "Batch Files"
         Me.mnuBatchFiles.Visible = False
         '
         'mnuSelectFolder
         '
         Me.mnuSelectFolder.Name = "mnuSelectFolder"
-        Me.mnuSelectFolder.Size = New System.Drawing.Size(252, 22)
+        Me.mnuSelectFolder.Size = New System.Drawing.Size(361, 30)
         Me.mnuSelectFolder.Text = "Select Batch File Folder"
         '
         'mnuRunBatch
         '
         Me.mnuRunBatch.Name = "mnuRunBatch"
-        Me.mnuRunBatch.Size = New System.Drawing.Size(252, 22)
+        Me.mnuRunBatch.Size = New System.Drawing.Size(361, 30)
         Me.mnuRunBatch.Text = "Run Batch Files"
         '
         'mnuUpdateVersionInputFiles
         '
         Me.mnuUpdateVersionInputFiles.Name = "mnuUpdateVersionInputFiles"
-        Me.mnuUpdateVersionInputFiles.Size = New System.Drawing.Size(252, 22)
+        Me.mnuUpdateVersionInputFiles.Size = New System.Drawing.Size(361, 30)
         Me.mnuUpdateVersionInputFiles.Text = "Rewrite Input Files in Batch Folder"
         Me.mnuUpdateVersionInputFiles.Visible = False
         '
@@ -780,28 +782,28 @@
         '
         Me.mnuInputs.Image = Global.BRISK.My.Resources.Resources.pic1338490349_tv
         Me.mnuInputs.Name = "mnuInputs"
-        Me.mnuInputs.Size = New System.Drawing.Size(78, 20)
+        Me.mnuInputs.Size = New System.Drawing.Size(112, 29)
         Me.mnuInputs.Text = "Console"
         '
         'mnuRoom
         '
-        Me.mnuRoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RoomsToolStripMenuItem, Me.SurfaceMaterialsDatabaseToolStripMenuItem})
+        Me.mnuRoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RoomsToolStripMenuItem, Me.SurfaceMaterialsDatabaseToolStripMenuItem, Me.MassTimberCLTToolStripMenuItem})
         Me.mnuRoom.Image = Global.BRISK.My.Resources.Resources.pic17
         Me.mnuRoom.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuRoom.Name = "mnuRoom"
-        Me.mnuRoom.Size = New System.Drawing.Size(106, 20)
+        Me.mnuRoom.Size = New System.Drawing.Size(156, 29)
         Me.mnuRoom.Text = "R&oom Design"
         '
         'RoomsToolStripMenuItem
         '
         Me.RoomsToolStripMenuItem.Name = "RoomsToolStripMenuItem"
-        Me.RoomsToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.RoomsToolStripMenuItem.Size = New System.Drawing.Size(309, 30)
         Me.RoomsToolStripMenuItem.Text = "Rooms"
         '
         'SurfaceMaterialsDatabaseToolStripMenuItem
         '
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Name = "SurfaceMaterialsDatabaseToolStripMenuItem"
-        Me.SurfaceMaterialsDatabaseToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.SurfaceMaterialsDatabaseToolStripMenuItem.Size = New System.Drawing.Size(309, 30)
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Text = "Surface Materials Database"
         '
         'VentsToolStripMenuItem
@@ -809,38 +811,38 @@
         Me.VentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WallVentsToolStripMenuItem, Me.CeilingVentsNewToolStripMenuItem, Me.MechanicalFansToolStripMenuItem, Me.ToolStripMenuItem2, Me.CeilingVentsToolStripMenuItem})
         Me.VentsToolStripMenuItem.Image = Global.BRISK.My.Resources.Resources.picExit
         Me.VentsToolStripMenuItem.Name = "VentsToolStripMenuItem"
-        Me.VentsToolStripMenuItem.Size = New System.Drawing.Size(91, 20)
+        Me.VentsToolStripMenuItem.Size = New System.Drawing.Size(131, 29)
         Me.VentsToolStripMenuItem.Text = "Ventilation"
         '
         'WallVentsToolStripMenuItem
         '
         Me.WallVentsToolStripMenuItem.Name = "WallVentsToolStripMenuItem"
-        Me.WallVentsToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.WallVentsToolStripMenuItem.Size = New System.Drawing.Size(264, 30)
         Me.WallVentsToolStripMenuItem.Text = "Wall Vents"
         '
         'CeilingVentsNewToolStripMenuItem
         '
         Me.CeilingVentsNewToolStripMenuItem.Name = "CeilingVentsNewToolStripMenuItem"
-        Me.CeilingVentsNewToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.CeilingVentsNewToolStripMenuItem.Size = New System.Drawing.Size(264, 30)
         Me.CeilingVentsNewToolStripMenuItem.Text = "Ceiling Vents"
         '
         'MechanicalFansToolStripMenuItem
         '
         Me.MechanicalFansToolStripMenuItem.Name = "MechanicalFansToolStripMenuItem"
-        Me.MechanicalFansToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.MechanicalFansToolStripMenuItem.Size = New System.Drawing.Size(264, 30)
         Me.MechanicalFansToolStripMenuItem.Text = "Mechanical Fans (old)"
         Me.MechanicalFansToolStripMenuItem.Visible = False
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(190, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(264, 30)
         Me.ToolStripMenuItem2.Text = "Mech Ventilation"
         '
         'CeilingVentsToolStripMenuItem
         '
         Me.CeilingVentsToolStripMenuItem.Name = "CeilingVentsToolStripMenuItem"
-        Me.CeilingVentsToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.CeilingVentsToolStripMenuItem.Size = New System.Drawing.Size(264, 30)
         Me.CeilingVentsToolStripMenuItem.Text = "Ceiling Vents"
         Me.CeilingVentsToolStripMenuItem.Visible = False
         '
@@ -849,26 +851,26 @@
         Me.mnuDetection.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SprinklersHeatDetectorsToolStripMenuItem, Me.SmokeDetectorsToolStripMenuItem, Me.SmokeDetectorsnewToolStripMenuItem})
         Me.mnuDetection.Image = Global.BRISK.My.Resources.Resources.sprinkler
         Me.mnuDetection.Name = "mnuDetection"
-        Me.mnuDetection.Size = New System.Drawing.Size(75, 20)
+        Me.mnuDetection.Size = New System.Drawing.Size(110, 29)
         Me.mnuDetection.Text = "Sensors"
         '
         'SprinklersHeatDetectorsToolStripMenuItem
         '
         Me.SprinklersHeatDetectorsToolStripMenuItem.Name = "SprinklersHeatDetectorsToolStripMenuItem"
-        Me.SprinklersHeatDetectorsToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.SprinklersHeatDetectorsToolStripMenuItem.Size = New System.Drawing.Size(308, 30)
         Me.SprinklersHeatDetectorsToolStripMenuItem.Text = "Sprinklers / Heat Detectors"
         '
         'SmokeDetectorsToolStripMenuItem
         '
         Me.SmokeDetectorsToolStripMenuItem.Name = "SmokeDetectorsToolStripMenuItem"
-        Me.SmokeDetectorsToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.SmokeDetectorsToolStripMenuItem.Size = New System.Drawing.Size(308, 30)
         Me.SmokeDetectorsToolStripMenuItem.Text = "Smoke Detectors (old)"
         Me.SmokeDetectorsToolStripMenuItem.Visible = False
         '
         'SmokeDetectorsnewToolStripMenuItem
         '
         Me.SmokeDetectorsnewToolStripMenuItem.Name = "SmokeDetectorsnewToolStripMenuItem"
-        Me.SmokeDetectorsnewToolStripMenuItem.Size = New System.Drawing.Size(214, 22)
+        Me.SmokeDetectorsnewToolStripMenuItem.Size = New System.Drawing.Size(308, 30)
         Me.SmokeDetectorsnewToolStripMenuItem.Text = "Smoke Detectors"
         '
         'mnuFireSpec
@@ -877,31 +879,31 @@
         Me.mnuFireSpec.Image = Global.BRISK.My.Resources.Resources.pic31
         Me.mnuFireSpec.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuFireSpec.Name = "mnuFireSpec"
-        Me.mnuFireSpec.Size = New System.Drawing.Size(125, 20)
+        Me.mnuFireSpec.Size = New System.Drawing.Size(181, 29)
         Me.mnuFireSpec.Text = "Fire Specification"
         '
         'SelectFireToolStripMenuItem
         '
         Me.SelectFireToolStripMenuItem.Name = "SelectFireToolStripMenuItem"
-        Me.SelectFireToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.SelectFireToolStripMenuItem.Size = New System.Drawing.Size(373, 30)
         Me.SelectFireToolStripMenuItem.Text = "Select Fire"
         '
         'AdditionalCombustionParametersToolStripMenuItem
         '
         Me.AdditionalCombustionParametersToolStripMenuItem.Name = "AdditionalCombustionParametersToolStripMenuItem"
-        Me.AdditionalCombustionParametersToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.AdditionalCombustionParametersToolStripMenuItem.Size = New System.Drawing.Size(373, 30)
         Me.AdditionalCombustionParametersToolStripMenuItem.Text = "Additional Combustion Parameters"
         '
         'COSootToolStripMenuItem
         '
         Me.COSootToolStripMenuItem.Name = "COSootToolStripMenuItem"
-        Me.COSootToolStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.COSootToolStripMenuItem.Size = New System.Drawing.Size(373, 30)
         Me.COSootToolStripMenuItem.Text = "CO/Soot "
         '
         'FireObjectDatabaseToolStripMenuItem1
         '
         Me.FireObjectDatabaseToolStripMenuItem1.Name = "FireObjectDatabaseToolStripMenuItem1"
-        Me.FireObjectDatabaseToolStripMenuItem1.Size = New System.Drawing.Size(260, 22)
+        Me.FireObjectDatabaseToolStripMenuItem1.Size = New System.Drawing.Size(373, 30)
         Me.FireObjectDatabaseToolStripMenuItem1.Text = "Fire Object Database"
         '
         'mnuTenability
@@ -909,19 +911,19 @@
         Me.mnuTenability.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TenabilityParametersToolStripMenuItem, Me.FEDEgressPathToolStripMenuItem})
         Me.mnuTenability.Image = Global.BRISK.My.Resources.Resources.Radiation
         Me.mnuTenability.Name = "mnuTenability"
-        Me.mnuTenability.Size = New System.Drawing.Size(86, 20)
+        Me.mnuTenability.Size = New System.Drawing.Size(121, 29)
         Me.mnuTenability.Text = "Tenability"
         '
         'TenabilityParametersToolStripMenuItem
         '
         Me.TenabilityParametersToolStripMenuItem.Name = "TenabilityParametersToolStripMenuItem"
-        Me.TenabilityParametersToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.TenabilityParametersToolStripMenuItem.Size = New System.Drawing.Size(263, 30)
         Me.TenabilityParametersToolStripMenuItem.Text = "Tenability parameters"
         '
         'FEDEgressPathToolStripMenuItem
         '
         Me.FEDEgressPathToolStripMenuItem.Name = "FEDEgressPathToolStripMenuItem"
-        Me.FEDEgressPathToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.FEDEgressPathToolStripMenuItem.Size = New System.Drawing.Size(263, 30)
         Me.FEDEgressPathToolStripMenuItem.Text = "FED egress path"
         '
         'mnuFlameSpread
@@ -929,19 +931,19 @@
         Me.mnuFlameSpread.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetingsToolStripMenuItem, Me.MaterialConeFileToolStripMenuItem})
         Me.mnuFlameSpread.Image = Global.BRISK.My.Resources.Resources.pic1338490003_55
         Me.mnuFlameSpread.Name = "mnuFlameSpread"
-        Me.mnuFlameSpread.Size = New System.Drawing.Size(106, 20)
+        Me.mnuFlameSpread.Size = New System.Drawing.Size(156, 29)
         Me.mnuFlameSpread.Text = "Flame Spread"
         '
         'SetingsToolStripMenuItem
         '
         Me.SetingsToolStripMenuItem.Name = "SetingsToolStripMenuItem"
-        Me.SetingsToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.SetingsToolStripMenuItem.Size = New System.Drawing.Size(273, 30)
         Me.SetingsToolStripMenuItem.Text = "Flame Spread Settings"
         '
         'MaterialConeFileToolStripMenuItem
         '
         Me.MaterialConeFileToolStripMenuItem.Name = "MaterialConeFileToolStripMenuItem"
-        Me.MaterialConeFileToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.MaterialConeFileToolStripMenuItem.Size = New System.Drawing.Size(273, 30)
         Me.MaterialConeFileToolStripMenuItem.Text = "Material Cone File"
         '
         'mnuOptions
@@ -950,25 +952,25 @@
         Me.mnuOptions.Image = Global.BRISK.My.Resources.Resources.pic73
         Me.mnuOptions.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuOptions.Name = "mnuOptions"
-        Me.mnuOptions.Size = New System.Drawing.Size(105, 20)
+        Me.mnuOptions.Size = New System.Drawing.Size(153, 29)
         Me.mnuOptions.Text = "Misc Settings"
         '
         'mnuCreateConeFile
         '
         Me.mnuCreateConeFile.Name = "mnuCreateConeFile"
-        Me.mnuCreateConeFile.Size = New System.Drawing.Size(233, 22)
+        Me.mnuCreateConeFile.Size = New System.Drawing.Size(333, 30)
         Me.mnuCreateConeFile.Text = "Create Material Cone Data File"
         Me.mnuCreateConeFile.Visible = False
         '
         'mnuseparator4
         '
         Me.mnuseparator4.Name = "mnuseparator4"
-        Me.mnuseparator4.Size = New System.Drawing.Size(230, 6)
+        Me.mnuseparator4.Size = New System.Drawing.Size(330, 6)
         '
         'mnuPrintout
         '
         Me.mnuPrintout.Name = "mnuPrintout"
-        Me.mnuPrintout.Size = New System.Drawing.Size(233, 22)
+        Me.mnuPrintout.Size = New System.Drawing.Size(333, 30)
         Me.mnuPrintout.Text = "Printout Options"
         Me.mnuPrintout.Visible = False
         '
@@ -976,7 +978,7 @@
         '
         Me.mnuRunTimeGraphs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuGraphsOff, Me.mnuGraphsOn_HRR})
         Me.mnuRunTimeGraphs.Name = "mnuRunTimeGraphs"
-        Me.mnuRunTimeGraphs.Size = New System.Drawing.Size(233, 22)
+        Me.mnuRunTimeGraphs.Size = New System.Drawing.Size(333, 30)
         Me.mnuRunTimeGraphs.Text = "Run Time Graphs"
         Me.mnuRunTimeGraphs.Visible = False
         '
@@ -986,14 +988,14 @@
         Me.mnuGraphsOff.CheckOnClick = True
         Me.mnuGraphsOff.CheckState = System.Windows.Forms.CheckState.Checked
         Me.mnuGraphsOff.Name = "mnuGraphsOff"
-        Me.mnuGraphsOff.Size = New System.Drawing.Size(170, 22)
+        Me.mnuGraphsOff.Size = New System.Drawing.Size(241, 30)
         Me.mnuGraphsOff.Text = "Off"
         '
         'mnuGraphsOn_HRR
         '
         Me.mnuGraphsOn_HRR.CheckOnClick = True
         Me.mnuGraphsOn_HRR.Name = "mnuGraphsOn_HRR"
-        Me.mnuGraphsOn_HRR.Size = New System.Drawing.Size(170, 22)
+        Me.mnuGraphsOn_HRR.Size = New System.Drawing.Size(241, 30)
         Me.mnuGraphsOn_HRR.Text = "Heat Release Rate "
         '
         'mnuGraphsVisible
@@ -1001,50 +1003,50 @@
         Me.mnuGraphsVisible.Checked = True
         Me.mnuGraphsVisible.CheckState = System.Windows.Forms.CheckState.Checked
         Me.mnuGraphsVisible.Name = "mnuGraphsVisible"
-        Me.mnuGraphsVisible.Size = New System.Drawing.Size(233, 22)
+        Me.mnuGraphsVisible.Size = New System.Drawing.Size(333, 30)
         Me.mnuGraphsVisible.Text = "Graphs Visible"
         Me.mnuGraphsVisible.Visible = False
         '
         '_mnuseparator5_1
         '
         Me._mnuseparator5_1.Name = "_mnuseparator5_1"
-        Me._mnuseparator5_1.Size = New System.Drawing.Size(230, 6)
+        Me._mnuseparator5_1.Size = New System.Drawing.Size(330, 6)
         '
         'mnuSimulation
         '
         Me.mnuSimulation.Name = "mnuSimulation"
-        Me.mnuSimulation.Size = New System.Drawing.Size(233, 22)
+        Me.mnuSimulation.Size = New System.Drawing.Size(333, 30)
         Me.mnuSimulation.Text = "Describe Project"
         '
         'mnuDmpFile
         '
         Me.mnuDmpFile.Name = "mnuDmpFile"
-        Me.mnuDmpFile.Size = New System.Drawing.Size(233, 22)
+        Me.mnuDmpFile.Size = New System.Drawing.Size(333, 30)
         Me.mnuDmpFile.Text = "Dump File"
         Me.mnuDmpFile.Visible = False
         '
         'SolversToolStripMenuItem
         '
         Me.SolversToolStripMenuItem.Name = "SolversToolStripMenuItem"
-        Me.SolversToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.SolversToolStripMenuItem.Size = New System.Drawing.Size(333, 30)
         Me.SolversToolStripMenuItem.Text = "Solvers"
         '
         'AmbientConditionsToolStripMenuItem
         '
         Me.AmbientConditionsToolStripMenuItem.Name = "AmbientConditionsToolStripMenuItem"
-        Me.AmbientConditionsToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.AmbientConditionsToolStripMenuItem.Size = New System.Drawing.Size(333, 30)
         Me.AmbientConditionsToolStripMenuItem.Text = "Ambient Conditions"
         '
         'PostflashoverBehaviourToolStripMenuItem
         '
         Me.PostflashoverBehaviourToolStripMenuItem.Name = "PostflashoverBehaviourToolStripMenuItem"
-        Me.PostflashoverBehaviourToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.PostflashoverBehaviourToolStripMenuItem.Size = New System.Drawing.Size(333, 30)
         Me.PostflashoverBehaviourToolStripMenuItem.Text = "Postflashover Behaviour"
         '
         'ModelPhysicsToolStripMenuItem
         '
         Me.ModelPhysicsToolStripMenuItem.Name = "ModelPhysicsToolStripMenuItem"
-        Me.ModelPhysicsToolStripMenuItem.Size = New System.Drawing.Size(233, 22)
+        Me.ModelPhysicsToolStripMenuItem.Size = New System.Drawing.Size(333, 30)
         Me.ModelPhysicsToolStripMenuItem.Text = "Model Physics"
         '
         'mnuView
@@ -1053,37 +1055,37 @@
         Me.mnuView.Image = Global.BRISK.My.Resources.Resources.View
         Me.mnuView.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuView.Name = "mnuView"
-        Me.mnuView.Size = New System.Drawing.Size(60, 20)
+        Me.mnuView.Size = New System.Drawing.Size(85, 29)
         Me.mnuView.Text = "&View"
         '
         'mnuViewInput
         '
         Me.mnuViewInput.Name = "mnuViewInput"
-        Me.mnuViewInput.Size = New System.Drawing.Size(220, 22)
+        Me.mnuViewInput.Size = New System.Drawing.Size(315, 30)
         Me.mnuViewInput.Text = "View Input"
         '
         'mnuViewRTB
         '
         Me.mnuViewRTB.Name = "mnuViewRTB"
-        Me.mnuViewRTB.Size = New System.Drawing.Size(220, 22)
+        Me.mnuViewRTB.Size = New System.Drawing.Size(315, 30)
         Me.mnuViewRTB.Text = "View Results"
         '
         'mnuView_CVent
         '
         Me.mnuView_CVent.Name = "mnuView_CVent"
-        Me.mnuView_CVent.Size = New System.Drawing.Size(220, 22)
+        Me.mnuView_CVent.Size = New System.Drawing.Size(315, 30)
         Me.mnuView_CVent.Text = "View Ceiling Vent Flow Data"
         '
         'mnuWVent
         '
         Me.mnuWVent.Name = "mnuWVent"
-        Me.mnuWVent.Size = New System.Drawing.Size(220, 22)
+        Me.mnuWVent.Size = New System.Drawing.Size(315, 30)
         Me.mnuWVent.Text = "View Wall Vent Flow Data"
         '
         'mnuViewEndPoints
         '
         Me.mnuViewEndPoints.Name = "mnuViewEndPoints"
-        Me.mnuViewEndPoints.Size = New System.Drawing.Size(220, 22)
+        Me.mnuViewEndPoints.Size = New System.Drawing.Size(315, 30)
         Me.mnuViewEndPoints.Text = "View End-Points "
         Me.mnuViewEndPoints.Visible = False
         '
@@ -1093,250 +1095,250 @@
         Me.mnuGraphs.Image = Global.BRISK.My.Resources.Resources.pic11
         Me.mnuGraphs.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuGraphs.Name = "mnuGraphs"
-        Me.mnuGraphs.Size = New System.Drawing.Size(131, 20)
+        Me.mnuGraphs.Size = New System.Drawing.Size(193, 29)
         Me.mnuGraphs.Text = "Single Run Graphs"
         '
         'mnuMultiGraphs
         '
         Me.mnuMultiGraphs.Name = "mnuMultiGraphs"
-        Me.mnuMultiGraphs.Size = New System.Drawing.Size(272, 22)
+        Me.mnuMultiGraphs.Size = New System.Drawing.Size(387, 30)
         Me.mnuMultiGraphs.Text = "Show Multiple Graphs"
         Me.mnuMultiGraphs.Visible = False
         '
         'mnuLayerHeight
         '
         Me.mnuLayerHeight.Name = "mnuLayerHeight"
-        Me.mnuLayerHeight.Size = New System.Drawing.Size(272, 22)
+        Me.mnuLayerHeight.Size = New System.Drawing.Size(387, 30)
         Me.mnuLayerHeight.Text = "Layer Height"
         '
         'mnuGasTemperatures
         '
         Me.mnuGasTemperatures.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuLayerTemp, Me.mnuGraphLowerLayerTemp, Me.mnuCeilingJetTemp, Me.mnuMaxCJettemp})
         Me.mnuGasTemperatures.Name = "mnuGasTemperatures"
-        Me.mnuGasTemperatures.Size = New System.Drawing.Size(272, 22)
+        Me.mnuGasTemperatures.Size = New System.Drawing.Size(387, 30)
         Me.mnuGasTemperatures.Text = "Layer Temperatures"
         '
         'mnuLayerTemp
         '
         Me.mnuLayerTemp.Name = "mnuLayerTemp"
-        Me.mnuLayerTemp.Size = New System.Drawing.Size(212, 22)
+        Me.mnuLayerTemp.Size = New System.Drawing.Size(299, 30)
         Me.mnuLayerTemp.Text = "Upper Layer"
         '
         'mnuGraphLowerLayerTemp
         '
         Me.mnuGraphLowerLayerTemp.Name = "mnuGraphLowerLayerTemp"
-        Me.mnuGraphLowerLayerTemp.Size = New System.Drawing.Size(212, 22)
+        Me.mnuGraphLowerLayerTemp.Size = New System.Drawing.Size(299, 30)
         Me.mnuGraphLowerLayerTemp.Text = "Lower Layer"
         '
         'mnuCeilingJetTemp
         '
         Me.mnuCeilingJetTemp.Name = "mnuCeilingJetTemp"
-        Me.mnuCeilingJetTemp.Size = New System.Drawing.Size(212, 22)
+        Me.mnuCeilingJetTemp.Size = New System.Drawing.Size(299, 30)
         Me.mnuCeilingJetTemp.Text = "Ceiling Jet at Link Position"
         Me.mnuCeilingJetTemp.Visible = False
         '
         'mnuMaxCJettemp
         '
         Me.mnuMaxCJettemp.Name = "mnuMaxCJettemp"
-        Me.mnuMaxCJettemp.Size = New System.Drawing.Size(212, 22)
+        Me.mnuMaxCJettemp.Size = New System.Drawing.Size(299, 30)
         Me.mnuMaxCJettemp.Text = "Maximum Ceiling Jet"
         Me.mnuMaxCJettemp.Visible = False
         '
         'mnuHeat
         '
         Me.mnuHeat.Name = "mnuHeat"
-        Me.mnuHeat.Size = New System.Drawing.Size(272, 22)
+        Me.mnuHeat.Size = New System.Drawing.Size(387, 30)
         Me.mnuHeat.Text = "Heat Release Rate"
         '
         'mnuMassLossGraph
         '
         Me.mnuMassLossGraph.Name = "mnuMassLossGraph"
-        Me.mnuMassLossGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuMassLossGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuMassLossGraph.Text = "Mass Loss Rate"
         '
         'mnuMassLeft
         '
         Me.mnuMassLeft.Name = "mnuMassLeft"
-        Me.mnuMassLeft.Size = New System.Drawing.Size(272, 22)
+        Me.mnuMassLeft.Size = New System.Drawing.Size(387, 30)
         Me.mnuMassLeft.Text = "Mass Loss Total"
         '
         'mnuPlumeGraph
         '
         Me.mnuPlumeGraph.Name = "mnuPlumeGraph"
-        Me.mnuPlumeGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuPlumeGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuPlumeGraph.Text = "Plume Flow"
         '
         'mnuWallFlow
         '
         Me.mnuWallFlow.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuwallupper, Me.mnuwalllower})
         Me.mnuWallFlow.Name = "mnuWallFlow"
-        Me.mnuWallFlow.Size = New System.Drawing.Size(272, 22)
+        Me.mnuWallFlow.Size = New System.Drawing.Size(387, 30)
         Me.mnuWallFlow.Text = "Wall Convection Flow"
         Me.mnuWallFlow.Visible = False
         '
         'mnuwallupper
         '
         Me.mnuwallupper.Name = "mnuwallupper"
-        Me.mnuwallupper.Size = New System.Drawing.Size(151, 22)
+        Me.mnuwallupper.Size = New System.Drawing.Size(213, 30)
         Me.mnuwallupper.Text = "to Upper Layer"
         '
         'mnuwalllower
         '
         Me.mnuwalllower.Name = "mnuwalllower"
-        Me.mnuwalllower.Size = New System.Drawing.Size(151, 22)
+        Me.mnuwalllower.Size = New System.Drawing.Size(213, 30)
         Me.mnuwalllower.Text = "to Lower Layer"
         '
         'mnuVentFlowGraph
         '
         Me.mnuVentFlowGraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFlowtoLower, Me.mnuFlowtoUpper, Me.mnuFlowOut})
         Me.mnuVentFlowGraph.Name = "mnuVentFlowGraph"
-        Me.mnuVentFlowGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuVentFlowGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuVentFlowGraph.Text = "Vent Flow"
         Me.mnuVentFlowGraph.Visible = False
         '
         'mnuFlowtoLower
         '
         Me.mnuFlowtoLower.Name = "mnuFlowtoLower"
-        Me.mnuFlowtoLower.Size = New System.Drawing.Size(231, 22)
+        Me.mnuFlowtoLower.Size = New System.Drawing.Size(334, 30)
         Me.mnuFlowtoLower.Text = "Net Mass Flow to Lower Layer"
         '
         'mnuFlowtoUpper
         '
         Me.mnuFlowtoUpper.Name = "mnuFlowtoUpper"
-        Me.mnuFlowtoUpper.Size = New System.Drawing.Size(231, 22)
+        Me.mnuFlowtoUpper.Size = New System.Drawing.Size(334, 30)
         Me.mnuFlowtoUpper.Text = "Net Mass Flow to Upper Layer"
         '
         'mnuFlowOut
         '
         Me.mnuFlowOut.Name = "mnuFlowOut"
-        Me.mnuFlowOut.Size = New System.Drawing.Size(231, 22)
+        Me.mnuFlowOut.Size = New System.Drawing.Size(334, 30)
         Me.mnuFlowOut.Text = "Volume Flow to Outside"
         '
         'mnuSpecies
         '
         Me.mnuSpecies.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuOxygenGraph, Me.mnuCO2Graph, Me.mnuCOGraph, Me.mnuHCNgraph, Me.mnuH2OGraph, Me.mnuOD, Me.mnuExtinction, Me.mnuUnburnedFuel})
         Me.mnuSpecies.Name = "mnuSpecies"
-        Me.mnuSpecies.Size = New System.Drawing.Size(272, 22)
+        Me.mnuSpecies.Size = New System.Drawing.Size(387, 30)
         Me.mnuSpecies.Text = "Species Concentrations"
         '
         'mnuOxygenGraph
         '
         Me.mnuOxygenGraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuO2Upper, Me.mnuO2Lower})
         Me.mnuOxygenGraph.Name = "mnuOxygenGraph"
-        Me.mnuOxygenGraph.Size = New System.Drawing.Size(187, 22)
+        Me.mnuOxygenGraph.Size = New System.Drawing.Size(261, 30)
         Me.mnuOxygenGraph.Text = "Oxygen %"
         '
         'mnuO2Upper
         '
         Me.mnuO2Upper.Name = "mnuO2Upper"
-        Me.mnuO2Upper.Size = New System.Drawing.Size(137, 22)
+        Me.mnuO2Upper.Size = New System.Drawing.Size(191, 30)
         Me.mnuO2Upper.Text = "Upper Layer"
         '
         'mnuO2Lower
         '
         Me.mnuO2Lower.Name = "mnuO2Lower"
-        Me.mnuO2Lower.Size = New System.Drawing.Size(137, 22)
+        Me.mnuO2Lower.Size = New System.Drawing.Size(191, 30)
         Me.mnuO2Lower.Text = "Lower Layer"
         '
         'mnuCO2Graph
         '
         Me.mnuCO2Graph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCO2Upper, Me.mnuCO2Lower})
         Me.mnuCO2Graph.Name = "mnuCO2Graph"
-        Me.mnuCO2Graph.Size = New System.Drawing.Size(187, 22)
+        Me.mnuCO2Graph.Size = New System.Drawing.Size(261, 30)
         Me.mnuCO2Graph.Text = "CO2 %"
         '
         'mnuCO2Upper
         '
         Me.mnuCO2Upper.Name = "mnuCO2Upper"
-        Me.mnuCO2Upper.Size = New System.Drawing.Size(137, 22)
+        Me.mnuCO2Upper.Size = New System.Drawing.Size(191, 30)
         Me.mnuCO2Upper.Text = "Upper Layer"
         '
         'mnuCO2Lower
         '
         Me.mnuCO2Lower.Name = "mnuCO2Lower"
-        Me.mnuCO2Lower.Size = New System.Drawing.Size(137, 22)
+        Me.mnuCO2Lower.Size = New System.Drawing.Size(191, 30)
         Me.mnuCO2Lower.Text = "Lower Layer"
         '
         'mnuCOGraph
         '
         Me.mnuCOGraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCOUpper, Me.mnuCOLower})
         Me.mnuCOGraph.Name = "mnuCOGraph"
-        Me.mnuCOGraph.Size = New System.Drawing.Size(187, 22)
+        Me.mnuCOGraph.Size = New System.Drawing.Size(261, 30)
         Me.mnuCOGraph.Text = "CO (ppm)"
         '
         'mnuCOUpper
         '
         Me.mnuCOUpper.Name = "mnuCOUpper"
-        Me.mnuCOUpper.Size = New System.Drawing.Size(137, 22)
+        Me.mnuCOUpper.Size = New System.Drawing.Size(191, 30)
         Me.mnuCOUpper.Text = "Upper Layer"
         '
         'mnuCOLower
         '
         Me.mnuCOLower.Name = "mnuCOLower"
-        Me.mnuCOLower.Size = New System.Drawing.Size(137, 22)
+        Me.mnuCOLower.Size = New System.Drawing.Size(191, 30)
         Me.mnuCOLower.Text = "Lower Layer"
         '
         'mnuHCNgraph
         '
         Me.mnuHCNgraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuHCNupper, Me.mnuHCNlower})
         Me.mnuHCNgraph.Name = "mnuHCNgraph"
-        Me.mnuHCNgraph.Size = New System.Drawing.Size(187, 22)
+        Me.mnuHCNgraph.Size = New System.Drawing.Size(261, 30)
         Me.mnuHCNgraph.Text = "HCN (ppm)"
         '
         'mnuHCNupper
         '
         Me.mnuHCNupper.Name = "mnuHCNupper"
-        Me.mnuHCNupper.Size = New System.Drawing.Size(137, 22)
+        Me.mnuHCNupper.Size = New System.Drawing.Size(191, 30)
         Me.mnuHCNupper.Text = "Upper Layer"
         '
         'mnuHCNlower
         '
         Me.mnuHCNlower.Name = "mnuHCNlower"
-        Me.mnuHCNlower.Size = New System.Drawing.Size(137, 22)
+        Me.mnuHCNlower.Size = New System.Drawing.Size(191, 30)
         Me.mnuHCNlower.Text = "Lower Layer"
         '
         'mnuH2OGraph
         '
         Me.mnuH2OGraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuH2OUpper, Me.mnuH2OLower})
         Me.mnuH2OGraph.Name = "mnuH2OGraph"
-        Me.mnuH2OGraph.Size = New System.Drawing.Size(187, 22)
+        Me.mnuH2OGraph.Size = New System.Drawing.Size(261, 30)
         Me.mnuH2OGraph.Text = "H2O %"
         '
         'mnuH2OUpper
         '
         Me.mnuH2OUpper.Name = "mnuH2OUpper"
-        Me.mnuH2OUpper.Size = New System.Drawing.Size(137, 22)
+        Me.mnuH2OUpper.Size = New System.Drawing.Size(191, 30)
         Me.mnuH2OUpper.Text = "Upper Layer"
         '
         'mnuH2OLower
         '
         Me.mnuH2OLower.Name = "mnuH2OLower"
-        Me.mnuH2OLower.Size = New System.Drawing.Size(137, 22)
+        Me.mnuH2OLower.Size = New System.Drawing.Size(191, 30)
         Me.mnuH2OLower.Text = "Lower Layer"
         '
         'mnuOD
         '
         Me.mnuOD.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuODupper, Me.mnuODlower, Me.mnuODcjet})
         Me.mnuOD.Name = "mnuOD"
-        Me.mnuOD.Size = New System.Drawing.Size(187, 22)
+        Me.mnuOD.Size = New System.Drawing.Size(261, 30)
         Me.mnuOD.Text = "Optical Density"
         '
         'mnuODupper
         '
         Me.mnuODupper.Name = "mnuODupper"
-        Me.mnuODupper.Size = New System.Drawing.Size(223, 22)
+        Me.mnuODupper.Size = New System.Drawing.Size(318, 30)
         Me.mnuODupper.Text = "Upper Layer"
         '
         'mnuODlower
         '
         Me.mnuODlower.Name = "mnuODlower"
-        Me.mnuODlower.Size = New System.Drawing.Size(223, 22)
+        Me.mnuODlower.Size = New System.Drawing.Size(318, 30)
         Me.mnuODlower.Text = "Lower Layer"
         '
         'mnuODcjet
         '
         Me.mnuODcjet.Name = "mnuODcjet"
-        Me.mnuODcjet.Size = New System.Drawing.Size(223, 22)
+        Me.mnuODcjet.Size = New System.Drawing.Size(318, 30)
         Me.mnuODcjet.Text = "Ceiling Jet (Smoke Detector)"
         Me.mnuODcjet.Visible = False
         '
@@ -1344,25 +1346,25 @@
         '
         Me.mnuExtinction.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuEXTu, Me.mnuExtl, Me.mnuExtcjet})
         Me.mnuExtinction.Name = "mnuExtinction"
-        Me.mnuExtinction.Size = New System.Drawing.Size(187, 22)
+        Me.mnuExtinction.Size = New System.Drawing.Size(261, 30)
         Me.mnuExtinction.Text = "Extinction Coefficient"
         '
         'mnuEXTu
         '
         Me.mnuEXTu.Name = "mnuEXTu"
-        Me.mnuEXTu.Size = New System.Drawing.Size(223, 22)
+        Me.mnuEXTu.Size = New System.Drawing.Size(318, 30)
         Me.mnuEXTu.Text = "Upper Layer"
         '
         'mnuExtl
         '
         Me.mnuExtl.Name = "mnuExtl"
-        Me.mnuExtl.Size = New System.Drawing.Size(223, 22)
+        Me.mnuExtl.Size = New System.Drawing.Size(318, 30)
         Me.mnuExtl.Text = "Lower Layer"
         '
         'mnuExtcjet
         '
         Me.mnuExtcjet.Name = "mnuExtcjet"
-        Me.mnuExtcjet.Size = New System.Drawing.Size(223, 22)
+        Me.mnuExtcjet.Size = New System.Drawing.Size(318, 30)
         Me.mnuExtcjet.Text = "Ceiling Jet (Smoke Detector)"
         Me.mnuExtcjet.Visible = False
         '
@@ -1370,577 +1372,577 @@
         '
         Me.mnuUnburnedFuel.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuTUHCUpper, Me.mnuTUHVLower})
         Me.mnuUnburnedFuel.Name = "mnuUnburnedFuel"
-        Me.mnuUnburnedFuel.Size = New System.Drawing.Size(187, 22)
+        Me.mnuUnburnedFuel.Size = New System.Drawing.Size(261, 30)
         Me.mnuUnburnedFuel.Text = "Unburned Fuel"
         '
         'mnuTUHCUpper
         '
         Me.mnuTUHCUpper.Name = "mnuTUHCUpper"
-        Me.mnuTUHCUpper.Size = New System.Drawing.Size(137, 22)
+        Me.mnuTUHCUpper.Size = New System.Drawing.Size(191, 30)
         Me.mnuTUHCUpper.Text = "Upper Layer"
         '
         'mnuTUHVLower
         '
         Me.mnuTUHVLower.Name = "mnuTUHVLower"
-        Me.mnuTUHVLower.Size = New System.Drawing.Size(137, 22)
+        Me.mnuTUHVLower.Size = New System.Drawing.Size(191, 30)
         Me.mnuTUHVLower.Text = "Lower Layer"
         '
         'mnuFEDgraph
         '
         Me.mnuFEDgraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFEDgases, Me.mnuFEDradiation})
         Me.mnuFEDgraph.Name = "mnuFEDgraph"
-        Me.mnuFEDgraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuFEDgraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuFEDgraph.Text = "FED"
         '
         'mnuFEDgases
         '
         Me.mnuFEDgases.Name = "mnuFEDgases"
-        Me.mnuFEDgases.Size = New System.Drawing.Size(165, 22)
+        Me.mnuFEDgases.Size = New System.Drawing.Size(234, 30)
         Me.mnuFEDgases.Text = "Asphyxiant Gases"
         '
         'mnuFEDradiation
         '
         Me.mnuFEDradiation.Name = "mnuFEDradiation"
-        Me.mnuFEDradiation.Size = New System.Drawing.Size(165, 22)
+        Me.mnuFEDradiation.Size = New System.Drawing.Size(234, 30)
         Me.mnuFEDradiation.Text = "Thermal"
         '
         'mnuVisibilityGraph
         '
         Me.mnuVisibilityGraph.Name = "mnuVisibilityGraph"
-        Me.mnuVisibilityGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuVisibilityGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuVisibilityGraph.Text = "Visibility"
         '
         'mnuVentFires
         '
         Me.mnuVentFires.Name = "mnuVentFires"
-        Me.mnuVentFires.Size = New System.Drawing.Size(272, 22)
+        Me.mnuVentFires.Size = New System.Drawing.Size(387, 30)
         Me.mnuVentFires.Text = "Vent Fires"
         '
         'mnuTargetRadiationGraph
         '
         Me.mnuTargetRadiationGraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuRadiationTarget, Me.mnuRadiationFloor})
         Me.mnuTargetRadiationGraph.Name = "mnuTargetRadiationGraph"
-        Me.mnuTargetRadiationGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuTargetRadiationGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuTargetRadiationGraph.Text = "Radiation"
         '
         'mnuRadiationTarget
         '
         Me.mnuRadiationTarget.Name = "mnuRadiationTarget"
-        Me.mnuRadiationTarget.Size = New System.Drawing.Size(107, 22)
+        Me.mnuRadiationTarget.Size = New System.Drawing.Size(144, 30)
         Me.mnuRadiationTarget.Text = "Target"
         '
         'mnuRadiationFloor
         '
         Me.mnuRadiationFloor.Name = "mnuRadiationFloor"
-        Me.mnuRadiationFloor.Size = New System.Drawing.Size(107, 22)
+        Me.mnuRadiationFloor.Size = New System.Drawing.Size(144, 30)
         Me.mnuRadiationFloor.Text = "Floor"
         '
         'mnuDetectorGraph
         '
         Me.mnuDetectorGraph.Name = "mnuDetectorGraph"
-        Me.mnuDetectorGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuDetectorGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuDetectorGraph.Text = "Detector/Sprinkler Temp"
         '
         'mnuSurfaceTemperatures
         '
         Me.mnuSurfaceTemperatures.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuCeilingTempGraph, Me.mnuWallTempGraph, Me.mnuGraphLowerWallTemp, Me.mnuGraphFloorTemp})
         Me.mnuSurfaceTemperatures.Name = "mnuSurfaceTemperatures"
-        Me.mnuSurfaceTemperatures.Size = New System.Drawing.Size(272, 22)
+        Me.mnuSurfaceTemperatures.Size = New System.Drawing.Size(387, 30)
         Me.mnuSurfaceTemperatures.Text = "Surface Temperatures"
         '
         'mnuCeilingTempGraph
         '
         Me.mnuCeilingTempGraph.Name = "mnuCeilingTempGraph"
-        Me.mnuCeilingTempGraph.Size = New System.Drawing.Size(132, 22)
+        Me.mnuCeilingTempGraph.Size = New System.Drawing.Size(183, 30)
         Me.mnuCeilingTempGraph.Text = "Ceiling"
         '
         'mnuWallTempGraph
         '
         Me.mnuWallTempGraph.Name = "mnuWallTempGraph"
-        Me.mnuWallTempGraph.Size = New System.Drawing.Size(132, 22)
+        Me.mnuWallTempGraph.Size = New System.Drawing.Size(183, 30)
         Me.mnuWallTempGraph.Text = "Upper Wall"
         '
         'mnuGraphLowerWallTemp
         '
         Me.mnuGraphLowerWallTemp.Name = "mnuGraphLowerWallTemp"
-        Me.mnuGraphLowerWallTemp.Size = New System.Drawing.Size(132, 22)
+        Me.mnuGraphLowerWallTemp.Size = New System.Drawing.Size(183, 30)
         Me.mnuGraphLowerWallTemp.Text = "Lower Wall"
         '
         'mnuGraphFloorTemp
         '
         Me.mnuGraphFloorTemp.Name = "mnuGraphFloorTemp"
-        Me.mnuGraphFloorTemp.Size = New System.Drawing.Size(132, 22)
+        Me.mnuGraphFloorTemp.Size = New System.Drawing.Size(183, 30)
         Me.mnuGraphFloorTemp.Text = "Floor"
         '
         'mnuSurfaceFluxes
         '
         Me.mnuSurfaceFluxes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IncidentHeatFluxesToolStripMenuItem, Me.NetHeatFluxesToolStripMenuItem})
         Me.mnuSurfaceFluxes.Name = "mnuSurfaceFluxes"
-        Me.mnuSurfaceFluxes.Size = New System.Drawing.Size(272, 22)
+        Me.mnuSurfaceFluxes.Size = New System.Drawing.Size(387, 30)
         Me.mnuSurfaceFluxes.Text = "Surface Heat Fluxes"
         '
         'IncidentHeatFluxesToolStripMenuItem
         '
         Me.IncidentHeatFluxesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem10, Me.ToolStripMenuItem11, Me.ToolStripMenuItem12, Me.ToolStripMenuItem13})
         Me.IncidentHeatFluxesToolStripMenuItem.Name = "IncidentHeatFluxesToolStripMenuItem"
-        Me.IncidentHeatFluxesToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.IncidentHeatFluxesToolStripMenuItem.Size = New System.Drawing.Size(291, 30)
         Me.IncidentHeatFluxesToolStripMenuItem.Text = "Incident radiant heat flux"
         '
         'ToolStripMenuItem10
         '
         Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
-        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem10.Text = "Ceiling"
         '
         'ToolStripMenuItem11
         '
         Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
-        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem11.Text = "Upper Wall"
         '
         'ToolStripMenuItem12
         '
         Me.ToolStripMenuItem12.Name = "ToolStripMenuItem12"
-        Me.ToolStripMenuItem12.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem12.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem12.Text = "Lower Wall"
         '
         'ToolStripMenuItem13
         '
         Me.ToolStripMenuItem13.Name = "ToolStripMenuItem13"
-        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem13.Text = "Floor"
         '
         'NetHeatFluxesToolStripMenuItem
         '
         Me.NetHeatFluxesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem6, Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.ToolStripMenuItem9})
         Me.NetHeatFluxesToolStripMenuItem.Name = "NetHeatFluxesToolStripMenuItem"
-        Me.NetHeatFluxesToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.NetHeatFluxesToolStripMenuItem.Size = New System.Drawing.Size(291, 30)
         Me.NetHeatFluxesToolStripMenuItem.Text = "Net total heat flux"
         '
         'ToolStripMenuItem6
         '
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(181, 30)
         Me.ToolStripMenuItem6.Text = "Ceiling"
         '
         'ToolStripMenuItem7
         '
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(181, 30)
         Me.ToolStripMenuItem7.Text = "Upper wall"
         '
         'ToolStripMenuItem8
         '
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(181, 30)
         Me.ToolStripMenuItem8.Text = "Lower Wall"
         '
         'ToolStripMenuItem9
         '
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(181, 30)
         Me.ToolStripMenuItem9.Text = "Floor"
         '
         'mnuConvectHTC
         '
         Me.mnuConvectHTC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem24, Me.ToolStripMenuItem25, Me.ToolStripMenuItem26, Me.ToolStripMenuItem27})
         Me.mnuConvectHTC.Name = "mnuConvectHTC"
-        Me.mnuConvectHTC.Size = New System.Drawing.Size(272, 22)
+        Me.mnuConvectHTC.Size = New System.Drawing.Size(387, 30)
         Me.mnuConvectHTC.Text = "Convective Heat Transfer Coefficients"
         '
         'ToolStripMenuItem24
         '
         Me.ToolStripMenuItem24.Name = "ToolStripMenuItem24"
-        Me.ToolStripMenuItem24.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem24.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem24.Text = "Ceiling"
         '
         'ToolStripMenuItem25
         '
         Me.ToolStripMenuItem25.Name = "ToolStripMenuItem25"
-        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem25.Text = "Upper Wall"
         '
         'ToolStripMenuItem26
         '
         Me.ToolStripMenuItem26.Name = "ToolStripMenuItem26"
-        Me.ToolStripMenuItem26.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem26.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem26.Text = "Lower Wall"
         '
         'ToolStripMenuItem27
         '
         Me.ToolStripMenuItem27.Name = "ToolStripMenuItem27"
-        Me.ToolStripMenuItem27.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem27.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem27.Text = "Floor"
         '
         'mnuAST
         '
         Me.mnuAST.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem14, Me.ToolStripMenuItem15, Me.ToolStripMenuItem16, Me.ToolStripMenuItem17})
         Me.mnuAST.Name = "mnuAST"
-        Me.mnuAST.Size = New System.Drawing.Size(272, 22)
+        Me.mnuAST.Size = New System.Drawing.Size(387, 30)
         Me.mnuAST.Text = "Adiabatic Surface Temperatures"
         '
         'ToolStripMenuItem14
         '
         Me.ToolStripMenuItem14.Name = "ToolStripMenuItem14"
-        Me.ToolStripMenuItem14.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem14.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem14.Text = "Ceiling"
         '
         'ToolStripMenuItem15
         '
         Me.ToolStripMenuItem15.Name = "ToolStripMenuItem15"
-        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem15.Text = "Upper Wall"
         '
         'ToolStripMenuItem16
         '
         Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
-        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem16.Text = "Lower Wall"
         '
         'ToolStripMenuItem17
         '
         Me.ToolStripMenuItem17.Name = "ToolStripMenuItem17"
-        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(132, 22)
+        Me.ToolStripMenuItem17.Size = New System.Drawing.Size(183, 30)
         Me.ToolStripMenuItem17.Text = "Floor"
         '
         'ToolStripMenuItem18
         '
         Me.ToolStripMenuItem18.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem19, Me.ToolStripMenuItem20, Me.ToolStripMenuItem21, Me.ToolStripMenuItem22, Me.uwallchardepth, Me.ceilingchardepth})
         Me.ToolStripMenuItem18.Name = "ToolStripMenuItem18"
-        Me.ToolStripMenuItem18.Size = New System.Drawing.Size(272, 22)
+        Me.ToolStripMenuItem18.Size = New System.Drawing.Size(387, 30)
         Me.ToolStripMenuItem18.Text = "Surface Internal Temperatures"
         '
         'ToolStripMenuItem19
         '
         Me.ToolStripMenuItem19.Name = "ToolStripMenuItem19"
-        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem19.Size = New System.Drawing.Size(251, 30)
         Me.ToolStripMenuItem19.Text = "Ceiling"
         '
         'ToolStripMenuItem20
         '
         Me.ToolStripMenuItem20.Name = "ToolStripMenuItem20"
-        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem20.Size = New System.Drawing.Size(251, 30)
         Me.ToolStripMenuItem20.Text = "Upper Wall"
         '
         'ToolStripMenuItem21
         '
         Me.ToolStripMenuItem21.Name = "ToolStripMenuItem21"
-        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem21.Size = New System.Drawing.Size(251, 30)
         Me.ToolStripMenuItem21.Text = "Lower Wall"
         '
         'ToolStripMenuItem22
         '
         Me.ToolStripMenuItem22.Name = "ToolStripMenuItem22"
-        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem22.Size = New System.Drawing.Size(251, 30)
         Me.ToolStripMenuItem22.Text = "Floor"
         '
         'uwallchardepth
         '
         Me.uwallchardepth.Name = "uwallchardepth"
-        Me.uwallchardepth.Size = New System.Drawing.Size(179, 22)
+        Me.uwallchardepth.Size = New System.Drawing.Size(251, 30)
         Me.uwallchardepth.Text = "Wall  - char depth"
         '
         'ceilingchardepth
         '
         Me.ceilingchardepth.Name = "ceilingchardepth"
-        Me.ceilingchardepth.Size = New System.Drawing.Size(179, 22)
+        Me.ceilingchardepth.Size = New System.Drawing.Size(251, 30)
         Me.ceilingchardepth.Text = "Ceiling - char depth"
         '
         'KineticWoodPyrolysisModelToolStripMenuItem
         '
         Me.KineticWoodPyrolysisModelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResidualMassFractionsToolStripMenuItem, Me.CeilingWoodMassLossRateToolStripMenuItem, Me.CeilingFuelMassLossRatetotalToolStripMenuItem, Me.ApparentDensitybyElementToolStripMenuItem, Me.WallResidualMassFractbyElementToolStripMenuItem, Me.WallFuelMassLossRatebyElementToolStripMenuItem, Me.WallFuelMassLossRatetotalToolStripMenuItem, Me.WallApparentDensitybyElementToolStripMenuItem})
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Name = "KineticWoodPyrolysisModelToolStripMenuItem"
-        Me.KineticWoodPyrolysisModelToolStripMenuItem.Size = New System.Drawing.Size(272, 22)
+        Me.KineticWoodPyrolysisModelToolStripMenuItem.Size = New System.Drawing.Size(387, 30)
         Me.KineticWoodPyrolysisModelToolStripMenuItem.Text = "Kinetic wood pyrolysis model"
         '
         'ResidualMassFractionsToolStripMenuItem
         '
         Me.ResidualMassFractionsToolStripMenuItem.Name = "ResidualMassFractionsToolStripMenuItem"
-        Me.ResidualMassFractionsToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ResidualMassFractionsToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.ResidualMassFractionsToolStripMenuItem.Text = "Ceiling Residual mass fract (by element)"
         '
         'CeilingWoodMassLossRateToolStripMenuItem
         '
         Me.CeilingWoodMassLossRateToolStripMenuItem.Name = "CeilingWoodMassLossRateToolStripMenuItem"
-        Me.CeilingWoodMassLossRateToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CeilingWoodMassLossRateToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.CeilingWoodMassLossRateToolStripMenuItem.Text = "Ceiling fuel mass loss rate (by element)"
         '
         'CeilingFuelMassLossRatetotalToolStripMenuItem
         '
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Name = "CeilingFuelMassLossRatetotalToolStripMenuItem"
-        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.CeilingFuelMassLossRatetotalToolStripMenuItem.Text = "Ceiling fuel mass loss rate (total)"
         '
         'ApparentDensitybyElementToolStripMenuItem
         '
         Me.ApparentDensitybyElementToolStripMenuItem.Name = "ApparentDensitybyElementToolStripMenuItem"
-        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.ApparentDensitybyElementToolStripMenuItem.Text = "Ceiling apparent density (by element)"
         '
         'WallResidualMassFractbyElementToolStripMenuItem
         '
         Me.WallResidualMassFractbyElementToolStripMenuItem.Name = "WallResidualMassFractbyElementToolStripMenuItem"
-        Me.WallResidualMassFractbyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallResidualMassFractbyElementToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.WallResidualMassFractbyElementToolStripMenuItem.Text = "Wall Residual mass fract (by element)"
         '
         'WallFuelMassLossRatebyElementToolStripMenuItem
         '
         Me.WallFuelMassLossRatebyElementToolStripMenuItem.Name = "WallFuelMassLossRatebyElementToolStripMenuItem"
-        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatebyElementToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.WallFuelMassLossRatebyElementToolStripMenuItem.Text = "Wall fuel mass loss rate (by element)"
         '
         'WallFuelMassLossRatetotalToolStripMenuItem
         '
         Me.WallFuelMassLossRatetotalToolStripMenuItem.Name = "WallFuelMassLossRatetotalToolStripMenuItem"
-        Me.WallFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallFuelMassLossRatetotalToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.WallFuelMassLossRatetotalToolStripMenuItem.Text = "Wall fuel mass loss rate (total)"
         '
         'WallApparentDensitybyElementToolStripMenuItem
         '
         Me.WallApparentDensitybyElementToolStripMenuItem.Name = "WallApparentDensitybyElementToolStripMenuItem"
-        Me.WallApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.WallApparentDensitybyElementToolStripMenuItem.Size = New System.Drawing.Size(408, 30)
         Me.WallApparentDensitybyElementToolStripMenuItem.Text = "Wall apparent density (by element)"
         '
         'mnuPressure
         '
         Me.mnuPressure.Name = "mnuPressure"
-        Me.mnuPressure.Size = New System.Drawing.Size(272, 22)
+        Me.mnuPressure.Size = New System.Drawing.Size(387, 30)
         Me.mnuPressure.Text = "Pressure"
         '
         'mnuCeilingJet
         '
         Me.mnuCeilingJet.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripMenuItem5})
         Me.mnuCeilingJet.Name = "mnuCeilingJet"
-        Me.mnuCeilingJet.Size = New System.Drawing.Size(272, 22)
+        Me.mnuCeilingJet.Size = New System.Drawing.Size(387, 30)
         Me.mnuCeilingJet.Text = "Ceiling Jet"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(298, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(429, 30)
         Me.ToolStripMenuItem3.Text = "Ceiling Jet Temperature at Sensor Location"
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(298, 22)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(429, 30)
         Me.ToolStripMenuItem4.Text = "Ceiling Jet Velocity at Sensor Location"
         '
         'ToolStripMenuItem5
         '
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(298, 22)
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(429, 30)
         Me.ToolStripMenuItem5.Text = "Max Ceiling Jet Temperature"
         '
         'mnufloorspread
         '
         Me.mnufloorspread.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFloor_YP, Me.mnuFloor_YB, Me.mnuFloor_X})
         Me.mnufloorspread.Name = "mnufloorspread"
-        Me.mnufloorspread.Size = New System.Drawing.Size(272, 22)
+        Me.mnufloorspread.Size = New System.Drawing.Size(387, 30)
         Me.mnufloorspread.Text = "Floor Flame Spread"
         Me.mnufloorspread.Visible = False
         '
         'mnuFloor_YP
         '
         Me.mnuFloor_YP.Name = "mnuFloor_YP"
-        Me.mnuFloor_YP.Size = New System.Drawing.Size(147, 22)
+        Me.mnuFloor_YP.Size = New System.Drawing.Size(205, 30)
         Me.mnuFloor_YP.Text = "Floor Upward"
         '
         'mnuFloor_YB
         '
         Me.mnuFloor_YB.Name = "mnuFloor_YB"
-        Me.mnuFloor_YB.Size = New System.Drawing.Size(147, 22)
+        Me.mnuFloor_YB.Size = New System.Drawing.Size(205, 30)
         Me.mnuFloor_YB.Text = "Floor Burnout"
         '
         'mnuFloor_X
         '
         Me.mnuFloor_X.Name = "mnuFloor_X"
-        Me.mnuFloor_X.Size = New System.Drawing.Size(147, 22)
+        Me.mnuFloor_X.Size = New System.Drawing.Size(205, 30)
         Me.mnuFloor_X.Text = "Floor Lateral"
         '
         'mnuQuintiereGraph
         '
         Me.mnuQuintiereGraph.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuYPyrolysis, Me.mnuY_Burnout, Me.mnuXPyrolysis, Me.mnuZPyrolysis, Me.mnuYvelocity, Me.mnuXvelocity})
         Me.mnuQuintiereGraph.Name = "mnuQuintiereGraph"
-        Me.mnuQuintiereGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuQuintiereGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuQuintiereGraph.Text = "Wall-Ceiling Flame Spread"
         '
         'mnuYPyrolysis
         '
         Me.mnuYPyrolysis.Name = "mnuYPyrolysis"
-        Me.mnuYPyrolysis.Size = New System.Drawing.Size(198, 22)
+        Me.mnuYPyrolysis.Size = New System.Drawing.Size(285, 30)
         Me.mnuYPyrolysis.Text = "Y_Pyrolysis Front"
         '
         'mnuY_Burnout
         '
         Me.mnuY_Burnout.Name = "mnuY_Burnout"
-        Me.mnuY_Burnout.Size = New System.Drawing.Size(198, 22)
+        Me.mnuY_Burnout.Size = New System.Drawing.Size(285, 30)
         Me.mnuY_Burnout.Text = "Y_Burnout Front"
         '
         'mnuXPyrolysis
         '
         Me.mnuXPyrolysis.Name = "mnuXPyrolysis"
-        Me.mnuXPyrolysis.Size = New System.Drawing.Size(198, 22)
+        Me.mnuXPyrolysis.Size = New System.Drawing.Size(285, 30)
         Me.mnuXPyrolysis.Text = "X_Pyrolysis Front"
         '
         'mnuZPyrolysis
         '
         Me.mnuZPyrolysis.Name = "mnuZPyrolysis"
-        Me.mnuZPyrolysis.Size = New System.Drawing.Size(198, 22)
+        Me.mnuZPyrolysis.Size = New System.Drawing.Size(285, 30)
         Me.mnuZPyrolysis.Text = "Z_Pyrolysis Front"
         '
         'mnuYvelocity
         '
         Me.mnuYvelocity.Name = "mnuYvelocity"
-        Me.mnuYvelocity.Size = New System.Drawing.Size(198, 22)
+        Me.mnuYvelocity.Size = New System.Drawing.Size(285, 30)
         Me.mnuYvelocity.Text = "Upward Spread Velocity"
         '
         'mnuXvelocity
         '
         Me.mnuXvelocity.Name = "mnuXvelocity"
-        Me.mnuXvelocity.Size = New System.Drawing.Size(198, 22)
+        Me.mnuXvelocity.Size = New System.Drawing.Size(285, 30)
         Me.mnuXvelocity.Text = "Lateral Spread Velocity"
         '
         'mnuConeHRR
         '
         Me.mnuConeHRR.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuConeHRRwall, Me.mnuConeHRRceiling, Me.mnuConeHRRfloor, Me.mnuWallIgn, Me.mnuCeilingIgn, Me.mnuFloorIgn, Me.mnuWallHoG, Me.mnuCeilingHoG, Me.mnuFloorHoG})
         Me.mnuConeHRR.Name = "mnuConeHRR"
-        Me.mnuConeHRR.Size = New System.Drawing.Size(272, 22)
+        Me.mnuConeHRR.Size = New System.Drawing.Size(387, 30)
         Me.mnuConeHRR.Text = "Material Cone Data"
         '
         'mnuConeHRRwall
         '
         Me.mnuConeHRRwall.Name = "mnuConeHRRwall"
-        Me.mnuConeHRRwall.Size = New System.Drawing.Size(200, 22)
+        Me.mnuConeHRRwall.Size = New System.Drawing.Size(282, 30)
         Me.mnuConeHRRwall.Text = "Wall Lining HRR "
         '
         'mnuConeHRRceiling
         '
         Me.mnuConeHRRceiling.Name = "mnuConeHRRceiling"
-        Me.mnuConeHRRceiling.Size = New System.Drawing.Size(200, 22)
+        Me.mnuConeHRRceiling.Size = New System.Drawing.Size(282, 30)
         Me.mnuConeHRRceiling.Text = "Ceiling Lining HRR"
         '
         'mnuConeHRRfloor
         '
         Me.mnuConeHRRfloor.Name = "mnuConeHRRfloor"
-        Me.mnuConeHRRfloor.Size = New System.Drawing.Size(200, 22)
+        Me.mnuConeHRRfloor.Size = New System.Drawing.Size(282, 30)
         Me.mnuConeHRRfloor.Text = "Floor Lining HRR"
         Me.mnuConeHRRfloor.Visible = False
         '
         'mnuWallIgn
         '
         Me.mnuWallIgn.Name = "mnuWallIgn"
-        Me.mnuWallIgn.Size = New System.Drawing.Size(200, 22)
+        Me.mnuWallIgn.Size = New System.Drawing.Size(282, 30)
         Me.mnuWallIgn.Text = "Wall Ignition Data"
         '
         'mnuCeilingIgn
         '
         Me.mnuCeilingIgn.Name = "mnuCeilingIgn"
-        Me.mnuCeilingIgn.Size = New System.Drawing.Size(200, 22)
+        Me.mnuCeilingIgn.Size = New System.Drawing.Size(282, 30)
         Me.mnuCeilingIgn.Text = "Ceiling Ignition Data"
         '
         'mnuFloorIgn
         '
         Me.mnuFloorIgn.Name = "mnuFloorIgn"
-        Me.mnuFloorIgn.Size = New System.Drawing.Size(200, 22)
+        Me.mnuFloorIgn.Size = New System.Drawing.Size(282, 30)
         Me.mnuFloorIgn.Text = "Floor Ignition Data"
         Me.mnuFloorIgn.Visible = False
         '
         'mnuWallHoG
         '
         Me.mnuWallHoG.Name = "mnuWallHoG"
-        Me.mnuWallHoG.Size = New System.Drawing.Size(200, 22)
+        Me.mnuWallHoG.Size = New System.Drawing.Size(282, 30)
         Me.mnuWallHoG.Text = "Wall HoG Correlation"
         '
         'mnuCeilingHoG
         '
         Me.mnuCeilingHoG.Name = "mnuCeilingHoG"
-        Me.mnuCeilingHoG.Size = New System.Drawing.Size(200, 22)
+        Me.mnuCeilingHoG.Size = New System.Drawing.Size(282, 30)
         Me.mnuCeilingHoG.Text = "Ceiling HoG Correlation"
         '
         'mnuFloorHoG
         '
         Me.mnuFloorHoG.Name = "mnuFloorHoG"
-        Me.mnuFloorHoG.Size = New System.Drawing.Size(200, 22)
+        Me.mnuFloorHoG.Size = New System.Drawing.Size(282, 30)
         Me.mnuFloorHoG.Text = "Floor HoG Correlation"
         Me.mnuFloorHoG.Visible = False
         '
         'mnuSPR
         '
         Me.mnuSPR.Name = "mnuSPR"
-        Me.mnuSPR.Size = New System.Drawing.Size(272, 22)
+        Me.mnuSPR.Size = New System.Drawing.Size(387, 30)
         Me.mnuSPR.Text = "SPR"
         '
         'mnuGER
         '
         Me.mnuGER.Name = "mnuGER"
-        Me.mnuGER.Size = New System.Drawing.Size(272, 22)
+        Me.mnuGER.Size = New System.Drawing.Size(387, 30)
         Me.mnuGER.Text = "GER"
         '
         'mnuUnconstrainedHeat
         '
         Me.mnuUnconstrainedHeat.Name = "mnuUnconstrainedHeat"
-        Me.mnuUnconstrainedHeat.Size = New System.Drawing.Size(272, 22)
+        Me.mnuUnconstrainedHeat.Size = New System.Drawing.Size(387, 30)
         Me.mnuUnconstrainedHeat.Text = "Unconstrained HRR"
         '
         'mnuGlassTempGraph
         '
         Me.mnuGlassTempGraph.Name = "mnuGlassTempGraph"
-        Me.mnuGlassTempGraph.Size = New System.Drawing.Size(272, 22)
+        Me.mnuGlassTempGraph.Size = New System.Drawing.Size(387, 30)
         Me.mnuGlassTempGraph.Text = "Glass Temperatures"
         Me.mnuGlassTempGraph.Visible = False
         '
         'mnuNormalisedHeatLoad
         '
         Me.mnuNormalisedHeatLoad.Name = "mnuNormalisedHeatLoad"
-        Me.mnuNormalisedHeatLoad.Size = New System.Drawing.Size(272, 22)
+        Me.mnuNormalisedHeatLoad.Size = New System.Drawing.Size(387, 30)
         Me.mnuNormalisedHeatLoad.Text = "Normalised Heat Load"
         Me.mnuNormalisedHeatLoad.Visible = False
         '
         'ToolStripMenuItem23
         '
         Me.ToolStripMenuItem23.Name = "ToolStripMenuItem23"
-        Me.ToolStripMenuItem23.Size = New System.Drawing.Size(272, 22)
+        Me.ToolStripMenuItem23.Size = New System.Drawing.Size(387, 30)
         Me.ToolStripMenuItem23.Text = "NHL Furnace"
         Me.ToolStripMenuItem23.Visible = False
         '
         'ToolStripMenuItem28
         '
         Me.ToolStripMenuItem28.Name = "ToolStripMenuItem28"
-        Me.ToolStripMenuItem28.Size = New System.Drawing.Size(272, 22)
+        Me.ToolStripMenuItem28.Size = New System.Drawing.Size(387, 30)
         Me.ToolStripMenuItem28.Text = "Furnace Surface Temp"
         Me.ToolStripMenuItem28.Visible = False
         '
         'ToolStripMenuItem29
         '
         Me.ToolStripMenuItem29.Name = "ToolStripMenuItem29"
-        Me.ToolStripMenuItem29.Size = New System.Drawing.Size(272, 22)
+        Me.ToolStripMenuItem29.Size = New System.Drawing.Size(387, 30)
         Me.ToolStripMenuItem29.Text = "Furnace Net Heat Flux"
         Me.ToolStripMenuItem29.Visible = False
         '
         'mnuPlotWoodBurningRate
         '
         Me.mnuPlotWoodBurningRate.Name = "mnuPlotWoodBurningRate"
-        Me.mnuPlotWoodBurningRate.Size = New System.Drawing.Size(272, 22)
+        Me.mnuPlotWoodBurningRate.Size = New System.Drawing.Size(387, 30)
         Me.mnuPlotWoodBurningRate.Text = "Surface Wood Burning Rate"
         '
         'ToolStripMenuItem31
         '
         Me.ToolStripMenuItem31.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.burningrate, Me.areashrinkage})
         Me.ToolStripMenuItem31.Name = "ToolStripMenuItem31"
-        Me.ToolStripMenuItem31.Size = New System.Drawing.Size(272, 22)
+        Me.ToolStripMenuItem31.Size = New System.Drawing.Size(387, 30)
         Me.ToolStripMenuItem31.Text = "Fuel response effects"
         '
         'burningrate
         '
         Me.burningrate.Name = "burningrate"
-        Me.burningrate.Size = New System.Drawing.Size(175, 22)
+        Me.burningrate.Size = New System.Drawing.Size(247, 30)
         Me.burningrate.Text = "Burning rate"
         '
         'areashrinkage
         '
         Me.areashrinkage.Name = "areashrinkage"
-        Me.areashrinkage.Size = New System.Drawing.Size(175, 22)
+        Me.areashrinkage.Size = New System.Drawing.Size(247, 30)
         Me.areashrinkage.Text = "Fuel area shrinkage"
         '
         'mnuSmokeView
@@ -1948,20 +1950,20 @@
         Me.mnuSmokeView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewToolStripMenuItem, Me.CreateSmokeViewDataFileToolStripMenuItem})
         Me.mnuSmokeView.Image = Global.BRISK.My.Resources.Resources.GEOMTRY1
         Me.mnuSmokeView.Name = "mnuSmokeView"
-        Me.mnuSmokeView.Size = New System.Drawing.Size(95, 20)
+        Me.mnuSmokeView.Size = New System.Drawing.Size(138, 29)
         Me.mnuSmokeView.Text = "Smokeview"
         '
         'ViewToolStripMenuItem
         '
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.ViewToolStripMenuItem.Text = "View"
         Me.ViewToolStripMenuItem.Visible = False
         '
         'CreateSmokeViewDataFileToolStripMenuItem
         '
         Me.CreateSmokeViewDataFileToolStripMenuItem.Name = "CreateSmokeViewDataFileToolStripMenuItem"
-        Me.CreateSmokeViewDataFileToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.CreateSmokeViewDataFileToolStripMenuItem.Size = New System.Drawing.Size(316, 30)
         Me.CreateSmokeViewDataFileToolStripMenuItem.Text = "Create SmokeView Data File"
         Me.CreateSmokeViewDataFileToolStripMenuItem.Visible = False
         '
@@ -1971,7 +1973,7 @@
         Me.mnuHelp.Image = Global.BRISK.My.Resources.Resources.picHelpsymbol
         Me.mnuHelp.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuHelp.Name = "mnuHelp"
-        Me.mnuHelp.Size = New System.Drawing.Size(60, 20)
+        Me.mnuHelp.Size = New System.Drawing.Size(85, 29)
         Me.mnuHelp.Text = "&Help"
         '
         'mnuHelpContents
@@ -1979,7 +1981,7 @@
         Me.mnuHelpContents.Enabled = False
         Me.mnuHelpContents.Name = "mnuHelpContents"
         Me.mnuHelpContents.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.mnuHelpContents.Size = New System.Drawing.Size(254, 22)
+        Me.mnuHelpContents.Size = New System.Drawing.Size(356, 30)
         Me.mnuHelpContents.Text = "Contents"
         Me.mnuHelpContents.Visible = False
         '
@@ -1987,7 +1989,7 @@
         '
         Me.mnuTechRef.Image = Global.BRISK.My.Resources.Resources.Reader16
         Me.mnuTechRef.Name = "mnuTechRef"
-        Me.mnuTechRef.Size = New System.Drawing.Size(254, 22)
+        Me.mnuTechRef.Size = New System.Drawing.Size(356, 30)
         Me.mnuTechRef.Text = "Technical Reference Manual (PDF)"
         '
         'mnuVerification
@@ -1995,31 +1997,31 @@
         Me.mnuVerification.Enabled = False
         Me.mnuVerification.Image = Global.BRISK.My.Resources.Resources.Reader16
         Me.mnuVerification.Name = "mnuVerification"
-        Me.mnuVerification.Size = New System.Drawing.Size(254, 22)
+        Me.mnuVerification.Size = New System.Drawing.Size(356, 30)
         Me.mnuVerification.Text = "Verification Data (PDF)"
         Me.mnuVerification.Visible = False
         '
         'mnuEULA
         '
         Me.mnuEULA.Name = "mnuEULA"
-        Me.mnuEULA.Size = New System.Drawing.Size(254, 22)
+        Me.mnuEULA.Size = New System.Drawing.Size(356, 30)
         Me.mnuEULA.Text = "End User License Agreement"
         '
         'mnuVersion
         '
         Me.mnuVersion.Name = "mnuVersion"
-        Me.mnuVersion.Size = New System.Drawing.Size(254, 22)
+        Me.mnuVersion.Size = New System.Drawing.Size(356, 30)
         Me.mnuVersion.Text = "Version Release Notes"
         '
         'mnuAnotherSep
         '
         Me.mnuAnotherSep.Name = "mnuAnotherSep"
-        Me.mnuAnotherSep.Size = New System.Drawing.Size(251, 6)
+        Me.mnuAnotherSep.Size = New System.Drawing.Size(353, 6)
         '
         'mnuAbout
         '
         Me.mnuAbout.Name = "mnuAbout"
-        Me.mnuAbout.Size = New System.Drawing.Size(254, 22)
+        Me.mnuAbout.Size = New System.Drawing.Size(356, 30)
         Me.mnuAbout.Text = "&About B-RISK"
         '
         'mnuStop1
@@ -2028,33 +2030,33 @@
         Me.mnuStop1.Image = Global.BRISK.My.Resources.Resources.Abort
         Me.mnuStop1.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuStop1.Name = "mnuStop1"
-        Me.mnuStop1.Size = New System.Drawing.Size(59, 20)
+        Me.mnuStop1.Size = New System.Drawing.Size(85, 29)
         Me.mnuStop1.Text = "Stop"
         Me.mnuStop1.Visible = False
         '
         'mnuTerminate
         '
         Me.mnuTerminate.Name = "mnuTerminate"
-        Me.mnuTerminate.Size = New System.Drawing.Size(207, 22)
+        Me.mnuTerminate.Size = New System.Drawing.Size(291, 30)
         Me.mnuTerminate.Text = "Terminate the Simulation"
         '
         'mnuContinue
         '
         Me.mnuContinue.Name = "mnuContinue"
-        Me.mnuContinue.Size = New System.Drawing.Size(207, 22)
+        Me.mnuContinue.Size = New System.Drawing.Size(291, 30)
         Me.mnuContinue.Text = "Continue Simulation"
         '
         'mnuCancelBatch
         '
         Me.mnuCancelBatch.Name = "mnuCancelBatch"
-        Me.mnuCancelBatch.Size = New System.Drawing.Size(207, 22)
+        Me.mnuCancelBatch.Size = New System.Drawing.Size(291, 30)
         Me.mnuCancelBatch.Text = "Cancel Batch Files"
         '
         'FileToolStripMenuItem
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.OpenToolStripMenuItem, Me.toolStripSeparator, Me.SaveToolStripMenuItem, Me.SaveAsToolStripMenuItem, Me.toolStripSeparator1, Me.PrintToolStripMenuItem, Me.PrintPreviewToolStripMenuItem, Me.toolStripSeparator3, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(50, 29)
         Me.FileToolStripMenuItem.Text = "&File"
         Me.FileToolStripMenuItem.Visible = False
         '
@@ -2063,7 +2065,7 @@
         Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.NewToolStripMenuItem.Text = "&New"
         '
         'OpenToolStripMenuItem
@@ -2071,13 +2073,13 @@
         Me.OpenToolStripMenuItem.Image = CType(resources.GetObject("OpenToolStripMenuItem.Image"), System.Drawing.Image)
         Me.OpenToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
         'toolStripSeparator
         '
         Me.toolStripSeparator.Name = "toolStripSeparator"
-        Me.toolStripSeparator.Size = New System.Drawing.Size(140, 6)
+        Me.toolStripSeparator.Size = New System.Drawing.Size(194, 6)
         '
         'SaveToolStripMenuItem
         '
@@ -2085,26 +2087,26 @@
         Me.SaveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.SaveToolStripMenuItem.Text = "&Save"
         '
         'SaveAsToolStripMenuItem
         '
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.SaveAsToolStripMenuItem.Text = "Save &As"
         '
         'toolStripSeparator1
         '
         Me.toolStripSeparator1.Name = "toolStripSeparator1"
-        Me.toolStripSeparator1.Size = New System.Drawing.Size(140, 6)
+        Me.toolStripSeparator1.Size = New System.Drawing.Size(194, 6)
         '
         'PrintToolStripMenuItem
         '
         Me.PrintToolStripMenuItem.Image = CType(resources.GetObject("PrintToolStripMenuItem.Image"), System.Drawing.Image)
         Me.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
-        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.PrintToolStripMenuItem.Text = "&Print"
         '
         'PrintPreviewToolStripMenuItem
@@ -2112,25 +2114,25 @@
         Me.PrintPreviewToolStripMenuItem.Image = CType(resources.GetObject("PrintPreviewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.PrintPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.PrintPreviewToolStripMenuItem.Name = "PrintPreviewToolStripMenuItem"
-        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.PrintPreviewToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.PrintPreviewToolStripMenuItem.Text = "Print Pre&view"
         '
         'toolStripSeparator3
         '
         Me.toolStripSeparator3.Name = "toolStripSeparator3"
-        Me.toolStripSeparator3.Size = New System.Drawing.Size(140, 6)
+        Me.toolStripSeparator3.Size = New System.Drawing.Size(194, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(197, 30)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.toolStripSeparator4, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.toolStripSeparator5, Me.SelectAllToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(54, 29)
         Me.EditToolStripMenuItem.Text = "&Edit"
         Me.EditToolStripMenuItem.Visible = False
         '
@@ -2138,20 +2140,20 @@
         '
         Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
         Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(201, 30)
         Me.UndoToolStripMenuItem.Text = "&Undo"
         '
         'RedoToolStripMenuItem
         '
         Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
         Me.RedoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(201, 30)
         Me.RedoToolStripMenuItem.Text = "&Redo"
         '
         'toolStripSeparator4
         '
         Me.toolStripSeparator4.Name = "toolStripSeparator4"
-        Me.toolStripSeparator4.Size = New System.Drawing.Size(141, 6)
+        Me.toolStripSeparator4.Size = New System.Drawing.Size(198, 6)
         '
         'CutToolStripMenuItem
         '
@@ -2159,7 +2161,7 @@
         Me.CutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
         Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(201, 30)
         Me.CutToolStripMenuItem.Text = "Cu&t"
         '
         'CopyToolStripMenuItem
@@ -2168,7 +2170,7 @@
         Me.CopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(201, 30)
         Me.CopyToolStripMenuItem.Text = "&Copy"
         '
         'PasteToolStripMenuItem
@@ -2177,75 +2179,75 @@
         Me.PasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
         Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(201, 30)
         Me.PasteToolStripMenuItem.Text = "&Paste"
         '
         'toolStripSeparator5
         '
         Me.toolStripSeparator5.Name = "toolStripSeparator5"
-        Me.toolStripSeparator5.Size = New System.Drawing.Size(141, 6)
+        Me.toolStripSeparator5.Size = New System.Drawing.Size(198, 6)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(201, 30)
         Me.SelectAllToolStripMenuItem.Text = "Select &All"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(65, 29)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         Me.ToolsToolStripMenuItem.Visible = False
         '
         'CustomizeToolStripMenuItem
         '
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
         Me.CustomizeToolStripMenuItem.Text = "&Customize"
         '
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(179, 30)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContentsToolStripMenuItem, Me.IndexToolStripMenuItem, Me.SearchToolStripMenuItem, Me.toolStripSeparator6, Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(61, 29)
         Me.HelpToolStripMenuItem.Text = "&Help"
         Me.HelpToolStripMenuItem.Visible = False
         '
         'ContentsToolStripMenuItem
         '
         Me.ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
-        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(167, 30)
         Me.ContentsToolStripMenuItem.Text = "&Contents"
         '
         'IndexToolStripMenuItem
         '
         Me.IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(167, 30)
         Me.IndexToolStripMenuItem.Text = "&Index"
         '
         'SearchToolStripMenuItem
         '
         Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(167, 30)
         Me.SearchToolStripMenuItem.Text = "&Search"
         '
         'toolStripSeparator6
         '
         Me.toolStripSeparator6.Name = "toolStripSeparator6"
-        Me.toolStripSeparator6.Size = New System.Drawing.Size(119, 6)
+        Me.toolStripSeparator6.Size = New System.Drawing.Size(164, 6)
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(167, 30)
         Me.AboutToolStripMenuItem.Text = "&About..."
         '
         'CeilingToolStripMenuItem1
@@ -2277,7 +2279,7 @@
         Me.ToolStrip1.BackColor = System.Drawing.SystemColors.MenuBar
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton, Me.OpenToolStripButton, Me.SaveToolStripButton, Me.PrintToolStripButton, Me.ToolStripButton5, Me.toolStripSeparator2, Me.mnuRun, Me.mnuStop})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 33)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1249, 25)
         Me.ToolStrip1.Stretch = True
@@ -2350,7 +2352,7 @@
         Me.mnuRun.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.mnuRun.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.mnuRun.Name = "mnuRun"
-        Me.mnuRun.Size = New System.Drawing.Size(48, 22)
+        Me.mnuRun.Size = New System.Drawing.Size(63, 29)
         Me.mnuRun.Text = "&Run"
         Me.mnuRun.ToolTipText = "Start Simulation"
         Me.mnuRun.Visible = False
@@ -2361,17 +2363,18 @@
         Me.mnuStop.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.mnuStop.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.mnuStop.Name = "mnuStop"
-        Me.mnuStop.Size = New System.Drawing.Size(51, 22)
+        Me.mnuStop.Size = New System.Drawing.Size(69, 29)
         Me.mnuStop.Text = "Stop"
         Me.mnuStop.ToolTipText = "Stop Simulation"
         Me.mnuStop.Visible = False
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.ToolStripProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 580)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 572)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1249, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1249, 30)
         Me.StatusStrip1.TabIndex = 25
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -2379,14 +2382,14 @@
         '
         Me.ToolStripStatusLabel1.BackColor = System.Drawing.SystemColors.MenuBar
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(180, 25)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.BackColor = System.Drawing.SystemColors.MenuBar
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(180, 25)
         Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
         '
         'ToolStripStatusLabel3
@@ -2394,7 +2397,7 @@
         Me.ToolStripStatusLabel3.BackColor = System.Drawing.SystemColors.MenuBar
         Me.ToolStripStatusLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(16, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(27, 25)
         Me.ToolStripStatusLabel3.Text = "   "
         '
         'ToolStripStatusLabel4
@@ -2402,7 +2405,7 @@
         Me.ToolStripStatusLabel4.BackColor = System.Drawing.SystemColors.MenuBar
         Me.ToolStripStatusLabel4.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(978, 17)
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(847, 25)
         Me.ToolStripStatusLabel4.Spring = True
         Me.ToolStripStatusLabel4.Text = "   "
         Me.ToolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -2411,7 +2414,7 @@
         '
         Me.ToolStripProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(200, 16)
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(200, 24)
         Me.ToolStripProgressBar1.Visible = False
         '
         'Timer1
@@ -2522,6 +2525,12 @@
         Me.ChartRuntime1.Size = New System.Drawing.Size(442, 228)
         Me.ChartRuntime1.TabIndex = 36
         Me.ChartRuntime1.Visible = False
+        '
+        'MassTimberCLTToolStripMenuItem
+        '
+        Me.MassTimberCLTToolStripMenuItem.Name = "MassTimberCLTToolStripMenuItem"
+        Me.MassTimberCLTToolStripMenuItem.Size = New System.Drawing.Size(309, 30)
+        Me.MassTimberCLTToolStripMenuItem.Text = "Mass timber (CLT)"
         '
         'MDIFrmMain
         '
@@ -2714,5 +2723,6 @@
     Friend WithEvents WallFuelMassLossRatebyElementToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents WallFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents WallApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MassTimberCLTToolStripMenuItem As ToolStripMenuItem
 #End Region
 End Class

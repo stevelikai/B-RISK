@@ -695,13 +695,13 @@ Module DIFFEQNS
 
             Dim SPstart() As Double
             Dim Xstart(,) As Double
-            Dim fstart() As Double
+            'Dim fstart() As Double
 
             Dim X(6) As Double
             Dim k As Integer
             Dim OpticalDensity As Single
             Dim velocity(,) As Double
-            Dim fvelocity() As Double
+            'Dim fvelocity() As Double
             Dim s(1) As Double
             Dim V(6) As Double
             Dim MaxLength As Double
@@ -729,7 +729,7 @@ Module DIFFEQNS
             Dim GShift, Gmultiplier As Single
             Dim room As Integer
             Dim Tflame, eFLame As Double
-            Dim Graphdata() As Double
+            'Dim Graphdata() As Double
             Dim vwidth As Single
             Dim MaxWallNodes() As Integer
             Dim MaxCeilingNodes() As Integer
@@ -743,10 +743,10 @@ Module DIFFEQNS
             Dim runtimegraph(3) As System.Windows.Forms.Control
             Dim graphon, ThickLines As Boolean
             Dim LAxis, LX As Double
-            Dim graphdataTL() As Double
-            Dim graphdataTR() As Double
-            Dim graphdataBR() As Double
-            Dim graphdataBL() As Double
+            'Dim graphdataTL() As Double
+            'Dim graphdataTR() As Double
+            'Dim graphdataBR() As Double
+            'Dim graphdataBL() As Double
             Dim mw_upper, QLstar, QL, awallflux_r, mw_lower As Double
 
 
@@ -884,12 +884,30 @@ Module DIFFEQNS
 
                 If KineticModel = True Then
                     'kinetic model
-                    Dim Zstart(,) As Double
+                    'Dim Zstart(,) As Double
 
                     Erase CeilingElementMF
-                    ReDim CeilingElementMF(MMaxCeilingNodes - 1, 0 To 4, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    ReDim CeilingElementMF(MMaxCeilingNodes - 1, 0 To 3, MaxTime) 'store the residual mass fractions of each component at each timestep
+
+                    'Erase CeilingElementMF0
+                    'Erase CeilingElementMF1
+                    'Erase CeilingElementMF2
+                    'Erase CeilingElementMF3
+                    'ReDim CeilingElementMF0(MMaxCeilingNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'ReDim CeilingElementMF1(MMaxCeilingNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'ReDim CeilingElementMF2(MMaxCeilingNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'ReDim CeilingElementMF3(MMaxCeilingNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'Erase UWallElementMF0
+                    'Erase UWallElementMF1
+                    'Erase UWallElementMF2
+                    'Erase UWallElementMF3
+                    'ReDim UWallElementMF0(MMaxWallNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'ReDim UWallElementMF1(MMaxWallNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'ReDim UWallElementMF2(MMaxWallNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+                    'ReDim UWallElementMF3(MMaxWallNodes - 1, MaxTime) 'store the residual mass fractions of each component at each timestep
+
                     Erase UWallElementMF
-                    ReDim UWallElementMF(MMaxWallNodes - 1, 4, MaxTime)
+                    ReDim UWallElementMF(MMaxWallNodes - 1, 0 To 3, MaxTime)
                     Erase CeilingCharResidue
                     ReDim CeilingCharResidue(MMaxCeilingNodes - 1, MaxTime)
                     Erase UWallCharResidue

@@ -8,7 +8,7 @@ Module KineticModelCode
     Dim Y_pyrol() As Double
     Dim DYDX_pyrol() As Double
 
-    Function wood_props_k(ByVal T As Double, ByRef ischar As Integer, ByRef maxtemp As Double) As Double
+    Function wood_props_k(ByVal T As Double, ByRef ischar As Integer, ByRef maxtemp As Double, ByRef Surface As String) As Double
 
         'T temperature in K
         'returns thermal conductivity of wood in W/mK
@@ -71,10 +71,13 @@ Module KineticModelCode
 
         ElseIf thermalprops = 4 Then 'hybrid
 
-            wood_props_k = 0.2 'constant
-
+            'wood_props_k = 0.2 'constant
+            If Surface = "W" Then
+                wood_props_k = WallConductivity(fireroom)
+            Else
+                wood_props_k = CeilingConductivity(fireroom)
+            End If
         End If
-
     End Function
 
     Sub Implicit_Temps_Ceil_kinetic(ByVal room As Integer, ByVal i As Integer, ByRef CeilingNode(,,) As Double)
@@ -143,7 +146,7 @@ Module KineticModelCode
             Dim CeilingNodeUnExposed As Double = CeilingNodeTemp(ceilingnodestemp)
             Dim CeilingNodeExposed As Double = CeilingNodeTemp(1)
 
-            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp))
+            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp), "C")
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * CeilingDeltaX(room) / prop_k
@@ -191,7 +194,7 @@ Module KineticModelCode
             End If
 
             'exposed side
-            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2))
+            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2), "C")
 
             moisturecontent = CeilingElementMF(1, 0, i) * mf_init
 
@@ -234,7 +237,7 @@ Module KineticModelCode
             k = 2
             For j = 2 To ceilingnodestemp - 1
 
-                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1))
+                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1), "C")
 
                 moisturecontent = CeilingElementMF(j, 0, i) * mf_init
 
@@ -297,6 +300,7 @@ Module KineticModelCode
 
             Erase CX
             Erase UC
+            Erase CeilingNodeTemp
 
         Catch ex As Exception
             MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in Implicit_Temps_Ceil_kinetic")
@@ -370,7 +374,7 @@ Module KineticModelCode
             Dim CeilingNodeUnExposed As Double = CeilingNodeTemp(ceilingnodestemp)
             Dim CeilingNodeExposed As Double = CeilingNodeTemp(1)
 
-            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp))
+            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp), "C")
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * CeilingDeltaX(room) / prop_k
@@ -419,7 +423,7 @@ Module KineticModelCode
             End If
 
             'exposed side
-            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2))
+            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2), "C")
 
             'If CeilingNodeTemp(2) <= 473 Then
             '    prop_k = kwood
@@ -471,7 +475,7 @@ Module KineticModelCode
             k = 2
             For j = 2 To ceilingnodestemp - 1
 
-                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1))
+                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1), "C")
 
                 'If CeilingNodeTemp(j + 1) <= 473 Then
                 '    prop_k = kwood
@@ -725,7 +729,7 @@ Module KineticModelCode
             Dim wallNodeExposed As Double = wallNodeTemp(1)
             moisturecontent = mf_init
             'prop_k = wood_props_k(wallNodeTemp(wallnodestemp), WallNodeStatus(wallnodestemp), wallNodeTemp(wallnodestemp))
-            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), 0, wallNodeTemp(wallnodestemp)) 'do not use char props
+            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), 0, wallNodeTemp(wallnodestemp), "W") 'do not use char props
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_k
@@ -769,7 +773,7 @@ Module KineticModelCode
 
             'exposed side
             'prop_k = wood_props_k(wallNodeTemp(2), WallNodeStatus(2), wallNodeTemp(2))
-            prop_k = wood_props_k(wallNodeTemp(2), 0, wallNodeTemp(2))
+            prop_k = wood_props_k(wallNodeTemp(2), 0, wallNodeTemp(2), "W")
 
             'If WallNodeStatus(2) = 1 Then 'char
             '    temp = wallNodeTemp(2) - 273 'node temp in deg C
@@ -804,7 +808,7 @@ Module KineticModelCode
             'inside nodes
             k = 2
             For j = 2 To wallnodestemp - 1
-                prop_k = wood_props_k(wallNodeTemp(j + 1), 0, wallNodeTemp(j + 1))
+                prop_k = wood_props_k(wallNodeTemp(j + 1), 0, wallNodeTemp(j + 1), "W")
 
                 'moisturecontent = mf_init
 
@@ -924,7 +928,7 @@ Module KineticModelCode
             Dim wallNodeUnExposed As Double = wallNodeTemp(wallnodestemp)
             Dim wallNodeExposed As Double = wallNodeTemp(1)
 
-            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), UWallNodeStatus(wallnodestemp), UWallNodeMaxTemp(wallnodestemp))
+            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), UWallNodeStatus(wallnodestemp), UWallNodeMaxTemp(wallnodestemp), "W")
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_k
@@ -971,7 +975,7 @@ Module KineticModelCode
             End If
 
             'exposed side
-            prop_k = wood_props_k(wallNodeTemp(2), UWallNodeStatus(2), UWallNodeMaxTemp(2))
+            prop_k = wood_props_k(wallNodeTemp(2), UWallNodeStatus(2), UWallNodeMaxTemp(2), "W")
 
             moisturecontent = UWallElementMF(1, 0, i) * mf_init
 
@@ -1014,7 +1018,7 @@ Module KineticModelCode
             'inside nodes
             k = 2
             For j = 2 To wallnodestemp - 1
-                prop_k = wood_props_k(wallNodeTemp(j + 1), UWallNodeStatus(j + 1), UWallNodeMaxTemp(j + 1))
+                prop_k = wood_props_k(wallNodeTemp(j + 1), UWallNodeStatus(j + 1), UWallNodeMaxTemp(j + 1), "W")
 
                 moisturecontent = UWallElementMF(j, 0, i) * mf_init
 
@@ -1075,6 +1079,7 @@ Module KineticModelCode
 
             Erase WX
             Erase UW
+            Erase wallNodeTemp
 
         Catch ex As Exception
             MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in implicit_Temps_UWall_kinetic")
@@ -1142,7 +1147,7 @@ Module KineticModelCode
             Dim wallNodeUnExposed As Double = wallNodeTemp(wallnodestemp)
             Dim wallNodeExposed As Double = wallNodeTemp(1)
 
-            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), LWallNodeStatus(wallnodestemp), LWallNodeMaxTemp(wallnodestemp))
+            prop_k = wood_props_k(wallNodeTemp(wallnodestemp), LWallNodeStatus(wallnodestemp), LWallNodeMaxTemp(wallnodestemp), "W")
 
             'Find Biot Numbers -exterior side
             Coutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_k
@@ -1191,7 +1196,7 @@ Module KineticModelCode
             End If
 
             'exposed side
-            prop_k = wood_props_k(wallNodeTemp(2), LWallNodeStatus(2), LWallNodeMaxTemp(2))
+            prop_k = wood_props_k(wallNodeTemp(2), LWallNodeStatus(2), LWallNodeMaxTemp(2), "W")
 
             'moisturecontent = UWallElementMF(1, 0, i) * mf_init
             moisturecontent = UWallElementMF(1, 0, 1) * mf_init
@@ -1236,7 +1241,7 @@ Module KineticModelCode
             'inside nodes
             k = 2
             For j = 2 To wallnodestemp - 1
-                prop_k = wood_props_k(wallNodeTemp(j + 1), LWallNodeStatus(j + 1), LWallNodeMaxTemp(j + 1))
+                prop_k = wood_props_k(wallNodeTemp(j + 1), LWallNodeStatus(j + 1), LWallNodeMaxTemp(j + 1), "W")
 
                 'moisturecontent = UWallElementMF(j, 0, i) * mf_init
                 moisturecontent = UWallElementMF(1, 0, 1) * mf_init
@@ -1298,6 +1303,7 @@ Module KineticModelCode
 
             Erase WX
             Erase UW
+            Erase wallNodeTemp
 
         Catch ex As Exception
             MsgBox(Err.Description & " Line " & Err.Erl, MsgBoxStyle.Exclamation, "Exception in implicit_Temps_LWall_kinetic")

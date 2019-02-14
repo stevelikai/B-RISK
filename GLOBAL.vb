@@ -27,7 +27,7 @@ Module GLOBAL_Renamed
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2018.06"
+    Public Const Version As String = "2019.02"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
@@ -49,14 +49,14 @@ Module GLOBAL_Renamed
     Public NHLte(,) As Double
     Public upgrade As Boolean
     Public ventid As Integer
-    Public Const thermalprops As Integer = 4 '1 = wood h/k + Hankalin; 2 = eurocode5 ; 3 = hybrid hankalin switching to EC5 above 600C; 4 = 0.2 constant
+    Public thermalprops As Integer = 1 '1 = wood h/k + Hankalin; 2 = eurocode5 ; 3 = hybrid hankalin switching to EC5 above 600C; 4 = 0.2 constant
 
     Public E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'activation energy
     Public A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'pre expontenial factor
     Public n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'reaction order
     Public mf_compinit(0 To 3) As Double  '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'inital mass fraction
     Public char_yield(0 To 3) As Double '1 = cellulose; 2 = hemicellulose; 3 = lignin Char yield
-    Public CharYield As Double = 0.35 'used in clt kinetic global equiv model
+    Public CharYield As Double = 0.4 'used in clt global equiv model
     Public init_moisturecontent As Double
     Public CLT_instant As Boolean = False
     Public wall_char(,) As Double
@@ -94,6 +94,14 @@ Module GLOBAL_Renamed
     Public FloorNode(,,) As Double
     Public elementcounter As Integer
     Public CeilingElementMF(,,) As Double
+    'Public CeilingElementMF0(,) As Double
+    'Public CeilingElementMF1(,) As Double
+    'Public CeilingElementMF2(,) As Double
+    'Public CeilingElementMF3(,) As Double
+    'Public UWallElementMF0(,) As Double
+    'Public UWallElementMF1(,) As Double
+    'Public UWallElementMF2(,) As Double
+    'Public UWallElementMF3(,) As Double
     Public UWallElementMF(,,) As Double
     Public CeilingCharResidue(,) As Double
     Public UWallCharResidue(,) As Double

@@ -1982,7 +1982,7 @@ h2ohandler:
             Dim LWallNodeExposed As Double = LWallNodeTemp(1)
             Dim UWallNodeExposed As Double = UWallNodeTemp(1)
 
-            prop_ku = wood_props_k(UWallNodeTemp(Wallnodestemp), UWallNodeStatus(Wallnodestemp), UWallNodeMaxTemp(Wallnodestemp))
+            prop_ku = wood_props_k(UWallNodeTemp(Wallnodestemp), UWallNodeStatus(Wallnodestemp), UWallNodeMaxTemp(Wallnodestemp), "W")
             'If UWallNodeTemp(Wallnodestemp) <= 473 Then
             '    prop_ku = 0.285
             '    'prop_ku = WallConductivity(room)
@@ -1995,7 +1995,7 @@ h2ohandler:
             'Find Biot Numbers -exterior side
             UWoutbiot = OutsideConvCoeff * WallDeltaX(room) / prop_ku
 
-            prop_kl = wood_props_k(LWallNodeTemp(Wallnodestemp), LWallNodeStatus(Wallnodestemp), LWallNodeMaxTemp(Wallnodestemp))
+            prop_kl = wood_props_k(LWallNodeTemp(Wallnodestemp), LWallNodeStatus(Wallnodestemp), LWallNodeMaxTemp(Wallnodestemp), "W")
             'If LWallNodeTemp(Wallnodestemp) <= 473 Then
             '    prop_kl = 0.285
             '    'prop_kl = WallConductivity(room)
@@ -2069,7 +2069,7 @@ h2ohandler:
                 LW(1, 2) = -2 * wood_fourier
             End If
 
-            prop_ku = wood_props_k(UWallNodeTemp(2), UWallNodeStatus(2), UWallNodeMaxTemp(2))
+            prop_ku = wood_props_k(UWallNodeTemp(2), UWallNodeStatus(2), UWallNodeMaxTemp(2), "W")
             'If UWallNodeTemp(2) <= 473 Then
             '    prop_ku = 0.285
             '    'prop_ku = WallConductivity(room)
@@ -2106,7 +2106,7 @@ h2ohandler:
                 Next k
             End If
 
-            prop_kl = wood_props_k(LWallNodeTemp(Wallnodestemp), LWallNodeStatus(Wallnodestemp), LWallNodeMaxTemp(Wallnodestemp))
+            prop_kl = wood_props_k(LWallNodeTemp(Wallnodestemp), LWallNodeStatus(Wallnodestemp), LWallNodeMaxTemp(Wallnodestemp), "W")
             'If LWallNodeTemp(2) <= 473 Then
             '    prop_kl = 0.285
             '    'prop_kl = WallConductivity(room)
@@ -2147,7 +2147,7 @@ h2ohandler:
             k = 2
             For j = 2 To Wallnodestemp - 1
 
-                prop_ku = wood_props_k(UWallNodeTemp(j + 1), UWallNodeStatus(j + 1), UWallNodeMaxTemp(j + 1))
+                prop_ku = wood_props_k(UWallNodeTemp(j + 1), UWallNodeStatus(j + 1), UWallNodeMaxTemp(j + 1), "W")
                 'If UWallNodeTemp(j + 1) <= 473 Then
                 '    prop_ku = 0.285
                 '    'prop_ku = WallConductivity(room)
@@ -2180,7 +2180,7 @@ h2ohandler:
 
             k = 2
             For j = 2 To Wallnodestemp - 1
-                prop_kl = wood_props_k(LWallNodeTemp(j + 1), LWallNodeStatus(j + 1), LWallNodeMaxTemp(j + 1))
+                prop_kl = wood_props_k(LWallNodeTemp(j + 1), LWallNodeStatus(j + 1), LWallNodeMaxTemp(j + 1), "W")
                 'If LWallNodeTemp(j + 1) <= 473 Then
                 '    prop_kl = 0.285
                 '    'prop_kl = WallConductivity(room)
@@ -2352,7 +2352,7 @@ h2ohandler:
             Dim CeilingNodeUnExposed As Double = CeilingNodeTemp(ceilingnodestemp)
             Dim CeilingNodeExposed As Double = CeilingNodeTemp(1)
 
-            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp))
+            prop_k = wood_props_k(CeilingNodeTemp(ceilingnodestemp), CeilingNodeStatus(ceilingnodestemp), CeilingNodeMaxTemp(ceilingnodestemp), "C")
 
             'If CeilingNodeTemp(ceilingnodestemp) <= 473 Then 'uses node temp not max temp reached by that node?
             '    prop_k = kwood
@@ -2401,7 +2401,7 @@ h2ohandler:
             End If
 
             'exposed side
-            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2))
+            prop_k = wood_props_k(CeilingNodeTemp(2), CeilingNodeStatus(2), CeilingNodeMaxTemp(2), "C")
 
             'If CeilingNodeTemp(2) <= 473 Then
             '    prop_k = kwood
@@ -2444,7 +2444,7 @@ h2ohandler:
             k = 2
             For j = 2 To ceilingnodestemp - 1
 
-                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1))
+                prop_k = wood_props_k(CeilingNodeTemp(j + 1), CeilingNodeStatus(j + 1), CeilingNodeMaxTemp(j + 1), "C")
 
                 'If CeilingNodeTemp(j + 1) <= 473 Then
                 '    prop_k = kwood

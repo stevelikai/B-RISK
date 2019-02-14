@@ -332,8 +332,10 @@ Friend Class MDIFrmMain
         gsDatabase = FireDatabaseName
         Me.Text = ProgramTitle & " (" & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build & "." & My.Application.Info.Version.Revision & ")"
         'Me.Text = ProgramTitle & " (" & Version & ")"
-        My.MySettings.Default("thermalconnectionstring") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & MaterialsDatabaseName
-        My.MySettings.Default("fireconnectionstring") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & FireDatabaseName
+        'My.MySettings.Default("thermalconnectionstring") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & MaterialsDatabaseName
+        'My.MySettings.Default("fireconnectionstring") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & FireDatabaseName
+        My.MySettings.Default("thermalconnectionstring") = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & MaterialsDatabaseName
+        My.MySettings.Default("fireconnectionstring") = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & FireDatabaseName
 
         TableLayoutPanel1.Dock = DockStyle.None
         TableLayoutPanel1.Height = Me.Height * 70
@@ -973,13 +975,13 @@ Friend Class MDIFrmMain
                         'Loop
                         For j = 1 To NumberTimeSteps
                             If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
-                                Txt = VB6.Format(tim(j, 1), s) & "," & VB6.Format(layerheight(room, j), s) & "," & VB6.Format(uppertemp(room, j) - 273, s)
-                                Txt = Txt & "," & VB6.Format(HeatRelease(room, j, 2), s) & "," & VB6.Format(FuelMassLossRate(j, 1), s) & "," & VB6.Format(massplumeflow(j, fireroom), s)
-                                Txt = Txt & "," & VB6.Format(ventfire(room, j), s) & "," & VB6.Format(CO2VolumeFraction(room, j, 1) * 100, s) & "," & VB6.Format(COVolumeFraction(room, j, 1) * 100, s)
-                                Txt = Txt & "," & VB6.Format(O2VolumeFraction(room, j, 1) * 100, s) & "," & VB6.Format(CO2VolumeFraction(room, j, 2) * 100, s) & "," & VB6.Format(COVolumeFraction(room, j, 2) * 100, s)
-                                Txt = Txt & "," & VB6.Format(O2VolumeFraction(room, j, 2) * 100, s) & "," & VB6.Format(FEDSum(room, j), s) & "," & VB6.Format(Upperwalltemp(room, j) - 273, s)
-                                Txt = Txt & "," & VB6.Format(CeilingTemp(room, j) - 273, s) & "," & VB6.Format(Target(room, j), s) & "," & VB6.Format(lowertemp(room, j) - 273, s)
-                                Txt = Txt & "," & VB6.Format(LowerWallTemp(room, j) - 273, s) & "," & VB6.Format(FloorTemp(room, j) - 273, s)
+                                Txt = Format(tim(j, 1), s) & "," & VB6.Format(layerheight(room, j), s) & "," & VB6.Format(uppertemp(room, j) - 273, s)
+                                Txt = Txt & "," & Format(HeatRelease(room, j, 2), s) & "," & VB6.Format(FuelMassLossRate(j, 1), s) & "," & VB6.Format(massplumeflow(j, fireroom), s)
+                                Txt = Txt & "," & Format(ventfire(room, j), s) & "," & VB6.Format(CO2VolumeFraction(room, j, 1) * 100, s) & "," & VB6.Format(COVolumeFraction(room, j, 1) * 100, s)
+                                Txt = Txt & "," & Format(O2VolumeFraction(room, j, 1) * 100, s) & "," & VB6.Format(CO2VolumeFraction(room, j, 2) * 100, s) & "," & VB6.Format(COVolumeFraction(room, j, 2) * 100, s)
+                                Txt = Txt & "," & Format(O2VolumeFraction(room, j, 2) * 100, s) & "," & VB6.Format(FEDSum(room, j), s) & "," & VB6.Format(Upperwalltemp(room, j) - 273, s)
+                                Txt = Txt & "," & Format(CeilingTemp(room, j) - 273, s) & "," & VB6.Format(Target(room, j), s) & "," & VB6.Format(lowertemp(room, j) - 273, s)
+                                Txt = Txt & "," & Format(LowerWallTemp(room, j) - 273, s) & "," & VB6.Format(FloorTemp(room, j) - 273, s)
                                 If room = fireroom Then
                                     Txt = Txt & "," & VB6.Format(Y_pyrolysis(room, j), s) & "," & VB6.Format(X_pyrolysis(room, j), s) & "," & VB6.Format(Z_pyrolysis(room, j), s)
                                 Else
@@ -5302,14 +5304,14 @@ SaveResultsErrHandler:
                         Txt = Txt & "," & VB6.Format(LowerWallTemp(room, j) - 273, s) & "," & VB6.Format(FloorTemp(room, j) - 273, s)
                         Txt = Txt & "," & VB6.Format(Y_pyrolysis(room, j), s) & "," & VB6.Format(X_pyrolysis(room, j), s) & "," & VB6.Format(Z_pyrolysis(room, j), s)
                         Txt = Txt & "," & VB6.Format(FlameVelocity(room, 1, j), s) & "," & VB6.Format(FlameVelocity(room, 2, j), s)
-                        Txt = Txt & "," & VB6.Format(RoomPressure(room, j), s) & "," & VB6.Format(Visibility(room, j), s)
-                        Txt = Txt & "," & VB6.Format(FlowToUpper(room, j), s) & "," & VB6.Format(FlowToLower(room, j), s)
-                        Txt = Txt & "," & VB6.Format(SurfaceRad(room, j), s) & "," & VB6.Format(FEDRadSum(room, j), s)
-                        Txt = Txt & "," & VB6.Format(OD_upper(room, j), s) & "," & VB6.Format(OD_lower(room, j), s) & "," & VB6.Format(2.3 * OD_upper(room, j), s) & "," & VB6.Format(2.3 * OD_lower(room, j), s)
-                        Txt = Txt & "," & VB6.Format(UFlowToOutside(room, j), s) & "," & VB6.Format(HCNVolumeFraction(room, j, 1) * 1000000, s) & "," & VB6.Format(HCNVolumeFraction(room, j, 2) * 1000000, s)
+                        Txt = Txt & "," & Format(RoomPressure(room, j), s) & "," & VB6.Format(Visibility(room, j), s)
+                        Txt = Txt & "," & Format(FlowToUpper(room, j), s) & "," & VB6.Format(FlowToLower(room, j), s)
+                        Txt = Txt & "," & Format(SurfaceRad(room, j), s) & "," & VB6.Format(FEDRadSum(room, j), s)
+                        Txt = Txt & "," & Format(OD_upper(room, j), s) & "," & VB6.Format(OD_lower(room, j), s) & "," & VB6.Format(2.3 * OD_upper(room, j), s) & "," & VB6.Format(2.3 * OD_lower(room, j), s)
+                        Txt = Txt & "," & Format(UFlowToOutside(room, j), s) & "," & VB6.Format(HCNVolumeFraction(room, j, 1) * 1000000, s) & "," & VB6.Format(HCNVolumeFraction(room, j, 2) * 1000000, s)
                         'If room <> fireroom Then Txt$ = Txt$ & "," & Format(wallparam(2, j), s) & "," & Format(wallparam(3, j), s) & "," & Format(wallparam(1, j), s)
-                        Txt = Txt & "," & VB6.Format(SPR(room, j), s) & "," & VB6.Format(UnexposedUpperwalltemp(room, j) - 273, s) & "," & VB6.Format(UnexposedLowerwalltemp(room, j) - 273, s) & "," & VB6.Format(UnexposedCeilingtemp(room, j) - 273, s) & "," & VB6.Format(UnexposedFloortemp(room, j) - 273, s)
-                        If room = fireroom Then Txt = Txt & "," & VB6.Format(CJetTemp(j, 1, 0) - 273, s) & "," & VB6.Format(CJetTemp(j, 2, 0) - 273, s) & "," & VB6.Format(GlobalER(j), s) & "," & VB6.Format(OD_outside(room, j), s) & "," & VB6.Format(OD_inside(room, j), s) & "," & VB6.Format(LinkTemp(room, j) - 273, s)
+                        Txt = Txt & "," & Format(SPR(room, j), s) & "," & VB6.Format(UnexposedUpperwalltemp(room, j) - 273, s) & "," & VB6.Format(UnexposedLowerwalltemp(room, j) - 273, s) & "," & VB6.Format(UnexposedCeilingtemp(room, j) - 273, s) & "," & VB6.Format(UnexposedFloortemp(room, j) - 273, s)
+                        If room = fireroom Then Txt = Txt & "," & Format(CJetTemp(j, 1, 0) - 273, s) & "," & VB6.Format(CJetTemp(j, 2, 0) - 273, s) & "," & VB6.Format(GlobalER(j), s) & "," & VB6.Format(OD_outside(room, j), s) & "," & VB6.Format(OD_inside(room, j), s) & "," & VB6.Format(LinkTemp(room, j) - 273, s)
                         xlSheet.Cells(k, 1).Value = Txt
                         System.Windows.Forms.Application.DoEvents()
                         k = k + 1
@@ -5337,35 +5339,24 @@ SaveResultsErrHandler:
 
             End With
 
-            'UPGRADE_WARNING: Array has a new behavior. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"'
-            'UPGRADE_WARNING: Couldn't resolve default property of object xlSheet.Range. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
-            'UPGRADE_WARNING: Couldn't resolve default property of object xlapp.Selection. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
             xlapp.Selection.TextToColumns(Destination:=xlSheet.Range("A1"), dataType:=Microsoft.Office.Interop.Excel.XlTextParsingType.xlDelimited, TextQualifier:=Microsoft.Office.Interop.Excel.Constants.xlDoubleQuote, ConsecutiveDelimiter:=False, Tab_Renamed:=True, Semicolon:=False, Comma:=True, Space_Renamed:=False, Other:=False, FieldInfo:=New Object() {New Object() {1, 1}, New Object() {2, 1}, New Object() {3, 1}, New Object() {4, 1}, New Object() {5, 1}, New Object() {6, 1}, New Object() {7, 1}, New Object() {8, 1}, New Object() {9, 1}, New Object() {10, 1}, New Object() {11, 1}, New Object() {12, 1}, New Object() {13, 1}, New Object() {14, 1}, New Object() {15, 1}, New Object() {16, 1}, New Object() {17, 1}, New Object() {18, 1}, New Object() {19, 1}, New Object() {20, 1}, New Object() {21, 1}, New Object() {22, 1}, New Object() {23, 1}, New Object() {24, 1}, New Object() {25, 1}, New Object() {26, 1}, New Object() {27, 1}, New Object() {28, 1}, New Object() {29, 1}, New Object() {30, 1}, New Object() {31, 1}, New Object() {32, 1}, New Object() {33, 1}, New Object() {34, 1}, New Object() {35, 1}, New Object() {36, 1}, New Object() {37, 1}, New Object() {38, 1}, New Object() {39, 1}, New Object() {40, 1}, New Object() {41, 1}, New Object() {42, 1}, New Object() {43, 1}, New Object() {44, 1}, New Object() {45, 1}, New Object() {46, 1}, New Object() {47, 1}, New Object() {48, 1}, New Object() {49, 1}})
 
             If room < NumberRooms Then
-                'UPGRADE_WARNING: Couldn't resolve default property of object xlBook.Worksheets. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
                 xlBook.Worksheets.Add()
-                'UPGRADE_WARNING: Couldn't resolve default property of object xlBook.ActiveSheet. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
                 xlSheet = xlBook.ActiveSheet
-                'UPGRADE_WARNING: Couldn't resolve default property of object xlSheet.Name. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
                 xlSheet.Name = "Room " & CStr(room + 1)
             End If
         Next room
 
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlBook.Worksheets. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlBook.Worksheets.Add()
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlBook.ActiveSheet. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlSheet = xlBook.ActiveSheet
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlSheet.Name. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlSheet.Name = "Outside"
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlSheet.Cells. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlSheet.Cells(1, 1).Value = "Time (sec)" & "," & "Vent Fire (kW)"
         If NumberTimeSteps > 0 Then
             k = 2 'row
             For j = 1 To NumberTimeSteps + 1
                 If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
-                    Txt = VB6.Format(tim(j, 1), s) & "," & VB6.Format(ventfire(room, j), s)
-                    'UPGRADE_WARNING: Couldn't resolve default property of object xlSheet.Cells. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
+                    Txt = Format(tim(j, 1), s) & "," & Format(ventfire(room, j), s)
                     xlSheet.Cells(k, 1).Value = Txt
                     k = k + 1
                 End If
@@ -5392,12 +5383,8 @@ SaveResultsErrHandler:
             'UPGRADE_WARNING: Couldn't resolve default property of object xlapp.Selection. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
             .MergeCells = False
         End With
-        'UPGRADE_WARNING: Array has a new behavior. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="9B7D5ADD-D8FE-4819-A36C-6DEDAF088CC7"'
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlSheet.Range. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlapp.Selection. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlapp.Selection.TextToColumns(Destination:=xlSheet.Range("A1"), dataType:=Microsoft.Office.Interop.Excel.XlTextParsingType.xlDelimited, TextQualifier:=Microsoft.Office.Interop.Excel.Constants.xlDoubleQuote, ConsecutiveDelimiter:=False, Tab_Renamed:=True, Semicolon:=False, Comma:=True, Space_Renamed:=False, Other:=False, FieldInfo:=New Object() {New Object() {1, 1}, New Object() {2, 1}, New Object() {3, 1}, New Object() {4, 1}, New Object() {5, 1}, New Object() {6, 1}, New Object() {7, 1}, New Object() {8, 1}, New Object() {9, 1}, New Object() {10, 1}, New Object() {11, 1}, New Object() {12, 1}, New Object() {13, 1}, New Object() {14, 1}, New Object() {15, 1}, New Object() {16, 1}, New Object() {17, 1}, New Object() {18, 1}, New Object() {19, 1}, New Object() {20, 1}, New Object() {21, 1}, New Object() {22, 1}, New Object() {23, 1}, New Object() {24, 1}, New Object() {25, 1}, New Object() {26, 1}, New Object() {27, 1}, New Object() {28, 1}, New Object() {29, 1}, New Object() {30, 1}, New Object() {31, 1}, New Object() {32, 1}, New Object() {33, 1}, New Object() {34, 1}, New Object() {35, 1}, New Object() {36, 1}, New Object() {37, 1}, New Object() {38, 1}, New Object() {39, 1}, New Object() {40, 1}, New Object() {41, 1}, New Object() {42, 1}, New Object() {43, 1}, New Object() {44, 1}, New Object() {45, 1}, New Object() {46, 1}, New Object() {47, 1}, New Object() {48, 1}, New Object() {49, 1}})
 
-        'UPGRADE_WARNING: Lower bound of collection MDIFrmMain.StatusBar1.Panels has changed from 1 to 0. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="A3B628A0-A810-4AE2-BFA2-9E7A29EB9AD0"'
         Me.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait"
 
         If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(xlapp, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))
@@ -5435,24 +5422,15 @@ SaveResultsErrHandler:
             'MsgBox "Data saved in " & SaveBox.FileTitle, vbInformation + vbOKOnly
         End If
         'close excel
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlBook.Close. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlBook.Close(SaveChanges:=False)
-        'UPGRADE_WARNING: Couldn't resolve default property of object xlapp.Application. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6A50421D-15FE-4896-8A1B-2EC21E9037B2"'
         xlapp.Application.Quit()
         'release the objects
-        'UPGRADE_NOTE: Object xlapp may not be destroyed until it is garbage collected. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"'
         xlapp = Nothing
-        'UPGRADE_NOTE: Object xlBook may not be destroyed until it is garbage collected. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"'
         xlBook = Nothing
-        'UPGRADE_NOTE: Object xlSheet may not be destroyed until it is garbage collected. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6E35BFF6-CD74-4B09-9689-3E1A43DF8969"'
         xlSheet = Nothing
 
-        'UPGRADE_WARNING: Lower bound of collection MDIFrmMain.StatusBar1.Panels has changed from 1 to 0. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="A3B628A0-A810-4AE2-BFA2-9E7A29EB9AD0"'
         Me.ToolStripStatusLabel4.Text = " "
 
-        'UPGRADE_ISSUE: Screen property Screen.MousePointer does not support custom mousepointers. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="45116EAB-7060-405E-8ABE-9DBB40DC2E86"'
-        'UPGRADE_WARNING: Screen property Screen.MousePointer has a new behavior. Click for more: 'ms-help://MS.VSCC.v90/dv_commoner/local/redirect.htm?keyword="6BA9B8D2-2A32-4B6E-8D36-44949974A5B4"'
-        'System.Windows.Forms.Cursor.Current = ARROW
         Exit Sub
 
 excelerrorhandler:
@@ -6129,10 +6107,6 @@ more:
         'User pressed Cancel button
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Arrow
         Exit Sub
-
-    End Sub
-
-    Private Sub ToolStrip1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
 
     End Sub
 
@@ -7553,7 +7527,8 @@ errhandler:
             Exit Sub
         End If
 
-        My.Settings("fireConnectionString") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & FireDatabaseName
+        'My.Settings("fireConnectionString") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & FireDatabaseName
+        My.Settings("fireConnectionString") = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & FireDatabaseName
 
 
 
@@ -9068,7 +9043,8 @@ errhandler:
             Exit Sub
         End If
 
-        My.Settings("thermalConnectionString") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & MaterialsDatabaseName
+        'My.Settings("thermalConnectionString") = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & MaterialsDatabaseName
+        My.Settings("thermalConnectionString") = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & MaterialsDatabaseName
 
     End Sub
 
@@ -10211,5 +10187,64 @@ errhandler:
 
     Private Sub mnuBatchFiles_Click(sender As Object, e As EventArgs) Handles mnuBatchFiles.Click
 
+    End Sub
+
+    Private Sub MassTimberCLTToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MassTimberCLTToolStripMenuItem.Click
+
+        If useCLTmodel = True Then
+            frmCLT.optCLTOFF.Checked = False
+            frmCLT.optCLTON.Checked = True
+        Else
+            frmCLT.optCLTOFF.Checked = True
+            frmCLT.optCLTON.Checked = False
+        End If
+        If IntegralModel = True Then
+            frmCLT.RB_Integral.Checked = True
+            frmCLT.panel_kinetic.Visible = False
+            frmCLT.Panel_integralmodel.Visible = True
+        ElseIf KineticModel = True Then
+            frmCLT.RB_Kinetic.Checked = True
+            frmCLT.panel_kinetic.Visible = True
+            frmCLT.Panel_integralmodel.Visible = False
+        Else
+            frmCLT.RB_dynamic.Checked = True
+            frmCLT.panel_kinetic.Visible = False
+            frmCLT.Panel_integralmodel.Visible = False
+        End If
+
+        frmCLT.numeric_ceilareapercent.Value = CLTceilingpercent
+        frmCLT.numeric_wallareapercent.Value = CLTwallpercent
+        frmCLT.txtCharTemp.Text = chartemp
+        frmCLT.txtCLTcalibration.Text = CLTcalibrationfactor
+        frmCLT.txtLamellaDepth.Text = Lamella
+        frmCLT.txtFlameFlux.Text = CLTflameflux
+        frmCLT.txtCLTigtemp.Text = CLTigtemp
+        frmCLT.txtCLTLoG.Text = CLTLoG
+        frmCLT.txtCritFlux.Text = CLTQcrit
+        frmCLT.txtDebondTemp.Text = DebondTemp
+        frmCLT.TXT_MoistureContent.Text = init_moisturecontent * 100
+
+        frmCLT.txtA_cell.Text = Format(E_array(1), "0.00E+00")
+        frmCLT.txtE_cell.Text = Format(A_array(1), "0.00E+00")
+        frmCLT.txtReact_cell.Text = n_array(1)
+        frmCLT.txtInit_cell.Text = mf_compinit(1)
+        frmCLT.txtA_hemi.Text = Format(E_array(2), "0.00E+00")
+        frmCLT.txtE_hemi.Text = Format(A_array(2), "0.00E+00")
+        frmCLT.txtReact_hemi.Text = n_array(2)
+        frmCLT.txtInit_hemi.Text = mf_compinit(2)
+        frmCLT.txtA_lignin.Text = Format(E_array(3), "0.00E+00")
+        frmCLT.txtE_lignin.Text = Format(A_array(3), "0.00E+00")
+        frmCLT.txtReact_lignin.Text = n_array(3)
+        frmCLT.txtInit_lignin.Text = mf_compinit(3)
+        frmCLT.txtA_water.Text = Format(E_array(0), "0.00E+00")
+        frmCLT.txtE_water.Text = Format(A_array(0), "0.00E+00")
+        frmCLT.txtReact_water.Text = n_array(0)
+        frmCLT.txtInit_water.Text = mf_compinit(0)
+        frmCLT.TextBox_charyield_cell.Text = char_yield(1)
+        frmCLT.TextBox_charyield_hemi.Text = char_yield(2)
+        frmCLT.TextBox_charyield_lignin.Text = char_yield(3)
+        frmCLT.ComboBox1_k.SelectedIndex = thermalprops - 1
+
+        frmCLT.Show()
     End Sub
 End Class
