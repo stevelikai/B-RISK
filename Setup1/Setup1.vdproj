@@ -27,7 +27,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_03FF162857734703820A8ACCF9CEA5F4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_040CB72D5F474CE88E632AA85A830235"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0512CF0017DD4BD18FA54D2E92B824A6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -75,13 +87,37 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_249463DA135D4D9BBF1ABDA25F8D505E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2899C9F871CC4EE7BA14CE6D0BD16B8F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_29EB6F425E27495C9236ABEF34033544"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2AD019C6DBA94850A0707DC21E070695"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2BCDCAA5A76A40BD80F7E91CBA7C545E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2C1C54C58C0845BBAD9EA6EEB7A54F51"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -117,6 +153,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_35828C8FEA7440FEA53B42FBDDF23E0E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3736ABA97DDE4AF28314BD3D96CC35E6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -136,13 +178,13 @@
         "Entry"
         {
         "MsmKey" = "8:_37DE3A282860A291FE8DEF62DF55EB3D"
-        "OwnerKey" = "8:_CEF78560797DEF56D1972829844AFAA5"
+        "OwnerKey" = "8:_DB6C9762C9367BCD5029333708E6BD4A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_37DE3A282860A291FE8DEF62DF55EB3D"
-        "OwnerKey" = "8:_DB6C9762C9367BCD5029333708E6BD4A"
+        "OwnerKey" = "8:_CEF78560797DEF56D1972829844AFAA5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,6 +196,12 @@
         "Entry"
         {
         "MsmKey" = "8:_43046A3FB78C4CFAB671A621B5FDC3CF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_430AA49BA2184E12A889E34EF5FEF097"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -177,7 +225,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_46CF00BB7900408CADB64E3D08C04FCD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4B5C9E36B26E46D79F27594A5C2EE64B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4C56645F76864E0289A638B2F0CD3971"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -190,7 +250,13 @@
         "Entry"
         {
         "MsmKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
-        "OwnerKey" = "8:_E652D1D7A904C46E53CB5C95E39D8907"
+        "OwnerKey" = "8:_FBDBF0BE2ABA4E4FA0E9ACFA8EF0EC4F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
+        "OwnerKey" = "8:_FFF1BEE30D120DE3D028C2A3CC43C011"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,7 +268,7 @@
         "Entry"
         {
         "MsmKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
-        "OwnerKey" = "8:_FFF1BEE30D120DE3D028C2A3CC43C011"
+        "OwnerKey" = "8:_E652D1D7A904C46E53CB5C95E39D8907"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -219,7 +285,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_53162DF415604745A8580991323F3C64"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5427169DE0524970A97529D85032FF22"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_56C1A95ED5794DB29B1F19903B82DA11"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_57BB2F05089247F2BCA9B71A44176315"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -231,7 +315,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_58763B27E6D44C479541BE6910833522"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_58E16105C5B746AAB14DCCB514EAAAAD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5F22DF438BF0446D8FA001F9ACB2FD26"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -243,7 +339,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_62B7AD7B77B84202AA702F7D53848A4A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6817A440AFCE47BFB3B25488F2653FE8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E012FD89CE94A6F80A4DDF93DD217CD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_718F5090473D402D96C8376F9E3AC45A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_71B15323DA1B419FB754A9D43EB18EF2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -256,6 +376,30 @@
         "Entry"
         {
         "MsmKey" = "8:_7B8F890A424443F8A64217C2AD98C4C6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7D743904601541F5A85690042BAA6BA3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7DBE52C7B32D4244B7C14CF24457697F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7E3F5CB0178C4987B6A0378471B264E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_810A3B190D3C43DB9DA23EDD0960A315"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -279,7 +423,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_83C122BFA8504E2D9D6B6AAE73C8FE24"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8DC88B5C35664707A5143C4FB6AA4AC7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_96013C0095D347AEB36B38CC165AAC2E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_967350A24D094D31871072ACDF81E4FE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -315,6 +477,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_AA74860648DC44B5A3D0950296DD06C3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AC1A12973F4743B79C377BC63EF1CCC1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AE72C2F1EE6146CBB1186D89DE06C44D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -335,12 +509,6 @@
         {
         "MsmKey" = "8:_B34448F960A14C9B9AB1BB2DB067DB1F"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B6BE52339DF0D9541DC15ADE3F1C7878"
-        "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -399,8 +567,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C29AE25063ED2B655CDCC59819EAF28E"
-        "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
+        "MsmKey" = "8:_C166BEFB8EC4406FBC0B9B819AAE07A7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C19CD0BAAD2849F4B992B9A260F90252"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -423,6 +597,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C7111DE87792444CAD72B96835C77BA7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C79C239E93744F839D48F4CD1C252C16"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C903A01809034F2392F7D95131D7E284"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C99BA4014C0C412DAED26C5091AA35E9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -430,6 +622,18 @@
         "Entry"
         {
         "MsmKey" = "8:_CA959561CE1449F88A23FA22F043EFCD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CAB671102E7145EBBC67F269F1C292EF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CD6B35A827644F81A1ED5459D1B39D6F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -454,6 +658,12 @@
         "Entry"
         {
         "MsmKey" = "8:_DD0D27866F214BAAA47D66DBB3E85DE8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DD75AB1BC14F441284A5D5656B9BEEAA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -495,6 +705,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FBDBF0BE2ABA4E4FA0E9ACFA8EF0EC4F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FEF8B1F1601A37123EA21C7278472F72"
         "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
         "MsmSig" = "8:_UNDEFINED"
@@ -520,67 +736,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C6C8EE103A5B0C105E4B85B804564B58"
+        "OwnerKey" = "8:_FBDBF0BE2ABA4E4FA0E9ACFA8EF0EC4F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E652D1D7A904C46E53CB5C95E39D8907"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FEF8B1F1601A37123EA21C7278472F72"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_FFF1BEE30D120DE3D028C2A3CC43C011"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C29AE25063ED2B655CDCC59819EAF28E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B6BE52339DF0D9541DC15ADE3F1C7878"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_37DE3A282860A291FE8DEF62DF55EB3D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CEF78560797DEF56D1972829844AFAA5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DB6C9762C9367BCD5029333708E6BD4A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
+        "OwnerKey" = "8:_34F712301307A9D32D79560CE0230414"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -592,7 +754,55 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_34F712301307A9D32D79560CE0230414"
+        "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DB6C9762C9367BCD5029333708E6BD4A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CEF78560797DEF56D1972829844AFAA5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_37DE3A282860A291FE8DEF62DF55EB3D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FFF1BEE30D120DE3D028C2A3CC43C011"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FEF8B1F1601A37123EA21C7278472F72"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E652D1D7A904C46E53CB5C95E39D8907"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C6C8EE103A5B0C105E4B85B804564B58"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -741,12 +951,52 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03FF162857734703820A8ACCF9CEA5F4"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\rooms.xml"
+            "TargetName" = "8:rooms.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_040CB72D5F474CE88E632AA85A830235"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\ifb.txt"
             "TargetName" = "8:ifb.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0512CF0017DD4BD18FA54D2E92B824A6"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\cufft64_75.dll"
+            "TargetName" = "8:cufft64_75.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -901,6 +1151,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_249463DA135D4D9BBF1ABDA25F8D505E"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\rooms.xml"
+            "TargetName" = "8:rooms.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2899C9F871CC4EE7BA14CE6D0BD16B8F"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_ISO9705.xml"
@@ -921,12 +1191,72 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_29EB6F425E27495C9236ABEF34033544"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\cudart64_75.dll"
+            "TargetName" = "8:cudart64_75.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2AD019C6DBA94850A0707DC21E070695"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\e3.txt"
             "TargetName" = "8:e3.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2BCDCAA5A76A40BD80F7E91CBA7C545E"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\vents.xml"
+            "TargetName" = "8:vents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2C1C54C58C0845BBAD9EA6EEB7A54F51"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\nmath_premium_native_x64.dll"
+            "TargetName" = "8:nmath_premium_native_x64.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1052,6 +1382,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35828C8FEA7440FEA53B42FBDDF23E0E"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\culapack.dll"
+            "TargetName" = "8:culapack.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3736ABA97DDE4AF28314BD3D96CC35E6"
             {
             "SourcePath" = "8:..\\misc files to distribute\\dbases\\thermal.mdb"
@@ -1099,6 +1449,11 @@
             "AssemblyAsmDisplayName" = "8:itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_37DE3A282860A291FE8DEF62DF55EB3D"
+                    {
+                    "Name" = "8:itextsharp.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:itextsharp.dll"
             "TargetName" = "8:"
@@ -1144,6 +1499,26 @@
             "TargetName" = "8:m03.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_430AA49BA2184E12A889E34EF5FEF097"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\basemodel_ConfigP_SMC_DB2000_EC5.xml"
+            "TargetName" = "8:basemodel_ConfigP_SMC_DB2000_EC5.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1218,12 +1593,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46CF00BB7900408CADB64E3D08C04FCD"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\fans.xml"
+            "TargetName" = "8:fans.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B5C9E36B26E46D79F27594A5C2EE64B"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\basemodel_default_log.rtf"
             "TargetName" = "8:basemodel_default_log.rtf"
             "Tag" = "8:"
             "Folder" = "8:_2949A2CE78494883B342AD1D80885287"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C56645F76864E0289A638B2F0CD3971"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\sprinklers.xml"
+            "TargetName" = "8:sprinklers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1245,6 +1660,11 @@
             "AssemblyAsmDisplayName" = "8:NMathPremium, Version=6.2.0.25, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_4D409507DFC0EFA60F97FC844E639670"
+                    {
+                    "Name" = "8:NMathPremium.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:NMathPremium.dll"
             "TargetName" = "8:"
@@ -1315,12 +1735,72 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53162DF415604745A8580991323F3C64"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\items.xml"
+            "TargetName" = "8:items.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5427169DE0524970A97529D85032FF22"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\rsply.txt"
             "TargetName" = "8:rsply.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_56C1A95ED5794DB29B1F19903B82DA11"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\nmath_cuda_x64.dll"
+            "TargetName" = "8:nmath_cuda_x64.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_57BB2F05089247F2BCA9B71A44176315"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\sprinklers.xml"
+            "TargetName" = "8:sprinklers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1355,12 +1835,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_58763B27E6D44C479541BE6910833522"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\libiomp5md.dll"
+            "TargetName" = "8:libiomp5md.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_58E16105C5B746AAB14DCCB514EAAAAD"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\smokedets.xml"
             "TargetName" = "8:smokedets.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F22DF438BF0446D8FA001F9ACB2FD26"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\cublas64_75.dll"
+            "TargetName" = "8:cublas64_75.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1395,12 +1915,92 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62B7AD7B77B84202AA702F7D53848A4A"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\basemodel_ConfigP_SMA_DB2000_G2.xml"
+            "TargetName" = "8:basemodel_ConfigP_SMA_DB2000_G2.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6817A440AFCE47BFB3B25488F2653FE8"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\cvents.xml"
             "TargetName" = "8:cvents.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6E012FD89CE94A6F80A4DDF93DD217CD"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\deviceQuery.exe"
+            "TargetName" = "8:deviceQuery.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_718F5090473D402D96C8376F9E3AC45A"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\fans.xml"
+            "TargetName" = "8:fans.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71B15323DA1B419FB754A9D43EB18EF2"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\cvents.xml"
+            "TargetName" = "8:cvents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1441,6 +2041,86 @@
             "TargetName" = "8:items.xml"
             "Tag" = "8:"
             "Folder" = "8:_2949A2CE78494883B342AD1D80885287"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D743904601541F5A85690042BAA6BA3"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\smokedets.xml"
+            "TargetName" = "8:smokedets.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7DBE52C7B32D4244B7C14CF24457697F"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\items.xml"
+            "TargetName" = "8:items.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E3F5CB0178C4987B6A0378471B264E0"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\nmath_sf_x64.dll"
+            "TargetName" = "8:nmath_sf_x64.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_810A3B190D3C43DB9DA23EDD0960A315"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\distributions.xml"
+            "TargetName" = "8:distributions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1515,12 +2195,72 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_83C122BFA8504E2D9D6B6AAE73C8FE24"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\basemodel_ConfigP_SMC_DB2000.xml"
+            "TargetName" = "8:basemodel_ConfigP_SMC_DB2000.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8DC88B5C35664707A5143C4FB6AA4AC7"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\vents.xml"
+            "TargetName" = "8:vents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_96013C0095D347AEB36B38CC165AAC2E"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\fans.xml"
             "TargetName" = "8:fans.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_967350A24D094D31871072ACDF81E4FE"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\fans.xml"
+            "TargetName" = "8:fans.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1635,6 +2375,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AA74860648DC44B5A3D0950296DD06C3"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\vents.xml"
+            "TargetName" = "8:vents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC1A12973F4743B79C377BC63EF1CCC1"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\distributions.xml"
+            "TargetName" = "8:distributions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE72C2F1EE6146CBB1186D89DE06C44D"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\distributions.xml"
@@ -1713,32 +2493,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B6BE52339DF0D9541DC15ADE3F1C7878"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Data.SqlServerCe, Version=3.5.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:System.Data.SqlServerCe.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_EC98A20E40CB4EFF9836C97DFC53459F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B99C259EB0DE43408FF22F76F4272DFE"
@@ -1901,18 +2655,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C29AE25063ED2B655CDCC59819EAF28E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C166BEFB8EC4406FBC0B9B819AAE07A7"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:Microsoft.Office.Interop.Excel.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\cvents.xml"
+            "TargetName" = "8:cvents.xml"
             "Tag" = "8:"
-            "Folder" = "8:_EC98A20E40CB4EFF9836C97DFC53459F"
+            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1924,7 +2672,27 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C19CD0BAAD2849F4B992B9A260F90252"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\items.xml"
+            "TargetName" = "8:items.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3C4E10337294D3DBBEDBB4DC8E288B8"
@@ -1954,6 +2722,11 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.Solver.Foundation, Version=3.0.2.10889, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_C6C8EE103A5B0C105E4B85B804564B58"
+                    {
+                    "Name" = "8:Microsoft.Solver.Foundation.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Microsoft.Solver.Foundation.dll"
             "TargetName" = "8:"
@@ -1971,6 +2744,66 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C7111DE87792444CAD72B96835C77BA7"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\rooms.xml"
+            "TargetName" = "8:rooms.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C79C239E93744F839D48F4CD1C252C16"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\cvents.xml"
+            "TargetName" = "8:cvents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C903A01809034F2392F7D95131D7E284"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\smokedets.xml"
+            "TargetName" = "8:smokedets.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C99BA4014C0C412DAED26C5091AA35E9"
@@ -2013,6 +2846,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CAB671102E7145EBBC67F269F1C292EF"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\smokedets.xml"
+            "TargetName" = "8:smokedets.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD6B35A827644F81A1ED5459D1B39D6F"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\distributions.xml"
+            "TargetName" = "8:distributions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDCF0C143F6D4BFEB062E9813BD2B25F"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\M07.txt"
@@ -2040,6 +2913,11 @@
             "AssemblyAsmDisplayName" = "8:itextsharp.pdfa, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_CEF78560797DEF56D1972829844AFAA5"
+                    {
+                    "Name" = "8:itextsharp.pdfa.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:itextsharp.pdfa.dll"
             "TargetName" = "8:"
@@ -2066,6 +2944,11 @@
             "AssemblyAsmDisplayName" = "8:itextsharp.xtra, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_DB6C9762C9367BCD5029333708E6BD4A"
+                    {
+                    "Name" = "8:itextsharp.xtra.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:itextsharp.xtra.dll"
             "TargetName" = "8:"
@@ -2091,6 +2974,26 @@
             "TargetName" = "8:fcs.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD75AB1BC14F441284A5D5656B9BEEAA"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\sprinklers.xml"
+            "TargetName" = "8:sprinklers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2132,6 +3035,11 @@
             "AssemblyAsmDisplayName" = "8:NMathPremiumChartMicrosoft, Version=6.2.0.25, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_E652D1D7A904C46E53CB5C95E39D8907"
+                    {
+                    "Name" = "8:NMathPremiumChartMicrosoft.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:NMathPremiumChartMicrosoft.dll"
             "TargetName" = "8:"
@@ -2211,6 +3119,77 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FBDBF0BE2ABA4E4FA0E9ACFA8EF0EC4F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NMathPremiumKernelx64, Version=6.2.0.25, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_44B1049044339AA31307E5028E5DA880"
+                    {
+                    "Name" = "8:cufft64_75.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_47B8C59239D34EEED0821C7B212D2EB0"
+                    {
+                    "Name" = "8:nmath_premium_native_x64.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_553D1816557F269F32CFBAE4AA410D78"
+                    {
+                    "Name" = "8:cudart64_75.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_A539BFE343A6AB58E9D3A44F475AA09A"
+                    {
+                    "Name" = "8:libiomp5md.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_B0ECD36D8A3533D7AEF7A14CB01D5A16"
+                    {
+                    "Name" = "8:nmath_sf_x64.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_BA32D3773D2AB757C7AC07BE3EC24821"
+                    {
+                    "Name" = "8:nmath_cuda_x64.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_C7D036871A3AEA2CC3A5F9254C5A1DB1"
+                    {
+                    "Name" = "8:culapack.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_D2BB247AD6E16B853F27B7D746EA244C"
+                    {
+                    "Name" = "8:cublas64_75.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_FBDBF0BE2ABA4E4FA0E9ACFA8EF0EC4F"
+                    {
+                    "Name" = "8:NMathPremiumKernelx64.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x64\\NMathPremiumKernelx64.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F3B10E5F0C824359B9F02E64A122EDC3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FEF8B1F1601A37123EA21C7278472F72"
             {
             "AssemblyRegister" = "3:1"
@@ -2218,6 +3197,11 @@
             "AssemblyAsmDisplayName" = "8:NMathStatsPremium, Version=4.2.0.25, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_FEF8B1F1601A37123EA21C7278472F72"
+                    {
+                    "Name" = "8:NMathStatsPremium.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:NMathStatsPremium.dll"
             "TargetName" = "8:"
@@ -2244,6 +3228,11 @@
             "AssemblyAsmDisplayName" = "8:NMathStatsPremiumChartMicrosoft, Version=4.2.0.25, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_FFF1BEE30D120DE3D028C2A3CC43C011"
+                    {
+                    "Name" = "8:NMathStatsPremiumChartMicrosoft.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:NMathStatsPremiumChartMicrosoft.dll"
             "TargetName" = "8:"
@@ -2318,6 +3307,28 @@
                             "Property" = "8:_5B95584DB1E94FDC8A930252C3D0E74A"
                                 "Folders"
                                 {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0F35E6F2F24B4AADB37C259039672248"
+                                    {
+                                    "Name" = "8:basemodel_ConfigP_SMC_DB2000"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_647C6977128B4EB8B482DEB20E4866C8"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+                                    {
+                                    "Name" = "8:basemodel_ConfigP_SMA_DB2000_G2"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_B85923F9399D4DD3B14F9B386079DDC1"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_2949A2CE78494883B342AD1D80885287"
                                     {
                                     "Name" = "8:basemodel_default"
@@ -2325,6 +3336,17 @@
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
                                     "Property" = "8:_7D55CC785B6A4B59988B00CF7A640F50"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_5521BBF8B0104EFE9F0361E352E257E6"
+                                    {
+                                    "Name" = "8:basemodel_ConfigP_SMC_DB2000_EC5"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_D61B0252EA3F4D66826D301DE8A16872"
                                         "Folders"
                                         {
                                         }
@@ -2359,7 +3381,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_EC98A20E40CB4EFF9836C97DFC53459F"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -2400,6 +3422,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F3B10E5F0C824359B9F02E64A122EDC3"
+                    {
+                    "Name" = "8:x64"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_E00A99F958CE47789D9280132D9ED07B"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -2417,20 +3450,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:B-RISK 2018.052"
-        "ProductCode" = "8:{39C76D3D-1C3B-4603-8EB5-735542D2D1D1}"
-        "PackageCode" = "8:{1A669CB5-7D28-40F0-B4C1-2407259BC098}"
-        "UpgradeCode" = "8:{754CE87D-6507-4E74-B031-5F39BA982974}"
+        "ProductName" = "8:B-RISK_x64"
+        "ProductCode" = "8:{6DE21A3E-9AC3-4890-9028-7FB1E6F1F4D6}"
+        "PackageCode" = "8:{B067A9DD-A66E-43DD-9D16-2C18E7FED1BF}"
+        "UpgradeCode" = "8:{A597FA41-B04E-4073-A254-A6CE0ECD432B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:18.052"
+        "ProductVersion" = "8:19.02"
         "Manufacturer" = "8:BRANZ"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:B-RISK Setup"
+        "Title" = "8:B-RISK (x64) Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:BRANZ"
         "Keywords" = "8:"
@@ -2440,7 +3473,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -2541,7 +3574,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0216BCDBF6594DD1A8700259AEFB1CBC"
             {
-            "Name" = "8:B-RISK 2018.052"
+            "Name" = "8:B-RISK_x64"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -2551,6 +3584,20 @@
             "Folder" = "8:_6D80EE75222944818B43DBE2CA101E4B"
             "WorkingFolder" = "8:_EC98A20E40CB4EFF9836C97DFC53459F"
             "Icon" = "8:_1C5E2B69EA454D718DCF57DA67AC9C32"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EA2ADBD551C7450D9DB505D3B1871ED8"
+            {
+            "Name" = "8:B-RISK_x64"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_B75418E3DB674442A75CC166E94456EC"
+            "Folder" = "8:_191EB0212B144E609984171005C76145"
+            "WorkingFolder" = "8:_EC98A20E40CB4EFF9836C97DFC53459F"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -3010,7 +4057,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B75418E3DB674442A75CC166E94456EC"
             {
-            "SourcePath" = "8:..\\obj\\Debug\\BRISK.exe"
+            "SourcePath" = "8:..\\obj\\Release\\BRISK.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EC98A20E40CB4EFF9836C97DFC53459F"

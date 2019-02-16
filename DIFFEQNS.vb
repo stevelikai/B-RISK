@@ -1969,7 +1969,7 @@ Module DIFFEQNS
                         End If
                         j = j + 1
                     Next
-
+                    Dim b As Integer
                     For j = 1 To NumberRooms
                         UpperVolume(j, i + 1) = Ystart(j, 1)
 
