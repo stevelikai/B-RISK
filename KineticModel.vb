@@ -1341,7 +1341,7 @@ Module KineticModelCode
             'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
             'CeilingElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
             DensityInitial = CeilingDensity(fireroom)
-            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
+            'chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             ReDim Zstart(0 To 3)
             elements = maxceilingnodes - 1
@@ -1408,7 +1408,7 @@ Module KineticModelCode
             'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
             'WallElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
             DensityInitial = WallDensity(fireroom)
-            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
+            'chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             NL = WallThickness(fireroom) / 1000 / Lamella 'number of lamella - in two places also in main_program2
             layersremaining = NL - Lamella2 / Lamella + 1
