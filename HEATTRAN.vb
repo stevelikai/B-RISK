@@ -1934,8 +1934,8 @@ h2ohandler:
             moisturecontent = init_moisturecontent
 
             'moisturecontent = 0.12 'assume 15%
-            'chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
-            chardensity = CharYield * CeilingDensity(fireroom)
+            chardensity = 0.63 * WallDensity(room) / (1 + moisturecontent)
+            'chardensity = CharYield * CeilingDensity(fireroom)
 
             If CLTwallpercent >= 0 Then
                 NLw = WallThickness(room) / 1000 / Lamella 'number of lamella - in two places also in main_program2
@@ -2310,8 +2310,8 @@ h2ohandler:
             'moisturecontent = 0.08 'was 12%
             moisturecontent = init_moisturecontent
 
-            'chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
-            chardensity = CharYield * WallDensity(fireroom)
+            chardensity = 0.63 * CeilingDensity(room) / (1 + moisturecontent)
+            'chardensity = CharYield * WallDensity(fireroom)
 
             If CLTceilingpercent >= 0 Then
                 NLC = CeilingThickness(room) / 1000 / Lamella 'number of lamella - in two places also in main_program2

@@ -14,8 +14,6 @@ Module KineticModelCode
         'returns thermal conductivity of wood in W/mK
         If ischar = 1 Then
             'this is char - use only the equation for char
-            'If T < 663 Then T = 663
-            'If T > 923 Then T = 923
             T = maxtemp
 
         End If
@@ -1335,13 +1333,14 @@ Module KineticModelCode
             Dim ElapsedTime As Double
             Dim DT As Double
 
-            Dim rmw, area As Double
+            Dim factor, rmw, area As Double
 
             'the ceiling
             'CeilingNode(room, node, timestep) contains the temperature at each node at each timestep
             'CeilingElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
             DensityInitial = CeilingDensity(fireroom)
-            'chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
+            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
+            factor = mf_compinit(1) * char_yield(1) + mf_compinit(2) * char_yield(2) + mf_compinit(3) * char_yield(3)
 
             ReDim Zstart(0 To 3)
             elements = maxceilingnodes - 1
@@ -1383,6 +1382,8 @@ Module KineticModelCode
 
                 'total mass fraction of char residue in this element
                 CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - CeilingElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - CeilingElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
+                ' If factor > 0 Then CeilingCharResidue(count, i + 1) = CeilingCharResidue(count, i + 1) * chardensity / factor
+
 
                 'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
                 CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_compinit(1) + CeilingElementMF(count, 2, i + 1) * mf_compinit(2) + CeilingElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
@@ -1400,7 +1401,8 @@ Module KineticModelCode
                 rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
 
                 'apparent density of this element 'kg/m3 
-                CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
+                ' CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
+                CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * chardensity / factor + CeilingResidualMass(count, i + 1) 'water + char + solids
 
             Next
 
@@ -1408,7 +1410,7 @@ Module KineticModelCode
             'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
             'WallElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
             DensityInitial = WallDensity(fireroom)
-            'chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
+            chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             NL = WallThickness(fireroom) / 1000 / Lamella 'number of lamella - in two places also in main_program2
             layersremaining = NL - Lamella2 / Lamella + 1
@@ -1429,7 +1431,7 @@ Module KineticModelCode
             End If
 
             'For count = (1 + elements - layersremaining * elements / NL) To elements 'loop through each finite difference element in the ceiling
-            For count = 1 To elements 'loop through each finite difference element in the ceiling
+            For count = 1 To elements 'loop through each finite difference element in the wall
                 If i = 1 Then
                     ' For m = 1 To 3
                     'WallResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
@@ -1451,6 +1453,7 @@ Module KineticModelCode
 
                 'total mass fraction of char residue in this element
                 UWallCharResidue(count, i + 1) = (1 - UWallElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - UWallElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - UWallElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
+                ' If factor > 0 Then UWallCharResidue(count, i + 1) = UWallCharResidue(count, i + 1) * chardensity / factor
 
                 'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
                 WallResidualMass(count, i + 1) = DensityInitial * (UWallElementMF(count, 1, i + 1) * mf_compinit(1) + UWallElementMF(count, 2, i + 1) * mf_compinit(2) + UWallElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
@@ -1468,7 +1471,8 @@ Module KineticModelCode
                 rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
 
                 'apparent density of this element 'kg/m3 
-                WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * DensityInitial + WallResidualMass(count, i + 1) 'water + char + solids
+                'WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * DensityInitial + WallResidualMass(count, i + 1) 'water + char + solids
+                WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * chardensity / factor + WallResidualMass(count, i + 1) 'water + char + solids
 
             Next
 
