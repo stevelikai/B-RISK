@@ -393,6 +393,7 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmNewSmokeDetector)
         Me.AddOwnedForm(frmViewDocs)
         Me.AddOwnedForm(frmRoomList)
+        Me.AddOwnedForm(frmMatEdit)
         Me.Show()
         Me.Enabled = False
 
@@ -10106,7 +10107,21 @@ errhandler:
         End Try
     End Sub
 
-    Private Sub ToolStripMenuItem18_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem18.Click
+    Private Sub SelectRoomMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectRoomMaterialsToolStripMenuItem.Click
+        frmMatEdit.Tag = "ceiling"
+        frmMatEdit.Text = "Select ceiling materials"
+        frmMatEdit.Show()
+    End Sub
 
+    Private Sub WallMaterialsSelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WallMaterialsSelectToolStripMenuItem.Click
+        frmMatEdit.Tag = "wall"
+        frmMatEdit.Text = "Select wall materials"
+        frmMatEdit.Show()
+    End Sub
+
+    Private Sub FloorMaterialsSelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FloorMaterialsSelectToolStripMenuItem.Click
+        frmMatEdit.Tag = "floor"
+        frmMatEdit.Text = "Select floor materials"
+        frmMatEdit.Show()
     End Sub
 End Class
