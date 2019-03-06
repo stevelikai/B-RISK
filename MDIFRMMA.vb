@@ -1164,7 +1164,7 @@ errhandler:
             '========================================
 
             'Create an array
-            Dim DataArray(0 To (NumberTimeSteps * Timestep / ExcelInterval + 1), 0 To 65) As Object
+            Dim DataArray(0 To (NumberTimeSteps * Timestep / ExcelInterval + 1), 0 To 67) As Object
 
             'On Error GoTo excelerrorhandler
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
@@ -1262,12 +1262,13 @@ errhandler:
                     DataArray(0, 62) = "Incident upper wall radiant flux (kW/m2)"
                     DataArray(0, 63) = "Incident lower Wall radiant flux (kW/m2)"
                     DataArray(0, 64) = "Incident floor radiant flux (kW/m2)"
-
+                    DataArray(0, 66) = "AST Ceiling (K)"
+                    DataArray(0, 67) = "AST Upper Wall (K)"
                 End If
                 DataArray(0, 65) = "Total fuel mass loss (kg)"
                 If NumberTimeSteps > 0 Then
 
-                    Do While NumberTimeSteps * Timestep / ExcelInterval * NumberRooms * 59 > 32000 'the maximum number of data points able to be plotted in excel chart
+                    Do While NumberTimeSteps * Timestep / ExcelInterval * NumberRooms * 67 > 32000 'the maximum number of data points able to be plotted in excel chart
                         ExcelInterval = ExcelInterval * 2
                     Loop
 
@@ -1351,6 +1352,8 @@ errhandler:
                                     DataArray(k - 1, 62) = Format(QUpperWallAST(room, 0, j), s)
                                     DataArray(k - 1, 63) = Format(QLowerWallAST(room, 0, j), s)
                                     DataArray(k - 1, 64) = Format(QFloorAST(room, 0, j), s)
+                                    DataArray(k - 1, 66) = Format(QCeilingAST(room, 2, j), s)
+                                    DataArray(k - 1, 67) = Format(QUpperWallAST(room, 2, j), s)
                                 End If
 
                                 DataArray(k - 1, 65) = Format(TotalFuel(j), s)
@@ -1367,7 +1370,7 @@ errhandler:
                 End If
 
                 'Transfer the array to the worksheet starting at cell A1
-                oSheet.Range("A1").Resize(rowcount - 1, 66).Value = DataArray
+                oSheet.Range("A1").Resize(rowcount - 1, 68).Value = DataArray
 
                 If room < NumberRooms Then
                     oBook.Worksheets.add()

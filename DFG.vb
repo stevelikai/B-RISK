@@ -995,12 +995,12 @@ Module DFG
                         Call Radiation_to_Surface(fireroom, layerheight(fireroom, thistimestep), uppertemp(fireroom, thistimestep), CO2MassFraction(fireroom, thistimestep, 1), H2OMassFraction(fireroom, thistimestep, 1), radfromlayer, UpperVolume(fireroom, thistimestep), OD_upper(fireroom, thistimestep - 1), zs, emissivity)
 
                         'point source piloted ignition
-                        If QPS >= ObjCRF(i) Then
+                        If QPS >= ObjCRF(i) Then 'vertical surface on target
                             ItemFTP_sum_pilot(i) = ItemFTP_sum_pilot(i) + (QPS - ObjCRF(i)) ^ ObjFTPindexpilot(i) * Timestep
                         End If
 
                         'hot layer auto ignition
-                        If radfromlayer >= ObjCRFauto(i) Then
+                        If radfromlayer >= ObjCRFauto(i) Then 'horizontal surface on target
                             ItemFTP_sum_auto(i) = ItemFTP_sum_auto(i) + (radfromlayer - ObjCRFauto(i)) ^ ObjFTPindexauto(i) * Timestep
                         End If
 

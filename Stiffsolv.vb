@@ -203,6 +203,7 @@ Module STIFFsolv
         '*  multiplied by the species generation rate for all burning objects.
         '*  edited 8 October 2007 - wade
         '*  ====================================================================
+        '* this routine used when we are not using the postflashover crib model
 
         Dim dummy As Double
         Dim total As Double
@@ -225,7 +226,7 @@ Module STIFFsolv
 
                 End If
             Next i
-        Else
+        Else 'auto
             If GER >= 0.1 Then
                 'correlation of Tewarson, Jiang and Morikawa - multiplier to the preflashover value for underventilated fires
                 SootFactor = 1 + SootAlpha / (Exp(2.5 * GER ^ (-SootEpsilon))) '13/3/2003
@@ -242,7 +243,7 @@ Module STIFFsolv
                     dummy = mrate(i) * syield(i)
                     If useCLTmodel = True Then dummy = (mrate(1) - mrate_wall - mrate_ceiling - mrate_floor) * syield(i)
                 Else 'uses object values of pre post flashover yield
-
+                    'auto 
                     dummy = mrate(i) * Yield(i) * SootFactor 'postflashover
                     If useCLTmodel = True Then dummy = (mrate(1) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i) * SootFactor 'postflashover
                 End If

@@ -53,21 +53,23 @@ Module KineticModelCode
 
         ElseIf thermalprops = 3 Then 'hybrid
 
-            If T <= 473 Then
-                wood_props_k = 0.285
-            ElseIf T <= 663 Then
-                wood_props_k = -0.617 + 0.0038 * T - 0.000004 * T ^ 2
-            ElseIf T <= 873 Then 'below 600C use hankalin
-                wood_props_k = 0.04429 + 0.0001477 * T
-            ElseIf T <= 1073 Then 'above use EC5
-                wood_props_k = 0.09 + (T - 773) / (1073 - 773) * (0.35 - 0.09)
-            ElseIf T <= 1473 Then
-                wood_props_k = 0.35 + (T - 1073) / (1473 - 1073) * (1.5 - 0.35)
+            If T <= 293 Then
+                wood_props_k = 0.12 'ec5
+            ElseIf T <= 473 Then
+                wood_props_k = 0.12 + (T - 293) / (473 - 293) * (0.15 - 0.12) 'ec5
+            ElseIf T <= 623 Then
+                wood_props_k = 0.15 + (T - 473) / (623 - 473) * (0.07 - 0.15) 'ec5
+            ElseIf T <= 773 Then
+                wood_props_k = 0.07 + (T - 623) / (773 - 623) * (0.09 - 0.07) 'ec5
+            ElseIf T <= 873 Then
+                wood_props_k = 0.09 + (T - 773) / (1073 - 773) * (0.35 - 0.09) 'ec5
+            ElseIf T <= 923 Then 'above 600 C
+                wood_props_k = 0.04429 + 0.0001477 * T 'hankalin
             Else
-                wood_props_k = 1.5
+                wood_props_k = 0.04429 + 0.0001477 * T 'hankalin
             End If
 
-        ElseIf thermalprops = 4 Then 'hybrid
+        ElseIf thermalprops = 4 Then 'constant
 
             'wood_props_k = 0.2 'constant
             If Surface = "W" Then
