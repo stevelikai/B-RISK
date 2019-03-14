@@ -223,20 +223,22 @@ Module MAIN
 
                     For i = 1 To NumberVents(j, k)
                         If VentSillHeight(j, k, i) + FloorElevation(j) < highest_floor Then
-                            MsgBox("Vent sill height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k), MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
-
+                            MsgBox("Vent sill height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k) & ". Simulation will be terminated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            flagstop = 1 'terminate
                         End If
 
                         If VentSillHeight(j, k, i) + VentHeight(j, k, i) + FloorElevation(j) > lowest_ceiling Then
                             'The vent size specified is too high for the room height.
                             'The vent height has been reduced to fit."
-                            MsgBox("Vent height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k), MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            MsgBox("Vent height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k) & ". Simulation will be terminated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            flagstop = 1 'terminate
                         End If
 
                         If VentWidth(j, k, i) > 2 * (RoomLength(j) + RoomWidth(j)) Then
                             'The vent size specified is too wide for the room size.
                             'The vent width has been reduced to fit."
-                            MsgBox("Vent width not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k), MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            MsgBox("Vent width not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k) & ". Simulation will be terminated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            flagstop = 1 'terminate
                         End If
                     Next i
 

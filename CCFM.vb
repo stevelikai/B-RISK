@@ -211,7 +211,7 @@ Module CCFM
 
         Catch ex As Exception
             MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in CCFM.vb Hsort")
-
+            flagstop = 1
         End Try
     End Sub
 	
