@@ -704,6 +704,7 @@ Module DIFFEQNS
         ReDim ItemFTP_sum_auto(NumberObjects)
         ReDim ItemFTP_sum_wall(NumberObjects)
         ReDim ItemFTP_sum_ceiling(NumberObjects)
+        ReDim ObjectRad(0 To 1, 0 To NumberObjects + 1, 0 To NumberTimeSteps + 1) 'vert surface =0 horizont surface=1
         Dim WallFTP_sum_ar() As Double
         Dim CeilingFTP_sum() As Double
         Dim FloorFTP_sum(NumberRooms, NumberTimeSteps + 1) As Double

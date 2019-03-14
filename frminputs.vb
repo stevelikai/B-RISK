@@ -6948,6 +6948,7 @@ skipline:
         Dim room As Integer
         ReDim FirstTime(NumberRooms)
 
+
         flagstop = 0
         For room = 1 To NumberRooms
             FirstTime(room) = True

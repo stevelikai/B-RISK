@@ -17422,6 +17422,34 @@ errorhandler:
             'Transfer the array to the worksheet starting at cell A1
             oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
 
+            If ignitetargets = True Then
+                oBook.Worksheets.add()
+                oSheet = oBook.ActiveSheet
+                oSheet.Name = "Secondary Targets"
+                DataArray(0, 0) = "Time (sec)"
+                count = 1
+                For i = 1 To NumberObjects
+                    DataArray(0, count) = "Obj " & i.ToString & "Rad to nearest vert surface (kW/m2)"
+                    DataArray(0, count + 1) = "Rad to horizontal surface (kW/m2)"
+                    count = count + 2
+                Next
+                If NumberTimeSteps > 0 Then
+                    k = 2 'row
+                    count = 1
+                    For j = 1 To NumberTimeSteps + 1
+                        If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
+                            For i = 1 To NumberObjects
+                                DataArray(k - 1, count) = Format(tim(j, 1), s)
+                                DataArray(k - 1, count + 1) = Format(ObjectRad(0, i, j), s)
+                                count = count + 2
+                            Next i
+                            k = k + 1
+                        End If
+                    Next j
+                End If
+            End If
+
+
             MDIFrmMain.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
             'If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))
             'If frmprintvar.chkUT.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,C:C", "Upper Layer Temp (C)", "C2", "A2:A" & CStr(rowcount), "C2:C" & CStr(rowcount))

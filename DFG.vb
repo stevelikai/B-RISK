@@ -998,11 +998,13 @@ Module DFG
                         If QPS >= ObjCRF(i) Then 'vertical surface on target
                             ItemFTP_sum_pilot(i) = ItemFTP_sum_pilot(i) + (QPS - ObjCRF(i)) ^ ObjFTPindexpilot(i) * Timestep
                         End If
+                        ObjectRad(0, i, stepcount) = QPS 'vert surface =0 horizont surface=1
 
                         'hot layer auto ignition
                         If radfromlayer >= ObjCRFauto(i) Then 'horizontal surface on target
                             ItemFTP_sum_auto(i) = ItemFTP_sum_auto(i) + (radfromlayer - ObjCRFauto(i)) ^ ObjFTPindexauto(i) * Timestep
                         End If
+                        ObjectRad(1, i, stepcount) = radfromlayer 'vert surface =0 horizont surface=1
 
                         'ignition time of secondary objects
                         If (ItemFTP_sum_pilot(i) > ObjFTPlimitpilot(i)) And ObjectIgnMode(i) = "" Then
