@@ -1434,8 +1434,8 @@ errhandler:
                 DataArray(0, 0) = "Time (sec)"
                 count = 1
                 For i = 1 To NumberObjects
-                    DataArray(0, count) = "Obj " & i.ToString & " Rad to vert surface (kW/m2)"
-                    DataArray(0, count + 1) = "Obj " & i.ToString & " Rad to horizontal surface (kW/m2)"
+                    DataArray(0, count) = "Obj " & ObjectItemID(i).ToString & " Rad to vert surface (kW/m2)"
+                    DataArray(0, count + 1) = "Obj " & ObjectItemID(i).ToString & " Rad to horizontal surface (kW/m2)"
                     count = count + 2
                 Next
                 If NumberTimeSteps > 0 Then

@@ -17429,18 +17429,20 @@ errorhandler:
                 DataArray(0, 0) = "Time (sec)"
                 count = 1
                 For i = 1 To NumberObjects
-                    DataArray(0, count) = "Obj " & i.ToString & "Rad to nearest vert surface (kW/m2)"
-                    DataArray(0, count + 1) = "Rad to horizontal surface (kW/m2)"
+                    DataArray(0, count) = "Obj " & ObjectItemID(i).ToString & " Rad to vert surface (kW/m2)"
+                    DataArray(0, count + 1) = "Obj " & ObjectItemID(i).ToString & " Rad to horizontal surface (kW/m2)"
                     count = count + 2
                 Next
                 If NumberTimeSteps > 0 Then
                     k = 2 'row
-                    count = 1
+
                     For j = 1 To NumberTimeSteps + 1
                         If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
+                            DataArray(k - 1, 0) = Format(tim(j, 1), s)
+                            count = 1
                             For i = 1 To NumberObjects
-                                DataArray(k - 1, count) = Format(tim(j, 1), s)
-                                DataArray(k - 1, count + 1) = Format(ObjectRad(0, i, j), s)
+                                DataArray(k - 1, count) = Format(ObjectRad(0, i, j), "0.00")
+                                DataArray(k - 1, count + 1) = Format(ObjectRad(1, i, j), "0.00")
                                 count = count + 2
                             Next i
                             k = k + 1
@@ -17448,6 +17450,8 @@ errorhandler:
                     Next j
                 End If
             End If
+            'Transfer the array to the worksheet starting at cell A1
+            oSheet.Range("A1").Resize(k - 1, count).Value = DataArray
 
 
             MDIFrmMain.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
