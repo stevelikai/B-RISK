@@ -1331,6 +1331,7 @@ Module KineticModelCode
             'Dim chardensity As Double = 85 'kg/m3
             Dim chardensity As Double = 150 'kg/m3
             Dim DelamDuration As Double = 120 'seconds
+            'Dim DelamDuration As Double = 1200 'seconds
             'DelamDuration = 300
             Dim ElapsedTime As Double
             Dim DT As Double
