@@ -56,7 +56,7 @@
     <PublisherName>BRANZ</PublisherName>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2011.4.0.%2a</ApplicationVersion>
+    <ApplicationVersion>2019.03.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
