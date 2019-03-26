@@ -154,7 +154,15 @@ Public Class oSmokeDet
 
     Public Function GetDisplayText(ByVal sep As String) As String
         Dim text As String
-        text = room & sep & VB6.Format(sdx, "0.000") & sep & VB6.Format(sdy, "0.000")
+        'text = room & sep & VB6.Format(sdx, "0.000") & sep & VB6.Format(sdy, "0.000")
+
+        If sdbeam = -1 Then
+            text = room & sep & Format(sdbeam, "beam")
+        Else
+            text = room & sep & Format(sdbeam, "point")
+        End If
+
+
         Return text
     End Function
 
