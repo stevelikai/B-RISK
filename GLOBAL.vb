@@ -22,7 +22,7 @@ Module GLOBAL_Renamed
     Public FuelResponseEffects As Boolean = False
     Public autosavepdf As Boolean = False
     Public autosaveXL As Boolean = False
-    Public FlameExtinctionModel As Boolean = True
+    Public FlameExtinctionModel As Boolean = False
     Public RCNone As Boolean
     Public manualrun As Boolean
 
