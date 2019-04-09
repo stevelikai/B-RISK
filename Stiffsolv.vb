@@ -2414,7 +2414,8 @@ errorhandler:
         'End If
 
         'well ventilated, theoretical
-        HeatRelease(fireroom, i, 1) = 1000 * EnergyYield(1) * fuelmassloss 'kW
+        'HeatRelease(fireroom, i, 1) = 1000 * EnergyYield(1) * fuelmassloss 'kW 'CW 9/4/2019
+        HeatRelease(fireroom, i, 1) = 1000 * weighted_hc * fuelmassloss 'kW 'CW 9/4/2019
         HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
 
         'determine mass flow in the plume

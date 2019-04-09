@@ -22,12 +22,12 @@ Module GLOBAL_Renamed
     Public FuelResponseEffects As Boolean = False
     Public autosavepdf As Boolean = False
     Public autosaveXL As Boolean = False
-    Public FlameExtinctionModel As Boolean = False
+    Public FlameExtinctionModel As Boolean = True
     Public RCNone As Boolean
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2019.02"
+    Public Const Version As String = "2019.031"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean

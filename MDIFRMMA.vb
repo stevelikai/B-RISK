@@ -8261,11 +8261,11 @@ errhandler:
                 Dim Y(0 To NumberwallNodes) As Double
                 Dim T(0 To NumberwallNodes) As Double
 
-                'define variables
-                Title = "Upper wall char depth (mm) - based on " & MyValue.ToString & " C isotherm"
-                'Title = "Upper wall char depth (mm)"
+            'define variables
+            Title = "Upper wall char depth (mm) - based on " & MyValue.ToString & " K isotherm"
+            'Title = "Upper wall char depth (mm)"
 
-                For j = 0 To NumberTimeSteps
+            For j = 0 To NumberTimeSteps
                     'If j Mod outputinterval = 0 Then
                     For curve = 1 To NumberwallNodes
                         X(NumberwallNodes - curve + 1) = UWallNode(idr, curve, j) 'descending order
@@ -8376,7 +8376,7 @@ errhandler:
                 Dim T(0 To NumberceilingNodes) As Double
 
                 'define variables
-                Title = "Ceiling char depth (mm) - based on " & crittemp.ToString & " C isotherm"
+                Title = "Ceiling char depth (mm) - based on " & crittemp.ToString & " K isotherm"
                 'Title = "Upper wall char depth (mm)"
 
                 For j = 0 To NumberTimeSteps
