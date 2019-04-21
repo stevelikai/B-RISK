@@ -145,7 +145,7 @@ Module DIFFEQNS
             QCeilingAST(room, 3, stepcount) = -prd(1, 1) 'net radiant flux
             QCeilingAST(room, 0, stepcount) = matc(1, 1) 'incident radiant fluxes
             QCeilingAST(room, 1, stepcount) = InsideConvCoeff1 'W/m2K
-            'If stepcount = 20000 Then Stop
+            'If QCeilingAST(room, 0, stepcount) > 200 Then Stop
         Else
             QCeiling(room, stepcount) = 0
         End If
@@ -278,7 +278,8 @@ Module DIFFEQNS
         Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, 0, O2Lower, lowertemp, massplume, incidentflux, burningrate)
 
         If useCLTmodel = True And KineticModel = True Then
-            heatreleaselimit = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+            'heatreleaselimit = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+            heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW '20042019
         Else
             heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW
         End If
@@ -304,7 +305,8 @@ Module DIFFEQNS
                 Call mass_rate_withfuelresponse(X, mrate, mrate_wall, mrate_ceiling, 0, O2Lower, lowertemp, massplume, incidentflux, burningrate)
 
                 If useCLTmodel = True And KineticModel = True Then
-                    heatreleaselimit = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+                    'heatreleaselimit = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
+                    heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW '20042019
                 Else
                     heatreleaselimit = 1000 * EnergyYield(1) * burningrate 'kW
                 End If
@@ -1171,11 +1173,11 @@ Module DIFFEQNS
 
                 'stop the calculation
                 For room = 1 To NumberRooms
-                    If uppertemp(room, i) > 1500 + 273 Then
+                    If uppertemp(room, i) > 2000 + 273 Then
                         'MsgBox("Upper layer temperature has exceeded 1500C, this temperature is rather unlikely and the simulation is terminated.", MB_ICONSTOP, "BRANZFIRE")
-                        uppertemp(room, i) = 1500 + 273
+                        uppertemp(room, i) = 2000 + 273
 
-                        Dim Message As String = CStr(tim(i, 1)) & " sec. Upper layer temperature has exceeded 1500C, this temperature is rather unlikely and the simulation is terminated. "
+                        Dim Message As String = CStr(tim(i, 1)) & " sec. Upper layer temperature has exceeded 2000C, this temperature is rather unlikely and the simulation is terminated. "
                         MDIFrmMain.ToolStripStatusLabel2.Text = Message.ToString
                         If ProjectDirectory = RiskDataDirectory Then
                             frmInputs.rtb_log.Text = Message.ToString & Chr(13) & frmInputs.rtb_log.Text
@@ -2021,6 +2023,9 @@ Module DIFFEQNS
                         If Ystart(j, 2) < Min(InteriorTemp, ExteriorTemp) Then
                             Ystart(j, 2) = Min(InteriorTemp, ExteriorTemp)
                         End If
+                        If Ystart(j, 2) > 1300 + 273 Then '21042019
+                            Ystart(j, 2) = 1300 + 273
+                        End If
                         uppertemp(j, i + 1) = Ystart(j, 2)
 
                         If Ystart(j, 3) < Min(InteriorTemp, ExteriorTemp) Then
@@ -2538,6 +2543,7 @@ Module DIFFEQNS
                     ElseIf KineticModel = True And useCLTmodel = True Then
                         If FuelResponseEffects = True Then
                             TotalFuel(i) = TotalFuel(i - 1) + FuelMassLossRate(i, fireroom) * Timestep
+                            'TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep '20042019
                         Else
                             TotalFuel(i) = TotalFuel(i - 1) + (FuelMassLossRate(i, fireroom) - WoodBurningRate(i)) * Timestep
                         End If

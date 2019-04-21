@@ -1400,6 +1400,10 @@ Module KineticModelCode
 
                 CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * area * CeilingThickness(fireroom) / 1000 / elements 'kg/s
 
+                'If CeilingWoodMLR_tot(i + 1) > CeilingWoodMLR_tot(i) * 1.2 Then '21042019
+                '    If CeilingWoodMLR_tot(i) > 0 Then CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i) * 1.2
+                'End If
+
                 'residual mass of water in this element 'kg/m3
                 rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
 
@@ -1470,6 +1474,10 @@ Module KineticModelCode
 
                 WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i + 1) + WallWoodMLR(count, i + 1) * area * WallThickness(fireroom) / 1000 / elements 'kg/s
 
+                'If WallWoodMLR_tot(i + 1) > WallWoodMLR_tot(i) * 1.2 Then '21042019
+                '    If WallWoodMLR_tot(i) > 0 Then WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i) * 1.2
+                'End If
+
                 'residual mass of water in this element 'kg/m3
                 rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
 
@@ -1478,6 +1486,11 @@ Module KineticModelCode
                 WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * chardensity / factor + WallResidualMass(count, i + 1) 'water + char + solids
 
             Next
+
+            If WallWoodMLR_tot(i + 1) > 1.05 * WallWoodMLR_tot(i) And WallWoodMLR_tot(i) > 0 Then
+                'Stop
+                'WallWoodMLR_tot(i + 1) = 1.05 * WallWoodMLR_tot(i)
+            End If
 
             Exit Sub
         Catch ex As Exception
@@ -1779,6 +1792,7 @@ Module KineticModelCode
             mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
             mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
 
+
         End If
 
         If IEEERemainder(T, Timestep) = 0 Then
@@ -1798,9 +1812,11 @@ Module KineticModelCode
         End If
 
         If FuelResponseEffects = True Then
-            mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
-            mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
+            'mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
+            'mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
 
+            mceiling = CeilingWoodMLR_tot(stepcount) '21042019
+            mwall = WallWoodMLR_tot(stepcount) '21042019
         End If
         wall_char(stepcount, 1) = mwall 'kg/s
         ceil_char(stepcount, 1) = mceiling

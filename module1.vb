@@ -3506,6 +3506,9 @@ Prophandler:
                 'check to see if heat release will be limited by burning
                 If Qtotal > qmax Then
                     Qtotal = qmax
+                    If qmax > 0 Then
+                        Q = qmax '21042019
+                    End If
                 End If
 
                 'find height of layer above the base of the fire
@@ -3895,7 +3898,7 @@ Prophandler:
     '        End Try
 
     '    End Function
-    Function MassLoss_ObjectwithFuelResponse(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double) As Double
+    Function MassLoss_ObjectwithFuelResponse(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double, ByRef mrate_wall As Double, mrate_ceiling As Double) As Double
         '*  ===================================================================
         '*  This function return the value of the fuel mass loss rate for a
         '*  specified burning object at a specified time including fuel response effects
@@ -3911,7 +3914,11 @@ Prophandler:
         'we are generally using the Target() variable which is incident?
         'QFloorAST(room, 3, stepcount)  is the net radiant flux to floor
 
-        incidentflux = QFloorAST(fireroom, 0, stepcount) 'incident flux on floor includes radiation from gas, surfaces and fire/flame source
+        incidentflux = QFloorAST(fireroom, 0, stepcount - 1) 'incident flux on floor includes radiation from gas, surfaces and fire/flame source
+        'incident flux passed to this function is the 'target' radiation
+
+
+
         'since the flame radiation is accounted for in the ventilation effect, try using an incident external radiation that only includes the gas and surface radiation
 
         ''incidentflux = QFloorAST(fireroom, 3, stepcount)  'net radiant heat flux to floor + reradiation term to get incident 
@@ -3980,7 +3987,8 @@ Prophandler:
                     If CDec(tim) Mod CDec(Timestep) = 0 Then
                         FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
                     End If
-                    Exit Function
+
+                    'Exit Function
                 End If
 
                 'equiv diameter based on top surface
@@ -4010,7 +4018,7 @@ Prophandler:
                     If CDec(tim) Mod CDec(Timestep) = 0 Then
                         FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
                     End If
-                    Exit Function
+                    'Exit Function
                 End If
 
             ElseIf ObjectPyrolysisOption(id) = 2 Then 'cribs
@@ -4090,8 +4098,12 @@ Prophandler:
                 AF = 1000 * EnergyYield(id) * FBMLR / ObjectMLUA(2, 1) 'm2  'okay for 2D 
 
                 'MLR data, represent by rectangular object W, L, H
+                'using this now 12 April 2019
                 AF2 = ObjWidth(id) * ObjLength(id) + 2 * (ObjHeight(id) * ObjWidth(id)) + 2 * (ObjHeight(id) * ObjLength(id)) 'm2 total surface area of the fuel excludes botton surface
-                AF2 = ObjWidth(id) * ObjLength(id) + 1 * (ObjHeight(id) * ObjWidth(id)) + 2 * (ObjHeight(id) * ObjLength(id)) 'top surface only + 50% of vertical surfaces see the fire
+
+                'i think the below line was used in the santander paper
+                'AF2 = ObjWidth(id) * ObjLength(id) + 1 * (ObjHeight(id) * ObjWidth(id)) + 2 * (ObjHeight(id) * ObjLength(id)) 'top surface only + 50% of vertical surfaces see the fire
+
                 'use the lesser of the two?
                 If AF2 < AF Then
                     AF = AF2
@@ -4119,7 +4131,9 @@ here:
                 If useCLTmodel = True And KineticModel = False Then
                     GER = EnergyYield(id) * masslosstemp / (13.1 * mplume * O2lower)
                 Else
-                    GER = EnergyYield(id) * (masslosstemp + WoodBurningRate(stepcount)) / (13.1 * mplume * O2lower)
+                    GER = EnergyYield(id) * (masslosstemp + mrate_wall + mrate_ceiling) / (13.1 * mplume * O2lower) '21042019
+                    'GER = EnergyYield(id) * (masslosstemp + WoodBurningRate(stepcount)) / (13.1 * mplume * O2lower)
+                    'GER = EnergyYield(id) * (masslosstemp) / (13.1 * mplume * O2lower) '21042019
                 End If
 
 
@@ -4175,20 +4189,36 @@ here:
             Qextb = (1 - ef) * incidentflux * AFB 'kW
             Qexternal = Qext + Qextb
 
+
             thermal_contrib = Qexternal / Leff 'kg/s
 
             masslosstempold = masslosstemp
             masslosstemp = ventilation_contrib + thermal_contrib 'kg/s
+
+            If TotalFuel(stepcount - 1) > ObjectMass(id) Then '21042019
+                ventilation_contrib = 0
+                thermal_contrib = 0
+                masslosstemp = 0
+                'GER = EnergyYield(id) * (masslosstemp + WoodBurningRate(stepcount - 1)) / (13.1 * mplume * O2lower)
+                GER = EnergyYield(id) * (masslosstemp + mrate_wall + mrate_ceiling) / (13.1 * mplume * O2lower)
+            End If
+
             k = k + 1
             If k < 3 Then GoTo here
             'If Abs(masslosstemp - masslosstempold) / masslosstemp > 0.015 Then
             '    GoTo here
             'End If
 
+
+
             If GER > 1 Then
                 burningrate = O2lower * mplume / (O2Ambient * S)
             Else
                 burningrate = ventilation_contrib + thermal_contrib 'same as MLR
+                If useCLTmodel = True Then '21042019
+                    'burningrate = ventilation_contrib + thermal_contrib + WoodBurningRate(stepcount - 1) 'same as MLR
+                    burningrate = ventilation_contrib + thermal_contrib + mrate_wall + mrate_ceiling 'same as MLR
+                End If
             End If
 
             If FlameExtinctionModel = True And burningrate > 0 Then 'if using flame extinction model
@@ -6756,17 +6786,17 @@ RKsoothandler:
 
                     If Flashover = True Then
                         'in this case Qburner, QFloor, QWall, QCeiling are all zero
-                        dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0) * postSoot
+                        dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0, 0, 0) * postSoot
                     Else
 
                         If VentilationLimitFlag = True And VM2 = True Then
                             'case 5 VM2 rules
                             'in this case Qburner, QFloor, QWall, QCeiling are all zero
-                            dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0) * postSoot
+                            dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0, 0, 0) * postSoot
 
                         Else
                             'in this case Qburner, QFloor, QWall, QCeiling are all zero
-                            dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0) * preSoot
+                            dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0, 0, 0) * preSoot
 
                         End If
 
@@ -6774,14 +6804,14 @@ RKsoothandler:
                 Else
 
                     'in this case Qburner, QFloor, QWall, QCeiling are all zero
-                    dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0) * SootYield(i)
+                    dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0, 0, 0) * SootYield(i)
 
                 End If
 
             Else
                 'room corner simulation with flame spread
                 'may need checking, does this work properly with manual input of soot yields?
-                mlo = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, mplume, ltemp, incidentflux, 0)
+                mlo = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, mplume, ltemp, incidentflux, 0, 0, 0)
                 If WallEffectiveHeatofCombustion(fireroom) > 0 And CeilingEffectiveHeatofCombustion(fireroom) > 0 Then
 
                     If sootmode = True Then 'manual entry of pre post flashover soot yields
@@ -12155,7 +12185,7 @@ errorhandler:
                 For room = 2 To NumberRooms
                     If TwoZones(room) = True Then
                         X = X + 10
-                        If frmprintvar.chkLT.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(lowertemp(room, j) - 273, "0.0"))
+                        If frmprintvar.chkLT.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), Format(lowertemp(room, j) - 273, "0.0"))
                     End If
                 Next room
                 If frmprintvar.chkLT.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)
@@ -12164,17 +12194,17 @@ errorhandler:
                 room = 1
                 If frmprintvar.chkHRR_input.CheckState = System.Windows.Forms.CheckState.Checked Then
                     If room = fireroom Then
-                        Print(1, TAB(10), "Unconstrained HRR (kW)", TAB(X), VB6.Format(HeatRelease(fireroom, j, 1), "0.0"))
+                        Print(1, TAB(10), "Unconstrained HRR (kW)", TAB(X), Format(HeatRelease(fireroom, j, 1), "0.0"))
                     Else
-                        Print(1, TAB(10), "Unconstrained HRR (kW)", TAB(X), VB6.Format(0, "0.0"))
+                        Print(1, TAB(10), "Unconstrained HRR (kW)", TAB(X), Format(0, "0.0"))
                     End If
                 End If
                 For room = 2 To NumberRooms
                     X = X + 10
                     If room = fireroom Then
-                        If frmprintvar.chkHRR_input.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(HeatRelease(fireroom, j, 1), "0.0"))
+                        If frmprintvar.chkHRR_input.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), Format(HeatRelease(fireroom, j, 1), "0.0"))
                     Else
-                        If frmprintvar.chkHRR_input.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), VB6.Format(0, "0.0"))
+                        If frmprintvar.chkHRR_input.CheckState = System.Windows.Forms.CheckState.Checked Then Print(1, TAB(X), Format(0, "0.0"))
                     End If
                 Next room
                 If frmprintvar.chkHRR_input.CheckState = System.Windows.Forms.CheckState.Checked Then PrintLine(1)

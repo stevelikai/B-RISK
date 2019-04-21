@@ -3722,6 +3722,11 @@ MatprdErrorHandler:
         '*
         '*  Revised: 24 November 1995 Colleen Wade
         '************************************************************
+        'cap gas temps at 1300C
+        If UT > 1300 + 273 Then '21042019
+            UT = 1300 + 273
+        End If
+        If LT > 1300 + 273 Then LT = 1300 + 273
 
         Dim k As Integer
         Dim b, A, Area As Double
