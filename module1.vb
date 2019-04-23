@@ -3898,7 +3898,7 @@ Prophandler:
     '        End Try
 
     '    End Function
-    Function MassLoss_ObjectwithFuelResponse(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double, ByRef mrate_wall As Double, mrate_ceiling As Double) As Double
+    Function MassLoss_ObjectwithFuelResponse(ByVal id As Integer, ByVal tim As Double, ByRef Qburner As Double, ByVal O2lower As Double, ByVal ltemp As Double, ByVal mplume As Double, ByVal incidentflux As Double, ByRef burningrate As Double, ByRef mrate_wall As Double, ByRef mrate_ceiling As Double) As Double
         '*  ===================================================================
         '*  This function return the value of the fuel mass loss rate for a
         '*  specified burning object at a specified time including fuel response effects
@@ -3914,7 +3914,7 @@ Prophandler:
         'we are generally using the Target() variable which is incident?
         'QFloorAST(room, 3, stepcount)  is the net radiant flux to floor
 
-        incidentflux = QFloorAST(fireroom, 0, stepcount - 1) 'incident flux on floor includes radiation from gas, surfaces and fire/flame source
+        'incidentflux = QFloorAST(fireroom, 0, stepcount) 'incident flux on floor includes radiation from gas, surfaces and fire/flame source
         'incident flux passed to this function is the 'target' radiation
 
 
@@ -3986,6 +3986,8 @@ Prophandler:
                 If TotalFuel(stepcount - 1) > ObjectMass(id) Then
                     If CDec(tim) Mod CDec(Timestep) = 0 Then
                         FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
+                        FuelBurningRate(0, fireroom, stepcount) = 0
+                        FBMLR = 0
                     End If
 
                     'Exit Function
@@ -4131,7 +4133,13 @@ here:
                 If useCLTmodel = True And KineticModel = False Then
                     GER = EnergyYield(id) * masslosstemp / (13.1 * mplume * O2lower)
                 Else
-                    GER = EnergyYield(id) * (masslosstemp + mrate_wall + mrate_ceiling) / (13.1 * mplume * O2lower) '21042019
+                    If TotalFuel(stepcount - 1) > ObjectMass(id) Then '21042019
+                        GER = (WallEffectiveHeatofCombustion(fireroom) * mrate_wall + CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling) / (13.1 * mplume * O2lower) '21042019
+                    Else
+                        GER = (EnergyYield(id) * masslosstemp + WallEffectiveHeatofCombustion(fireroom) * mrate_wall + CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling) / (13.1 * mplume * O2lower) '21042019
+                    End If
+
+
                     'GER = EnergyYield(id) * (masslosstemp + WoodBurningRate(stepcount)) / (13.1 * mplume * O2lower)
                     'GER = EnergyYield(id) * (masslosstemp) / (13.1 * mplume * O2lower) '21042019
                 End If
@@ -4152,6 +4160,7 @@ here:
                 delta2 = (AF - AFB) * (GER - (1 - delta)) / (2 * delta)
                 AFB = AF - delta2
             End If
+            If AF = 0 Then AFB = 0
 
             If AFB > AF Then AFB = AF '05012018
 
@@ -4199,8 +4208,14 @@ here:
                 ventilation_contrib = 0
                 thermal_contrib = 0
                 masslosstemp = 0
+
+                If 1000 * (WallEffectiveHeatofCombustion(fireroom) * mrate_wall + CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling) > HeatRelease(fireroom, stepcount - 1, 2) Then
+                    'Stop
+                End If
+                ' mplume=Mass_Plume_2012(tim,layerheight(fireroom,stepcount),)
+
                 'GER = EnergyYield(id) * (masslosstemp + WoodBurningRate(stepcount - 1)) / (13.1 * mplume * O2lower)
-                GER = EnergyYield(id) * (masslosstemp + mrate_wall + mrate_ceiling) / (13.1 * mplume * O2lower)
+                GER = (EnergyYield(id) * masslosstemp + WallEffectiveHeatofCombustion(fireroom) * mrate_wall + CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling) / (13.1 * mplume * O2lower)
             End If
 
             k = k + 1
@@ -4222,28 +4237,31 @@ here:
             End If
 
             If FlameExtinctionModel = True And burningrate > 0 Then 'if using flame extinction model
-                'extinction model
-                Dim RHS As Double = 0
-                Dim TTemp As Double
-                'TTemp = (ltemp + InteriorTemp) / 2
-                'TTemp = ltemp
-                TTemp = InteriorTemp
-                'TTemp = (InteriorTemp + 1.28 * uppertemp(fireroom, stepcount)) / 2.28
+                If TotalFuel(stepcount - 1) < ObjectMass(id) Then
 
-                'RHS = (1000 * EnergyYield(id) - Leff + cp * (ObjectPoolVapTemp(id) - (TTemp - 273)) + Qexternal / masslosstemp) / (1 + r / O2lower)
+                    'extinction model
+                    Dim RHS As Double = 0
+                    Dim TTemp As Double
+                    'TTemp = (ltemp + InteriorTemp) / 2
+                    'TTemp = ltemp
+                    TTemp = InteriorTemp
+                    'TTemp = (InteriorTemp + 1.28 * uppertemp(fireroom, stepcount)) / 2.28
 
-                'this should use Qext,b not Qext?
-                RHS = (1000 * EnergyYield(id) - Leff + cp * (ObjectPoolVapTemp(id) - (TTemp - 273)) + Qextb / burningrate) / (1 + r / O2lower)
+                    'RHS = (1000 * EnergyYield(id) - Leff + cp * (ObjectPoolVapTemp(id) - (TTemp - 273)) + Qexternal / masslosstemp) / (1 + r / O2lower)
 
-                'simplify
-                'RHS = (1000 * EnergyYield(id) + cp * (ObjectPoolVapTemp(id) - (TTemp - 273))) / (1 + r / O2lower)
+                    'this should use Qext,b not Qext?
+                    RHS = (1000 * EnergyYield(id) - Leff + cp * (ObjectPoolVapTemp(id) - (TTemp - 273)) + Qextb / burningrate) / (1 + r / O2lower)
 
-                Tf = RHS / cp + (TTemp - 273)
-                If Tf < 1300 Then 'C
-                    'extinction
-                    burningrate = 0
-                    ventilation_contrib = 0
-                    masslosstemp = thermal_contrib
+                    'simplify
+                    'RHS = (1000 * EnergyYield(id) + cp * (ObjectPoolVapTemp(id) - (TTemp - 273))) / (1 + r / O2lower)
+
+                    Tf = RHS / cp + (TTemp - 273)
+                    If Tf < 1300 Then 'C
+                        'extinction
+                        burningrate = 0
+                        ventilation_contrib = 0
+                        masslosstemp = thermal_contrib
+                    End If
                 End If
             End If
 
@@ -6770,7 +6788,7 @@ RKsoothandler:
         '*  5 September 2008 - C Wade
         '*  ==================================================================
 
-        Dim dummy, mlo As Double
+        Dim dummy, mlo, burningrate, mwall, mceiling As Double
         Dim QCeiling, total, QWall, QFloor As Double
         Dim i As Integer
         Dim o2lower = O2MassFraction(fireroom, stepcount, 2)
@@ -6805,7 +6823,7 @@ RKsoothandler:
 
                     'in this case Qburner, QFloor, QWall, QCeiling are all zero
                     dummy = MassLoss_ObjectwithFuelResponse(i, T, Qburner, o2lower, ltemp, mplume, incidentflux, 0, 0, 0) * SootYield(i)
-
+                    dummy = dummy + WoodBurningRate(stepcount) * SootYield(i)
                 End If
 
             Else

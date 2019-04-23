@@ -1487,9 +1487,14 @@ Module KineticModelCode
 
             Next
 
-            If WallWoodMLR_tot(i + 1) > 1.05 * WallWoodMLR_tot(i) And WallWoodMLR_tot(i) > 0 Then
+            '21042019
+            If WallWoodMLR_tot(i + 1) > ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom) Then
                 'Stop
-                'WallWoodMLR_tot(i + 1) = 1.05 * WallWoodMLR_tot(i)
+                WallWoodMLR_tot(i + 1) = ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom)
+            End If
+            If CeilingWoodMLR_tot(i + 1) > ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * ceilingexposedpercent / 100 * (RoomLength(fireroom) * RoomWidth(fireroom)) Then
+                'Stop
+                CeilingWoodMLR_tot(i + 1) = ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * ceilingexposedpercent / 100 * (RoomLength(fireroom) * RoomWidth(fireroom))
             End If
 
             Exit Sub
@@ -1815,8 +1820,8 @@ Module KineticModelCode
             'mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
             'mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
 
-            mceiling = CeilingWoodMLR_tot(stepcount) '21042019
-            mwall = WallWoodMLR_tot(stepcount) '21042019
+            mceiling = CeilingWoodMLR_tot(stepcount - 1) '22042019
+            mwall = WallWoodMLR_tot(stepcount - 1) '22042019
         End If
         wall_char(stepcount, 1) = mwall 'kg/s
         ceil_char(stepcount, 1) = mceiling
@@ -1871,8 +1876,12 @@ Module KineticModelCode
         'in this case, we should only need this subroutine once per timestep
 
         'ceiling - interpolating
-        mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
-        mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
+        'mceiling = (CeilingWoodMLR_tot(stepcount) - CeilingWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + CeilingWoodMLR_tot(stepcount - 1)
+        'mwall = (WallWoodMLR_tot(stepcount) - WallWoodMLR_tot(stepcount - 1)) * (T - tim(stepcount - 1, 1)) / Timestep + WallWoodMLR_tot(stepcount - 1)
+
+        'cannot interpolate since not yet dertermined values at current stepcount
+        mceiling = CeilingWoodMLR_tot(stepcount - 1)
+        mwall = WallWoodMLR_tot(stepcount - 1)
 
         'End If
 

@@ -241,11 +241,11 @@ Module STIFFsolv
                 If sootmode = True Then 'manual entry of pre post flashover yields
 
                     dummy = mrate(i) * syield(i)
-                    If useCLTmodel = True Then dummy = (mrate(1) - mrate_wall - mrate_ceiling - mrate_floor) * syield(i)
+                    If useCLTmodel = True And KineticModel = False Then dummy = (mrate(1) - mrate_wall - mrate_ceiling - mrate_floor) * syield(i)
                 Else 'uses object values of pre post flashover yield
                     'auto 
                     dummy = mrate(i) * Yield(i) * SootFactor 'postflashover
-                    If useCLTmodel = True Then dummy = (mrate(1) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i) * SootFactor 'postflashover
+                    If useCLTmodel = True And KineticModel = False Then dummy = (mrate(1) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i) * SootFactor 'postflashover
                 End If
 
                 If i = 1 Then
@@ -694,7 +694,7 @@ specieshandler:
             For i = 1 To NumberObjects
                 dummy = mrate(i) * Yield(i)
                 If i = 1 Then
-                    If useCLTmodel = True Then dummy = (mrate(i) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i)
+                    If useCLTmodel = True And KineticModel = False Then dummy = (mrate(i) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i)
                     dummy = dummy + mrate_wall * WallYield(room) + mrate_ceiling * CeilingYield(room) + mrate_floor * FloorYield(room)
                     End If
                     total = total + dummy
@@ -2401,24 +2401,9 @@ errorhandler:
         If fuelmassloss > 0 Then weighted_hc = CDec(sum / fuelmassloss) 'MJ/kg or kJ/g
         If ftemp > 0 Then stemp = CDec(stemp / ftemp) 'kJ/g
 
-        'If FuelResponseEffects = True Then
-
-        '    Dim idg As Integer = 1
-        '    'Dim MLR As Double
-        '    Dim S As Double = 15.1 'stoichiometric air to fuel ratio for heptane
-
-        '    'well ventilated, theoretical
-        '    HeatRelease(fireroom, i, 1) = 1000 * EnergyYield(1) * fuelmassloss 'kW
-        '    'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * FuelBurningRate(3, fireroom, i) 'kW
-
-        'Else
-        '    'HeatRelease(fireroom, i, 1) = Composite_HRR(tim(i, 1)) 'not needed in this routine
-        'End If
-
         'well ventilated, theoretical
         'HeatRelease(fireroom, i, 1) = 1000 * EnergyYield(1) * fuelmassloss 'kW 'CW 9/4/2019
         HeatRelease(fireroom, i, 1) = 1000 * weighted_hc * fuelmassloss 'kW 'CW 9/4/2019
-
 
         HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
 
@@ -2429,58 +2414,52 @@ errorhandler:
         Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
         'Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, -QFloor(fireroom, i - 1), burningrate)
 
-
         HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
         'End If
 
         count = 1
 
-
-
         If useCLTmodel = True And KineticModel = True Then
 
             HeatRelease(fireroom, i, 1) = 1000 * EnergyYield(1) * mrate(1) + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
 
+            mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), HeatRelease(fireroom, i, 1), uppertemp(fireroom, i), lowertemp(fireroom, i))
 
-            'If HeatRelease(fireroom, i, 1) > RoomVolume(fireroom) * 500 Then
-            '    HeatRelease(fireroom, i, 1) = RoomVolume(fireroom) * 500 'limit max HRR to 1 MW/m3
-            'End If
-            'If HeatRelease(fireroom, i, 2) > RoomVolume(fireroom) * 500 Then
-            '    HeatRelease(fireroom, i, 2) = RoomVolume(fireroom) * 500 'limit max HRR to 1 MW/m3
-            'End If
+            Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
 
+            HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
 
-            heatreleased = HeatRelease(fireroom, i, 1) 'max theoretical hrr from the fuel
-                'Qplume = HeatRelease(fireroom, i, 1)
+            'HeatRelease(fireroom, i, 2) = O2_limit_cfast(fireroom, Mass_Upper, HeatRelease(fireroom, i, 1), mplume, uppertemp(fireroom, i), O2MassFraction(fireroom, i, 1), O2MassFraction(fireroom, i, 2), mw_upper, mw_lower, Qplume)
 
-                Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
-                    'If tim(i, 1) = 216 Then Stop
+            mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), HeatRelease(fireroom, i, 2), uppertemp(fireroom, i), lowertemp(fireroom, i))
 
-                    'fire is ventilation-limited
-                    heatreleased = HeatRelease(fireroom, i, 2)
+            heatreleased = HeatRelease(fireroom, i, 1)
 
-                    If heatreleased = 0 Then Exit Do
+            Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
+                'If tim(i, 1) = 216 Then Stop
 
-                    'Mass flow in the plume
-                    mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), heatreleased, uppertemp(fireroom, i), lowertemp(fireroom, i))
+                'fire is ventilation-limited
+                heatreleased = HeatRelease(fireroom, i, 2)
 
-                    'recalculate oxygen limit using new plume flow
-                    HeatRelease(fireroom, i, 2) = O2_limit_cfast(fireroom, Mass_Upper, heatreleased, mplume, uppertemp(fireroom, i), O2MassFraction(fireroom, i, 1), O2MassFraction(fireroom, i, 2), mw_upper, mw_lower, Qplume)
+                If heatreleased = 0 Then Exit Do
 
+                'Mass flow in the plume
+                mplume = Mass_Plume_2012(tim(i, 1), layerheight(fireroom, i), heatreleased, uppertemp(fireroom, i), lowertemp(fireroom, i))
 
-                    'If useCLTmodel = True Then
-                    'HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate + 1000 * WallEffectiveHeatofCombustion(fireroom) * mrate_wall + 1000 * CeilingEffectiveHeatofCombustion(fireroom) * mrate_ceiling 'kW
-                    'Else
-                    ' HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
-                    'End If
+                Call mass_rate_withfuelresponse(tim(i, 1), mrate, mrate_wall, mrate_ceiling, mrate_floor, O2MassFraction(fireroom, i, 2), lowertemp(fireroom, i), mplume, Target(fireroom, i - 1), burningrate)
 
-                    count = count + 1
-                    If count > 50 Then
-                        Exit Do
-                    End If
-                Loop
+                HeatRelease(fireroom, i, 2) = 1000 * EnergyYield(1) * burningrate 'kW
 
-            Else
+                'recalculate oxygen limit using new plume flow
+                'HeatRelease(fireroom, i, 2) = O2_limit_cfast(fireroom, Mass_Upper, HeatRelease(fireroom, i, 1), mplume, uppertemp(fireroom, i), O2MassFraction(fireroom, i, 1), O2MassFraction(fireroom, i, 2), mw_upper, mw_lower, Qplume)
+
+                count = count + 1
+                If count > 100 Then
+                    Exit Do
+                End If
+            Loop
+
+        Else
 
                 Do While Abs(heatreleased - HeatRelease(fireroom, i, 2)) / heatreleased > 0.001
 
@@ -2654,6 +2633,9 @@ errorhandler:
         i = stepcount
 
         For j = 1 To NumberRooms
+            If Y(j, 2) > 1300 + 273 Then
+                Y(j, 2) = 1300 + 273
+            End If
             If Y(j, 2) < 50 Or Y(j, 2) > 3000 Then
                 Y(j, 2) = uppertemp(j, stepcount)
             End If
@@ -4740,7 +4722,7 @@ errorhandler:
                 dummy = mrate(i) * Yield(i) / GER
 
                 If i = 1 Then
-                    If useCLTmodel = True Then dummy = (mrate(i) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i) / GER
+                    If useCLTmodel = True And KineticModel = False Then dummy = (mrate(i) - mrate_wall - mrate_ceiling - mrate_floor) * Yield(i) / GER
                     dummy = dummy + mrate_wall * WallYield(room) / GER + mrate_ceiling * CeilingYield(room) / GER + mrate_floor * FloorYield(room) / GER
                 End If
                 total = total + dummy
