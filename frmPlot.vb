@@ -699,11 +699,11 @@ Public Class frmPlot
             NumericUpDownTime.Maximum = UWallElementMF.GetUpperBound(0)
         End If
 
-        Testpos = InStr(1, title, "Wood fuel MLR (kg/m3/s) in element")
+        Testpos = InStr(1, title, "Wood fuel MLR (kg/m3/s) in ceiling element")
         If Testpos > 0 Then
             Dim dp As Single = idr * CeilingThickness(fireroom) / CeilingWoodMLR.GetUpperBound(0)
             Dim dp1 As Single = (idr - 1) * CeilingThickness(fireroom) / CeilingWoodMLR.GetUpperBound(0)
-            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
+            Chart1.Titles("Title1").Text = "Wood fuel MLR (kg/m3/s) in ceiling element " & idr.ToString & " (depth " & Format(dp1, "0.0") & " to " & Format(dp, "0.0") & " mm)"
 
             Dim curve As Integer
             curve = 0

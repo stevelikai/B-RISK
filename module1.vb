@@ -3986,8 +3986,8 @@ Prophandler:
                 If TotalFuel(stepcount - 1) > ObjectMass(id) Then
                     If CDec(tim) Mod CDec(Timestep) = 0 Then
                         FuelBurningRate(0, fireroom, stepcount) = FBMLR 'free burn mass loss rate
-                        FuelBurningRate(0, fireroom, stepcount) = 0
-                        FBMLR = 0
+                        'FuelBurningRate(0, fireroom, stepcount) = 0
+                        'FBMLR = 0
                     End If
 
                     'Exit Function
@@ -4160,7 +4160,8 @@ here:
                 delta2 = (AF - AFB) * (GER - (1 - delta)) / (2 * delta)
                 AFB = AF - delta2
             End If
-            If AF = 0 Then AFB = 0
+
+            'If AF = 0 Then AFB = 0 '??? this means that mass may not be conserved  - there could still be a thermal feedback component until all the mass is gone.?
 
             If AFB > AF Then AFB = AF '05012018
 
@@ -7324,10 +7325,10 @@ here:
         '   return a value for the convective heat transfer coefficient
         '   revised 5/1/97 Colleen Wade
         '=====================================================================
-        If useCLTmodel = True Then
-            Get_Convection_Coefficient2 = 35
-            Exit Function
-        End If
+        'If useCLTmodel = True Then
+        '    Get_Convection_Coefficient2 = 35
+        '    Exit Function
+        'End If
 
         Dim k, Pr, h, GR, V, L As Double
         Dim constant As Single

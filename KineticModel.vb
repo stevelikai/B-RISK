@@ -290,7 +290,8 @@ Module KineticModelCode
             For j = 1 To ceilingnodeadjust
                 CeilingNode(room, j, i + 1) = chartemp + 273 + 1
                 ' CeilingNode(room, j, i + 1) = DebondTemp + 273
-                ' CeilingNode(room, j, i + 1) = CeilingNode(room, j, i)
+                'CeilingNode(room, j, i + 1) = CeilingNode(room, j, i)
+
             Next
 
             'store surface temps at next timestep in another array
@@ -1069,7 +1070,8 @@ Module KineticModelCode
             For j = 1 To wallnodeadjust
                 UWallNode(room, j, i + 1) = chartemp + 273 + 1
                 'UWallNode(room, j, i + 1) = DebondTemp + 273
-                'UWallNode(room, j, i + 1) = UWallNode(room, j, i)
+                'UWallNode(room, j, i + 1) = UWallNode(room, j, i) '25042019
+
             Next
 
             'store surface temps at next timestep in another array
@@ -1332,7 +1334,7 @@ Module KineticModelCode
             Dim chardensity As Double = 150 'kg/m3
             Dim DelamDuration As Double = 120 'seconds
             'Dim DelamDuration As Double = 1200 'seconds
-            'DelamDuration = 300
+            DelamDuration = 0
             Dim ElapsedTime As Double
             Dim DT As Double
 
@@ -1363,60 +1365,61 @@ Module KineticModelCode
                 End If
             End If
 
+            'For count = (1 + elements - layersremaining * elements / NL) To elements 'loop through each finite difference element
             For count = 1 To elements 'loop through each finite difference element in the ceiling
-                If i = 1 Then
-                    'For m = 1 To 3
-                    'CeilingResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
-                    'Next
-                    CeilingResidualMass(count, i) = DensityInitial * (mf_compinit(1) + mf_compinit(2) + mf_compinit(3)) 'initialise
-                    CeilingApparentDensity(count, i) = DensityInitial
-                End If
+                    If i = 1 Then
+                        'For m = 1 To 3
+                        'CeilingResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
+                        'Next
+                        CeilingResidualMass(count, i) = DensityInitial * (mf_compinit(1) + mf_compinit(2) + mf_compinit(3)) 'initialise
+                        CeilingApparentDensity(count, i) = DensityInitial
+                    End If
 
-                For m = 0 To 3
-                    Zstart(m) = CeilingElementMF(count, m, i)
+                    For m = 0 To 3
+                        Zstart(m) = CeilingElementMF(count, m, i)
+                    Next
+                    elementcounter = count
+
+                    If ceilingexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "C")
+
+                    For m = 0 To 3
+                        CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
+                    Next
+
+                    'total mass fraction of char residue in this element
+                    CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - CeilingElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - CeilingElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
+                    ' If factor > 0 Then CeilingCharResidue(count, i + 1) = CeilingCharResidue(count, i + 1) * chardensity / factor
+
+
+                    'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
+                    CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_compinit(1) + CeilingElementMF(count, 2, i + 1) * mf_compinit(2) + CeilingElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
+
+                    'mass loss rate of wood fuel over this timestep 'kg/s
+                    If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
+
+                    'If CeilingWoodMLR(count, i + 1) > 10 Then CeilingWoodMLR(count, i + 1) = 10 'kg/m3/s keep a lid on it!
+
+                    area = ceilingexposedpercent / 100 * RoomFloorArea(fireroom) 'm2
+
+                    CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * area * CeilingThickness(fireroom) / 1000 / elements 'kg/s
+
+                    'If CeilingWoodMLR_tot(i + 1) > CeilingWoodMLR_tot(i) * 1.2 Then '21042019
+                    '    If CeilingWoodMLR_tot(i) > 0 Then CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i) * 1.2
+                    'End If
+
+                    'residual mass of water in this element 'kg/m3
+                    rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
+
+                    'apparent density of this element 'kg/m3 
+                    ' CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
+                    CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * chardensity / factor + CeilingResidualMass(count, i + 1) 'water + char + solids
+
                 Next
-                elementcounter = count
 
-                If ceilingexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "C")
-
-                For m = 0 To 3
-                    CeilingElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
-                Next
-
-                'total mass fraction of char residue in this element
-                CeilingCharResidue(count, i + 1) = (1 - CeilingElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - CeilingElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - CeilingElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
-                ' If factor > 0 Then CeilingCharResidue(count, i + 1) = CeilingCharResidue(count, i + 1) * chardensity / factor
-
-
-                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
-                CeilingResidualMass(count, i + 1) = DensityInitial * (CeilingElementMF(count, 1, i + 1) * mf_compinit(1) + CeilingElementMF(count, 2, i + 1) * mf_compinit(2) + CeilingElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
-
-                'mass loss rate of wood fuel over this timestep 'kg/s
-                If i > 1 Then CeilingWoodMLR(count, i + 1) = -(CeilingResidualMass(count, i + 1) - CeilingResidualMass(count, i)) / Timestep 'kg/(s.m3)
-
-                'If CeilingWoodMLR(count, i + 1) > 10 Then CeilingWoodMLR(count, i + 1) = 10 'kg/m3/s keep a lid on it!
-
-                area = ceilingexposedpercent / 100 * RoomFloorArea(fireroom) 'm2
-
-                CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i + 1) + CeilingWoodMLR(count, i + 1) * area * CeilingThickness(fireroom) / 1000 / elements 'kg/s
-
-                'If CeilingWoodMLR_tot(i + 1) > CeilingWoodMLR_tot(i) * 1.2 Then '21042019
-                '    If CeilingWoodMLR_tot(i) > 0 Then CeilingWoodMLR_tot(i + 1) = CeilingWoodMLR_tot(i) * 1.2
-                'End If
-
-                'residual mass of water in this element 'kg/m3
-                rmw = CeilingElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
-
-                'apparent density of this element 'kg/m3 
-                ' CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * DensityInitial + CeilingResidualMass(count, i + 1) 'water + char + solids
-                CeilingApparentDensity(count, i + 1) = rmw + CeilingCharResidue(count, i + 1) * chardensity / factor + CeilingResidualMass(count, i + 1) 'water + char + solids
-
-            Next
-
-            'the wall
-            'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
-            'WallElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
-            DensityInitial = WallDensity(fireroom)
+                'the wall
+                'UWallNode(room, node, timestep) contains the temperature at each node at each timestep
+                'WallElementMF (element,timsetep) contains the residual mass fraction of each component (relative to its initial value = 1) 
+                DensityInitial = WallDensity(fireroom)
             chardensity = DensityInitial * 0.63 / (1 + mf_compinit(0))
 
             NL = WallThickness(fireroom) / 1000 / Lamella 'number of lamella - in two places also in main_program2
@@ -1437,64 +1440,64 @@ Module KineticModelCode
                 End If
             End If
 
-            'For count = (1 + elements - layersremaining * elements / NL) To elements 'loop through each finite difference element in the ceiling
+            'For count = (1 + elements - layersremaining * elements / NL) To elements 'loop through each finite difference element in the wall
             For count = 1 To elements 'loop through each finite difference element in the wall
-                If i = 1 Then
-                    ' For m = 1 To 3
-                    'WallResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
-                    'Next
-                    WallResidualMass(count, i) = DensityInitial * (mf_compinit(1) + mf_compinit(2) + mf_compinit(3)) 'initialise
-                    WallApparentDensity(count, i) = DensityInitial
-                End If
+                    If i = 1 Then
+                        ' For m = 1 To 3
+                        'WallResidualMass(count, i) = DensityInitial * mf_compinit(m) 'initialise
+                        'Next
+                        WallResidualMass(count, i) = DensityInitial * (mf_compinit(1) + mf_compinit(2) + mf_compinit(3)) 'initialise
+                        WallApparentDensity(count, i) = DensityInitial
+                    End If
 
-                For m = 0 To 3
-                    Zstart(m) = UWallElementMF(count, m, i)
+                    For m = 0 To 3
+                        Zstart(m) = UWallElementMF(count, m, i)
+                    Next
+                    elementcounter = count
+
+                    If wallexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "W")
+
+                    For m = 0 To 3
+                        UWallElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
+                    Next
+
+                    'total mass fraction of char residue in this element
+                    UWallCharResidue(count, i + 1) = (1 - UWallElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - UWallElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - UWallElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
+                    ' If factor > 0 Then UWallCharResidue(count, i + 1) = UWallCharResidue(count, i + 1) * chardensity / factor
+
+                    'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
+                    WallResidualMass(count, i + 1) = DensityInitial * (UWallElementMF(count, 1, i + 1) * mf_compinit(1) + UWallElementMF(count, 2, i + 1) * mf_compinit(2) + UWallElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
+
+                    'mass loss rate of wood fuel over this timestep 'kg/s
+                    If i > 1 Then WallWoodMLR(count, i + 1) = -(WallResidualMass(count, i + 1) - WallResidualMass(count, i)) / Timestep 'kg/(s.m3)
+
+                    'If WallWoodMLR(count, i + 1) > 5 Then WallWoodMLR(count, i + 1) = 5 'kg/m3/s keep a lid on it!
+
+                    area = wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom)
+
+                    WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i + 1) + WallWoodMLR(count, i + 1) * area * WallThickness(fireroom) / 1000 / elements 'kg/s
+
+                    'If WallWoodMLR_tot(i + 1) > WallWoodMLR_tot(i) * 1.2 Then '21042019
+                    '    If WallWoodMLR_tot(i) > 0 Then WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i) * 1.2
+                    'End If
+
+                    'residual mass of water in this element 'kg/m3
+                    rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
+
+                    'apparent density of this element 'kg/m3 
+                    'WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * DensityInitial + WallResidualMass(count, i + 1) 'water + char + solids
+                    WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * chardensity / factor + WallResidualMass(count, i + 1) 'water + char + solids
+
                 Next
-                elementcounter = count
-
-                If wallexposedpercent > 0 Then Call ODE_Solver_Pyrolysis(Zstart, i, "W")
-
-                For m = 0 To 3
-                    UWallElementMF(count, m, i + 1) = Max(Min(Zstart(m), 1), 0) 'residual mass fraction at the next time step
-                Next
-
-                'total mass fraction of char residue in this element
-                UWallCharResidue(count, i + 1) = (1 - UWallElementMF(count, 1, i + 1)) * mf_compinit(1) * char_yield(1) + (1 - UWallElementMF(count, 2, i + 1)) * mf_compinit(2) * char_yield(2) + (1 - UWallElementMF(count, 3, i + 1)) * mf_compinit(3) * char_yield(3)
-                ' If factor > 0 Then UWallCharResidue(count, i + 1) = UWallCharResidue(count, i + 1) * chardensity / factor
-
-                'total mass (per unit vol) of residual fuel (cellulose, hemicellulose, lignin) in this element 'kg/m3
-                WallResidualMass(count, i + 1) = DensityInitial * (UWallElementMF(count, 1, i + 1) * mf_compinit(1) + UWallElementMF(count, 2, i + 1) * mf_compinit(2) + UWallElementMF(count, 3, i + 1) * mf_compinit(3)) 'kg/m3
-
-                'mass loss rate of wood fuel over this timestep 'kg/s
-                If i > 1 Then WallWoodMLR(count, i + 1) = -(WallResidualMass(count, i + 1) - WallResidualMass(count, i)) / Timestep 'kg/(s.m3)
-
-                'If WallWoodMLR(count, i + 1) > 5 Then WallWoodMLR(count, i + 1) = 5 'kg/m3/s keep a lid on it!
-
-                area = wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom)
-
-                WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i + 1) + WallWoodMLR(count, i + 1) * area * WallThickness(fireroom) / 1000 / elements 'kg/s
-
-                'If WallWoodMLR_tot(i + 1) > WallWoodMLR_tot(i) * 1.2 Then '21042019
-                '    If WallWoodMLR_tot(i) > 0 Then WallWoodMLR_tot(i + 1) = WallWoodMLR_tot(i) * 1.2
-                'End If
-
-                'residual mass of water in this element 'kg/m3
-                rmw = UWallElementMF(count, 0, i + 1) * DensityInitial * mf_compinit(0) 'kg/m3
-
-                'apparent density of this element 'kg/m3 
-                'WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * DensityInitial + WallResidualMass(count, i + 1) 'water + char + solids
-                WallApparentDensity(count, i + 1) = rmw + UWallCharResidue(count, i + 1) * chardensity / factor + WallResidualMass(count, i + 1) 'water + char + solids
-
-            Next
 
             '21042019
-            If WallWoodMLR_tot(i + 1) > ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom) Then
+            If WallWoodMLR_tot(i + 1) > CLTHRRmax / (WallEffectiveHeatofCombustion(fireroom) * 1000) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom) Then
                 'Stop
-                WallWoodMLR_tot(i + 1) = ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom)
+                WallWoodMLR_tot(i + 1) = CLTHRRmax / (WallEffectiveHeatofCombustion(fireroom) * 1000) * wallexposedpercent / 100 * (RoomLength(fireroom) + RoomWidth(fireroom)) * 2 * RoomHeight(fireroom)
             End If
-            If CeilingWoodMLR_tot(i + 1) > ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * ceilingexposedpercent / 100 * (RoomLength(fireroom) * RoomWidth(fireroom)) Then
+            If CeilingWoodMLR_tot(i + 1) > CLTHRRmax / (CeilingEffectiveHeatofCombustion(fireroom) * 1000) * ceilingexposedpercent / 100 * (RoomLength(fireroom) * RoomWidth(fireroom)) Then
                 'Stop
-                CeilingWoodMLR_tot(i + 1) = ObjectMLUA(2, 1) / (EnergyYield(1) * 1000) * ceilingexposedpercent / 100 * (RoomLength(fireroom) * RoomWidth(fireroom))
+                CeilingWoodMLR_tot(i + 1) = CLTHRRmax / (CeilingEffectiveHeatofCombustion(fireroom) * 1000) * ceilingexposedpercent / 100 * (RoomLength(fireroom) * RoomWidth(fireroom))
             End If
 
             Exit Sub

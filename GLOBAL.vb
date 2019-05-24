@@ -50,7 +50,7 @@ Module GLOBAL_Renamed
     Public upgrade As Boolean
     Public ventid As Integer
     Public thermalprops As Integer = 1 '1 = wood h/k + Hankalin; 2 = eurocode5 ; 3 = hybrid hankalin switching to EC5 above 600C; 4 = 0.2 constant
-
+    Public CLTHRRmax As Double = 600 'kW/m2
     Public E_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'activation energy
     Public A_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'pre expontenial factor
     Public n_array(0 To 3) As Double '0 = H20; 1 = cellulose; 2 = hemicellulose; 3 = lignin 'reaction order
