@@ -267,7 +267,7 @@ Friend Class MDIFrmMain
 
         'Call get_folders(CSIDL_PROGRAMS, ProgramFolder)
         Try
-            NMathConfiguration.NativeLocation = ApplicationPath
+            'NMathConfiguration.NativeLocation = ApplicationPath 'needed for 64.bit
             'registry
             'DefaultRiskDataDirectory = GetSetting("BRISK", "options", "DefaultRiskDataDirectory")
             DefaultRiskDataDirectory = My.Settings.riskdatafolder
