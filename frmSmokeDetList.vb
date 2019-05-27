@@ -12,7 +12,10 @@ Public Class frmSmokeDetList
         oSmokeDets = SmokeDetDB.GetSmokDets
         Me.FillSmokeDetList(oSmokeDets)
 
-        text = "ID" & sep & "Room" & sep & "x (m)" & sep & "y (m)"
+        'text = "ID" & sep & "Room" & sep & "x (m)" & sep & "y (m)"
+        text = "ID" & sep & "Room" & sep & "Type"
+
+
         ListBox1.Items.Add(text)
 
         If VM2 = True Then
@@ -92,9 +95,9 @@ Public Class frmSmokeDetList
 
         'show the beam detection inputs
         If DevKey = True Then
-            NewSmokeDetForm.gbBeamDetect.Visible = True
+            'NewSmokeDetForm.gbBeamDetect.Visible = True
         Else
-            NewSmokeDetForm.gbBeamDetect.Visible = False
+            ' NewSmokeDetForm.gbBeamDetect.Visible = False
         End If
 
         NewSmokeDetForm.ShowDialog()
@@ -229,9 +232,9 @@ here:
 
                 'show the beam detection inputs
                 If DevKey = True Then
-                    NewSmokeDetForm.gbBeamDetect.Visible = True
+                    'NewSmokeDetForm.gbBeamDetect.Visible = True
                 Else
-                    NewSmokeDetForm.gbBeamDetect.Visible = False
+                    'NewSmokeDetForm.gbBeamDetect.Visible = False
                 End If
 
 

@@ -23,6 +23,7 @@ Public Class frmNewSmokeDetector
                     oSmokeDet.room = NumericUpDown1.Value
                     oSmokeDet.sdx = TextBox3.Text
                     oSmokeDet.sdy = TextBox4.Text
+
                     oSmokeDet.sdinside = chkSDinside.CheckState
                     'oSmokeDet.charlength = txtCharLength.Text
                     oSmokeDet.sdbeamalarmtrans = txtAlarmTrans.Text

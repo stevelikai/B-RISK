@@ -537,6 +537,49 @@ Module DIFFEQNS
 
         maxr = Sqrt(RoomLength(fireroom) ^ 2 + RoomWidth(fireroom) ^ 2)
 
+        If oSmokeDet.sdbeam = True Then
+            'OD for alarm
+            OD = -Log(oSmokeDet.sdbeamalarmtrans) / (2.303 * oSmokeDet.sdbeampathlength)
+            oSmokeDet.OD = OD
+
+            'is the beam in upper or lower layer
+            If oSmokeDet.sdz < depth Then
+                'in upper layer
+                If OD_upper(room, i) >= OD And responsetime = 0 Then
+                    'alarm threshold reached
+                    oSmokeDet.responsetime = tim 'time of actuation
+
+                    SDFlagSD(id) = 1
+
+                    If SDFlag(room) = 0 Then
+                        SDFlag(room) = 1
+                        SDTime(room) = oSmokeDet.responsetime
+                    End If
+
+                    Dim Message As String = Format(oSmokeDet.responsetime, "0") & " sec. Beam detector " & oSmokeDet.sdid.ToString & " operates in room " & oSmokeDet.room.ToString
+                    frmInputs.rtb_log.Text = Message.ToString & Chr(13) & frmInputs.rtb_log.Text
+                End If
+            Else
+                'in lower layer
+                If OD_lower(room, i) >= OD And responsetime = 0 Then
+                    'alarm threshold reached
+                    oSmokeDet.responsetime = tim 'time of actuation
+
+                    SDFlagSD(id) = 1
+
+                    If SDFlag(room) = 0 Then
+                        SDFlag(room) = 1
+                        SDTime(room) = oSmokeDet.responsetime
+                    End If
+
+                    Dim Message As String = Format(oSmokeDet.responsetime, "0") & " sec. Beam detector " & oSmokeDet.sdid.ToString & " operates in room " & oSmokeDet.room.ToString
+                    frmInputs.rtb_log.Text = Message.ToString & Chr(13) & frmInputs.rtb_log.Text
+                End If
+            End If
+            'no consideration of transit time
+            Exit Sub
+        End If
+
         If room = fireroom Then
 
             If maxr > oSmokeDet.sdr Then
@@ -704,6 +747,7 @@ Module DIFFEQNS
         ReDim ItemFTP_sum_auto(NumberObjects)
         ReDim ItemFTP_sum_wall(NumberObjects)
         ReDim ItemFTP_sum_ceiling(NumberObjects)
+        ReDim ObjectRad(0 To 1, 0 To NumberObjects + 1, 0 To NumberTimeSteps + 1) 'vert surface =0 horizont surface=1
         Dim WallFTP_sum_ar() As Double
         Dim CeilingFTP_sum() As Double
         Dim FloorFTP_sum(NumberRooms, NumberTimeSteps + 1) As Double
@@ -2432,6 +2476,8 @@ Module DIFFEQNS
 
                     Else
                         'not room  of fire origin
+                        'is the detector in the upper or lower layer?
+
                         OD_outsideSD(sdid, i) = OD_upper(j, i) '1/m
                         'OD_upper(1, 1)
                         'check for smoke detector operation

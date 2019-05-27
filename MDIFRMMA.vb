@@ -393,6 +393,7 @@ Friend Class MDIFrmMain
         Me.AddOwnedForm(frmNewSmokeDetector)
         Me.AddOwnedForm(frmViewDocs)
         Me.AddOwnedForm(frmRoomList)
+        Me.AddOwnedForm(frmMatEdit)
         Me.Show()
         Me.Enabled = False
 
@@ -1425,6 +1426,37 @@ errhandler:
 
             'Transfer the array to the worksheet starting at cell A1
             oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
+
+            If ignitetargets = True Then
+                oBook.Worksheets.add()
+                oSheet = oBook.ActiveSheet
+                oSheet.Name = "Secondary Targets"
+                DataArray(0, 0) = "Time (sec)"
+                count = 1
+                For i = 1 To NumberObjects
+                    DataArray(0, count) = "Obj " & ObjectItemID(i).ToString & " Rad to vert surface (kW/m2)"
+                    DataArray(0, count + 1) = "Obj " & ObjectItemID(i).ToString & " Rad to horizontal surface (kW/m2)"
+                    count = count + 2
+                Next
+                If NumberTimeSteps > 0 Then
+                    k = 2 'row
+
+                    For j = 1 To NumberTimeSteps + 1
+                        If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
+                            DataArray(k - 1, 0) = Format(tim(j, 1), s)
+                            count = 1
+                            For i = 1 To NumberObjects
+                                DataArray(k - 1, count) = Format(ObjectRad(0, i, j), "0.00")
+                                DataArray(k - 1, count + 1) = Format(ObjectRad(1, i, j), "0.00")
+                                count = count + 2
+                            Next i
+                            k = k + 1
+                        End If
+                    Next j
+                End If
+            End If
+            'Transfer the array to the worksheet starting at cell A1
+            oSheet.Range("A1").Resize(k - 1, count).Value = DataArray
 
             Me.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
             'If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))
@@ -10106,7 +10138,21 @@ errhandler:
         End Try
     End Sub
 
-    Private Sub ToolStripMenuItem18_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem18.Click
+    Private Sub SelectRoomMaterialsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectRoomMaterialsToolStripMenuItem.Click
+        frmMatEdit.Tag = "ceiling"
+        frmMatEdit.Text = "Select ceiling materials"
+        frmMatEdit.Show()
+    End Sub
 
+    Private Sub WallMaterialsSelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles WallMaterialsSelectToolStripMenuItem.Click
+        frmMatEdit.Tag = "wall"
+        frmMatEdit.Text = "Select wall materials"
+        frmMatEdit.Show()
+    End Sub
+
+    Private Sub FloorMaterialsSelectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FloorMaterialsSelectToolStripMenuItem.Click
+        frmMatEdit.Tag = "floor"
+        frmMatEdit.Text = "Select floor materials"
+        frmMatEdit.Show()
     End Sub
 End Class

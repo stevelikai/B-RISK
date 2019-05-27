@@ -995,26 +995,28 @@ Module DFG
                         Call Radiation_to_Surface(fireroom, layerheight(fireroom, thistimestep), uppertemp(fireroom, thistimestep), CO2MassFraction(fireroom, thistimestep, 1), H2OMassFraction(fireroom, thistimestep, 1), radfromlayer, UpperVolume(fireroom, thistimestep), OD_upper(fireroom, thistimestep - 1), zs, emissivity)
 
                         'point source piloted ignition
-                        If QPS >= ObjCRF(i) Then
+                        If QPS >= ObjCRF(i) Then 'vertical surface on target
                             ItemFTP_sum_pilot(i) = ItemFTP_sum_pilot(i) + (QPS - ObjCRF(i)) ^ ObjFTPindexpilot(i) * Timestep
                         End If
+                        ObjectRad(0, i, stepcount) = QPS 'vert surface =0 horizont surface=1
 
                         'hot layer auto ignition
-                        If radfromlayer >= ObjCRFauto(i) Then
+                        If radfromlayer >= ObjCRFauto(i) Then 'horizontal surface on target
                             ItemFTP_sum_auto(i) = ItemFTP_sum_auto(i) + (radfromlayer - ObjCRFauto(i)) ^ ObjFTPindexauto(i) * Timestep
                         End If
+                        ObjectRad(1, i, stepcount) = radfromlayer 'vert surface =0 horizont surface=1
 
                         'ignition time of secondary objects
                         If (ItemFTP_sum_pilot(i) > ObjFTPlimitpilot(i)) And ObjectIgnMode(i) = "" Then
                             ObjectIgnTime(i) = tim(thistimestep, 1)
-                            frmInputs.rtb_log.Text = ObjectIgnTime(i).ToString & " sec. Item " & ObjectItemID(i).ToString & " " & ObjectDescription(i) & " ignited (piloted ign)." & Chr(13) & frmInputs.rtb_log.Text
+                            frmInputs.rtb_log.Text = ObjectIgnTime(i).ToString & " sec. Item " & ObjectItemID(i).ToString & " " & ObjectDescription(i) & " ignited (vertical surface)." & Chr(13) & frmInputs.rtb_log.Text
                             ObjectIgnMode(i) = "P"
                         End If
 
                         'ignition time of secondary objects
                         If (ItemFTP_sum_auto(i) > ObjFTPlimitauto(i)) And ObjectIgnMode(i) = "" Then
                             ObjectIgnTime(i) = tim(thistimestep, 1)
-                            frmInputs.rtb_log.Text = ObjectIgnTime(i).ToString & " sec. Item " & ObjectItemID(i).ToString & " " & ObjectDescription(i) & " ignited (auto ign)." & Chr(13) & frmInputs.rtb_log.Text
+                            frmInputs.rtb_log.Text = ObjectIgnTime(i).ToString & " sec. Item " & ObjectItemID(i).ToString & " " & ObjectDescription(i) & " ignited (horizontal surface)." & Chr(13) & frmInputs.rtb_log.Text
                             ObjectIgnMode(i) = "A"
                         End If
 

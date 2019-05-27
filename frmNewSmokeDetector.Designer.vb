@@ -22,41 +22,41 @@ Partial Class frmNewSmokeDetector
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.txtCharLength = New System.Windows.Forms.TextBox
-        Me.cmdDist_sdr = New System.Windows.Forms.Button
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.cmdDist_OD = New System.Windows.Forms.Button
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtValue7 = New System.Windows.Forms.TextBox
-        Me.txtOD = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.TextBox3 = New System.Windows.Forms.TextBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.TextBox4 = New System.Windows.Forms.TextBox
-        Me.Label31 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label33 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.cmdDist_sdz = New System.Windows.Forms.Button
-        Me.txtValue11 = New System.Windows.Forms.TextBox
-        Me.Label37 = New System.Windows.Forms.Label
-        Me.cmdDist_charlength = New System.Windows.Forms.Button
-        Me.cmdSave = New System.Windows.Forms.Button
-        Me.cmdCancel = New System.Windows.Forms.Button
-        Me.chkSDinside = New System.Windows.Forms.CheckBox
-        Me.gbBeamDetect = New System.Windows.Forms.GroupBox
-        Me.txtPathLength = New System.Windows.Forms.TextBox
-        Me.lblPathLength = New System.Windows.Forms.Label
-        Me.lblAlarmTrans = New System.Windows.Forms.Label
-        Me.txtAlarmTrans = New System.Windows.Forms.TextBox
-        Me.optPointDetect = New System.Windows.Forms.RadioButton
-        Me.optBeamDetect = New System.Windows.Forms.RadioButton
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtCharLength = New System.Windows.Forms.TextBox()
+        Me.cmdDist_sdr = New System.Windows.Forms.Button()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cmdDist_OD = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtValue7 = New System.Windows.Forms.TextBox()
+        Me.txtOD = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cmdDist_sdz = New System.Windows.Forms.Button()
+        Me.txtValue11 = New System.Windows.Forms.TextBox()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.cmdDist_charlength = New System.Windows.Forms.Button()
+        Me.cmdSave = New System.Windows.Forms.Button()
+        Me.cmdCancel = New System.Windows.Forms.Button()
+        Me.chkSDinside = New System.Windows.Forms.CheckBox()
+        Me.gbBeamDetect = New System.Windows.Forms.GroupBox()
+        Me.optBeamDetect = New System.Windows.Forms.RadioButton()
+        Me.optPointDetect = New System.Windows.Forms.RadioButton()
+        Me.txtAlarmTrans = New System.Windows.Forms.TextBox()
+        Me.lblAlarmTrans = New System.Windows.Forms.Label()
+        Me.lblPathLength = New System.Windows.Forms.Label()
+        Me.txtPathLength = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbBeamDetect.SuspendLayout()
@@ -66,9 +66,9 @@ Partial Class frmNewSmokeDetector
         '
         Me.TableLayoutPanel1.AutoSize = True
         Me.TableLayoutPanel1.ColumnCount = 4
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle)
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle)
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle)
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 10)
         Me.TableLayoutPanel1.Controls.Add(Me.txtCharLength, 1, 10)
@@ -98,24 +98,24 @@ Partial Class frmNewSmokeDetector
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 12
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(329, 217)
         Me.TableLayoutPanel1.TabIndex = 25
         '
         'Label1
         '
         Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(15, 176)
         Me.Label1.Name = "Label1"
@@ -241,8 +241,8 @@ Partial Class frmNewSmokeDetector
         'Label31
         '
         Me.Label31.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label31.AutoSize = True
         Me.Label31.Location = New System.Drawing.Point(196, 72)
         Me.Label31.Name = "Label31"
@@ -254,8 +254,8 @@ Partial Class frmNewSmokeDetector
         'Label2
         '
         Me.Label2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(196, 98)
         Me.Label2.Name = "Label2"
@@ -267,8 +267,8 @@ Partial Class frmNewSmokeDetector
         'Label11
         '
         Me.Label11.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(196, 124)
         Me.Label11.Name = "Label11"
@@ -280,8 +280,8 @@ Partial Class frmNewSmokeDetector
         'Label33
         '
         Me.Label33.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label33.AutoSize = True
         Me.Label33.Location = New System.Drawing.Point(196, 46)
         Me.Label33.Name = "Label33"
@@ -293,8 +293,8 @@ Partial Class frmNewSmokeDetector
         'Label13
         '
         Me.Label13.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(196, 0)
@@ -318,8 +318,8 @@ Partial Class frmNewSmokeDetector
         'Label12
         '
         Me.Label12.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
         Me.Label12.Location = New System.Drawing.Point(196, 150)
         Me.Label12.Name = "Label12"
@@ -349,8 +349,8 @@ Partial Class frmNewSmokeDetector
         'Label37
         '
         Me.Label37.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label37.AutoSize = True
         Me.Label37.Location = New System.Drawing.Point(3, 150)
         Me.Label37.Name = "Label37"
@@ -400,7 +400,7 @@ Partial Class frmNewSmokeDetector
         '
         'gbBeamDetect
         '
-        Me.gbBeamDetect.BackColor = System.Drawing.SystemColors.Info
+        Me.gbBeamDetect.BackColor = System.Drawing.SystemColors.Control
         Me.gbBeamDetect.Controls.Add(Me.optBeamDetect)
         Me.gbBeamDetect.Controls.Add(Me.optPointDetect)
         Me.gbBeamDetect.Controls.Add(Me.txtAlarmTrans)
@@ -413,41 +413,16 @@ Partial Class frmNewSmokeDetector
         Me.gbBeamDetect.TabIndex = 26
         Me.gbBeamDetect.TabStop = False
         Me.gbBeamDetect.Text = "Detector Type"
-        Me.gbBeamDetect.Visible = False
         '
-        'txtPathLength
+        'optBeamDetect
         '
-        Me.txtPathLength.Location = New System.Drawing.Point(264, 29)
-        Me.txtPathLength.Name = "txtPathLength"
-        Me.txtPathLength.Size = New System.Drawing.Size(53, 20)
-        Me.txtPathLength.TabIndex = 1
-        Me.txtPathLength.Text = "12"
-        '
-        'lblPathLength
-        '
-        Me.lblPathLength.AutoSize = True
-        Me.lblPathLength.Location = New System.Drawing.Point(180, 30)
-        Me.lblPathLength.Name = "lblPathLength"
-        Me.lblPathLength.Size = New System.Drawing.Size(78, 13)
-        Me.lblPathLength.TabIndex = 2
-        Me.lblPathLength.Text = "Path length (m)"
-        '
-        'lblAlarmTrans
-        '
-        Me.lblAlarmTrans.AutoSize = True
-        Me.lblAlarmTrans.Location = New System.Drawing.Point(147, 58)
-        Me.lblAlarmTrans.Name = "lblAlarmTrans"
-        Me.lblAlarmTrans.Size = New System.Drawing.Size(109, 13)
-        Me.lblAlarmTrans.TabIndex = 3
-        Me.lblAlarmTrans.Text = "Alarm transmissivity (-)"
-        '
-        'txtAlarmTrans
-        '
-        Me.txtAlarmTrans.Location = New System.Drawing.Point(264, 55)
-        Me.txtAlarmTrans.Name = "txtAlarmTrans"
-        Me.txtAlarmTrans.Size = New System.Drawing.Size(52, 20)
-        Me.txtAlarmTrans.TabIndex = 4
-        Me.txtAlarmTrans.Text = "0.2"
+        Me.optBeamDetect.AutoSize = True
+        Me.optBeamDetect.Location = New System.Drawing.Point(14, 54)
+        Me.optBeamDetect.Name = "optBeamDetect"
+        Me.optBeamDetect.Size = New System.Drawing.Size(94, 17)
+        Me.optBeamDetect.TabIndex = 6
+        Me.optBeamDetect.Text = "Beam detector"
+        Me.optBeamDetect.UseVisualStyleBackColor = True
         '
         'optPointDetect
         '
@@ -461,15 +436,39 @@ Partial Class frmNewSmokeDetector
         Me.optPointDetect.Text = "Point detector"
         Me.optPointDetect.UseVisualStyleBackColor = True
         '
-        'optBeamDetect
+        'txtAlarmTrans
         '
-        Me.optBeamDetect.AutoSize = True
-        Me.optBeamDetect.Location = New System.Drawing.Point(14, 54)
-        Me.optBeamDetect.Name = "optBeamDetect"
-        Me.optBeamDetect.Size = New System.Drawing.Size(94, 17)
-        Me.optBeamDetect.TabIndex = 6
-        Me.optBeamDetect.Text = "Beam detector"
-        Me.optBeamDetect.UseVisualStyleBackColor = True
+        Me.txtAlarmTrans.Location = New System.Drawing.Point(264, 55)
+        Me.txtAlarmTrans.Name = "txtAlarmTrans"
+        Me.txtAlarmTrans.Size = New System.Drawing.Size(52, 20)
+        Me.txtAlarmTrans.TabIndex = 4
+        Me.txtAlarmTrans.Text = "0.2"
+        '
+        'lblAlarmTrans
+        '
+        Me.lblAlarmTrans.AutoSize = True
+        Me.lblAlarmTrans.Location = New System.Drawing.Point(147, 58)
+        Me.lblAlarmTrans.Name = "lblAlarmTrans"
+        Me.lblAlarmTrans.Size = New System.Drawing.Size(109, 13)
+        Me.lblAlarmTrans.TabIndex = 3
+        Me.lblAlarmTrans.Text = "Alarm transmissivity (-)"
+        '
+        'lblPathLength
+        '
+        Me.lblPathLength.AutoSize = True
+        Me.lblPathLength.Location = New System.Drawing.Point(180, 30)
+        Me.lblPathLength.Name = "lblPathLength"
+        Me.lblPathLength.Size = New System.Drawing.Size(78, 13)
+        Me.lblPathLength.TabIndex = 2
+        Me.lblPathLength.Text = "Path length (m)"
+        '
+        'txtPathLength
+        '
+        Me.txtPathLength.Location = New System.Drawing.Point(264, 29)
+        Me.txtPathLength.Name = "txtPathLength"
+        Me.txtPathLength.Size = New System.Drawing.Size(53, 20)
+        Me.txtPathLength.TabIndex = 1
+        Me.txtPathLength.Text = "12"
         '
         'frmNewSmokeDetector
         '

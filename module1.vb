@@ -223,20 +223,22 @@ Module MAIN
 
                     For i = 1 To NumberVents(j, k)
                         If VentSillHeight(j, k, i) + FloorElevation(j) < highest_floor Then
-                            MsgBox("Vent sill height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k), MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
-
+                            MsgBox("Vent sill height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k) & ". Simulation will be terminated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            flagstop = 1 'terminate
                         End If
 
                         If VentSillHeight(j, k, i) + VentHeight(j, k, i) + FloorElevation(j) > lowest_ceiling Then
                             'The vent size specified is too high for the room height.
                             'The vent height has been reduced to fit."
-                            MsgBox("Vent height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k), MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            MsgBox("Vent height not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k) & ". Simulation will be terminated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            flagstop = 1 'terminate
                         End If
 
                         If VentWidth(j, k, i) > 2 * (RoomLength(j) + RoomWidth(j)) Then
                             'The vent size specified is too wide for the room size.
                             'The vent width has been reduced to fit."
-                            MsgBox("Vent width not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k), MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            MsgBox("Vent width not valid for Vent " & CStr(i) & " between rooms " & CStr(j) & " and " & CStr(k) & ". Simulation will be terminated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information)
+                            flagstop = 1 'terminate
                         End If
                     Next i
 
@@ -17421,6 +17423,38 @@ errorhandler:
 
             'Transfer the array to the worksheet starting at cell A1
             oSheet.Range("A1").Resize(k - 1, 2).Value = DataArray
+
+            If ignitetargets = True Then
+                oBook.Worksheets.add()
+                oSheet = oBook.ActiveSheet
+                oSheet.Name = "Secondary Targets"
+                DataArray(0, 0) = "Time (sec)"
+                count = 1
+                For i = 1 To NumberObjects
+                    DataArray(0, count) = "Obj " & ObjectItemID(i).ToString & " Rad to vert surface (kW/m2)"
+                    DataArray(0, count + 1) = "Obj " & ObjectItemID(i).ToString & " Rad to horizontal surface (kW/m2)"
+                    count = count + 2
+                Next
+                If NumberTimeSteps > 0 Then
+                    k = 2 'row
+
+                    For j = 1 To NumberTimeSteps + 1
+                        If Int(tim(j, 1) / ExcelInterval) - tim(j, 1) / ExcelInterval = 0 Then
+                            DataArray(k - 1, 0) = Format(tim(j, 1), s)
+                            count = 1
+                            For i = 1 To NumberObjects
+                                DataArray(k - 1, count) = Format(ObjectRad(0, i, j), "0.00")
+                                DataArray(k - 1, count + 1) = Format(ObjectRad(1, i, j), "0.00")
+                                count = count + 2
+                            Next i
+                            k = k + 1
+                        End If
+                    Next j
+                End If
+            End If
+            'Transfer the array to the worksheet starting at cell A1
+            oSheet.Range("A1").Resize(k - 1, count).Value = DataArray
+
 
             MDIFrmMain.ToolStripStatusLabel4.Text = "Saving Excel Charts... Please Wait" = "Saving Excel Charts... Please Wait"
             'If frmprintvar.chkLH.CheckState = System.Windows.Forms.CheckState.Checked Then Call Add_ExcelChart(oExcel, "Room 1", "A:A,B:B", "Layer Height (m)", "B2", "A2:A" & CStr(rowcount), "B2:B" & CStr(rowcount))

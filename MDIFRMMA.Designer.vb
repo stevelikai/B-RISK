@@ -220,6 +220,9 @@
         Me.mnuRoom = New System.Windows.Forms.ToolStripMenuItem()
         Me.RoomsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SurfaceMaterialsDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SelectRoomMaterialsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WallMaterialsSelectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FloorMaterialsSelectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WallVentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CeilingVentsNewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -785,7 +788,7 @@
         '
         'mnuRoom
         '
-        Me.mnuRoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RoomsToolStripMenuItem, Me.SurfaceMaterialsDatabaseToolStripMenuItem})
+        Me.mnuRoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RoomsToolStripMenuItem, Me.SurfaceMaterialsDatabaseToolStripMenuItem, Me.SelectRoomMaterialsToolStripMenuItem, Me.WallMaterialsSelectToolStripMenuItem, Me.FloorMaterialsSelectToolStripMenuItem})
         Me.mnuRoom.Image = Global.BRISK.My.Resources.Resources.pic17
         Me.mnuRoom.MergeAction = System.Windows.Forms.MergeAction.Remove
         Me.mnuRoom.Name = "mnuRoom"
@@ -803,6 +806,24 @@
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Name = "SurfaceMaterialsDatabaseToolStripMenuItem"
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
         Me.SurfaceMaterialsDatabaseToolStripMenuItem.Text = "Surface Materials Database"
+        '
+        'SelectRoomMaterialsToolStripMenuItem
+        '
+        Me.SelectRoomMaterialsToolStripMenuItem.Name = "SelectRoomMaterialsToolStripMenuItem"
+        Me.SelectRoomMaterialsToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.SelectRoomMaterialsToolStripMenuItem.Text = "Select Ceiling Materials"
+        '
+        'WallMaterialsSelectToolStripMenuItem
+        '
+        Me.WallMaterialsSelectToolStripMenuItem.Name = "WallMaterialsSelectToolStripMenuItem"
+        Me.WallMaterialsSelectToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.WallMaterialsSelectToolStripMenuItem.Text = "Select Wall Materials"
+        '
+        'FloorMaterialsSelectToolStripMenuItem
+        '
+        Me.FloorMaterialsSelectToolStripMenuItem.Name = "FloorMaterialsSelectToolStripMenuItem"
+        Me.FloorMaterialsSelectToolStripMenuItem.Size = New System.Drawing.Size(215, 22)
+        Me.FloorMaterialsSelectToolStripMenuItem.Text = "Select Floor Materials"
         '
         'VentsToolStripMenuItem
         '
@@ -2714,5 +2735,8 @@
     Friend WithEvents WallFuelMassLossRatebyElementToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents WallFuelMassLossRatetotalToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents WallApparentDensitybyElementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SelectRoomMaterialsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents WallMaterialsSelectToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FloorMaterialsSelectToolStripMenuItem As ToolStripMenuItem
 #End Region
 End Class

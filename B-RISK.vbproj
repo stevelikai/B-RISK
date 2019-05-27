@@ -56,7 +56,7 @@
     <PublisherName>BRANZ</PublisherName>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2011.4.0.%2a</ApplicationVersion>
+    <ApplicationVersion>2019.03.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -163,6 +163,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="cvent2.vb" />
+    <Compile Include="frmMatEdit.designer.vb">
+      <DependentUpon>frmMatEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSensitivity.Designer.vb">
       <DependentUpon>frmSensitivity.vb</DependentUpon>
     </Compile>
@@ -210,6 +216,9 @@
     </Compile>
     <Compile Include="frmVentList.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GLOBAL.vb">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="KineticModel.vb" />
     <Compile Include="pdf.vb" />
@@ -457,9 +466,6 @@
     <Compile Include="Glass.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GLOBAL.vb">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="HEATTRAN.vb">
       <SubType>Code</SubType>
     </Compile>
@@ -604,6 +610,9 @@
     <EmbeddedResource Include="frmItemList.resx">
       <DependentUpon>frmItemList.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatEdit.resx">
+      <DependentUpon>frmMatEdit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewCVents.resx">
       <DependentUpon>frmNewCVents.vb</DependentUpon>
