@@ -27,7 +27,7 @@ Module GLOBAL_Renamed
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2019.031"
+    Public Const Version As String = "2019.04"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
