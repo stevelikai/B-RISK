@@ -26,7 +26,7 @@
     <enhance_burning>False</enhance_burning>
     <job_number />
     <excel_interval>20</excel_interval>
-    <time_step>0.25</time_step>
+    <time_step>1</time_step>
     <error_control>0.1</error_control>
     <error_control_ventflows>0.001</error_control_ventflows>
     <fire_dbase>C:\Users\branzcw\Documents\B-RISK\dbases\fire.mdb</fire_dbase>
@@ -147,7 +147,7 @@
     <fuel_thickness>0.06</fuel_thickness>
     <stick_spacing>0.06</stick_spacing>
     <crib_height>0.85</crib_height>
-    <excess_fuel_factor>1</excess_fuel_factor>
+    <excess_fuel_factor>1.3</excess_fuel_factor>
     <CLT_model>True</CLT_model>
     <CLT_ceil_percent>10</CLT_ceil_percent>
     <CLT_wall_percent>33</CLT_wall_percent>
@@ -173,13 +173,13 @@
     <kinetic_lig_Ai>84100000000000</kinetic_lig_Ai>
     <kinetic_lig_ni>5</kinetic_lig_ni>
     <kinetic_lig_mf>0.09</kinetic_lig_mf>
-    <kinetic_wat_Ei>100000</kinetic_wat_Ei>
-    <kinetic_wat_Ai>10000000000000</kinetic_wat_Ai>
+    <kinetic_wat_Ei>604000</kinetic_wat_Ei>
+    <kinetic_wat_Ai>1.53E+83</kinetic_wat_Ai>
     <kinetic_wat_ni>1</kinetic_wat_ni>
     <kinetic_wat_mf>0.1</kinetic_wat_mf>
-    <kinetic_cell_charyield>0.4</kinetic_cell_charyield>
-    <kinetic_hemi_charyield>0.4</kinetic_hemi_charyield>
-    <kinetic_lig_charyield>0.4</kinetic_lig_charyield>
+    <kinetic_cell_charyield>0.25</kinetic_cell_charyield>
+    <kinetic_hemi_charyield>0.25</kinetic_hemi_charyield>
+    <kinetic_lig_charyield>0.25</kinetic_lig_charyield>
     <CLT_moisturecontent>0.07</CLT_moisturecontent>
     <thermal_props>1</thermal_props>
   </postflashover>

@@ -27,12 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_03FF162857734703820A8ACCF9CEA5F4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_040CB72D5F474CE88E632AA85A830235"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -46,6 +40,12 @@
         "Entry"
         {
         "MsmKey" = "8:_0AC2CB26EB3F4725A27E15B2DEE8B983"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_12C0F940BFBF49D1884E236D09C609B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,7 +81,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_249463DA135D4D9BBF1ABDA25F8D505E"
+        "MsmKey" = "8:_1F4780CECE724C1AAD5DB882FD2C7D76"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_20BCCC7400994D44ACA36EE1F455B504"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -99,13 +105,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2BCDCAA5A76A40BD80F7E91CBA7C545E"
+        "MsmKey" = "8:_2D45A6CDCE9D48389C5BABA3D6234825"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D45A6CDCE9D48389C5BABA3D6234825"
+        "MsmKey" = "8:_2D85644EBE1F483AAD5823246B9C8DB2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -124,6 +130,12 @@
         "Entry"
         {
         "MsmKey" = "8:_325DC939E80646B5A056C4E5F8F2190C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_32FB3647440F48379B9B799FB9E81068"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -177,12 +189,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_430AA49BA2184E12A889E34EF5FEF097"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_4345F2DD91F0414A902D85525D1E1D23"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -201,19 +207,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_46CF00BB7900408CADB64E3D08C04FCD"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_4B5C9E36B26E46D79F27594A5C2EE64B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4C56645F76864E0289A638B2F0CD3971"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -221,6 +215,12 @@
         {
         "MsmKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
         "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4D409507DFC0EFA60F97FC844E639670"
+        "OwnerKey" = "8:_939CBB14A5224EC182EF3BD2756F6C57"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -243,6 +243,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4D8A353EF6A545FAADD2C4128399F29C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_516AA1F280F64070BF1351231ECCE0B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -255,19 +261,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_53162DF415604745A8580991323F3C64"
+        "MsmKey" = "8:_52BDA695C7644CD08AAD6C8CF82E1FA9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_53B67EF431DE4B848E95061763427CA8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5427169DE0524970A97529D85032FF22"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_57BB2F05089247F2BCA9B71A44176315"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -291,25 +297,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_62B7AD7B77B84202AA702F7D53848A4A"
+        "MsmKey" = "8:_679363850CA24A189221222300E7469C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6817A440AFCE47BFB3B25488F2653FE8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_718F5090473D402D96C8376F9E3AC45A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_71B15323DA1B419FB754A9D43EB18EF2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -327,19 +321,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7D743904601541F5A85690042BAA6BA3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7DBE52C7B32D4244B7C14CF24457697F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_810A3B190D3C43DB9DA23EDD0960A315"
+        "MsmKey" = "8:_80B8FBF58E524183B6F0148D2368079C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -363,25 +345,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_83C122BFA8504E2D9D6B6AAE73C8FE24"
+        "MsmKey" = "8:_8E3908B501CD499E830926CE0E97BD92"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8DC88B5C35664707A5143C4FB6AA4AC7"
+        "MsmKey" = "8:_8EA4F5FD769343D596EC66FB76008CC5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8F5578C9675A43209E5093FC77580B2B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_939CBB14A5224EC182EF3BD2756F6C57"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_96013C0095D347AEB36B38CC165AAC2E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_967350A24D094D31871072ACDF81E4FE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -405,25 +393,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9EE189525C6E48DB8E6834528F908F08"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A6C997392A7B4A74944B1FD5D8F29C82"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_A90D7CA7413343389A968BB7FB239F0B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A9B58825F768432CAB7C865395EB97E3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AA74860648DC44B5A3D0950296DD06C3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AC1A12973F4743B79C377BC63EF1CCC1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -448,6 +436,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B34448F960A14C9B9AB1BB2DB067DB1F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B4F9E488CE9940C7A3D0C59A1455C63E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -489,6 +483,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BF0B15E60F2B40EC8A192E069EC6A0B7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BF0C8136286842EBA62B140C6B12599A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -502,18 +502,6 @@
         "Entry"
         {
         "MsmKey" = "8:_C0F35D7D2E0C4534AC240BCFF4C9C1B9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C166BEFB8EC4406FBC0B9B819AAE07A7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C19CD0BAAD2849F4B992B9A260F90252"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -537,25 +525,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C7111DE87792444CAD72B96835C77BA7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C79C239E93744F839D48F4CD1C252C16"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C903A01809034F2392F7D95131D7E284"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_C99BA4014C0C412DAED26C5091AA35E9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CA18E1653326430D8CEC98CA3842021F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CA38D7CFED4E45D4B97063D0016AD77A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -567,13 +549,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CAB671102E7145EBBC67F269F1C292EF"
+        "MsmKey" = "8:_CB0A879E352C475AA56AB60BE2FD587B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_CD6B35A827644F81A1ED5459D1B39D6F"
+        "MsmKey" = "8:_CBF7B40581C94E168CF142E7C47EFC46"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -591,6 +573,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CF78C5F9B0E24ED68E75116E21B75B68"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D2DD2AD9EA5A4692BCE6713EE059A8A1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB3A9ACD646F4BB18EF188AEBABC5351"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DB6C9762C9367BCD5029333708E6BD4A"
         "OwnerKey" = "8:_B75418E3DB674442A75CC166E94456EC"
         "MsmSig" = "8:_UNDEFINED"
@@ -603,13 +603,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DD75AB1BC14F441284A5D5656B9BEEAA"
+        "MsmKey" = "8:_E12E977C9A4E4B18A441E6682EB1F68C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E12E977C9A4E4B18A441E6682EB1F68C"
+        "MsmKey" = "8:_E18F00AB29A64EF2884BD447CDBEBAB9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E4A3B6F9AE814E94B6BF524F7CC21FF4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -627,6 +633,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EE05D8D535AA4CE7882E635DB84AB6C3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F41392CE54964A7CB7E2EAC37CAB9CD0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F57FCE7550D940AD9DE59C9F6B8D1323"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F640409902F64D1FAF5F001306888805"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -640,6 +664,12 @@
         "Entry"
         {
         "MsmKey" = "8:_FAA4B417AF6946E080A17334F6339D8E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC667C944F934E6F85147AEB4DE77E4A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -665,6 +695,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_52558F8464DA813E2521135C8786BE08"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_939CBB14A5224EC182EF3BD2756F6C57"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -879,26 +915,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_03FF162857734703820A8ACCF9CEA5F4"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\rooms.xml"
-            "TargetName" = "8:rooms.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_040CB72D5F474CE88E632AA85A830235"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\ifb.txt"
@@ -945,6 +961,26 @@
             "TargetName" = "8:M25.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_12C0F940BFBF49D1884E236D09C609B9"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\distributions.xml"
+            "TargetName" = "8:distributions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1059,12 +1095,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_249463DA135D4D9BBF1ABDA25F8D505E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F4780CECE724C1AAD5DB882FD2C7D76"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\rooms.xml"
-            "TargetName" = "8:rooms.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\items.xml"
+            "TargetName" = "8:items.xml"
             "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20BCCC7400994D44ACA36EE1F455B504"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\distributions.xml"
+            "TargetName" = "8:distributions.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1119,12 +1175,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2BCDCAA5A76A40BD80F7E91CBA7C545E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D45A6CDCE9D48389C5BABA3D6234825"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\vents.xml"
-            "TargetName" = "8:vents.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\cone\\M12.txt"
+            "TargetName" = "8:M12.txt"
             "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1139,12 +1195,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D45A6CDCE9D48389C5BABA3D6234825"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2D85644EBE1F483AAD5823246B9C8DB2"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\cone\\M12.txt"
-            "TargetName" = "8:M12.txt"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\smokedets.xml"
+            "TargetName" = "8:smokedets.xml"
             "Tag" = "8:"
-            "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1205,6 +1261,26 @@
             "TargetName" = "8:Quint_S11.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32FB3647440F48379B9B799FB9E81068"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\sprinklers.xml"
+            "TargetName" = "8:sprinklers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1361,26 +1437,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_430AA49BA2184E12A889E34EF5FEF097"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\basemodel_ConfigP_SMC_DB2000_EC5.xml"
-            "TargetName" = "8:basemodel_ConfigP_SMC_DB2000_EC5.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4345F2DD91F0414A902D85525D1E1D23"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\vents.xml"
@@ -1441,52 +1497,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46CF00BB7900408CADB64E3D08C04FCD"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\fans.xml"
-            "TargetName" = "8:fans.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B5C9E36B26E46D79F27594A5C2EE64B"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\basemodel_default_log.rtf"
             "TargetName" = "8:basemodel_default_log.rtf"
             "Tag" = "8:"
             "Folder" = "8:_2949A2CE78494883B342AD1D80885287"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C56645F76864E0289A638B2F0CD3971"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\sprinklers.xml"
-            "TargetName" = "8:sprinklers.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1530,6 +1546,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4D8A353EF6A545FAADD2C4128399F29C"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\items.xml"
+            "TargetName" = "8:items.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_516AA1F280F64070BF1351231ECCE0B4"
@@ -1583,12 +1619,32 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53162DF415604745A8580991323F3C64"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_52BDA695C7644CD08AAD6C8CF82E1FA9"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\items.xml"
-            "TargetName" = "8:items.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\basemodel_ConfigP_SMA_DB2000GE13.xml"
+            "TargetName" = "8:basemodel_ConfigP_SMA_DB2000GE13.xml"
             "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53B67EF431DE4B848E95061763427CA8"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\smokedets.xml"
+            "TargetName" = "8:smokedets.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1609,26 +1665,6 @@
             "TargetName" = "8:rsply.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_57BB2F05089247F2BCA9B71A44176315"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\sprinklers.xml"
-            "TargetName" = "8:sprinklers.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1703,12 +1739,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62B7AD7B77B84202AA702F7D53848A4A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_679363850CA24A189221222300E7469C"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\basemodel_ConfigP_SMA_DB2000_G2.xml"
-            "TargetName" = "8:basemodel_ConfigP_SMA_DB2000_G2.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\basemodel_ConfigP_SMC_DB2000.xml"
+            "TargetName" = "8:basemodel_ConfigP_SMC_DB2000.xml"
             "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1729,46 +1765,6 @@
             "TargetName" = "8:cvents.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_718F5090473D402D96C8376F9E3AC45A"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\fans.xml"
-            "TargetName" = "8:fans.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_71B15323DA1B419FB754A9D43EB18EF2"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\cvents.xml"
-            "TargetName" = "8:cvents.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1823,52 +1819,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D743904601541F5A85690042BAA6BA3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80B8FBF58E524183B6F0148D2368079C"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\smokedets.xml"
-            "TargetName" = "8:smokedets.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\basemodel_ConfigP_SMA_DB2000GE20.xml"
+            "TargetName" = "8:basemodel_ConfigP_SMA_DB2000GE20.xml"
             "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7DBE52C7B32D4244B7C14CF24457697F"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\items.xml"
-            "TargetName" = "8:items.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_810A3B190D3C43DB9DA23EDD0960A315"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\distributions.xml"
-            "TargetName" = "8:distributions.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1943,12 +1899,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_83C122BFA8504E2D9D6B6AAE73C8FE24"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E3908B501CD499E830926CE0E97BD92"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\basemodel_ConfigP_SMC_DB2000.xml"
-            "TargetName" = "8:basemodel_ConfigP_SMC_DB2000.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\distributions.xml"
+            "TargetName" = "8:distributions.xml"
             "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1963,12 +1919,78 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8DC88B5C35664707A5143C4FB6AA4AC7"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EA4F5FD769343D596EC66FB76008CC5"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\vents.xml"
-            "TargetName" = "8:vents.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\cvents.xml"
+            "TargetName" = "8:cvents.xml"
             "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F5578C9675A43209E5093FC77580B2B"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x86\\nmath_sf_x86.dll"
+            "TargetName" = "8:nmath_sf_x86.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D78F12AB10F04745AE377F10EAF6168A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_939CBB14A5224EC182EF3BD2756F6C57"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:NMathPremiumKernelx86, Version=6.2.0.25, Culture=neutral, PublicKeyToken=873235918a322639, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_0B2DF618BAFA294EEE5A87669EE6F9D0"
+                    {
+                    "Name" = "8:libiomp5md.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_939CBB14A5224EC182EF3BD2756F6C57"
+                    {
+                    "Name" = "8:NMathPremiumKernelx86.dll"
+                    "Attributes" = "3:512"
+                    }
+                    "_C88051C13640E669B4577B85DF877265"
+                    {
+                    "Name" = "8:nmath_premium_native_x86.dll"
+                    "Attributes" = "3:1"
+                    }
+                    "_ED64058E53166147838A89B051D50FB5"
+                    {
+                    "Name" = "8:nmath_sf_x86.dll"
+                    "Attributes" = "3:1"
+                    }
+                }
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x86\\NMathPremiumKernelx86.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_D78F12AB10F04745AE377F10EAF6168A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1989,26 +2011,6 @@
             "TargetName" = "8:fans.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_967350A24D094D31871072ACDF81E4FE"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\fans.xml"
-            "TargetName" = "8:fans.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2083,6 +2085,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9EE189525C6E48DB8E6834528F908F08"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\items.xml"
+            "TargetName" = "8:items.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6C997392A7B4A74944B1FD5D8F29C82"
             {
             "SourcePath" = "8:..\\misc files to distribute\\EULA.rtf"
@@ -2103,52 +2125,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A90D7CA7413343389A968BB7FB239F0B"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\vents.xml"
+            "TargetName" = "8:vents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9B58825F768432CAB7C865395EB97E3"
             {
             "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\webitems.xml"
             "TargetName" = "8:webitems.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AA74860648DC44B5A3D0950296DD06C3"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\vents.xml"
-            "TargetName" = "8:vents.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC1A12973F4743B79C377BC63EF1CCC1"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\distributions.xml"
-            "TargetName" = "8:distributions.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2229,6 +2231,26 @@
             "TargetName" = "8:cvents.xml"
             "Tag" = "8:"
             "Folder" = "8:_2949A2CE78494883B342AD1D80885287"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B4F9E488CE9940C7A3D0C59A1455C63E"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\vents.xml"
+            "TargetName" = "8:vents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2343,6 +2365,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF0B15E60F2B40EC8A192E069EC6A0B7"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\fans.xml"
+            "TargetName" = "8:fans.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF0C8136286842EBA62B140C6B12599A"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\m05.txt"
@@ -2389,46 +2431,6 @@
             "TargetName" = "8:thermal.mdb"
             "Tag" = "8:"
             "Folder" = "8:_6FE1C0C18B7A4113B6E5F411E4AD8EA8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C166BEFB8EC4406FBC0B9B819AAE07A7"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000_EC5\\cvents.xml"
-            "TargetName" = "8:cvents.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_5521BBF8B0104EFE9F0361E352E257E6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C19CD0BAAD2849F4B992B9A260F90252"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\items.xml"
-            "TargetName" = "8:items.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2494,72 +2496,52 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C7111DE87792444CAD72B96835C77BA7"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\rooms.xml"
-            "TargetName" = "8:rooms.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C79C239E93744F839D48F4CD1C252C16"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\cvents.xml"
-            "TargetName" = "8:cvents.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C903A01809034F2392F7D95131D7E284"
-            {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\smokedets.xml"
-            "TargetName" = "8:smokedets.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C99BA4014C0C412DAED26C5091AA35E9"
             {
             "SourcePath" = "8:..\\misc files to distribute\\cone\\e5.txt"
             "TargetName" = "8:e5.txt"
             "Tag" = "8:"
             "Folder" = "8:_5D3AE908D4524740944B9E6646AC987D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CA18E1653326430D8CEC98CA3842021F"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\cvents.xml"
+            "TargetName" = "8:cvents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CA38D7CFED4E45D4B97063D0016AD77A"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\fans.xml"
+            "TargetName" = "8:fans.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2594,12 +2576,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CAB671102E7145EBBC67F269F1C292EF"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB0A879E352C475AA56AB60BE2FD587B"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\smokedets.xml"
-            "TargetName" = "8:smokedets.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\rooms.xml"
+            "TargetName" = "8:rooms.xml"
             "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2614,12 +2596,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD6B35A827644F81A1ED5459D1B39D6F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CBF7B40581C94E168CF142E7C47EFC46"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000_G2\\distributions.xml"
-            "TargetName" = "8:distributions.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\sprinklers.xml"
+            "TargetName" = "8:sprinklers.xml"
             "Tag" = "8:"
-            "Folder" = "8:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2685,6 +2667,66 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CF78C5F9B0E24ED68E75116E21B75B68"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\fans.xml"
+            "TargetName" = "8:fans.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D2DD2AD9EA5A4692BCE6713EE059A8A1"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE13\\smokedets.xml"
+            "TargetName" = "8:smokedets.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_08E85714B657451C9BDF72D55ACCD85D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB3A9ACD646F4BB18EF188AEBABC5351"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x86\\libiomp5md.dll"
+            "TargetName" = "8:libiomp5md.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D78F12AB10F04745AE377F10EAF6168A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DB6C9762C9367BCD5029333708E6BD4A"
             {
             "AssemblyRegister" = "3:1"
@@ -2736,12 +2778,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD75AB1BC14F441284A5D5656B9BEEAA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E12E977C9A4E4B18A441E6682EB1F68C"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\sprinklers.xml"
-            "TargetName" = "8:sprinklers.xml"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\basemodel_default_log.rtf"
+            "TargetName" = "8:basemodel_default_log.rtf"
             "Tag" = "8:"
-            "Folder" = "8:_0F35E6F2F24B4AADB37C259039672248"
+            "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2756,12 +2798,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E12E977C9A4E4B18A441E6682EB1F68C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E18F00AB29A64EF2884BD447CDBEBAB9"
             {
-            "SourcePath" = "8:..\\misc files to distribute\\basemodel_default\\basemodel_default_log.rtf"
-            "TargetName" = "8:basemodel_default_log.rtf"
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\rooms.xml"
+            "TargetName" = "8:rooms.xml"
             "Tag" = "8:"
-            "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E4A3B6F9AE814E94B6BF524F7CC21FF4"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\cvents.xml"
+            "TargetName" = "8:cvents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2805,6 +2867,66 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE05D8D535AA4CE7882E635DB84AB6C3"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\rooms.xml"
+            "TargetName" = "8:rooms.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F41392CE54964A7CB7E2EAC37CAB9CD0"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMC_DB2000\\vents.xml"
+            "TargetName" = "8:vents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_864BCC53E57D4577BCB0FDE0CF8A089F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F57FCE7550D940AD9DE59C9F6B8D1323"
+            {
+            "SourcePath" = "8:..\\misc files to distribute\\basemodel_ConfigP_SMA_DB2000GE20\\sprinklers.xml"
+            "TargetName" = "8:sprinklers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_AD5EF1F0A0A2410EA449F9517B360028"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F640409902F64D1FAF5F001306888805"
@@ -2853,6 +2975,26 @@
             "TargetName" = "8:sprinklers.xml"
             "Tag" = "8:"
             "Folder" = "8:_CC16A2F97E154A4DBE237BBF9F35E80D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC667C944F934E6F85147AEB4DE77E4A"
+            {
+            "SourcePath" = "8:C:\\Program Files (x86)\\CenterSpace\\NMath Premium 6.2\\Assemblies\\x86\\nmath_premium_native_x86.dll"
+            "TargetName" = "8:nmath_premium_native_x86.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_D78F12AB10F04745AE377F10EAF6168A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2984,24 +3126,13 @@
                             "Property" = "8:_5B95584DB1E94FDC8A930252C3D0E74A"
                                 "Folders"
                                 {
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0F35E6F2F24B4AADB37C259039672248"
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_08E85714B657451C9BDF72D55ACCD85D"
                                     {
-                                    "Name" = "8:basemodel_ConfigP_SMC_DB2000"
+                                    "Name" = "8:basemodel_ConfigP_SMA_DB2000GE13"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
-                                    "Property" = "8:_647C6977128B4EB8B482DEB20E4866C8"
-                                        "Folders"
-                                        {
-                                        }
-                                    }
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_143B9E9C05B34AD2B3D980B9DE4D0BF1"
-                                    {
-                                    "Name" = "8:basemodel_ConfigP_SMA_DB2000_G2"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "Property" = "8:_B85923F9399D4DD3B14F9B386079DDC1"
+                                    "Property" = "8:_28BA0F7B2BC44A7BB72FFA69CD091746"
                                         "Folders"
                                         {
                                         }
@@ -3017,13 +3148,24 @@
                                         {
                                         }
                                     }
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_5521BBF8B0104EFE9F0361E352E257E6"
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_864BCC53E57D4577BCB0FDE0CF8A089F"
                                     {
-                                    "Name" = "8:basemodel_ConfigP_SMC_DB2000_EC5"
+                                    "Name" = "8:basemodel_ConfigP_SMC_DB2000"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
-                                    "Property" = "8:_D61B0252EA3F4D66826D301DE8A16872"
+                                    "Property" = "8:_769B16090740408B8F8117880EDAE63B"
+                                        "Folders"
+                                        {
+                                        }
+                                    }
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_AD5EF1F0A0A2410EA449F9517B360028"
+                                    {
+                                    "Name" = "8:basemodel_ConfigP_SMA_DB2000GE20"
+                                    "AlwaysCreate" = "11:FALSE"
+                                    "Condition" = "8:"
+                                    "Transitive" = "11:FALSE"
+                                    "Property" = "8:_F85BB1FCED2B4DF09EDE599E833604EC"
                                         "Folders"
                                         {
                                         }
@@ -3088,6 +3230,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D78F12AB10F04745AE377F10EAF6168A"
+                    {
+                    "Name" = "8:x86"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_6B29011708304298AFF56929A92D63BA"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_DEA216B6660E429AB9133C47C5805497"
                     {
                     "Name" = "8:Docs"
@@ -3117,9 +3270,9 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:B-RISK_DEV"
-        "ProductCode" = "8:{EDA9B0AB-AE90-4345-B11A-7D6316B0ECE0}"
-        "PackageCode" = "8:{C4DC0268-2B06-41E0-97CC-1341E69F2590}"
-        "UpgradeCode" = "8:{A597FA41-B04E-4073-A254-A6CE0ECD432B}"
+        "ProductCode" = "8:{95EEC762-A822-4614-B74E-5DD5209DD705}"
+        "PackageCode" = "8:{235ED2AF-4430-46BA-9E7F-AFD0D51AB590}"
+        "UpgradeCode" = "8:{B43700F2-115F-4622-9CE7-B2A8C3DF1546}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
