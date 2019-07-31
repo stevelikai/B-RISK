@@ -117,6 +117,7 @@ Module GLOBAL_Renamed
     Public sprink_mode As Integer
     Public sd_mode As Boolean
     Public mv_mode As Boolean 'mech vent
+    Public fixitem1 As Boolean 'specify if placement of item first item ignited is always fixed for DFG
     Public firstitem As Integer
     Public firstitemtemp As Integer
     Public itime() As Single

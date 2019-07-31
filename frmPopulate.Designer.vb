@@ -22,43 +22,44 @@ Partial Class frmPopulate
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.cmdPopulate = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
-        Me.ItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.txtNumber_Items = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.cmdClose = New System.Windows.Forms.Button
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox
-        Me.txtVentClearance = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Me.cmdPopulate = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.txtNumber_Items = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmdClose = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.txtVentClearance = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.cmdStart = New System.Windows.Forms.Button
-        Me.cmdStop = New System.Windows.Forms.Button
-        Me.Panel2 = New System.Windows.Forms.Panel
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.updown_itcounter = New System.Windows.Forms.NumericUpDown
-        Me.cmdLayout = New System.Windows.Forms.Button
-        Me.txtGridSize = New System.Windows.Forms.TextBox
-        Me.lblGridSize = New System.Windows.Forms.Label
-        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip
-        Me.CopyLayoutToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.cmdStart = New System.Windows.Forms.Button()
+        Me.cmdStop = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.updown_itcounter = New System.Windows.Forms.NumericUpDown()
+        Me.cmdLayout = New System.Windows.Forms.Button()
+        Me.txtGridSize = New System.Windows.Forms.TextBox()
+        Me.lblGridSize = New System.Windows.Forms.Label()
+        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
+        Me.CopyLayoutToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox
-        Me.chkShowSprink = New System.Windows.Forms.CheckBox
-        Me.txtFLED = New System.Windows.Forms.TextBox
-        Me.lblFLED = New System.Windows.Forms.Label
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.chkShowSprink = New System.Windows.Forms.CheckBox()
+        Me.txtFLED = New System.Windows.Forms.TextBox()
+        Me.lblFLED = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.optuserlabel = New System.Windows.Forms.RadioButton
-        Me.optidnum = New System.Windows.Forms.RadioButton
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.optuserlabel = New System.Windows.Forms.RadioButton()
+        Me.optidnum = New System.Windows.Forms.RadioButton()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.chkShowSD = New System.Windows.Forms.CheckBox
+        Me.chkShowSD = New System.Windows.Forms.CheckBox()
+        Me.chk_fix_item = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -154,8 +155,8 @@ Partial Class frmPopulate
         Me.txtVentClearance.Size = New System.Drawing.Size(39, 20)
         Me.txtVentClearance.TabIndex = 10
         Me.txtVentClearance.Text = "1"
-        Me.ToolTip1.SetToolTip(Me.txtVentClearance, "The distance in front of the wall vent/openings" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where room contents will be loca" & _
-                "ted no closer.")
+        Me.ToolTip1.SetToolTip(Me.txtVentClearance, "The distance in front of the wall vent/openings" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where room contents will be loca" &
+        "ted no closer.")
         '
         'Label4
         '
@@ -235,8 +236,8 @@ Partial Class frmPopulate
         Me.txtGridSize.Size = New System.Drawing.Size(40, 20)
         Me.txtGridSize.TabIndex = 21
         Me.txtGridSize.Text = "0.1"
-        Me.ToolTip1.SetToolTip(Me.txtGridSize, "The room is overlaid with a grid. Item centre points " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "can only be located at a g" & _
-                "rid intersection point.")
+        Me.ToolTip1.SetToolTip(Me.txtGridSize, "The room is overlaid with a grid. Item centre points " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "can only be located at a g" &
+        "rid intersection point.")
         '
         'lblGridSize
         '
@@ -401,6 +402,18 @@ Partial Class frmPopulate
         Me.chkShowSD.Text = "Show Smoke Detectors"
         Me.chkShowSD.UseVisualStyleBackColor = True
         '
+        'chk_fix_item
+        '
+        Me.chk_fix_item.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chk_fix_item.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chk_fix_item.Location = New System.Drawing.Point(47, 525)
+        Me.chk_fix_item.Name = "chk_fix_item"
+        Me.chk_fix_item.Size = New System.Drawing.Size(140, 44)
+        Me.chk_fix_item.TabIndex = 82
+        Me.chk_fix_item.Text = "Do not auto-populate first item ignited"
+        Me.chk_fix_item.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chk_fix_item.UseVisualStyleBackColor = True
+        '
         'frmPopulate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -409,6 +422,7 @@ Partial Class frmPopulate
         Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(727, 613)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.Controls.Add(Me.chk_fix_item)
         Me.Controls.Add(Me.chkShowSD)
         Me.Controls.Add(Me.lblFLED)
         Me.Controls.Add(Me.GroupBox2)
@@ -488,4 +502,5 @@ Partial Class frmPopulate
     Friend WithEvents ErrorProvider1 As System.Windows.Forms.ErrorProvider
     Friend WithEvents cmdLayout As System.Windows.Forms.Button
     Friend WithEvents chkShowSD As System.Windows.Forms.CheckBox
+    Friend WithEvents chk_fix_item As CheckBox
 End Class

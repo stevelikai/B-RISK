@@ -218,6 +218,7 @@ Public Class frmInputs
                 DFW.WriteElementString("output_interval", Me.txtOutputInterval.Text)
                 DFW.WriteElementString("vent_clearance", ventclearance)
                 DFW.WriteElementString("grid_size", gridsize)
+                DFW.WriteElementString("dfg_fixitem1", fixitem1)
 
                 stemp = Me.txtBaseName.Text
                 stemp = stemp.Replace(" ", "_")
@@ -1436,7 +1437,10 @@ Public Class frmInputs
                             gridsize = DFR.ReadElementString()
                             frmPopulate.txtGridSize.Text = gridsize
                         End If
-
+                        If ModelVersion >= CSng(2019.04) Then
+                            fixitem1 = DFR.ReadElementString()
+                            frmPopulate.chk_fix_item.Checked = fixitem1
+                        End If
                         dummy = DFR.ReadElementString()
                         Me.txtBaseName.Text = dummy.Replace("basemodel_", "")
 

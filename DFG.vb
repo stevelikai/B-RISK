@@ -376,6 +376,8 @@ Module DFG
 
                     For counter_no = 1 To counter - 1
                         If random_value < PE(1, counter_no) Then 'have found the centre location for the item
+                            If n = 1 And fixitem1 = True Then GoTo here1 '2019
+
                             item_location(1, n) = PE(2, counter_no) 'storing the item x-centre location 
                             item_location(2, n) = PE(3, counter_no) 'storing the item y-centre location 
                             item_location(7, n) = PE(4, counter_no)  'storing the orientation
@@ -394,9 +396,11 @@ Module DFG
                             item_location(6, n) = PE(3, counter_no) + CW(n - 1)   'y2 stored to reduce possible calculations  
 
                             item_location(8, n) = thisitem 'storing the item database ID
-
+here1: '2019
                             NumberObjects = n
                             Resize_Objects()
+
+                            If n = 1 And fixitem1 = True Then GoTo here2 '2019
 
                             ObjLabel(n) = oItems(thisitem - 1).userlabel
                             ObjLength(n) = oItems(thisitem - 1).length
@@ -406,6 +410,8 @@ Module DFG
                             ObjDimX(n) = CDec(item_location(1, n) - ObjLength(n) / 2)
                             ObjDimY(n) = CDec(item_location(2, n) - ObjWidth(n) / 2)
 
+here2: '2019
+
                             If n = 1 Then
                                 'save the location of the first item in each iteration, to use for calculating sprinkler radial distance later
                                 'Item1X(itcounter - 1) = item_location(2, n) 'error
@@ -413,6 +419,8 @@ Module DFG
                                 Item1X(itcounter - 1) = item_location(1, n)
                                 Item1Y(itcounter - 1) = item_location(2, n)
                             End If
+
+                            If n = 1 And fixitem1 = True Then GoTo here3 '2019
 
                             ObjElevation(n) = oItems(thisitem - 1).elevation
                             FireHeight(n) = oItems(thisitem - 1).elevation 'taking base on the fire to be at the elevation height
@@ -468,7 +476,7 @@ Module DFG
                                     FireLocation(n) = 1 'wall
                                 End If
                             End If
-
+here3: '2019
                             Dim str_data As String() = oItems(thisitem - 1).hrr.Split(New [Char]() {" "c, ","c, ":"c, CChar(vbCrLf)})
                             Dim s, q, numberpoints As Integer
                             q = str_data.Count - 1

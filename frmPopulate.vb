@@ -30,6 +30,8 @@ Public Class frmPopulate
         Else
             frmSprinklerList.chkCalcSprinkRadialDist.Checked = False
         End If
+        chk_fix_item.Checked = fixitem1
+
         'run the subroutine "button1_click" repeatedly at the interval given by timer1.interval property
         AddHandler Timer1.Tick, AddressOf Button1_Click
 
@@ -232,11 +234,20 @@ Public Class frmPopulate
         ReDim itime(0 To n_max)
         ReDim ignmode(0 To n_max)
 
+        '-----------------
+        'new 2019
+        fixitem1 = chk_fix_item.Checked
+        Call populate_items_manual(n_max, 1, 0, 0) 'this will manually locate the first item regardless
         If RadioButton1.Checked Then
-            Call populate_items(n_max, 1, 0, 0)
-        Else
-            Call populate_items_manual(n_max, 1, 0, 0)
+            Call populate_items(n_max, 1, 0, 0) 'use this auto-populate all items except the first item (if specifed)
         End If
+        '-----------------
+
+        'If RadioButton1.Checked Then
+        '    Call populate_items(n_max, 1, 0, 0)
+        'Else
+        '    Call populate_items_manual(n_max, 1, 0, 0)
+        'End If
 
         Call Target_distance()
 
@@ -253,7 +264,9 @@ Public Class frmPopulate
         Else
             autopopulate = False
         End If
-        
+        If chk_fix_item.Checked = True Then
+            fixitem1 = True
+        End If
         Me.Close()
     End Sub
 
@@ -713,7 +726,7 @@ Public Class frmPopulate
 
     Private Sub txtGridSize_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtGridSize.Validating
         If IsNumeric(txtGridSize.Text) Then
-            If (CSng(txtGridSize.Text) <= 1.0 And CSng(txtGridSize.Text) >= 0.1) Then
+            If (CSng(txtGridSize.Text) <= 10.0 And CSng(txtGridSize.Text) >= 0.1) Then
                 'okay
                 Exit Sub
             End If
@@ -727,8 +740,14 @@ Public Class frmPopulate
 
         ' Give the ErrorProvider the error message to
         ' display.
-        ErrorProvider1.SetError(txtGridSize, "Invalid Entry. Grid size must be in the range 0.1 to 1.0m.")
+        ErrorProvider1.SetError(txtGridSize, "Invalid Entry. Grid size must be in the range 0.1 to 10m.")
     End Sub
 
+    Private Sub chkShowSprink_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowSprink.CheckedChanged
 
+    End Sub
+
+    Private Sub txtGridSize_TextChanged(sender As Object, e As EventArgs) Handles txtGridSize.TextChanged
+
+    End Sub
 End Class
