@@ -45,6 +45,7 @@ Partial Class frmPopulate
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.CopyLayoutToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.txt_winddir = New System.Windows.Forms.TextBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.chkShowSprink = New System.Windows.Forms.CheckBox()
         Me.txtFLED = New System.Windows.Forms.TextBox()
@@ -57,9 +58,12 @@ Partial Class frmPopulate
         Me.optuserlabel = New System.Windows.Forms.RadioButton()
         Me.optidnum = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.chk_fix_item = New System.Windows.Forms.CheckBox()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.chkShowSD = New System.Windows.Forms.CheckBox()
-        Me.chk_fix_item = New System.Windows.Forms.CheckBox()
+        Me.txtWindSpeed = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -264,6 +268,23 @@ Partial Class frmPopulate
         Me.CopyLayoutToClipboardToolStripMenuItem.Size = New System.Drawing.Size(155, 20)
         Me.CopyLayoutToClipboardToolStripMenuItem.Text = "Copy Layout to Clipboard"
         '
+        'ToolTip1
+        '
+        Me.ToolTip1.ShowAlways = True
+        Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.ToolTip1.ToolTipTitle = "Wind direction angle"
+        '
+        'txt_winddir
+        '
+        Me.txt_winddir.Location = New System.Drawing.Point(147, 545)
+        Me.txt_winddir.Name = "txt_winddir"
+        Me.txt_winddir.Size = New System.Drawing.Size(39, 20)
+        Me.txt_winddir.TabIndex = 86
+        Me.txt_winddir.Text = "0"
+        Me.ToolTip1.SetToolTip(Me.txt_winddir, "0 deg = length direction (x) to east" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "90 deg =width direction (y) to north" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "180 d" &
+        "eg = length direction (-x) to west" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "270 deg = width direction (-y) to south" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "deg" &
+        "rees 0 - 360 anticlockwise" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        '
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
@@ -345,7 +366,7 @@ Partial Class frmPopulate
         '
         Me.GroupBox1.Controls.Add(Me.optuserlabel)
         Me.GroupBox1.Controls.Add(Me.optidnum)
-        Me.GroupBox1.Location = New System.Drawing.Point(21, 335)
+        Me.GroupBox1.Location = New System.Drawing.Point(21, 314)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(178, 92)
         Me.GroupBox1.TabIndex = 78
@@ -380,12 +401,25 @@ Partial Class frmPopulate
         '
         Me.GroupBox2.Controls.Add(Me.RadioButton1)
         Me.GroupBox2.Controls.Add(Me.RadioButton2)
-        Me.GroupBox2.Location = New System.Drawing.Point(21, 442)
+        Me.GroupBox2.Controls.Add(Me.chk_fix_item)
+        Me.GroupBox2.Location = New System.Drawing.Point(21, 400)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(178, 82)
         Me.GroupBox2.TabIndex = 80
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Population Method"
+        '
+        'chk_fix_item
+        '
+        Me.chk_fix_item.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chk_fix_item.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chk_fix_item.Location = New System.Drawing.Point(26, 80)
+        Me.chk_fix_item.Name = "chk_fix_item"
+        Me.chk_fix_item.Size = New System.Drawing.Size(140, 44)
+        Me.chk_fix_item.TabIndex = 82
+        Me.chk_fix_item.Text = "Do not auto-populate first item ignited"
+        Me.chk_fix_item.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.chk_fix_item.UseVisualStyleBackColor = True
         '
         'ErrorProvider1
         '
@@ -402,17 +436,31 @@ Partial Class frmPopulate
         Me.chkShowSD.Text = "Show Smoke Detectors"
         Me.chkShowSD.UseVisualStyleBackColor = True
         '
-        'chk_fix_item
+        'txtWindSpeed
         '
-        Me.chk_fix_item.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chk_fix_item.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chk_fix_item.Location = New System.Drawing.Point(47, 525)
-        Me.chk_fix_item.Name = "chk_fix_item"
-        Me.chk_fix_item.Size = New System.Drawing.Size(140, 44)
-        Me.chk_fix_item.TabIndex = 82
-        Me.chk_fix_item.Text = "Do not auto-populate first item ignited"
-        Me.chk_fix_item.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.chk_fix_item.UseVisualStyleBackColor = True
+        Me.txtWindSpeed.Location = New System.Drawing.Point(147, 504)
+        Me.txtWindSpeed.Name = "txtWindSpeed"
+        Me.txtWindSpeed.Size = New System.Drawing.Size(40, 20)
+        Me.txtWindSpeed.TabIndex = 83
+        Me.txtWindSpeed.Text = "0"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(39, 511)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(94, 13)
+        Me.Label3.TabIndex = 84
+        Me.Label3.Text = "Wind speed  (m/s)"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(31, 548)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(102, 13)
+        Me.Label5.TabIndex = 85
+        Me.Label5.Text = "Wind direction (deg)"
         '
         'frmPopulate
         '
@@ -422,7 +470,10 @@ Partial Class frmPopulate
         Me.BackColor = System.Drawing.SystemColors.ControlLight
         Me.ClientSize = New System.Drawing.Size(727, 613)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.Controls.Add(Me.chk_fix_item)
+        Me.Controls.Add(Me.txt_winddir)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtWindSpeed)
         Me.Controls.Add(Me.chkShowSD)
         Me.Controls.Add(Me.lblFLED)
         Me.Controls.Add(Me.GroupBox2)
@@ -503,4 +554,8 @@ Partial Class frmPopulate
     Friend WithEvents cmdLayout As System.Windows.Forms.Button
     Friend WithEvents chkShowSD As System.Windows.Forms.CheckBox
     Friend WithEvents chk_fix_item As CheckBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtWindSpeed As TextBox
+    Friend WithEvents txt_winddir As TextBox
+    Friend WithEvents Label5 As Label
 End Class

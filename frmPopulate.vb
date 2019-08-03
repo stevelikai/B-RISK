@@ -5,7 +5,7 @@ Imports CenterSpace.NMath.Stats
 Imports System.Drawing.Drawing2D
 Imports System.Collections.Generic
 Imports VB = Microsoft.VisualBasic
-
+Imports System.ComponentModel
 
 Public Class frmPopulate
     Dim oSprinklers As List(Of oSprinkler)
@@ -749,5 +749,57 @@ Public Class frmPopulate
 
     Private Sub txtGridSize_TextChanged(sender As Object, e As EventArgs) Handles txtGridSize.TextChanged
 
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub txtWindSpeed_Validated(sender As Object, e As EventArgs) Handles txtWindSpeed.Validated
+        ErrorProvider1.Clear()
+        ISD_windspeed = CSng(txtWindSpeed.Text)
+    End Sub
+
+    Private Sub txtWindSpeed_Validating(sender As Object, e As CancelEventArgs) Handles txtWindSpeed.Validating
+        If IsNumeric(txtWindSpeed.Text) Then
+            If CSng(txtWindSpeed.Text) >= 0 Then
+                'okay
+                Exit Sub
+            End If
+        End If
+
+        ' Cancel the event moving off of the control.
+        e.Cancel = True
+
+        ' Select the offending text.
+        txtWindSpeed.Select(0, txtWindSpeed.Text.Length)
+
+        ' Give the ErrorProvider the error message to
+        ' display.
+        ErrorProvider1.SetError(txtWindSpeed, "Invalid Entry.")
+    End Sub
+
+    Private Sub txt_winddir_Validated(sender As Object, e As EventArgs) Handles txt_winddir.Validated
+        ErrorProvider1.Clear()
+        ISD_winddir = CSng(txt_winddir.Text)
+    End Sub
+
+    Private Sub txt_winddir_Validating(sender As Object, e As CancelEventArgs) Handles txt_winddir.Validating
+        If IsNumeric(txt_winddir.Text) Then
+            If CSng(txt_winddir.Text) >= 0 And CSng(txt_winddir.Text) <= 360 Then
+                'okay
+                Exit Sub
+            End If
+        End If
+
+        ' Cancel the event moving off of the control.
+        e.Cancel = True
+
+        ' Select the offending text.
+        txt_winddir.Select(0, txt_winddir.Text.Length)
+
+        ' Give the ErrorProvider the error message to
+        ' display.
+        ErrorProvider1.SetError(txt_winddir, "Invalid Entry.")
     End Sub
 End Class

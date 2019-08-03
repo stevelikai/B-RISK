@@ -588,10 +588,10 @@ here3: '2019
 
                 For i = 1 To n_max  'i is the target item
                     For s = 1 To n_max
-                        x1 = item_location(1, s) 'source item
-                        y1 = item_location(2, s) 'source item
-                        x2 = item_location(1, i)
-                        y2 = item_location(2, i)
+                        x1 = item_location(1, s) 'source item x-centre location 
+                        y1 = item_location(2, s) 'source item y-centre location 
+                        x2 = item_location(1, i) 'target item x-centre location
+                        y2 = item_location(2, i) 'target item y-centre location
                         ' vectorlength(i, 0) = Sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
                         vectorlength(i, s) = Sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
 
@@ -972,7 +972,7 @@ here3: '2019
                     'only do this if object has not previously ignited
                     If ObjectIgnTime(i) = SimTime Then
 
-                        'radial distance from source to be used in point source calculation
+                        'radial distance from source to be used in point source rad calculation
                         r = targetdistance(1, i)
 
                         'incident heat flux from point source to nearest vertical surface on target
@@ -981,6 +981,213 @@ here3: '2019
 
                         'add heat flux from all other burning items
                         For j = 2 To NumberObjects
+                            If i <> j Then
+                                If ObjectIgnTime(j) < SimTime Then
+
+                                    r = targetdistance(j, i)
+
+                                    Q = Get_HRR(j, tim(thistimestep, 1), 0, 0, 0, 0, 0) 'kW/m2
+
+                                    'incident heat flux from point source to nearest vertical surface on target
+                                    QPS = QPS + ObjectRLF(j) * Q / (4 * PI * r ^ 2) 'kW/m2
+
+                                End If
+                            End If
+                        Next
+
+                        'height of top surface of secondary item relative to floor
+                        zs = ObjElevation(i) + ObjHeight(i)
+
+                        'radiation from underside of hot layer to top surface of secondary object
+                        'radfromlayer
+                        Call Radiation_to_Surface(fireroom, layerheight(fireroom, thistimestep), uppertemp(fireroom, thistimestep), CO2MassFraction(fireroom, thistimestep, 1), H2OMassFraction(fireroom, thistimestep, 1), radfromlayer, UpperVolume(fireroom, thistimestep), OD_upper(fireroom, thistimestep - 1), zs, emissivity)
+
+                        'point source piloted ignition
+                        If QPS >= ObjCRF(i) Then 'vertical surface on target
+                            ItemFTP_sum_pilot(i) = ItemFTP_sum_pilot(i) + (QPS - ObjCRF(i)) ^ ObjFTPindexpilot(i) * Timestep
+                        End If
+                        ObjectRad(0, i, stepcount) = QPS 'vert surface =0 horizont surface=1
+
+                        'hot layer auto ignition
+                        If radfromlayer >= ObjCRFauto(i) Then 'horizontal surface on target
+                            ItemFTP_sum_auto(i) = ItemFTP_sum_auto(i) + (radfromlayer - ObjCRFauto(i)) ^ ObjFTPindexauto(i) * Timestep
+                        End If
+                        ObjectRad(1, i, stepcount) = radfromlayer 'vert surface =0 horizont surface=1
+
+                        'ignition time of secondary objects
+                        If (ItemFTP_sum_pilot(i) > ObjFTPlimitpilot(i)) And ObjectIgnMode(i) = "" Then
+                            ObjectIgnTime(i) = tim(thistimestep, 1)
+                            frmInputs.rtb_log.Text = ObjectIgnTime(i).ToString & " sec. Item " & ObjectItemID(i).ToString & " " & ObjectDescription(i) & " ignited (vertical surface)." & Chr(13) & frmInputs.rtb_log.Text
+                            ObjectIgnMode(i) = "P"
+                        End If
+
+                        'ignition time of secondary objects
+                        If (ItemFTP_sum_auto(i) > ObjFTPlimitauto(i)) And ObjectIgnMode(i) = "" Then
+                            ObjectIgnTime(i) = tim(thistimestep, 1)
+                            frmInputs.rtb_log.Text = ObjectIgnTime(i).ToString & " sec. Item " & ObjectItemID(i).ToString & " " & ObjectDescription(i) & " ignited (horizontal surface)." & Chr(13) & frmInputs.rtb_log.Text
+                            ObjectIgnMode(i) = "A"
+                        End If
+
+                    End If
+                Next
+            End If
+
+            If rcnone = False Then 'room lining fire growth model applies 
+                'Dim id As Integer = 1 'first item ignited
+                'flame spread model, wall ignition
+                For id = 2 To NumberObjects
+                    If ObjectIgnTime(id) <= tim(thistimestep, 1) Then
+
+                        If WallIgniteFlag(fireroom) = 0 Then
+
+                            'rate of heat release of source at current time
+                            Q = Get_HRR(id, tim(thistimestep, 1), Qburner, 0, 0, 0, 0) 'kW/m2
+
+                            If FireLocation(id) = 0 Then
+                                'only do this if wall has not previously ignited and it is not in corner or wall
+
+                                'incident heat flux from point source to nearest vertical surface on target
+                                QPS = ObjectRLF(id) * Q / (4 * PI * itemtowalldistance(id) ^ 2) 'kW/m2 first item ignited
+
+                            ElseIf FireLocation(id) = 1 Then 'wall
+                                ' against wall
+                                'assumes wall corner surfaces are in contact with burner flame
+                                QPS = 200 * (1 - Exp(-0.09 * Q ^ (1 / 3)))
+
+                            ElseIf FireLocation(id) = 2 Then 'corner
+                                'sfpe 3rd ed 2-272
+                                QPS = 120 * (1 - Exp(-4 * 0.5 * (ObjLength(id) + ObjWidth(id)))) '=60kw/m2 for 0.17 m burner
+                            End If
+
+                            QPS = QPS - QUpperWall(fireroom, thistimestep) 'add the room re-radiation effects 
+
+                            If QPS >= WallQCrit(fireroom) Then
+                                ItemFTP_sum_wall(id) = ItemFTP_sum_wall(id) + (QPS - WallQCrit(fireroom)) ^ Walln(fireroom) * Timestep
+                            End If
+
+                            'ignition time of wall by item
+                            If (ItemFTP_sum_wall(id) > WallFTP(fireroom)) Then
+                                WallIgniteTime(fireroom) = tim(thistimestep, 1)
+                                WallIgniteFlag(fireroom) = 1
+                                WallIgniteStep(fireroom) = thistimestep
+                                WallIgniteObject(fireroom) = id
+
+                                frmInputs.rtb_log.Text = WallIgniteTime(fireroom).ToString & " sec. Item " & ObjectItemID(id).ToString & " " & ObjectDescription(id) & " ignites wall." & Chr(13) & frmInputs.rtb_log.Text
+
+                                If burner_id = 0 Then burner_id = id
+                                BurnerWidth = (ObjWidth(id) + ObjLength(id)) / 2
+                                BurnerFlameLength = Get_BurnerFlameLength(id, Q)
+
+                                Y_pyrolysis(fireroom, thistimestep) = 0.4 * BurnerFlameLength + FireHeight(id)
+                                X_pyrolysis(fireroom, thistimestep) = BurnerWidth
+                                Y_burnout(fireroom, thistimestep) = FireHeight(id)
+
+                            End If
+                        End If
+
+                        If CeilingIgniteFlag(fireroom) = 0 Then
+                            'rate of heat release of source at current time
+                            Q = Get_HRR(id, tim(thistimestep, 1), Qburner, 0, 0, 0, 0) 'kW/m2
+
+                            If burner_id = 0 Then burner_id = id
+                            Dim bw As Single = (ObjLength(id) + ObjWidth(id)) / 2
+
+                            If FireLocation(id) = 0 Then
+                                'burner in centre of room
+                                QPS = 0.28 * Q ^ (5 / 6) * (RoomHeight(fireroom) - FireHeight(id)) ^ (-7 / 3)
+                                'eqn 15b Fire Technology Vol 21 No 4 p267 - mostly convective
+
+                            ElseIf FireLocation(id) = 1 Then 'wall
+                                Lf = 0.23 * Q ^ (2 / 5) - 1.02 * bw
+
+                                If Lf < RoomHeight(fireroom) - FireHeight(id) Then
+                                    'flame not touching the ceiling
+                                    If Lf > 0 Then QPS = 20 * ((RoomHeight(fireroom) - FireHeight(id)) / Lf) ^ (-5 / 3)
+                                Else
+                                    'flame is touching the ceiling
+                                    QPS = 200 * (1 - Exp(-0.09 * Q ^ (1 / 3)))   'kW/m2
+                                End If
+
+                            ElseIf FireLocation(id) = 2 Then 'corner
+
+                                Lf = bw * 5.9 * Sqrt(Qburner / 1110 / bw ^ (5 / 2))
+
+                                If (RoomHeight(fireroom) - FireHeight(id)) / Lf <= 0.52 Then
+                                    QPS = 120
+                                Else
+                                    QPS = 13 * ((RoomHeight(fireroom) - FireHeight(id)) / Lf) ^ (-3.5)
+                                End If
+                            End If
+
+                            QPS = QPS - QCeiling(fireroom, thistimestep) 'add the room re-radiation effects 
+
+                            If QPS >= CeilingQCrit(fireroom) Then
+                                ItemFTP_sum_ceiling(id) = ItemFTP_sum_ceiling(id) + (QPS - CeilingQCrit(fireroom)) ^ Ceilingn(fireroom) * Timestep
+                            End If
+
+                            'ignition time of ceiling by item
+                            If (ItemFTP_sum_ceiling(id) > CeilingFTP(fireroom)) Then
+                                CeilingIgniteTime(fireroom) = tim(thistimestep, 1)
+                                CeilingIgniteFlag(fireroom) = 1
+                                CeilingIgniteStep(fireroom) = thistimestep
+                                CeilingIgniteObject(fireroom) = id
+
+                                frmInputs.rtb_log.Text = CeilingIgniteTime(fireroom).ToString & " sec. Item " & ObjectItemID(id).ToString & " " & ObjectDescription(id) & " ignites ceiling." & Chr(13) & frmInputs.rtb_log.Text
+
+                                If RoomHeight(fireroom) + 2 * BurnerWidth >= Y_pyrolysis(fireroom, thistimestep) Then
+                                    Y_pyrolysis(fireroom, thistimestep) = RoomHeight(fireroom) + 2 * bw
+                                End If
+                                If FireHeight(id) > Y_burnout(fireroom, thistimestep) Then
+                                    Y_burnout(fireroom, thistimestep) = FireHeight(id)
+                                End If
+                                If FireLocation(id) = 0 Then
+                                    Y_burnout(fireroom, id) = RoomHeight(fireroom)
+                                End If
+
+                                'Xstart(fireroom, 1) = Y_pyrolysis(fireroom, i)
+                                'Xstart(fireroom, 3) = Y_burnout(fireroom, i)
+
+                            End If
+                        End If
+
+                    End If
+                Next
+            End If
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in DFG.vb secondary_targets")
+        End Try
+    End Sub
+    Public Sub secondary_targets_ISD(ByVal rcnone As Boolean, ByVal thistimestep As Integer, ByVal thisiteration As Integer, ByRef ItemFTP_sum_pilot() As Double, ByRef ItemFTP_sum_auto() As Double, ByRef ItemFTP_sum_wall() As Double, ByRef ItemFTP_sum_ceiling() As Double)
+        'code to determine the ignition time of secondary target items
+        'runs once per time step
+        Try
+
+            Dim r As Double, Q As Double, QPS As Double, zs As Single, radfromlayer As Double
+            Dim emissivity As Double, Lf As Double
+
+            'rate of heat release of source at current time
+            'Q = Get_HRR(1, tim(thistimestep, 1), 0, Qburner, 0, 0, 0) 'kW/m2
+            'If rcnone = True Then
+            ''this is not a flame spread simulation
+            'Qburner = Q
+            'End If
+
+            If NumberObjects >= 1 Then
+                For i = 1 To NumberObjects 'a potential target
+
+                    'only do this if object has not previously ignited
+                    If ObjectIgnTime(i) = SimTime Then
+
+                        'radial distance from source to be used in point source rad calculation
+                        'r = targetdistance(1, i)
+
+                        'incident heat flux from point source to nearest vertical surface on target
+                        'QPS = RadiantLossFraction * Q / (4 * PI * r ^ 2) 'kW/m2
+                        'QPS = ObjectRLF(1) * Qburner / (4 * PI * r ^ 2) 'kW/m2
+                        QPS = 0
+                        'add heat flux from all other burning items
+                        For j = 1 To NumberObjects
                             If i <> j Then
                                 If ObjectIgnTime(j) < SimTime Then
 
@@ -1177,7 +1384,7 @@ here3: '2019
 
             For k = 1 To NumberObjects 'source
                 Dim sourceitem As Integer = item_location(8, k)
-                
+
                 For j = 2 To NumberObjects 'target
                     If k <> j Then
 
@@ -1191,7 +1398,7 @@ here3: '2019
                         'If thisitem = 8 And sourceitem = 4 Then Stop 'tv ignites mdf4
 
 
-                        Dim x1 As Single = item_location(3, j)
+                        Dim x1 As Single = item_location(3, j) 'corners
                         Dim x2 As Single = item_location(4, j)
                         Dim y1 As Single = item_location(5, j)
                         Dim y2 As Single = item_location(6, j)
@@ -1230,20 +1437,166 @@ here3: '2019
                         targetypoint(k, j) = ysav
 
                         vectorlength(j, k) = Sqrt((item_location(1, j) - item_location(1, k)) ^ 2 + (item_location(2, j) - item_location(2, k)) ^ 2)
-                        'For x = x1 To x2 Step deltax
-                        '    'x = Round(x * 1000) * 0.001 'unresolved issues with rounding in for loop step counter ????
 
-                        '    For y = y1 To y2 Step deltay
-                        '        'y = Round(y * 1000) * 0.001 'unresolved issues with rounding in for loop step counter ????
+                    End If
+                Next j
 
-                        '        If x = x1 Or x = x2 Or y = y1 Or y = y2 Then
-                        '            r = Sqrt((x - item_location(1, j)) ^ 2 + (y - item_location(2, j)) ^ 2)
-                        '            If r < rmin Then rmin = r
-                        '        End If
-                        '    Next y
-                        'Next x
+                'find distance to nearest wall to use with flame spread model
+                Dim sx1 As Single = item_location(3, k)
+                Dim sx2 As Single = item_location(4, k)
+                Dim sy1 As Single = item_location(5, k)
+                Dim sy2 As Single = item_location(6, k)
 
-                        'targetdistance(k, j) = r
+                'find the least distance from any wall to the centre of the fuel item
+                itemtowalldistance(k) = Min(sx1 + (sx2 - sx1) / 2, Min(sy1 + (sy2 - sy1) / 2, Min(x_max - sx2 + (sx2 - sx1) / 2, y_max - sy2 + (sy2 - sy1) / 2)))
+                itemtowalldistance(k) = Round((itemtowalldistance(k)) * 1000) * 0.001 'get rid of excess digits
+
+            Next k
+
+        Catch ex As Exception
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in DFG.vb Target_distance")
+        End Try
+    End Sub
+    Public Sub Target_distance_ISD(tstep As Integer)
+        'to account for wind effect on fire spread between informal settlement dwellings
+        'would need to call routine each time step
+        'target distance changes based on the adjusted position of the point source once an item has ignited
+
+        'run once before simulations to save target distances in an array
+        Dim i, j, k, l As Integer
+        Dim r, x, y, m, n As Single
+        Dim x_max As Single = CSng(RoomLength(fireroom)) 'room x-dimension
+        Dim y_max As Single = CSng(RoomWidth(fireroom))  'room y-dimension
+
+        'NumberObjects = 2
+
+        ReDim vectorlength(0 To NumberObjects, 0 To NumberObjects) 'target, source
+        ReDim targetdistance(0 To NumberObjects, 0 To NumberObjects) 'source, target
+        ReDim targetxpoint(0 To NumberObjects, 0 To NumberObjects) 'source, target
+        ReDim targetypoint(0 To NumberObjects, 0 To NumberObjects) 'source, target
+        ReDim itemtowalldistance(0 To NumberObjects) 'source
+
+        Try
+
+            For k = 1 To NumberObjects 'source
+                Dim sourceitem As Integer = item_location(8, k)
+
+                For j = 2 To NumberObjects 'target
+                    If k <> j Then
+
+                        Dim rmin As Single = 1000
+                        Dim xsav As Single = 0
+                        Dim ysav As Single = 0
+
+                        Dim thisitem As Integer = item_location(8, j)
+
+                        'If thisitem = 4 And sourceitem = 8 Then Stop 'mdf4 ignites tv
+                        'If thisitem = 8 And sourceitem = 4 Then Stop 'tv ignites mdf4
+
+                        Dim x1 As Single = item_location(3, j) 'corners
+                        Dim x2 As Single = item_location(4, j)
+                        Dim y1 As Single = item_location(5, j)
+                        Dim y2 As Single = item_location(6, j)
+
+                        '4 corners of target
+                        x1 = Round((x1) * 1000) * 0.001
+                        x2 = Round((x2) * 1000) * 0.001
+                        y1 = Round((y1) * 1000) * 0.001
+                        y2 = Round((y2) * 1000) * 0.001
+
+                        Dim deltax As Single = Abs((x2 - x1) / 10)
+                        Dim deltay As Single = Abs((y2 - y1) / 10)
+
+                        'divide each side of the target object into 10ths, and find which point is closest to the centre of the source object, save it
+                        x = x1
+                        For i = 1 To 11
+                            y = y1
+                            For l = 1 To 11
+                                If x = x1 Or x = x2 Or y = y1 Or y = y2 Then
+                                    'k is the source item
+                                    m = item_location(1, k) 'point source-x no wind 
+                                    n = item_location(2, k) 'point source-y no wind 
+
+                                    If ObjectIgnTime(k) < SimTime Then
+                                        'source is burning
+                                        'determine the new position of the point source and the new radiation distance 
+                                        Dim D As Double = Min(ObjLength(k), ObjWidth(k))
+                                        Dim W As Double = Max(ObjLength(k), ObjWidth(k))
+                                        Dim U As Double = ISD_windspeed 'm/s
+                                        U = ISD_windspeed 'm/s
+                                        Dim Fr As Double = U ^ 2 / (G * D)
+                                        Dim rstar As Double = Sqrt(D * W / PI) 'm
+                                        Dim Q2 As Double
+                                        Q2 = Get_HRR(k, tim(tstep, 1), 0, 0, 0, 0, 0) 'kW/m2
+                                        Dim qstar As Double = Q2 / (ReferenceDensity * SpecificHeat_air * ReferenceTemp * G ^ (1 / 2) * D ^ (5 / 2))
+                                        Dim n3 As Double
+                                        If qstar > 0.05 And qstar < 12.8 Then
+                                            If qstar > 0.38 Then
+                                                n3 = 2 / 3
+                                            Else
+                                                n3 = 2
+                                            End If
+
+                                            'Dim Lf As Double = Flame_Height(2 * rstar, Q2)
+
+                                            Dim Lf As Double = D / (rstar / W) * 0.84 * (Fr ^ (2 / 3) / qstar ^ n3) ^ (-1 / 2)
+
+                                            Dim tanTheta As Double = 2.73 * Fr ^ (2 / 5) * qstar ^ (0.1 * (1 + 5 / 2 * n3)) * (W / rstar) ^ (-1 / 2)
+
+                                            Dim radians As Double = Atan(tanTheta)
+                                            Dim angle = radians * 180 / PI
+                                            If angle > 80 Then
+                                                angle = 80 'assume there is a max flame tilt from vertical
+                                                radians = angle * PI / 180
+                                            End If
+
+                                            Dim x10 As Double = Lf / 2 * Sin(radians)
+
+                                            Dim wind_angle = ISD_winddir
+                                            Dim wind_radians As Double = wind_angle * PI / 180
+
+                                            If angle >= 20 Then
+
+                                                If wind_angle >= 0 And wind_angle <= 90 Then
+                                                    m = m + x10 * Cos(wind_radians)
+                                                    n = n + x10 * Sin(wind_radians)
+                                                ElseIf wind_angle > 90 And wind_angle <= 180 Then
+                                                    m = m - x10 * Cos((180 - wind_angle) * PI / 180)
+                                                    n = n + x10 * Sin((180 - wind_angle) * PI / 180)
+                                                ElseIf wind_angle > 180 And wind_angle <= 270 Then
+                                                    m = m - x10 * Sin((270 - wind_angle) * PI / 180)
+                                                    n = n - x10 * Cos((270 - wind_angle) * PI / 180)
+                                                Else
+                                                    m = m + x10 * Cos((360 - wind_angle) * PI / 180)
+                                                    n = n - x10 * Sin((360 - wind_angle) * PI / 180)
+                                                End If
+                                            Else
+                                                'ignore any flame tilt
+                                            End If
+                                        End If
+                                    End If
+
+                                    r = Sqrt((x - m) ^ 2 + (y - n) ^ 2)
+
+                                    If r < rmin Then
+                                        rmin = r
+                                        xsav = x
+                                        ysav = y
+                                    End If
+
+
+                                End If
+                                y = Round((y + deltay) * 1000) * 0.001
+                            Next
+                            x = Round((x + deltax) * 1000) * 0.001
+                        Next
+                        targetdistance(k, j) = rmin
+                        targetxpoint(k, j) = xsav
+                        targetypoint(k, j) = ysav
+
+                        'this is unchanged -  no wind
+                        vectorlength(j, k) = Sqrt((item_location(1, j) - item_location(1, k)) ^ 2 + (item_location(2, j) - item_location(2, k)) ^ 2)
+
                     End If
                 Next j
 
