@@ -276,7 +276,7 @@ Partial Class frmPopulate
         '
         'txt_winddir
         '
-        Me.txt_winddir.Location = New System.Drawing.Point(147, 545)
+        Me.txt_winddir.Location = New System.Drawing.Point(147, 567)
         Me.txt_winddir.Name = "txt_winddir"
         Me.txt_winddir.Size = New System.Drawing.Size(39, 20)
         Me.txt_winddir.TabIndex = 86
@@ -402,9 +402,9 @@ Partial Class frmPopulate
         Me.GroupBox2.Controls.Add(Me.RadioButton1)
         Me.GroupBox2.Controls.Add(Me.RadioButton2)
         Me.GroupBox2.Controls.Add(Me.chk_fix_item)
-        Me.GroupBox2.Location = New System.Drawing.Point(21, 400)
+        Me.GroupBox2.Location = New System.Drawing.Point(21, 401)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(178, 82)
+        Me.GroupBox2.Size = New System.Drawing.Size(178, 133)
         Me.GroupBox2.TabIndex = 80
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Population Method"
@@ -438,7 +438,7 @@ Partial Class frmPopulate
         '
         'txtWindSpeed
         '
-        Me.txtWindSpeed.Location = New System.Drawing.Point(147, 504)
+        Me.txtWindSpeed.Location = New System.Drawing.Point(146, 540)
         Me.txtWindSpeed.Name = "txtWindSpeed"
         Me.txtWindSpeed.Size = New System.Drawing.Size(40, 20)
         Me.txtWindSpeed.TabIndex = 83
@@ -447,7 +447,7 @@ Partial Class frmPopulate
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(39, 511)
+        Me.Label3.Location = New System.Drawing.Point(39, 540)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(94, 13)
         Me.Label3.TabIndex = 84
@@ -456,7 +456,7 @@ Partial Class frmPopulate
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(31, 548)
+        Me.Label5.Location = New System.Drawing.Point(31, 569)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(102, 13)
         Me.Label5.TabIndex = 85
@@ -471,12 +471,12 @@ Partial Class frmPopulate
         Me.ClientSize = New System.Drawing.Size(727, 613)
         Me.ContextMenuStrip = Me.ContextMenuStrip1
         Me.Controls.Add(Me.txt_winddir)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtWindSpeed)
         Me.Controls.Add(Me.chkShowSD)
         Me.Controls.Add(Me.lblFLED)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txtFLED)
         Me.Controls.Add(Me.CheckBox2)
