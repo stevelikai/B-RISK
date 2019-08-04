@@ -1541,7 +1541,7 @@ here3: '2019
 
                                             Dim Lf As Double = D / (rstar / W) * 0.84 * (Fr ^ (2 / 3) / qstar ^ n3) ^ (-1 / 2)
 
-                                            Dim tanTheta As Double = 2.73 * Fr ^ (2 / 5) * qstar ^ (0.1 * (1 + 5 / 2 * n3)) * (W / rstar) ^ (-1 / 2)
+                                            Dim tanTheta As Double = 2.73 * Fr ^ (2 / 5) * qstar ^ (-0.1 * (1 + 5 / 2 * n3)) * (W / rstar) ^ (-1 / 2)
 
                                             Dim radians As Double = Atan(tanTheta)
                                             Dim angle = radians * 180 / PI
