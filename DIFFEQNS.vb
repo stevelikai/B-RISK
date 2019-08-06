@@ -1162,6 +1162,11 @@ Module DIFFEQNS
                 Call Do_Stuff(i)
             End If
 
+            If ISD_windspeed > 0 Then
+                Call Target_distance_ISD(i)
+            Else
+                'did this earlier
+            End If
 
             'stop the calculation
             For room = 1 To NumberRooms
@@ -1879,7 +1884,8 @@ Module DIFFEQNS
             ' If NumberObjects > 1 And frmInputs.chkIgniteTargets.Checked = True And frmInputs.chkFireMode.Checked = True Then
 
             If ignitetargets = True Then
-                Call secondary_targets(rcnone, i, itcounter, ItemFTP_sum_pilot, ItemFTP_sum_auto, ItemFTP_sum_wall, ItemFTP_sum_ceiling)
+                'Call secondary_targets(rcnone, i, itcounter, ItemFTP_sum_pilot, ItemFTP_sum_auto, ItemFTP_sum_wall, ItemFTP_sum_ceiling)
+                Call secondary_targets_ISD(rcnone, i, itcounter, ItemFTP_sum_pilot, ItemFTP_sum_auto, ItemFTP_sum_wall, ItemFTP_sum_ceiling)
                 If rcnone = False And WallIgniteFlag(fireroom) = 1 Then
                     Xstart(fireroom, 1) = Y_pyrolysis(fireroom, i)
                     Xstart(fireroom, 2) = X_pyrolysis(fireroom, i)

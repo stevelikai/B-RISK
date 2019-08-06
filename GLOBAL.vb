@@ -27,7 +27,7 @@ Module GLOBAL_Renamed
     Public manualrun As Boolean
 
     'Global variables used in the program
-    Public Const Version As String = "2019.04"
+    Public Const Version As String = "2019.042"
     Public Const DevKeyCode As String = "jam4sam16"
     Public DevKey As Boolean = False
     Public TalkToEVACNZ As Boolean
@@ -117,6 +117,9 @@ Module GLOBAL_Renamed
     Public sprink_mode As Integer
     Public sd_mode As Boolean
     Public mv_mode As Boolean 'mech vent
+    Public fixitem1 As Boolean 'specify if placement of item first item ignited is always fixed for DFG
+    Public ISD_windspeed As Single
+    Public ISD_winddir As Single
     Public firstitem As Integer
     Public firstitemtemp As Integer
     Public itime() As Single

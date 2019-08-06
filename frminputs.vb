@@ -218,6 +218,9 @@ Public Class frmInputs
                 DFW.WriteElementString("output_interval", Me.txtOutputInterval.Text)
                 DFW.WriteElementString("vent_clearance", ventclearance)
                 DFW.WriteElementString("grid_size", gridsize)
+                DFW.WriteElementString("dfg_fixitem1", fixitem1)
+                DFW.WriteElementString("dfg_windspeed", ISD_windspeed)
+                DFW.WriteElementString("dfg_winddir", ISD_winddir)
 
                 stemp = Me.txtBaseName.Text
                 stemp = stemp.Replace(" ", "_")
@@ -1436,7 +1439,16 @@ Public Class frmInputs
                             gridsize = DFR.ReadElementString()
                             frmPopulate.txtGridSize.Text = gridsize
                         End If
-
+                        If ModelVersion >= CSng(2019.04) Then
+                            fixitem1 = DFR.ReadElementString()
+                            frmPopulate.chk_fix_item.Checked = fixitem1
+                        End If
+                        If ModelVersion >= CSng(2019.041) Then
+                            ISD_windspeed = DFR.ReadElementString()
+                            frmPopulate.txtWindSpeed.Text = ISD_windspeed
+                            ISD_winddir = DFR.ReadElementString()
+                            frmPopulate.txt_winddir.Text = ISD_winddir
+                        End If
                         dummy = DFR.ReadElementString()
                         Me.txtBaseName.Text = dummy.Replace("basemodel_", "")
 
@@ -11891,7 +11903,7 @@ skipline:
                     If frmOptions1.optPostFlashover.Checked = False Then FLED = mc_FLED_actual(counter - 1)
                     'If g_post = False Then FLED = mc_FLED_actual(counter - 1)
 
-                    Call Target_distance()
+                    'Call Target_distance()
 
                 Else
                     'this is using power law fire
@@ -11914,7 +11926,7 @@ skipline:
                     If frmOptions1.optPostFlashover.Checked = False Then FLED = mc_FLED_actual(counter - 1)
                     'If g_post = False Then FLED = mc_FLED_actual(counter - 1)
 
-                    Call Target_distance()
+                    'Call Target_distance()
                     '====================
                     EnergyYield(1) = CSng(mc_item_hoc(0, counter - 1))
                     SootYield(1) = CSng(mc_item_soot(0, counter - 1))
@@ -11923,6 +11935,12 @@ skipline:
                     ObjectRLF(1) = CSng(mc_item_RLF(0, counter - 1))
                     ObjectMLUA(2, 1) = CSng(mc_item_hrrua(0, counter - 1))
 
+                End If
+
+                If ISD_windspeed > 0 Then
+                    'will call later
+                Else
+                    Call Target_distance()
                 End If
 
                 'n_max holds number of items in this iteration
@@ -23621,7 +23639,12 @@ more:
                     If frmOptions1.optPostFlashover.Checked = False Then FLED = mc_FLED_actual(counter - 1)
                     'If g_post = False Then FLED = mc_FLED_actual(counter - 1)
 
-                    Call Target_distance()
+                    If ISD_windspeed > 0 Then
+                        'will call later
+                    Else
+                        Call Target_distance()
+                    End If
+
 
                 Else
                     'this is using power law fire
@@ -23644,7 +23667,11 @@ more:
                     If frmOptions1.optPostFlashover.Checked = False Then FLED = mc_FLED_actual(counter - 1)
                     ' If g_post = False Then FLED = mc_FLED_actual(counter - 1)
 
-                    Call Target_distance()
+                    If ISD_windspeed > 0 Then
+                        'will call later
+                    Else
+                        Call Target_distance()
+                    End If
                     '====================
                     EnergyYield(1) = CSng(mc_item_hoc(0, counter - 1))
                     SootYield(1) = CSng(mc_item_soot(0, counter - 1))

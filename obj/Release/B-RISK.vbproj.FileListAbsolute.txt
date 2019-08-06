@@ -72,4 +72,3 @@ C:\Users\branzcw\source\repos\B-RISK\obj\Release\BRISK.exe
 C:\Users\branzcw\source\repos\B-RISK\obj\Release\BRISK.xml
 C:\Users\branzcw\source\repos\B-RISK\obj\Release\BRISK.pdb
 C:\Users\branzcw\source\repos\B-RISK\obj\Release\BRISK.frmMatEdit.resources
-C:\Users\branzcw\source\repos\B-RISK\obj\Release\B-RISK.vbprojAssemblyReference.cache
