@@ -30,10 +30,10 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers
 ' by using the '*' as shown below:
 
-<Assembly: AssemblyVersion("2019.03")>
+<Assembly: AssemblyVersion("2019.042")>
 
 
 
 <Assembly: NeutralResourcesLanguageAttribute("en-NZ")>
-<Assembly: AssemblyFileVersion("2019.03")>
+<Assembly: AssemblyFileVersion("2019.042")>
 <Assembly: ComVisibleAttribute(True)> 

@@ -888,7 +888,8 @@ here:
         frmPopulate.updown_itcounter.Maximum = numfiles
         frmPopulate.txtGridSize.Text = gridsize.ToString
         frmPopulate.txtVentClearance.Text = ventclearance.ToString
-
+        frmPopulate.txtWindSpeed.Text = ISD_windspeed.ToString
+        frmPopulate.txt_winddir.Text = ISD_winddir.ToString
         frmPopulate.BringToFront()
         frmPopulate.Show()
 
