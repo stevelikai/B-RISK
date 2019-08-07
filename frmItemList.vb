@@ -22,16 +22,16 @@ Public Class frmItemList
 
         If usepowerlawdesignfire = True Then chkAlphaTFire.Checked = True
 
-        If DevKey = True Then
-            GroupBox3.Visible = True
-            If FuelResponseEffects = True Then
-                optFREon.Checked = True
-            Else
-                optFREoff.Checked = True
-            End If
-        Else
-                GroupBox3.Visible = False
-        End If
+        'If DevKey = True Then
+        '    GroupBox3.Visible = True
+        '    If FuelResponseEffects = True Then
+        '        optFREon.Checked = True
+        '    Else
+        '        optFREoff.Checked = True
+        '    End If
+        'Else
+        '        GroupBox3.Visible = False
+        'End If
 
 
         If VM2 = True Then

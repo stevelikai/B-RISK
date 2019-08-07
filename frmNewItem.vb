@@ -570,7 +570,7 @@ Public Class frmNewItem
             Label50.Visible = True
         End If
 
-        If DevKey = True And FuelResponseEffects = True Then
+        If FuelResponseEffects = True Then
 
             GroupBox_RoomEffects.Visible = True
             Button1.Visible = True
@@ -578,7 +578,7 @@ Public Class frmNewItem
             Time___Heat_ReleaseTextBox.Visible = False
             Label14.Text = "Mass Loss Rate"
             Label50.Text = "Time (s), MLR (kg/s)"
-        ElseIf DevKey = True And FuelResponseEffects = False Then
+        ElseIf FuelResponseEffects = False Then
 
             GroupBox_RoomEffects.Visible = False
             Button1.Visible = False

@@ -93,13 +93,6 @@ Public Class frmSmokeDetList
         Me.FillSmokeDetList(oSmokeDets)
         lstSmokeDet.SelectedIndex = oSmokeDet.sdid - 1
 
-        'show the beam detection inputs
-        If DevKey = True Then
-            'NewSmokeDetForm.gbBeamDetect.Visible = True
-        Else
-            ' NewSmokeDetForm.gbBeamDetect.Visible = False
-        End If
-
         NewSmokeDetForm.ShowDialog()
 
     End Sub
@@ -229,13 +222,6 @@ here:
                         End If
                     End If
                 Next
-
-                'show the beam detection inputs
-                If DevKey = True Then
-                    'NewSmokeDetForm.gbBeamDetect.Visible = True
-                Else
-                    'NewSmokeDetForm.gbBeamDetect.Visible = False
-                End If
 
 
                 NewSmokeDetForm.ShowDialog()

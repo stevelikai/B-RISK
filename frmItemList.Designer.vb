@@ -287,7 +287,6 @@ Partial Class frmItemList
         Me.GroupBox3.TabIndex = 172
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Fuel Response Effects"
-        Me.GroupBox3.Visible = False
         '
         'optFREoff
         '
