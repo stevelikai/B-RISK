@@ -1173,7 +1173,7 @@ here3: '2019
             'Qburner = Q
             'End If
 
-            If NumberObjects >= 1 Then
+            If NumberObjects >= 1 Then 'may be different to number of unique items
                 For i = 1 To NumberObjects 'a potential target
 
                     'only do this if object has not previously ignited
@@ -1190,7 +1190,7 @@ here3: '2019
                         For j = 1 To NumberObjects
                             If i <> j Then
                                 If ObjectIgnTime(j) < SimTime Then
-
+                                    ' j is the source item
                                     r = targetdistance(j, i)
 
                                     Q = Get_HRR(j, tim(thistimestep, 1), 0, 0, 0, 0, 0) 'kW/m2
@@ -1524,56 +1524,52 @@ here3: '2019
                                         Dim W As Double = Max(ObjLength(k), ObjWidth(k))
                                         Dim U As Double = ISD_windspeed 'm/s
                                         U = ISD_windspeed 'm/s
-                                        Dim Fr As Double = U ^ 2 / (G * D)
+                                        Dim Fr As Double = (U ^ 2) / (G * D)
                                         Dim rstar As Double = Sqrt(D * W / PI) 'm
                                         Dim Q2 As Double
-                                        Q2 = Get_HRR(k, tim(tstep, 1), 0, 0, 0, 0, 0) 'kW/m2
-                                        Dim qstar As Double = Q2 / (ReferenceDensity * SpecificHeat_air * ReferenceTemp * G ^ (1 / 2) * D ^ (5 / 2))
+                                        Q2 = Get_HRR(k, tim(tstep, 1), 0, 0, 0, 0, 0) 'kW
+                                        Dim qstar As Double = Q2 / (ReferenceDensity * SpecificHeat_air * ReferenceTemp * (G ^ (1 / 2)) * (D ^ (5 / 2)))
                                         Dim n3 As Double
-                                        If qstar > 0.05 And qstar < 12.8 Then
+                                        Dim Lf, Dia, tanTheta, radians, angle, x10, wind_angle, wind_radians As Double
+
+                                        'If qstar > 0.05 And qstar < 12.8 Then
+                                        If qstar > 0 Then
                                             If qstar > 0.38 Then
                                                 n3 = 2 / 3
                                             Else
                                                 n3 = 2
                                             End If
 
-                                            'Dim Lf As Double = Flame_Height(2 * rstar, Q2)
+                                            Dia = Sqrt(4 * D * W / PI)
 
-                                            Dim Lf As Double = D / (rstar / W) * 0.84 * (Fr ^ (2 / 3) / qstar ^ n3) ^ (-1 / 2)
+                                            Lf = -1.02 * Dia + 0.23 * Q2 ^ (2 / 5) 'Heskestad flame height
 
-                                            Dim tanTheta As Double = 2.73 * Fr ^ (2 / 5) * qstar ^ (-0.1 * (1 + 5 / 2 * n3)) * (W / rstar) ^ (-1 / 2)
+                                            tanTheta = 2.73 * Fr ^ (2 / 5) * qstar ^ (-0.1 * (1 + 5 / 2 * n3)) * (W / rstar) ^ (-1 / 2)
 
-                                            Dim radians As Double = Atan(tanTheta)
-                                            Dim angle = radians * 180 / PI
-                                            If angle > 80 Then
-                                                angle = 80 'assume there is a max flame tilt from vertical
-                                                radians = angle * PI / 180
-                                            End If
+                                            radians = Atan(tanTheta)
+                                            angle = radians * 180 / PI
 
-                                            Dim x10 As Double = Lf / 2 * Sin(radians)
+                                            x10 = Lf / 2 * Sin(radians) 'horizontal projection due to wind
 
-                                            Dim wind_angle = ISD_winddir
-                                            Dim wind_radians As Double = wind_angle * PI / 180
+                                            wind_angle = ISD_winddir
+                                            wind_radians = wind_angle * PI / 180
 
-                                            If angle >= 20 Then
-
-                                                If wind_angle >= 0 And wind_angle <= 90 Then
-                                                    m = m + x10 * Cos(wind_radians)
-                                                    n = n + x10 * Sin(wind_radians)
-                                                ElseIf wind_angle > 90 And wind_angle <= 180 Then
-                                                    m = m - x10 * Cos((180 - wind_angle) * PI / 180)
-                                                    n = n + x10 * Sin((180 - wind_angle) * PI / 180)
-                                                ElseIf wind_angle > 180 And wind_angle <= 270 Then
-                                                    m = m - x10 * Sin((270 - wind_angle) * PI / 180)
-                                                    n = n - x10 * Cos((270 - wind_angle) * PI / 180)
-                                                Else
-                                                    m = m + x10 * Cos((360 - wind_angle) * PI / 180)
-                                                    n = n - x10 * Sin((360 - wind_angle) * PI / 180)
-                                                End If
+                                            If wind_angle >= 0 And wind_angle <= 90 Then
+                                                m = m + x10 * Cos(wind_radians)
+                                                n = n + x10 * Sin(wind_radians)
+                                            ElseIf wind_angle > 90 And wind_angle <= 180 Then
+                                                m = m - x10 * Cos((180 - wind_angle) * PI / 180)
+                                                n = n + x10 * Sin((180 - wind_angle) * PI / 180)
+                                            ElseIf wind_angle > 180 And wind_angle <= 270 Then
+                                                m = m - x10 * Sin((270 - wind_angle) * PI / 180)
+                                                n = n - x10 * Cos((270 - wind_angle) * PI / 180)
                                             Else
-                                                'ignore any flame tilt
+                                                m = m + x10 * Cos((360 - wind_angle) * PI / 180)
+                                                n = n - x10 * Sin((360 - wind_angle) * PI / 180)
                                             End If
+
                                         End If
+
                                     End If
 
                                     r = Sqrt((x - m) ^ 2 + (y - n) ^ 2)
@@ -1583,7 +1579,6 @@ here3: '2019
                                         xsav = x
                                         ysav = y
                                     End If
-
 
                                 End If
                                 y = Round((y + deltay) * 1000) * 0.001
@@ -1611,9 +1606,9 @@ here3: '2019
                 itemtowalldistance(k) = Round((itemtowalldistance(k)) * 1000) * 0.001 'get rid of excess digits
 
             Next k
-
+            'Stop
         Catch ex As Exception
-            MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in DFG.vb Target_distance")
+            MsgBox(Err.Description, MsgBoxStyle.OkOnly, "Exception in DFG.vb Target_distance_ISD")
         End Try
     End Sub
     Public Sub SampleFireData2_LHS(ByVal oitemdistributions, ByVal oitems, ByVal thisitem, ByVal nx, ByVal thisiteration)

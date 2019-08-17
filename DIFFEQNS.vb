@@ -1162,7 +1162,7 @@ Module DIFFEQNS
                 Call Do_Stuff(i)
             End If
 
-            If ISD_windspeed > 0 Then
+            If ISD_windspeed >= 0 Then
                 Call Target_distance_ISD(i)
             Else
                 'did this earlier
